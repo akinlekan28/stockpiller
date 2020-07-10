@@ -5,6 +5,9 @@ import store from "./store/store";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Homepage from "./pages/homepage/Homepage";
+import Login  from "./pages/auth/Login";
+import Signup from './pages/auth/Signup'
+import Forgot from "./pages/auth/Forgot";
 
 class App extends Component {
   render() {
@@ -13,6 +16,9 @@ class App extends Component {
         <Router>
           <ToastContainer autoClose={4000} />
           <Route exact path="/" component={Homepage} />
+          <Route exact path="/login" component={Login} />
+          <Route exact path="/signup" component={Signup} />
+          <Route exact path="/reset" component={Forgot} />
         </Router>
       </Provider>
     );
