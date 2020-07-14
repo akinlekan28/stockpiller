@@ -1,6 +1,6 @@
 import React, { useRef } from "react";
 import { Link } from "react-router-dom";
-import "./homepage.css";
+import "./homepage.scss";
 
 export default function Homepage() {
   const aboutScroll = useRef();
@@ -23,7 +23,7 @@ export default function Homepage() {
   };
 
   return (
-    <div>
+    <div className="homepage-wrapper">
       <div className="outside-overlay">
         <div className="clickable"></div>
         <div className="sidebar">
