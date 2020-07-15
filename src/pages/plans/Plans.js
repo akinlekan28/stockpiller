@@ -1,12 +1,12 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
-import './home.scss'
+import './plans.scss'
 
-class Home extends Component {
+class Plans extends Component {
   render() {
     return (
-      <div className="home-wrapper-screen">
+      <div className="plans-wrapper">
         <div className="sidenav__container-home">
           <div className="sidebar-home sidenav-home">
             <Link className="logo" to="/">
@@ -15,7 +15,7 @@ class Home extends Component {
             <button className="sidenav-close-home">
               <img src="../assets/images/close.svg" />
             </button>
-            <div className="links-home active-home">
+            <div className="links-home">
               <div className="link-home">
                 <span
                   class="iconify"
@@ -32,7 +32,7 @@ class Home extends Component {
                 ></span>
                 <Link to="/dashboard">Dashboard</Link>
               </div>
-              <div className="link-home">
+              <div className="link-home active-home">
                 <span
                   class="iconify"
                   data-icon="bx:bxs-bar-chart-alt-2"
@@ -83,7 +83,7 @@ class Home extends Component {
             Stokkpile
           </Link>
           <div className="links-home">
-            <div className="link-home active-home">
+            <div className="link-home">
               <span
                 class="iconify"
                 data-icon="fa-regular:building"
@@ -99,7 +99,7 @@ class Home extends Component {
               ></span>
               <Link to="/dashboard">Dashboard</Link>
             </div>
-            <div className="link-home">
+            <div className="link-home active-home">
               <span
                 class="iconify"
                 data-icon="bx:bxs-bar-chart-alt-2"
@@ -152,20 +152,20 @@ class Home extends Component {
         <div className="cover-overlay-home"></div>
 
         <main>
-          <div className="main-container-home">
-            <div className="main-header-home">
-              <div className="open-home">
-                <div className="bar-home"></div>
-                <div className="bar-home"></div>
-                <div className="bar-home"></div>
+          <div class="main-container-home">
+            <div class="main-header-home">
+              <div class="open-home">
+                <div class="bar-home"></div>
+                <div class="bar-home"></div>
+                <div class="bar-home"></div>
               </div>
-              <a href="http://" className="backlink-home">
-                <div className="back-home">
+              <a href="http://" class="backlink-home">
+                <div class="back-home">
                   <img src="../assets/images/Path 3 Copy.svg" alt="" />
                   <h2>Back</h2>
                 </div>
               </a>
-              <table className="stocks-home">
+              <table class="stocks-home">
                 <tr>
                   <td>Rates</td>
                   <td>Blocks</td>
@@ -186,7 +186,7 @@ class Home extends Component {
                   <td>Internatinal</td>
                   <td>
                     <img
-                      className="down-arrow-home"
+                      class="down-arrow-home"
                       src="../assets/images/Group 44.svg"
                       alt=""
                     />
@@ -194,7 +194,7 @@ class Home extends Component {
                   </td>
                   <td>
                     <img
-                      className="up-arrow-home"
+                      class="up-arrow-home"
                       src="../assets/images/Group 38.svg"
                       alt=""
                     />
@@ -202,141 +202,99 @@ class Home extends Component {
                   </td>
                 </tr>
               </table>
-              <div className="personalize-home">
+              <div class="personalize-home">
                 <img
-                  className="notification-bell-home"
+                  class="notification-bell-home"
                   src="../assets/images/Group 3.svg"
                   alt=""
                 />
-                <div className="avatar-home">
+                <div class="avatar-home">
                   <img src="../assets/images/Oval.svg" alt="" />
                 </div>
-                <a href="./logout" className="logoutNav-home">
+                <a href="./logout" class="logoutNav-home">
                   Logout
                 </a>
               </div>
             </div>
 
-            <div className="main-body-home">
-              <div className="steps-row-home">
-                <div className="step-group-home type-1-home">
-                  <div className="step-card-home yellow-home">
-                    <h2>Step 1</h2>
-                    <p>
-                      Click on the{' '}
-                      <span className="emphasis-home">Add New Plan Button</span>
-                    </p>
-
-                    <Link to="/plan/new" className="btn-link-home">
-                      Add new plan
-                    </Link>
-                  </div>
-                  <div className="directional-arrow-home">
-                    <img
-                      src="https://res.cloudinary.com/djnhrvjyf/image/upload/v1594803215/Group_94_wn0il2.svg"
-                      alt="nav"
-                      className="point-forward-home forwards-home"
-                    />
-                    <img
-                      src="https://res.cloudinary.com/djnhrvjyf/image/upload/v1594803340/Group_96_lazd0i.svg"
-                      alt="nav"
-                      className="point-downawrd-home down-home"
-                    />
-                  </div>
-                </div>
-                <div className="step-group-home type-1-home">
-                  <div className="step-card-home pink-home">
-                    <h2>Step 2</h2>
-                    <p>Fill the form for the new plan</p>
-                  </div>
-                  <div className="directional-arrow-home">
-                    <img
-                      src="https://res.cloudinary.com/djnhrvjyf/image/upload/v1594803215/Group_94_wn0il2.svg"
-                      alt="nav"
-                      className="point-backwards-home forwards-home"
-                    />
-                    <img
-                      src="https://res.cloudinary.com/djnhrvjyf/image/upload/v1594803340/Group_96_lazd0i.svg"
-                      alt="nav"
-                      className="point-downawrd-home down-home"
-                    />
-                  </div>
-                </div>
-                <div className="step-group-home type-2-home">
-                  <div className="step-card-home blue-home">
-                    <h2>Step 3</h2>
-                    <p>
-                      Add a valid debit card before you finish filling the new
-                      plan form.
-                    </p>
-                  </div>
-                  <div className="directional-arrow-home">
-                    <img
-                      src="https://res.cloudinary.com/djnhrvjyf/image/upload/v1594803340/Group_96_lazd0i.svg"
-                      alt=""
-                      className="point-downawrd-home"
-                    />
-                  </div>
-                </div>
+            <div class="main-body-home">
+              <div class="header-bar-home">
+                <h2>
+                  {' '}
+                  <span class="underline-home">My p</span>lans
+                </h2>
+                <Link to="/plan/new" class="new-plan-home">
+                  <span
+                    class="iconify"
+                    data-icon="bx:bx-plus"
+                    data-inline="false"
+                    style={{ marginRight: '10px', marginBottom: '-2px' }}
+                  ></span>
+                  <span class="">New plan</span>
+                </Link>
               </div>
-              <div className="steps-row-home reverse-home">
-                <div className="step-group-home type-3-home">
-                  <div className="step-card-home purple-home">
-                    <h2>Step 6</h2>
-                    <p>
-                      Enjoying the depositing ride to withdraw building
-                      materials in the future.
-                    </p>
-                  </div>
-                  <div className="directional-arrow-home six-home">
-                    <img
-                      src="https://res.cloudinary.com/djnhrvjyf/image/upload/v1594803477/Group_95_eocjtk.svg"
-                      alt=""
-                      className="point-backwards-home forwards-home"
-                    />
-                    <img
-                      src="https://res.cloudinary.com/djnhrvjyf/image/upload/v1594803340/Group_96_lazd0i.svg"
-                      alt=""
-                      className="point-downawrd-home down-home"
-                    />
-                  </div>
+              <div class="plans-body-home">
+                <div class="plan-Header-home">
+                  <div class="detail-container-home">S/N</div>
+                  <div class="detail-container-home">Name</div>
+                  <div class="detail-container-home">Auto Deposits</div>
+                  <div class="detail-container-home">List Of Properties</div>
+                  <div class="detail-container-home">Start Date</div>
+                  <div class="detail-container-home">Next Deposit Date</div>
+                  <div class="detail-container-actions-home">Actions</div>
                 </div>
-                <div className="step-group-home type-3-home">
-                  <div className="step-card-home cyan-home">
-                    <h2>Step 5</h2>
-                    <p>Check our dashboard to see you updated plan</p>
 
-                    <Link to="/dashboard" className="btn-link-home">
-                      Dashboard
+                <div class="plan-group-home">
+                  <div class="detail-container-home">
+                    <p class="tag-home">S/N :</p>
+                    <span class="response-home">1</span>
+                  </div>
+                  <div class="detail-container-home">
+                    <p class="tag-home">Name:</p>
+                    <span class="response-home">Lagos House</span>
+                  </div>
+                  <div class="detail-container-home">
+                    <p class="tag-home"> Auto Deposits </p>
+                    <span class="response-home">50,000.00</span>
+                  </div>
+                  <div class="detail-container-home">
+                    <p class="tag-home"> List Of Properties: </p>
+                    <span class="response-home">
+                      <p>100 units of blocks</p>
+                      <p>50 bags of Cement</p>
+                    </span>
+                  </div>
+                  <div class="detail-container-home">
+                    <p class="tag-home"> Start Date: </p>
+                    <span class="response-home">12-jan-2019</span>
+                  </div>
+                  <div class="detail-container-home">
+                    <p class="tag-home"> Next Deposit Date: </p>
+                    <span class="response-home">12-jan-2019</span>
+                  </div>
+                  <div class="detail-container-actions-home">
+                    <Link to="/editplans">
+                      <span
+                        class="iconify"
+                        data-icon="noto:fountain-pen"
+                        data-inline="false"
+                      ></span>
                     </Link>
-                  </div>
-                  <div className="directional-arrow-home">
-                    <img
-                      src="https://res.cloudinary.com/djnhrvjyf/image/upload/v1594803477/Group_95_eocjtk.svg"
-                      alt=""
-                      className="point-backwards-home forwards-home"
-                    />
-                  </div>
-                </div>
-                <div className="step-group-home type-2-home">
-                  <div className="step-card-home green-home">
-                    <h2>Step 4</h2>
-                    <p>Submit the form</p>
-                  </div>
-                  <div className="directional-arrow-home">
-                    <img
-                      src="https://res.cloudinary.com/djnhrvjyf/image/upload/v1594803340/Group_96_lazd0i.svg"
-                      alt=""
-                      className="point-backwards-home down-home"
-                    />
+                    <Link to="/viewplan">
+                      <span
+                        class="iconify"
+                        data-icon="bi:eye-fill"
+                        data-inline="false"
+                      ></span>
+                    </Link>
                   </div>
                 </div>
               </div>
             </div>
           </div>
-          <div className="footer-home">
-            <div className="footer-inner-home">
-              <table className="stocks-home">
+          <div class="footer-home">
+            <div class="footer-inner-home">
+              <table class="stocks-home">
                 <tr>
                   <td>Rates</td>
                   <td>Blocks</td>
@@ -357,7 +315,7 @@ class Home extends Component {
                   <td>Internatinal</td>
                   <td>
                     <img
-                      className="down-arrow-home"
+                      class="down-arrow-home"
                       src="../assets/images/Group 44.svg"
                       alt=""
                     />
@@ -365,7 +323,7 @@ class Home extends Component {
                   </td>
                   <td>
                     <img
-                      className="up-arrow-home"
+                      class="up-arrow-home"
                       src="../assets/images/Group 38.svg"
                       alt=""
                     />
@@ -385,4 +343,4 @@ const mapStateToProps = (state) => ({})
 
 const mapDispatchToProps = {}
 
-export default connect(mapStateToProps, mapDispatchToProps)(Home)
+export default connect(mapStateToProps, mapDispatchToProps)(Plans)

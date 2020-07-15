@@ -1,8 +1,8 @@
-.home-wrapper-screen {
+.plans-wrapper {
   html {
     font-size: 62.5%;
     overflow-x: hidden;
-    font-family: "Cairo", sans-serif;
+    font-family: 'Cairo', sans-serif;
   }
 
   *,
@@ -17,13 +17,13 @@
     background-color: #f0f0f0;
     box-sizing: border-box;
     color: #4a4a4a;
-    font-family: "Cairo", sans-serif;
+    font-family: 'Cairo', sans-serif;
   }
 
   .container-home {
     width: 100%;
     height: 100%;
-    font-family: "Cairo", sans-serif;
+    font-family: 'Cairo', sans-serif;
   }
 
   input {
@@ -32,7 +32,7 @@
 
   /*new side bar*/
 
-  .sidebar-home  {
+  .sidebar-home {
     width: 17%;
     background-color: white;
     box-shadow: 5px 0px 5px #f0f0f0;
@@ -41,10 +41,10 @@
     position: fixed;
     min-height: 100%;
     justify-content: space-between;
-    font-family: "Cairo", sans-serif;
+    font-family: 'Cairo', sans-serif;
   }
 
-  .sidenav__container-home  {
+  .sidenav__container-home {
     width: 100%;
     height: 100%;
     position: fixed;
@@ -52,20 +52,20 @@
     top: 0;
     background-color: rgba(0, 0, 0, 0.3);
     display: none;
-    font-family: "Cairo", sans-serif;
+    font-family: 'Cairo', sans-serif;
   }
 
-  .sidebar-home .sidenav-home  {
+  .sidebar-home .sidenav-home {
     width: 0%;
     position: absolute;
     transition: 400ms ease;
     display: flex;
     overflow: hidden;
     z-index: 500;
-    font-family: "Cairo", sans-serif;
+    font-family: 'Cairo', sans-serif;
   }
 
-  .sidenav-close-home  {
+  .sidenav-close-home {
     position: absolute;
     height: 32px;
     width: 32px;
@@ -74,11 +74,11 @@
     background: transparent;
     border: none;
     outline: none;
-    font-family: "Cairo", sans-serif;
+    font-family: 'Cairo', sans-serif;
   }
 
-  .logo-home  {
-    font-family: "Cairo", sans-serif;
+  .logo-home {
+    font-family: 'Cairo', sans-serif;
     font-size: 20px;
     color: #502274;
     margin: 30px auto 0;
@@ -87,18 +87,18 @@
     text-decoration: none;
   }
 
-  .links-home  {
+  .links-home {
     margin-bottom: auto;
     margin-top: 30px;
     margin: 0;
   }
 
-  .links-home  .link-home ,
-  .logout__link-home  {
+  .links-home .link-home,
+  .logout__link-home {
     width: 100%;
     height: 60px;
     font-size: 14px;
-    font-family: "Cairo", sans-serif;
+    font-family: 'Cairo', sans-serif;
     padding-left: 50px;
     box-sizing: border-box;
     display: flex;
@@ -106,63 +106,53 @@
     transition: 0.3s ease;
   }
 
-  .links-home  .link-home  a {
+  .links-home .link-home a {
     color: #502274;
     text-decoration: none;
   }
 
-  .links-home  .link-home .active {
+  .links-home .link-home .active {
     background-color: #502274;
     color: white;
   }
 
-  // .links-home  .link-home .active-home  a,
-  // .links-home  .link-home :hover a {
-  //   color: white;
-  //   height: 100%;
-  //   display: flex;
-  //   align-items: center;
-  // }
-
-  .links-home  .link-home  .iconify,
-  .logout__link-home  .iconify {
+  .links-home .link-home .iconify,
+  .logout__link-home .iconify {
     margin-right: 10px;
   }
-
-  // .links-home  .link-home :hover {
-  //   background-color: #502274;
-  //   color: white;
-  // }
-  .iconify{
+  .iconify {
     color: #502274;
   }
 
- .link-home:hover{
+  .link-home:hover {
     background-color: #502274;
     color: white !important;
-    &{
-      a, span, .iconify {
+    & {
+      a,
+      span,
+      .iconify {
         color: #ffffff;
       }
     }
   }
 
-  .links-home .active-home  {
+  .links-home .active-home {
     background-color: #502274;
     color: white;
-    &{
-      a, .iconify {
+    & {
+      a,
+      .iconify {
         color: #fff;
       }
     }
   }
 
-  .links-home  .link-home  img,
-  .logout__link-home  img {
+  .links-home .link-home img,
+  .logout__link-home img {
     margin-right: 10px;
   }
 
-  .logout__link-home  {
+  .logout__link-home {
     text-decoration: none;
     margin-bottom: 10px;
   }
@@ -175,7 +165,7 @@
     min-height: 100vh;
   }
 
-  .main-header-home  {
+  .main-header-home {
     height: 7rem;
     background-color: #dddbf1;
     width: 100%;
@@ -185,42 +175,42 @@
     align-items: center;
   }
 
-  a.backlink-home  {
+  a.backlink-home {
     text-decoration: none;
     color: inherit;
     width: 20%;
   }
 
-  .back-home  {
+  .back-home {
     display: flex;
     justify-content: flex-start;
     align-items: center;
     height: 100%;
   }
 
-  .back-home  h2 {
-    font-family: "Cairo", sans-serif;
+  .back-home h2 {
+    font-family: 'Cairo', sans-serif;
     font-size: 1.4rem;
     letter-spacing: 0.53;
     margin-left: 1rem;
   }
 
-  .stocks-home  {
+  .stocks-home {
     width: 33%;
   }
 
-  .stocks-home  tr {
+  .stocks-home tr {
     width: 100%;
     /* background-color: red; */
   }
 
-  .stocks-home  td {
+  .stocks-home td {
     text-align: left;
     min-width: 100px;
     font-size: 10px;
   }
 
-  .stocks-home  td h3 {
+  .stocks-home td h3 {
     display: inline-block;
     font-family: 'Montserrat-SemiBold';
     font-size: 10px;
@@ -230,7 +220,7 @@
     margin-right: 0.5rem;
   }
 
-  .personalize-home  {
+  .personalize-home {
     display: flex;
     height: 100%;
     align-items: center;
@@ -238,7 +228,7 @@
     flex-basis: 20%;
   }
 
-  .logoutNav-home  {
+  .logoutNav-home {
     padding: 0.75rem 1.5rem;
     border: 1px solid #502274;
     border-radius: 4px;
@@ -248,7 +238,7 @@
     font-size: 1rem;
   }
 
-  .main-body-home  {
+  .main-body-home {
     padding: 6rem 5rem;
     width: 100%;
     height: 100%;
@@ -256,18 +246,18 @@
     box-sizing: border-box;
   }
 
-  .empty-div-home  {
+  .empty-div-home {
     text-align: center;
     position: relative;
   }
 
-  .Add-plan-home  {
+  .Add-plan-home {
     margin-top: 7rem;
     margin-bottom: 15rem;
     cursor: pointer;
   }
 
-  .bottom-text-anchor-home  {
+  .bottom-text-anchor-home {
     font-size: 1.2rem;
     margin-top: 2rem;
     text-align: center;
@@ -275,34 +265,34 @@
 
   /* Form style */
 
-  .NewPlanForm-home  {
+  .NewPlanForm-home {
     display: none;
     width: 45%;
   }
 
-  .form-group-full-home  {
+  .form-group-full-home {
     width: 100%;
     margin-bottom: 4rem;
   }
 
-  .form-group-header-home  {
+  .form-group-header-home {
     margin-bottom: 0.3rem;
     display: flex;
   }
 
   .form-group-header-home h2 {
     font-size: 1.2rem;
-    font-family: "Cairo", sans-serif;
+    font-family: 'Cairo', sans-serif;
     margin-bottom: 1rem;
     color: #000000;
   }
 
   .form-group-full-home label {
-    font-family: "Cairo", sans-serif;
+    font-family: 'Cairo', sans-serif;
     color: #4a4a4a;
   }
 
-  .form-input-full-home  {
+  .form-input-full-home {
     width: 100%;
     padding: 0.8rem 1rem;
     border: 1px solid #d8d8d8;
@@ -315,50 +305,50 @@
     justify-content: space-between;
   }
 
-  .units-of-home  {
+  .units-of-home {
     width: 90%;
     display: flex;
     margin-bottom: 2rem;
   }
 
-  .half-input-home  {
+  .half-input-home {
     padding: 0.8rem 1rem;
     border: 1px solid #d8d8d8;
     border-radius: 3px;
     width: 60%;
   }
 
-  .half-groups-home  {
+  .half-groups-home {
     display: flex;
     flex-direction: column;
   }
 
-  .half-groups-home  label {
+  .half-groups-home label {
     margin-bottom: 0.6rem;
   }
 
-  .add-location-home  {
+  .add-location-home {
     float: right;
     text-decoration: none;
     margin-top: 1rem;
     color: #6c63ff;
-    font-family: "Cairo", sans-serif;
+    font-family: 'Cairo', sans-serif;
     text-transform: capitalize;
   }
 
-  .btn-home  {
+  .btn-home {
     background-color: #502274;
     border: none;
     color: #ffffff;
     padding: 1rem 3.5rem;
     border-radius: 3px;
     font-size: 1rem;
-    font-family: "Cairo", sans-serif;
+    font-family: 'Cairo', sans-serif;
   }
 
   /* Form Edits */
 
-  .check-box-home  {
+  .check-box-home {
     margin-top: 1.2rem;
   }
 
@@ -389,12 +379,12 @@
     transform: translateY(0.5rem);
   }
 
-  .special-dropdown-home :hover > .options-holder-home  {
+  .special-dropdown-home :hover > .options-holder-home {
     display: block;
     animation: dropShow 0.7s ease 0.02s 1 forwards;
   }
 
-  @keyframes dropShow-home  {
+  @keyframes dropShow-home {
     from {
       opacity: 0;
     }
@@ -403,7 +393,7 @@
     }
   }
 
-  .options-holder-home  {
+  .options-holder-home {
     background-color: #ffffff;
     border-radius: 3px;
     width: 227.5px;
@@ -420,11 +410,11 @@
     top: 1.5rem;
   }
 
-  .options-holder-home  ul {
+  .options-holder-home ul {
     list-style: none;
   }
 
-  .drop-down-option-home  {
+  .drop-down-option-home {
     padding: 1rem 1.2rem;
     font-size: 1.1rem;
   }
@@ -433,12 +423,12 @@
     background-color: rgba(155, 155, 155, 0.5);
   }
 
-  .addCardLink-home  {
+  .addCardLink-home {
     text-decoration: none;
     color: inherit;
   }
 
-  .currencySymbol-home  {
+  .currencySymbol-home {
     width: 4rem;
     padding: 0.85rem 1rem;
     border: 1px solid #d8d8d8;
@@ -451,7 +441,7 @@
 
   /*updates*/
 
-  .choose-deposit-option-home  {
+  .choose-deposit-option-home {
     height: 100%;
     min-height: 65vh;
     width: 100%;
@@ -460,7 +450,7 @@
     justify-content: space-evenly;
   }
 
-  .overlay-home  {
+  .overlay-home {
     position: fixed;
     top: 0;
     left: 0;
@@ -474,7 +464,7 @@
     width: 83%;
   }
 
-  .Add-Card-box-home  {
+  .Add-Card-box-home {
     position: absolute;
     background-color: #ffffff;
     top: 50%;
@@ -857,7 +847,7 @@
 
   .plan-Header .detail-container-home {
     color: #4a4a4a;
-    font-family: "Cairo", sans-serif;
+    font-family: 'Cairo', sans-serif;
     font-size: 1.2rem;
   }
 

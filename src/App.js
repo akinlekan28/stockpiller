@@ -9,6 +9,7 @@ import Login  from "./pages/auth/Login";
 import Signup from './pages/auth/Signup'
 import Forgot from "./pages/auth/Forgot";
 import Home from "./pages/home/Home";
+import Plans from "./pages/plans/Plans";
 
 class App extends Component {
   render() {
@@ -21,6 +22,7 @@ class App extends Component {
           <Route exact path="/signup" component={Signup} />
           <Route exact path="/reset" component={Forgot} />
           <Route exact path="/home" component={Home} />
+          <Route exact path="/plans" component={Plans} />
         </Router>
       </Provider>
     );
