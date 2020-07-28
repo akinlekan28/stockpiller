@@ -1,0 +1,308 @@
+.card-wrapper {
+  .sidebar-cards {
+    width: 17%;
+    background-color: white;
+    box-shadow: 5px 0px 5px #f0f0f0;
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    min-height: 100%;
+    justify-content: space-between;
+  }
+
+  .sidenav__container-cards {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    z-index: 2;
+    background-color: rgba(0, 0, 0, 0.3);
+    display: none;
+  }
+
+  .sidebar-cards.sidenav-cards {
+    width: 0%;
+    position: absolute;
+    transition: 400ms;
+    display: flex;
+    overflow: hidden;
+  }
+
+  .sidenav-close-cards {
+    position: absolute;
+    height: 32px;
+    width: 32px;
+    right: 10px;
+    top: 25px;
+    background: transparent;
+    border: none;
+    outline: none;
+  }
+
+  .logo-cards {
+    font-size: 20px;
+    color: #502274;
+    margin: 30px auto 0;
+    display: block;
+    width: fit-content;
+    text-decoration: none;
+  }
+
+  .links-cards {
+    margin-bottom: auto;
+    margin-top: 30px;
+    margin: 0;
+  }
+
+  .links-cards .link-cards,
+  .logout__link-cards {
+    width: 100%;
+    height: 60px;
+    font-size: 14px;
+    padding-left: 50px;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    transition: 0.3s ease;
+  }
+
+  .links-cards .link-cards a {
+    color: #502274;
+    text-decoration: none;
+    font-size: 18px;
+  }
+
+  .links-cards .link-cards.active-cards {
+    background-color: #502274;
+    color: white;
+  }
+
+  .links-cards .link-cards.active-cards a,
+  .links-cards .link-cards:hover a {
+    color: white;
+    height: 100%;
+    display: flex;
+    align-items: center;
+  }
+
+  .links-cards .link-cards svg,
+  .logout__link-cards img {
+    margin-right: 10px;
+  }
+
+  .links-cards .link-cards:hover {
+    background-color: #502274;
+    color: white;
+  }
+
+  .iconify {
+    color: #502274;
+  }
+
+  .link-cards:hover {
+    background-color: #502274;
+    color: white !important;
+    & {
+      a,
+      span,
+      .iconify {
+        color: #ffffff;
+      }
+    }
+  }
+
+  .links-cards .active-cards {
+    background-color: #502274;
+    color: white;
+    & {
+      a,
+      .iconify {
+        color: #fff;
+      }
+    }
+  }
+
+  .links-cards .link-cards svg {
+    fill: #502274;
+    transition: 0.3s ease;
+  }
+
+  .links-cards .link-cards.active-cards svg,
+  .links-cards .link-cards:hover svg {
+    fill: #fff;
+  }
+
+  .links-cards .link-cards.active-cards {
+    background-color: #502274;
+    color: white;
+  }
+
+  .links-cards .link-cards img,
+  .logout__link-cards img {
+    margin-right: 10px;
+  }
+
+  .logout__link-cards {
+    text-decoration: none;
+    margin-bottom: 10px;
+  }
+
+  .top-cards {
+    padding: 0 20px;
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+    height: 70px;
+    background-color: #dddbf1;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .sidenav-btn-cards {
+    height: 100%;
+    border: none;
+    background-color: transparent;
+    width: 38px;
+    outline: none;
+    display: none;
+    border-radius: 3px;
+    display: none;
+  }
+
+  .bar-cards {
+    height: 3px;
+    border-radius: 1px;
+  }
+
+  .bar-left-cards {
+    transform: rotate(45deg) translateY(0.2rem);
+  }
+
+  .bar-right-cards {
+    transform: rotate(-45deg) translateY(-0.2rem);
+  }
+
+  .sidenav-btn-cards .bar-cards {
+    width: 100%;
+    background-color: #502274;
+  }
+
+  .sidenav-btn-cards .bar-cards:not(:last-child) {
+    margin-bottom: 5px;
+  }
+
+  .back-cards {
+    display: flex;
+    height: 65px;
+    align-items: center;
+    font-size: 16px;
+    color: #4a4a4a;
+  }
+
+  .back-cards a {
+    margin-left: 5px;
+    text-decoration: none;
+    color: #4a4a4a;
+  }
+
+  .rates-cards {
+    width: 280px;
+    font-size: 12px;
+    border-collapse: separate;
+    border-spacing: 0 5px;
+  }
+
+  .rates-cards.bottom-cards {
+    display: none;
+  }
+
+  .rates-cards td {
+    margin-bottom: 5px;
+    min-width: 100px;
+    font-size: 10px;
+  }
+
+  .rates-cards td img {
+    vertical-align: middle;
+    margin-right: 2px;
+  }
+
+  .rates-cards tr:nth-of-type(n + 2) td:nth-of-type(n + 2) {
+    font-weight: bold;
+    font-size: 10px;
+  }
+
+  .user-controls-cards {
+    display: flex;
+    align-items: center;
+    margin-right: 50px;
+  }
+
+  .user-cards {
+    margin: 0 30px;
+  }
+
+  .logout-cards {
+    border: 1px solid #502274;
+    border-radius: 5px;
+    color: #502274;
+    height: 30px;
+    display: inline-flex;
+    align-items: center;
+    width: 85px;
+    justify-content: center;
+    background-color: transparent;
+  }
+
+  @media (min-height: 700px) {
+    .sidebar-cards {
+      padding: 20px 0;
+      box-sizing: border-box;
+    }
+  }
+
+  @media (max-width: 1300px) {
+    .sidebar-cards {
+      width: 24%;
+    }
+  }
+
+  @media (max-width: 800px) {
+    .sidebar-cards {
+      width: 30%;
+      box-shadow: none;
+    }
+    .rates-cards {
+      display: none;
+    }
+    .rates-cards.bottom-cards {
+      display: flex;
+      justify-content: center;
+      background-color: rgba(221, 219, 241, 0.8);
+      width: 100%;
+      padding: 10px 5px;
+      box-sizing: border-box;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .sidebar-cards.sidenav-cards.active-cards {
+      width: 50%;
+      box-shadow: 0 0 40px rgba(0, 0, 0, 0.5);
+    }
+    .sidenav__container-cards.active-cards {
+      display: block;
+    }
+    .sidebar-cards {
+      display: none;
+    }
+    .sidenav-btn-cards {
+      display: inline-block;
+    }
+  }
+
+  @media (max-width: 575px) {
+    .sidebar-cards.sidenav-cards.active-cards {
+      width: 70%;
+    }
+  }
+}

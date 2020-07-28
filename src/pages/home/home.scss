@@ -2,7 +2,6 @@
   html {
     font-size: 62.5%;
     overflow-x: hidden;
-    font-family: "Cairo", sans-serif;
   }
 
   *,
@@ -17,13 +16,11 @@
     background-color: #f0f0f0;
     box-sizing: border-box;
     color: #4a4a4a;
-    font-family: "Cairo", sans-serif;
   }
 
   .container-home {
     width: 100%;
     height: 100%;
-    font-family: "Cairo", sans-serif;
   }
 
   input {
@@ -41,7 +38,6 @@
     position: fixed;
     min-height: 100%;
     justify-content: space-between;
-    font-family: "Cairo", sans-serif;
   }
 
   .sidenav__container-home  {
@@ -52,7 +48,6 @@
     top: 0;
     background-color: rgba(0, 0, 0, 0.3);
     display: none;
-    font-family: "Cairo", sans-serif;
   }
 
   .sidebar-home .sidenav-home  {
@@ -62,7 +57,6 @@
     display: flex;
     overflow: hidden;
     z-index: 500;
-    font-family: "Cairo", sans-serif;
   }
 
   .sidenav-close-home  {
@@ -74,11 +68,9 @@
     background: transparent;
     border: none;
     outline: none;
-    font-family: "Cairo", sans-serif;
   }
 
   .logo-home  {
-    font-family: "Cairo", sans-serif;
     font-size: 20px;
     color: #502274;
     margin: 30px auto 0;
@@ -98,7 +90,6 @@
     width: 100%;
     height: 60px;
     font-size: 14px;
-    font-family: "Cairo", sans-serif;
     padding-left: 50px;
     box-sizing: border-box;
     display: flex;
@@ -109,6 +100,7 @@
   .links-home  .link-home  a {
     color: #502274;
     text-decoration: none;
+    font-size: 18px;
   }
 
   .links-home  .link-home .active {
@@ -199,7 +191,6 @@
   }
 
   .back-home  h2 {
-    font-family: "Cairo", sans-serif;
     font-size: 1.4rem;
     letter-spacing: 0.53;
     margin-left: 1rem;
@@ -222,7 +213,6 @@
 
   .stocks-home  td h3 {
     display: inline-block;
-    font-family: 'Montserrat-SemiBold';
     font-size: 10px;
   }
 
@@ -244,7 +234,6 @@
     border-radius: 4px;
     text-decoration: none;
     color: #502274;
-    font-family: 'Montserrat-SemiBold';
     font-size: 1rem;
   }
 
@@ -292,13 +281,11 @@
 
   .form-group-header-home h2 {
     font-size: 1.2rem;
-    font-family: "Cairo", sans-serif;
     margin-bottom: 1rem;
     color: #000000;
   }
 
   .form-group-full-home label {
-    font-family: "Cairo", sans-serif;
     color: #4a4a4a;
   }
 
@@ -342,7 +329,6 @@
     text-decoration: none;
     margin-top: 1rem;
     color: #6c63ff;
-    font-family: "Cairo", sans-serif;
     text-transform: capitalize;
   }
 
@@ -353,7 +339,6 @@
     padding: 1rem 3.5rem;
     border-radius: 3px;
     font-size: 1rem;
-    font-family: "Cairo", sans-serif;
   }
 
   /* Form Edits */
@@ -506,7 +491,6 @@
 
   .Add-card-box-header-home h2 {
     color: #000;
-    font-family: 'Montserrat-SemiBold';
   }
 
   .Add-Card-box-home button {
@@ -627,7 +611,6 @@
   h2.footer-heading-home {
     font-size: 1.75rem;
     margin-bottom: 3rem;
-    font-family: 'Montserrat-SemiBold';
   }
 
   .footer-home .stocks-home {
@@ -687,7 +670,6 @@
     width: var(--sliderContainerWidth);
     display: flex;
     flex-direction: column;
-    font-family: 'Montserrat-SemiBold';
     font-size: 1.2rem;
   }
 
@@ -746,7 +728,6 @@
 
   .negative-home {
     float: right;
-    font-family: 'Montserrat-SemiBold';
     font-size: 1.2rem;
   }
 
@@ -774,13 +755,11 @@
   }
 
   .header-bar-home h2 {
-    font-family: 'Montserrat-SemiBold';
     font-size: 1.2rem;
   }
 
   .header-bar-home a {
     text-decoration: none;
-    font-family: 'Rubik-Medium';
     font-size: 1.3rem;
     color: #502274;
   }
@@ -857,7 +836,6 @@
 
   .plan-Header .detail-container-home {
     color: #4a4a4a;
-    font-family: "Cairo", sans-serif;
     font-size: 1.2rem;
   }
 
@@ -915,7 +893,6 @@
 
   .step-card-home h2 {
     color: #000;
-    font-family: 'Montserrat-SemiBold';
     margin-bottom: 2.5rem;
   }
 
@@ -1145,7 +1122,6 @@
 
     p.tag-home {
       display: inline-block;
-      font-family: 'Montserrat-SemiBold';
       color: #000000;
       font-size: 1.2rem;
       margin-right: 0.7rem;

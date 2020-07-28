@@ -1,20 +1,32 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
+import { loginUser } from "../../store/actions/authActions";
 import "./login.scss";
+import { toast } from "react-toastify";
 
 class Login extends Component {
   constructor() {
     super();
 
     this.state = {
-      email: "",
+      phone: "",
       password: "",
+      errors: {},
+      loading: false,
       visible: false,
     };
 
     this.onChange = this.onChange.bind(this);
+    this.onSubmit = this.onSubmit.bind(this);
     this.togglePassword = this.togglePassword.bind(this);
+  }
+
+  componentWillUnmount() {
+    // fix Warning: Can't perform a React state update on an unmounted component
+    this.setState = (state, callback) => {
+      return
+    }
   }
 
   onChange(e) {
@@ -25,8 +37,39 @@ class Login extends Component {
     this.setState({ visible: !this.state.visible });
   }
 
+  onSubmit(e) {
+    e.preventDefault();
+    this.setState({ loading: true });
+
+    const payload = {
+      phone: this.state.phone,
+      password: this.state.password,
+    };
+
+    this.props
+      .loginUser(payload)
+      .then((res) => {
+        if (res.type === "GET_ERRORS") {
+          toast.error(res.payload.error);
+        }
+      })
+      .catch((err) => () => {})
+      .finally(() => this.setState({ loading: false }));
+  }
+
+  static getDerivedStateFromProps(nextProps, prevState) {
+    if (nextProps.auth.isAuthenticated) {
+      nextProps.history.push("/home");
+    }
+    if (nextProps.errors) {
+      return {
+        errors: nextProps.errors,
+      };
+    }
+  }
+
   render() {
-    const { email, password, visible } = this.state;
+    const { phone, password, visible, loading } = this.state;
     return (
       <div className="login-wrapper">
         <div className="container">
@@ -39,12 +82,12 @@ class Login extends Component {
           />
           <div className="login">
             <p className="login-header">Log In</p>
-            <form>
+            <form onSubmit={this.onSubmit}>
               <input
-                type="email"
-                name="email"
-                placeholder="Email"
-                value={email}
+                type="text"
+                name="phone"
+                placeholder="Phone Number"
+                value={phone}
                 onChange={this.onChange}
                 required
               />
@@ -81,9 +124,12 @@ class Login extends Component {
                   <img src="../assets/images/ig.svg" />
                 </button>
               </div> */}
-              <button type="submit" className="submit">
+              {!loading && <button type="submit" className="submit">
                 Log In
-              </button>
+              </button>}
+              {loading && <button type="button" className="submit" disabled>
+                Authenticating...
+              </button>}
             </form>
             <Link to="/signup" className="sign-up">
               Sign Up
@@ -105,8 +151,9 @@ class Login extends Component {
   }
 }
 
-const mapStateToProps = (state) => ({});
+const mapStateToProps = (state) => ({
+  auth: state.auth,
+  errors: state.errors,
+});
 
-const mapDispatchToProps = {};
-
-export default connect(mapStateToProps, mapDispatchToProps)(Login);
+export default connect(mapStateToProps, { loginUser })(Login);

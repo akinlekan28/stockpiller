@@ -1,20 +1,20 @@
 import axios from "axios";
 
 const instance = axios.create({
-  baseURL: "https://stockpiler.com/api/v1"
+  baseURL: "https://laybuy.app/api"
 });
 
-// instance.interceptors.request.use(
-//   async config => {
-//     const token = await AsyncStorage.getItem("token");
-//     if (token) {
-//       config.headers.Authorization = `Bearer ${token}`;
-//     }
-//     return config;
-//   },
-//   err => {
-//     return Promise.reject(err);
-//   }
-// );
+instance.interceptors.request.use(
+  async config => {
+    const token = localStorage.getItem("jwtToken");
+    if (token) {
+      config.headers.Authorization = `Bearer ${token}`;
+    }
+    return config;
+  },
+  err => {
+    return Promise.reject(err);
+  }
+);
 
 export default instance;

@@ -1,0 +1,928 @@
+.view-plans-wrapper {
+  html {
+    font-size: 62.5%;
+    overflow-x: hidden;
+  }
+
+  *,
+  *::after,
+  *::before {
+    box-sizing: inherit;
+    margin: 0;
+    padding: 0;
+  }
+
+  body {
+    background-color: #f0f0f0;
+    box-sizing: border-box;
+    color: #4a4a4a;
+  }
+
+  .container-viewplans {
+    width: 100%;
+    height: 100%;
+  }
+
+  input {
+    font-size: 1.2rem;
+  }
+
+  /*new side bar*/
+
+  .sidebar-viewplans {
+    width: 17%;
+    background-color: white;
+    box-shadow: 5px 0px 5px #f0f0f0;
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    min-height: 100%;
+    justify-content: space-between;
+  }
+
+  .sidenav__container-viewplans {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    z-index: 1000;
+    top: 0;
+    background-color: rgba(0, 0, 0, 0.3);
+    display: none;
+  }
+
+  .sidebar-viewplans.sidenav-viewplans {
+    width: 0%;
+    position: absolute;
+    transition: 400ms ease;
+    display: flex;
+    overflow: hidden;
+    z-index: 500;
+  }
+
+  .sidenav-close-viewplans {
+    position: absolute;
+    height: 32px;
+    width: 32px;
+    right: 25px;
+    top: 25px;
+    background: transparent;
+    border: none;
+    outline: none;
+  }
+
+  .logo-viewplans {
+    font-size: 20px;
+    color: #502274;
+    margin: 30px auto 0;
+    display: block;
+    width: fit-content;
+    text-decoration: none;
+  }
+
+  .links-viewplans {
+    margin-bottom: auto;
+    margin-top: 30px;
+    margin: 0;
+  }
+
+  .links-viewplans .link-viewplans,
+  .logout__link-viewplans {
+    width: 100%;
+    height: 60px;
+    font-size: 14px;
+    padding-left: 50px;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    transition: 0.3s ease;
+  }
+
+  .links-viewplans .link-viewplans a {
+    color: #502274;
+    text-decoration: none;
+    font-size: 18px;
+  }
+
+  .links-viewplans .link-viewplans.active-viewplans {
+    background-color: #502274;
+    color: white;
+  }
+
+  .links-viewplans .link-viewplans.active-viewplans a,
+  .links-viewplans .link-viewplans:hover a {
+    color: white;
+    height: 100%;
+    display: flex;
+    align-items: center;
+  }
+
+  .links-viewplans .link-viewplans svg,
+  .logout__link-viewplans img {
+    margin-right: 10px;
+  }
+
+  .links-viewplans .link-viewplans:hover {
+    background-color: #502274;
+    color: white;
+  }
+
+  .iconify{
+    color: #502274;
+  }
+
+ .link-viewplans:hover{
+    background-color: #502274;
+    color: white !important;
+    &{
+      a, span, .iconify {
+        color: #ffffff;
+      }
+    }
+  }
+
+  .links-viewplans .active-viewplans  {
+    background-color: #502274;
+    color: white;
+    &{
+      a, .iconify {
+        color: #fff;
+      }
+    }
+  }
+
+  .links-viewplans .link-viewplans svg {
+    fill: #502274;
+    transition: 0.3s ease;
+  }
+
+  .links-viewplans .link-viewplans.active-viewplans svg,
+  .links-viewplans .link-viewplans:hover svg {
+    fill: #fff;
+  }
+
+  .links-viewplans .link-viewplans.active-viewplans {
+    background-color: #502274;
+    color: white;
+  }
+
+  .links-viewplans .link-viewplans img,
+  .logout__link-viewplans img {
+    margin-right: 10px;
+  }
+
+  .logout__link-viewplans {
+    text-decoration: none;
+    margin-bottom: 10px;
+  }
+
+  main {
+    margin-left: 17%;
+    width: 83%;
+    height: 100%;
+    /* background-color: orangered; */
+    position: relative;
+    /* position: relative;  */
+  }
+
+  .main-header-viewplans {
+    height: 7rem;
+    background-color: #dddbf1;
+    width: 100%;
+    padding: 1.5rem 2.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  a.backlink-viewplans {
+    text-decoration: none;
+    color: inherit;
+    width: 20%;
+  }
+
+  .back-viewplans {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    height: 100%;
+  }
+
+  .back-viewplans h2 {
+    font-size: 1.4rem;
+    letter-spacing: 0.53;
+    margin-left: 1rem;
+  }
+
+  .stocks-viewplans {
+    width: 33%;
+  }
+
+  .stocks-viewplans tr {
+    width: 100%;
+    /* background-color: red; */
+  }
+
+  .stocks-viewplans td {
+    text-align: left;
+    min-width: 100px;
+    font-size: 10px;
+  }
+
+  .stocks-viewplans td h3 {
+    display: inline-block;
+    font-size: 10px;
+  }
+
+  .stocks-viewplans td img {
+    margin-right: 0.5rem;
+  }
+
+  .personalize-viewplans {
+    display: flex;
+    height: 100%;
+    align-items: center;
+    justify-content: space-between;
+    flex-basis: 20%;
+  }
+
+  .logoutNav-viewplans {
+    padding: 0.75rem 1.5rem;
+    border: 1px solid #502274;
+    border-radius: 4px;
+    text-decoration: none;
+    color: #502274;
+
+    font-size: 1rem;
+  }
+
+  .main-body-viewplans {
+    padding: 6rem 5rem;
+    width: 100%;
+  }
+
+  .header-bar-viewplans {
+    width: 100%;
+    padding: 1.3rem 1.5rem;
+    background-color: #ffffff;
+    border-radius: 3px;
+    box-shadow: 0.2rem 0.2rem 0.3rem #70707010;
+    margin-bottom: 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .header-bar-viewplans h2 {
+    font-size: 1.2rem;
+  }
+
+  .header-bar-options-viewplans {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    /*height: 100%;*/
+    width: 7rem;
+  }
+
+  .header-bar-option-viewplans {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    transition: color 0.5s ease;
+  }
+
+  .header-bar-option-viewplans:hover p {
+    color: #4a4a4a;
+  }
+
+  .header-bar-option-link-viewplans {
+    text-decoration: none;
+    color: #9b9b9b;
+  }
+  .header-bar-option-text-viewplans {
+    font-size: 8px;
+    margin-top: 0.5rem;
+  }
+
+  .underline-viewplans {
+    padding-bottom: 0.4rem;
+    border-bottom: 2px solid #502274;
+  }
+
+  .view-body-viewplans {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  .left-detail-viewplans {
+    flex-basis: 34%;
+  }
+
+  .plans-body-viewplans {
+    flex-basis: 60%;
+    padding: 2rem 1.5rem;
+    background-color: #ffffff;
+    box-shadow: 0.2rem 0.2rem 0.3rem #70707010;
+    height: 100%;
+    padding-bottom: 10rem;
+    border-radius: 3px;
+    margin-left: 25px;
+  }
+
+  .plan-Header-viewplans {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    padding: 0.5rem 1rem;
+    margin-bottom: 1rem;
+  }
+
+  .detail-container-viewplans {
+    text-align: left;
+    width: 15rem;
+  }
+
+  .detail-container-actions-viewplans {
+    width: 7.5rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+  }
+
+  .plan-Header-viewplans .detail-container-viewplans {
+    color: #4a4a4a;
+    font-size: 1.2rem;
+  }
+
+  .plan-group-viewplans {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+    padding: 0.5rem 1rem;
+    border-radius: 3px;
+  }
+
+  .plan-group-viewplans .detail-container-viewplans {
+    color: #9b9b9b;
+    font-size: 1rem;
+    padding: 1rem 0.5rem;
+  }
+
+  .plan-group-viewplans:nth-child(2n) {
+    background-color: rgba(216, 216, 216, 0.29);
+  }
+
+  .tag-viewplans {
+    display: none;
+  }
+
+  .left-detail-Box-viewplans {
+    padding: 2rem;
+    background-color: #ffffff;
+    box-shadow: 0.2rem 0.2rem 0.3rem #70707010;
+    border-radius: 3px;
+    margin-bottom: 2rem;
+  }
+
+  .box-header-viewplans {
+    font-size: 1.6rem;
+    color: #000000;
+    margin-bottom: 2rem;
+  }
+
+  .box-block-viewplans {
+    width: 100%;
+    margin-bottom: 3rem;
+  }
+
+  .groupMe-viewplans {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  .unit-box-header-viewplans {
+    font-size: 1rem;
+    color: #9b9b9b;
+    margin-bottom: 1rem;
+  }
+
+  .unit-value-viewplans {
+    color: #000000;
+    font-size: 1rem;
+    font-weight: 100;
+  }
+
+  .giant-viewplans .unit-value-viewplans {
+    color: #000000;
+    font-size: 3.4rem;
+    font-weight: 100;
+  }
+
+  .margin-right-viewplans {
+    margin-right: 4rem;
+  }
+
+  .deposit-viewplans {
+    width: 100%;
+    text-align: left;
+    font-size: 0.8rem;
+    color: #9b9b9b;
+    margin-bottom: 3rem;
+  }
+
+  .green-viewplans {
+    color: green;
+  }
+
+  button.btn-viewplans {
+    border: none;
+    padding: 1.2rem 3.4rem;
+    color: #ffffff;
+    background-color: #502274;
+    border-radius: 3px;
+    margin-bottom: 3rem;
+  }
+
+  .warning-viewplans {
+    color: #b21f1e;
+    font-size: 1.1rem;
+  }
+
+  /* sidebar action classes */
+
+  .bar-viewplans {
+    /* width: 7px; */
+    height: 3px;
+    padding: 0 1.3rem;
+    border-radius: 1px;
+  }
+
+  .bar-left-viewplans {
+    transform: rotate(45deg) translateY(0.2rem);
+  }
+
+  .bar-right-viewplans {
+    transform: rotate(-45deg) translateY(-0.2rem);
+    /* background-color: #FFFFFF; */
+  }
+
+  .open-viewplans {
+    padding: 1rem 1.5rem 1rem 0;
+    border-radius: 3px;
+    display: none;
+  }
+
+  .open-viewplans .bar-viewplans {
+    width: 100%;
+    background-color: #502274;
+  }
+
+  .open-viewplans .bar-viewplans:not(:last-child) {
+    margin-bottom: 0.5rem;
+  }
+
+  /* Action classes */
+
+  .openOverlay-viewplans {
+    opacity: 0;
+    display: block;
+    animation: openOverlay 1s ease 1 forwards;
+  }
+
+  /* Animations */
+
+  .slidein-viewplans {
+    animation: slideIn 0.4s 1 forwards;
+  }
+
+  .slideout-viewplans {
+    animation: slideOut 0.4s 1 forwards;
+  }
+
+  .footer-viewplans {
+    padding: 0rem 5rem 1rem;
+    background-color: #50227410;
+    display: none;
+  }
+
+  h2.footer-heading-viewplans {
+    font-size: 1.75rem;
+    margin-bottom: 3rem;
+  }
+
+  .footer-viewplans .stocks-viewplans {
+    width: 100%;
+    display: block;
+    border-spacing: 0 5px;
+    border-collapse: separate;
+  }
+
+  .footer-viewplans .stocks-viewplans tr {
+    width: fit-content;
+    /* background-color: #502274; */
+  }
+
+  .footer-viewplans .stocks-viewplans td {
+    text-align: left;
+    font-size: 1rem;
+    /* padding: 1rem 2rem; */
+    min-width: 100px;
+    margin-bottom: 5px;
+  }
+
+  @keyframes openOverlay {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  @keyframes slideIn {
+    from {
+      opacity: 1;
+      transform: translateX(-100%);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
+  @keyframes slideOut {
+    from {
+      opacity: 1;
+      transform: translateX(0%);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(-100%);
+    }
+  }
+
+  /*updates*/
+  .list-viewplans {
+    /*display: none;*/
+  }
+  .plan-group-viewplans {
+    cursor: pointer;
+  }
+
+  .cancel-viewplans {
+    cursor: pointer;
+  }
+
+  .invoice-viewplans {
+    display: none;
+    padding: 0;
+    padding-bottom: 8rem;
+  }
+
+  .invoice-viewplans p {
+    color: #9b9b9b;
+    font-size: 1rem;
+  }
+
+  .invoice-viewplans h2 {
+    font-size: 1.6rem;
+    color: #000;
+    margin: 1rem 0;
+  }
+
+  .invoice-viewplans p.value-viewplans {
+    font-size: 1.2rem;
+    color: #000000;
+  }
+
+  .invoice-viewplans p.value-price-viewplans {
+    font-size: 3rem;
+    color: #000;
+  }
+
+  .invoice-row-viewplans {
+    width: 100%;
+    /*display: flex;*/
+    /*justify-content: space-between;*/
+    padding: 2rem 3rem;
+    padding-bottom: 0;
+    /*align-items: center;*/
+  }
+  .invoice-row-header-viewplans {
+    background-color: #dddbf1;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 2rem;
+  }
+
+  .left-heading-viewplans {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .invioce-detail-viewplans {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .invoice-row-viewplans div.exception-viewplans {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+    padding: 3rem 0;
+  }
+
+  .invoice-row-viewplans hr {
+    background-color: rgba(234, 234, 234, 0.6);
+    height: 2px;
+    width: 100%;
+    border: none;
+  }
+
+  @media (max-width: 1350px) {
+    .sidebar-viewplans {
+      width: 24%;
+    }
+    main {
+      margin-left: 24%;
+      width: 76%;
+    }
+    .overlay-viewplans {
+      margin-left: 24%;
+      width: 76%;
+    }
+    .plans-viewplans {
+      width: 60%;
+    }
+
+    .main-body-viewplans {
+      padding: 8rem 6rem;
+    }
+
+    .NewPlanForm-viewplans {
+      width: 60%;
+    }
+
+    .view-body-viewplans {
+      flex-direction: column-reverse;
+    }
+
+    .plans-body-viewplans {
+      margin-bottom: 5rem;
+    }
+
+    .plans-body-viewplans {
+      background-color: transparent;
+      box-shadow: none;
+      padding: 2rem 0;
+    }
+
+    .invoice-viewplans {
+      background-color: #ffffff;
+      padding-top: 0;
+    }
+
+    .plan-Header-viewplans {
+      display: none;
+    }
+
+    p.tag-viewplans {
+      display: inline-block;
+
+      color: #000000;
+      font-size: 1.2rem;
+      margin-right: 0.7rem;
+      margin-bottom: 0.7rem;
+    }
+
+    .plan-group-viewplans {
+      flex-direction: column;
+      align-items: flex-start;
+      background-color: #ffffff;
+      margin-bottom: 5rem;
+      border-radius: 5px;
+      box-shadow: 0.2rem 0.3rem 0.3rem #70707010;
+      padding: 2rem;
+    }
+
+    .detail-container-actions-viewplans {
+      align-self: flex-end;
+      margin-top: 1rem;
+    }
+
+    .plan-group-viewplans:nth-child(2n) {
+      background-color: #ffffff;
+    }
+
+    .detail-container-viewplans {
+      flex-direction: row;
+      width: 100%;
+    }
+  }
+
+  @media (max-width: 1000px) {
+    .sidebar-viewplans {
+      width: 30%;
+    }
+    main {
+      margin-left: 30%;
+      width: 70%;
+    }
+    .plans-viewplans {
+      width: 80%;
+    }
+    .logoutNav-viewplans {
+      display: none;
+    }
+    .stocks-viewplans {
+      flex-basis: 50%;
+    }
+    .personalize-viewplans {
+      flex-basis: 13%;
+    }
+    a.backlink-viewplans {
+      flex-basis: 10%;
+    }
+
+    .withdrawal-confirmation-viewplans {
+      width: 90%;
+      height: 85%;
+    }
+
+    .notify-img-viewplans {
+      width: 80%;
+    }
+
+    .NewPlanForm-viewplans {
+      width: 80%;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .cover-overlay-viewplans {
+      position: absolute;
+      display: none;
+      z-index: 999;
+      width: 100%;
+      height: 100%;
+      position: fixed;
+      top: 0;
+      background-color: rgba(155, 155, 155, 0.57);
+    }
+
+    .sidebar-viewplans.sidenav-viewplans.active-viewplans {
+      width: 50%;
+      box-shadow: 0 0 40px rgba(0, 0, 0, 0.5);
+    }
+    .sidenav__container-viewplans.active-viewplans {
+      display: block;
+    }
+    .sidebar-viewplans {
+      display: none;
+    }
+    .sidenav-btn-viewplans {
+      display: inline-block;
+    }
+
+    main {
+      margin-left: 0;
+      width: 100%;
+    }
+
+    .plans-viewplans {
+      width: 90%;
+    }
+
+    a.backlink-viewplans {
+      display: none;
+    }
+
+    .open-viewplans {
+      display: block;
+    }
+
+    .withdrawal-confirmation-viewplans {
+      width: 90%;
+      height: 85%;
+      padding: 3rem 2rem;
+    }
+
+    .notify-img-viewplans {
+      width: 80%;
+    }
+
+    .NewPlanForm-viewplans {
+      width: 100%;
+    }
+    .main-header-viewplans {
+      position: fixed;
+      top: 0;
+      background-color: #dddbf1;
+      z-index: 800;
+    }
+    .main-body-viewplans {
+      margin-top: 5rem;
+    }
+    .visible-viewplans {
+      visibility: visible;
+    }
+  }
+
+  @media (max-width: 575px) {
+    .sidebar-viewplans.sidenav-viewplans.active {
+      width: 70%;
+    }
+    .plans-viewplans {
+      width: 100%;
+    }
+
+    .main-body-viewplans {
+      padding: 8rem 3rem 0;
+    }
+
+    .stocks-viewplans {
+      display: none;
+    }
+
+    .personalize-viewplans {
+      flex-basis: 20%;
+    }
+
+    .withdrawal-confirmation-viewplans {
+      width: 95%;
+    }
+
+    .notify-img-viewplans {
+      width: 90%;
+    }
+
+    .footer-viewplans {
+      display: block;
+      display: flex;
+      justify-content: center;
+      position: relative;
+      /* padding: 2rem 2rem; */
+      margin-top: 10px;
+    }
+
+    h2.footer-heading-viewplans {
+      position: absolute;
+      top: 2.5rem;
+      /* left: 4.5rem; */
+    }
+
+    .footer-viewplans .stocks-viewplans {
+      margin-top: 3rem;
+      border-spacing: 0 5px;
+      border-collapse: separate;
+    }
+
+    /* half inputs */
+
+    .units-of-viewplans {
+      width: 100%;
+    }
+
+    .half-groups-viewplans {
+      width: 49%;
+      margin-left: 1%;
+    }
+
+    .half-input-viewplans {
+      width: 100%;
+    }
+  }
+
+  @media (max-width: 425px) {
+    .sidebar-viewplans.sidenav-viewplans.active-viewplans {
+      width: 80%;
+    }
+
+    .main-body-viewplans {
+      padding: 8rem 2rem;
+    }
+    .personalize-viewplans {
+      flex-basis: 23%;
+    }
+
+    .units-of-viewplans {
+      flex-direction: column;
+    }
+
+    .half-groups-viewplans {
+      width: 100%;
+      margin-top: 1rem;
+      /* margin-left: 1%; */
+    }
+  }
+}

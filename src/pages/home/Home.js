@@ -1,16 +1,28 @@
-import React, { Component } from 'react'
-import { connect } from 'react-redux'
-import { Link } from 'react-router-dom'
-import './home.scss'
+import React, { Component } from "react";
+import { connect } from "react-redux";
+import { Link } from "react-router-dom";
+import { logoutUser } from "../../store/actions/authActions";
+import "./home.scss";
 
 class Home extends Component {
+  constructor() {
+    super();
+
+    this.logout = this.logout.bind(this);
+  }
+  logout(e) {
+    e.preventDefault();
+
+    this.props.logoutUser();
+  }
+
   render() {
     return (
       <div className="home-wrapper-screen">
         <div className="sidenav__container-home">
           <div className="sidebar-home sidenav-home">
             <Link className="logo" to="/">
-              Stokkpile
+              Laybuy
             </Link>
             <button className="sidenav-close-home">
               <img src="../assets/images/close.svg" />
@@ -18,7 +30,7 @@ class Home extends Component {
             <div className="links-home active-home">
               <div className="link-home">
                 <span
-                  class="iconify"
+                  className="iconify"
                   data-icon="fa-regular:building"
                   data-inline="false"
                 ></span>
@@ -26,7 +38,7 @@ class Home extends Component {
               </div>
               <div className="link-home">
                 <span
-                  class="iconify"
+                  className="iconify"
                   data-icon="ic:baseline-dashboard"
                   data-inline="false"
                 ></span>
@@ -34,7 +46,7 @@ class Home extends Component {
               </div>
               <div className="link-home">
                 <span
-                  class="iconify"
+                  className="iconify"
                   data-icon="bx:bxs-bar-chart-alt-2"
                   data-inline="false"
                 ></span>
@@ -42,7 +54,7 @@ class Home extends Component {
               </div>
               <div className="link-home">
                 <span
-                  class="iconify"
+                  className="iconify"
                   data-icon="bi:calculator-fill"
                   data-inline="false"
                 ></span>
@@ -50,7 +62,7 @@ class Home extends Component {
               </div>
               <div className="link-home">
                 <span
-                  class="iconify"
+                  className="iconify"
                   data-icon="ri:send-plane-fill"
                   data-inline="false"
                 ></span>
@@ -58,7 +70,7 @@ class Home extends Component {
               </div>
               <div className="link-home">
                 <span
-                  class="iconify"
+                  className="iconify"
                   data-icon="vaadin:wallet"
                   data-inline="false"
                 ></span>
@@ -66,26 +78,31 @@ class Home extends Component {
               </div>
               <div className="link-home">
                 <span
-                  class="iconify"
+                  className="iconify"
                   data-icon="clarity:cog-line"
                   data-inline="false"
                 ></span>
                 <Link to="/settings">Settings</Link>
               </div>
             </div>
-            <a className="logout__link-home" href="./login.html">
-              <img src="../assets/images/logout.svg" /> Logout
+            <a className="logout__link-home" href="#" onClick={this.logout}>
+              <span
+                className="iconify"
+                data-icon="ri:logout-box-line"
+                data-inline="false"
+              ></span>
+              Logout
             </a>
           </div>
         </div>
         <div className="sidebar-home">
           <Link className="logo-home" to="/">
-            Stokkpile
+          Laybuy
           </Link>
           <div className="links-home">
             <div className="link-home active-home">
               <span
-                class="iconify"
+                className="iconify"
                 data-icon="fa-regular:building"
                 data-inline="false"
               ></span>
@@ -93,7 +110,7 @@ class Home extends Component {
             </div>
             <div className="link-home">
               <span
-                class="iconify"
+                className="iconify"
                 data-icon="ic:baseline-dashboard"
                 data-inline="false"
               ></span>
@@ -101,7 +118,7 @@ class Home extends Component {
             </div>
             <div className="link-home">
               <span
-                class="iconify"
+                className="iconify"
                 data-icon="bx:bxs-bar-chart-alt-2"
                 data-inline="false"
               ></span>
@@ -109,7 +126,7 @@ class Home extends Component {
             </div>
             <div className="link-home">
               <span
-                class="iconify"
+                className="iconify"
                 data-icon="bi:calculator-fill"
                 data-inline="false"
               ></span>
@@ -117,7 +134,7 @@ class Home extends Component {
             </div>
             <div className="link-home">
               <span
-                class="iconify"
+                className="iconify"
                 data-icon="ri:send-plane-fill"
                 data-inline="false"
               ></span>
@@ -125,7 +142,7 @@ class Home extends Component {
             </div>
             <div className="link-home">
               <span
-                class="iconify"
+                className="iconify"
                 data-icon="vaadin:wallet"
                 data-inline="false"
               ></span>
@@ -133,19 +150,19 @@ class Home extends Component {
             </div>
             <div className="link-home">
               <span
-                class="iconify"
+                className="iconify"
                 data-icon="clarity:cog-line"
                 data-inline="false"
               ></span>
               <Link to="/settings">Settings</Link>
             </div>
           </div>
-          <a className="logout__link-home" href="/login">
+          <a className="logout__link-home" href="#" onClick={this.logout}>
             <span
-              class="iconify"
+              className="iconify"
               data-icon="ri:logout-box-line"
               data-inline="false"
-            ></span>{' '}
+            ></span>
             Logout
           </a>
         </div>
@@ -211,9 +228,9 @@ class Home extends Component {
                 <div className="avatar-home">
                   <img src="../assets/images/Oval.svg" alt="" />
                 </div>
-                <a href="./logout" className="logoutNav-home">
+                <p className="logoutNav-home" onClick={this.logout}>
                   Logout
-                </a>
+                </p>
               </div>
             </div>
 
@@ -223,7 +240,7 @@ class Home extends Component {
                   <div className="step-card-home yellow-home">
                     <h2>Step 1</h2>
                     <p>
-                      Click on the{' '}
+                      Click on the{" "}
                       <span className="emphasis-home">Add New Plan Button</span>
                     </p>
 
@@ -377,12 +394,10 @@ class Home extends Component {
           </div>
         </main>
       </div>
-    )
+    );
   }
 }
 
-const mapStateToProps = (state) => ({})
+const mapStateToProps = (state) => ({});
 
-const mapDispatchToProps = {}
-
-export default connect(mapStateToProps, mapDispatchToProps)(Home)
+export default connect(mapStateToProps, { logoutUser })(Home);

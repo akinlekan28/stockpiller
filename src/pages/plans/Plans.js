@@ -1,16 +1,102 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
-import './plans.scss'
+import { getPlans } from '../../store/actions/planActions'
+import { logoutUser } from '../../store/actions/authActions'
+import './scss/plans.scss'
 
 class Plans extends Component {
+  constructor() {
+    super()
+
+    this.logout = this.logout.bind(this)
+  }
+
+  componentDidMount() {
+    this.props.getPlans()
+  }
+
+  logout(e) {
+    e.preventDefault()
+
+    this.props.logoutUser()
+  }
+
   render() {
+    const { plans, loading } = this.props.plans
+    let i = 1
+
+    let planContainer
+    const formatMoney = (money) => {
+      let formatedValue = money
+        .toFixed(2)
+        .toString()
+        .replace(/(\d)(?=(\d\d\d)+(?!\d))/g, '$1,')
+      return formatedValue
+    }
+
+    if (loading || plans === null) {
+      planContainer = <h4>Loading..</h4>
+    } else {
+      if (Object.keys(plans).length > 0) {
+        console.log(plans)
+        planContainer = plans.map((p) => (
+          <div className="plan-group-home" key={p.id}>
+            <div className="detail-container-home">
+              <p className="tag-home">S/N :</p>
+              <span className="response-home">{i++}</span>
+            </div>
+            <div className="detail-container-home">
+              <p className="tag-home">Name:</p>
+              <span className="response-home">{p.plan_name}</span>
+            </div>
+            <div className="detail-container-home">
+              <p className="tag-home"> Auto Deposits </p>
+              <span className="response-home">&#8358;{formatMoney(p.deposit)}</span>
+            </div>
+            <div className="detail-container-home">
+              <p className="tag-home"> List Of Properties: </p>
+              <span className="response-home">
+                <p>{p.block_target} units of blocks</p>
+                <p>{p.cement_target} bags of Cement</p>
+              </span>
+            </div>
+            <div className="detail-container-home">
+              <p className="tag-home"> Start Date: </p>
+              <span className="response-home">{p.start_date}</span>
+            </div>
+            <div className="detail-container-home">
+              <p className="tag-home"> Next Deposit Date: </p>
+              <span className="response-home">{new Date(p.next_deposit_date).toISOString()
+                        .substring(0, 10)}</span>
+            </div>
+            <div className="detail-container-actions-home">
+              <Link to={`/editplans/${p.id}`}>
+                <span
+                  className="iconify"
+                  data-icon="noto:fountain-pen"
+                  data-inline="false"
+                ></span>
+              </Link>
+              <Link to={`/viewplan/${p.id}`}>
+                <span
+                  className="iconify"
+                  data-icon="bi:eye-fill"
+                  data-inline="false"
+                ></span>
+              </Link>
+            </div>
+          </div>
+        ))
+      }
+    }
+
     return (
       <div className="plans-wrapper">
         <div className="sidenav__container-home">
           <div className="sidebar-home sidenav-home">
             <Link className="logo" to="/">
-              Stokkpile
+              Laybuy
             </Link>
             <button className="sidenav-close-home">
               <img src="../assets/images/close.svg" />
@@ -18,7 +104,7 @@ class Plans extends Component {
             <div className="links-home">
               <div className="link-home">
                 <span
-                  class="iconify"
+                  className="iconify"
                   data-icon="fa-regular:building"
                   data-inline="false"
                 ></span>
@@ -26,7 +112,7 @@ class Plans extends Component {
               </div>
               <div className="link-home">
                 <span
-                  class="iconify"
+                  className="iconify"
                   data-icon="ic:baseline-dashboard"
                   data-inline="false"
                 ></span>
@@ -34,7 +120,7 @@ class Plans extends Component {
               </div>
               <div className="link-home active-home">
                 <span
-                  class="iconify"
+                  className="iconify"
                   data-icon="bx:bxs-bar-chart-alt-2"
                   data-inline="false"
                 ></span>
@@ -42,7 +128,7 @@ class Plans extends Component {
               </div>
               <div className="link-home">
                 <span
-                  class="iconify"
+                  className="iconify"
                   data-icon="bi:calculator-fill"
                   data-inline="false"
                 ></span>
@@ -50,7 +136,7 @@ class Plans extends Component {
               </div>
               <div className="link-home">
                 <span
-                  class="iconify"
+                  className="iconify"
                   data-icon="ri:send-plane-fill"
                   data-inline="false"
                 ></span>
@@ -58,7 +144,7 @@ class Plans extends Component {
               </div>
               <div className="link-home">
                 <span
-                  class="iconify"
+                  className="iconify"
                   data-icon="vaadin:wallet"
                   data-inline="false"
                 ></span>
@@ -66,26 +152,31 @@ class Plans extends Component {
               </div>
               <div className="link-home">
                 <span
-                  class="iconify"
+                  className="iconify"
                   data-icon="clarity:cog-line"
                   data-inline="false"
                 ></span>
                 <Link to="/settings">Settings</Link>
               </div>
             </div>
-            <a className="logout__link-home" href="./login.html">
-              <img src="../assets/images/logout.svg" /> Logout
+            <a className="logout__link-home" href="#" onClick={this.logout}>
+              <span
+                className="iconify"
+                data-icon="ri:logout-box-line"
+                data-inline="false"
+              ></span>{' '}
+              Logout
             </a>
           </div>
         </div>
         <div className="sidebar-home">
           <Link className="logo-home" to="/">
-            Stokkpile
+            Laybuy
           </Link>
           <div className="links-home">
             <div className="link-home">
               <span
-                class="iconify"
+                className="iconify"
                 data-icon="fa-regular:building"
                 data-inline="false"
               ></span>
@@ -93,7 +184,7 @@ class Plans extends Component {
             </div>
             <div className="link-home">
               <span
-                class="iconify"
+                className="iconify"
                 data-icon="ic:baseline-dashboard"
                 data-inline="false"
               ></span>
@@ -101,7 +192,7 @@ class Plans extends Component {
             </div>
             <div className="link-home active-home">
               <span
-                class="iconify"
+                className="iconify"
                 data-icon="bx:bxs-bar-chart-alt-2"
                 data-inline="false"
               ></span>
@@ -109,7 +200,7 @@ class Plans extends Component {
             </div>
             <div className="link-home">
               <span
-                class="iconify"
+                className="iconify"
                 data-icon="bi:calculator-fill"
                 data-inline="false"
               ></span>
@@ -117,7 +208,7 @@ class Plans extends Component {
             </div>
             <div className="link-home">
               <span
-                class="iconify"
+                className="iconify"
                 data-icon="ri:send-plane-fill"
                 data-inline="false"
               ></span>
@@ -125,7 +216,7 @@ class Plans extends Component {
             </div>
             <div className="link-home">
               <span
-                class="iconify"
+                className="iconify"
                 data-icon="vaadin:wallet"
                 data-inline="false"
               ></span>
@@ -133,39 +224,39 @@ class Plans extends Component {
             </div>
             <div className="link-home">
               <span
-                class="iconify"
+                className="iconify"
                 data-icon="clarity:cog-line"
                 data-inline="false"
               ></span>
               <Link to="/settings">Settings</Link>
             </div>
           </div>
-          <a className="logout__link-home" href="/login">
+          <a className="logout__link-home" href="#" onClick={this.logout}>
             <span
-              class="iconify"
+              className="iconify"
               data-icon="ri:logout-box-line"
               data-inline="false"
-            ></span>{' '}
+            ></span>
             Logout
           </a>
         </div>
         <div className="cover-overlay-home"></div>
 
         <main>
-          <div class="main-container-home">
-            <div class="main-header-home">
-              <div class="open-home">
-                <div class="bar-home"></div>
-                <div class="bar-home"></div>
-                <div class="bar-home"></div>
+          <div className="main-container-home">
+            <div className="main-header-home">
+              <div className="open-home">
+                <div className="bar-home"></div>
+                <div className="bar-home"></div>
+                <div className="bar-home"></div>
               </div>
-              <a href="http://" class="backlink-home">
-                <div class="back-home">
+              <a href="http://" className="backlink-home">
+                <div className="back-home">
                   <img src="../assets/images/Path 3 Copy.svg" alt="" />
                   <h2>Back</h2>
                 </div>
               </a>
-              <table class="stocks-home">
+              <table className="stocks-home">
                 <tr>
                   <td>Rates</td>
                   <td>Blocks</td>
@@ -186,7 +277,7 @@ class Plans extends Component {
                   <td>Internatinal</td>
                   <td>
                     <img
-                      class="down-arrow-home"
+                      className="down-arrow-home"
                       src="../assets/images/Group 44.svg"
                       alt=""
                     />
@@ -194,7 +285,7 @@ class Plans extends Component {
                   </td>
                   <td>
                     <img
-                      class="up-arrow-home"
+                      className="up-arrow-home"
                       src="../assets/images/Group 38.svg"
                       alt=""
                     />
@@ -202,99 +293,56 @@ class Plans extends Component {
                   </td>
                 </tr>
               </table>
-              <div class="personalize-home">
+              <div className="personalize-home">
                 <img
-                  class="notification-bell-home"
+                  className="notification-bell-home"
                   src="../assets/images/Group 3.svg"
                   alt=""
                 />
-                <div class="avatar-home">
+                <div className="avatar-home">
                   <img src="../assets/images/Oval.svg" alt="" />
                 </div>
-                <a href="./logout" class="logoutNav-home">
+                <a href="#" className="logoutNav-home" onClick={this.logout}>
                   Logout
                 </a>
               </div>
             </div>
 
-            <div class="main-body-home">
-              <div class="header-bar-home">
+            <div className="main-body-home">
+              <div className="header-bar-home">
                 <h2>
                   {' '}
-                  <span class="underline-home">My p</span>lans
+                  <span className="underline-home">My p</span>lans
                 </h2>
-                <Link to="/plan/new" class="new-plan-home">
+                <Link to="/plan/new" className="new-plan-home">
                   <span
-                    class="iconify"
+                    className="iconify"
                     data-icon="bx:bx-plus"
                     data-inline="false"
                     style={{ marginRight: '10px', marginBottom: '-2px' }}
                   ></span>
-                  <span class="">New plan</span>
+                  <span className="">New plan</span>
                 </Link>
               </div>
-              <div class="plans-body-home">
-                <div class="plan-Header-home">
-                  <div class="detail-container-home">S/N</div>
-                  <div class="detail-container-home">Name</div>
-                  <div class="detail-container-home">Auto Deposits</div>
-                  <div class="detail-container-home">List Of Properties</div>
-                  <div class="detail-container-home">Start Date</div>
-                  <div class="detail-container-home">Next Deposit Date</div>
-                  <div class="detail-container-actions-home">Actions</div>
+              <div className="plans-body-home">
+                <div className="plan-Header-home">
+                  <div className="detail-container-home">S/N</div>
+                  <div className="detail-container-home">Name</div>
+                  <div className="detail-container-home">Auto Deposits</div>
+                  <div className="detail-container-home">
+                    List Of Properties
+                  </div>
+                  <div className="detail-container-home">Start Date</div>
+                  <div className="detail-container-home">Next Deposit Date</div>
+                  <div className="detail-container-actions-home">Actions</div>
                 </div>
-
-                <div class="plan-group-home">
-                  <div class="detail-container-home">
-                    <p class="tag-home">S/N :</p>
-                    <span class="response-home">1</span>
-                  </div>
-                  <div class="detail-container-home">
-                    <p class="tag-home">Name:</p>
-                    <span class="response-home">Lagos House</span>
-                  </div>
-                  <div class="detail-container-home">
-                    <p class="tag-home"> Auto Deposits </p>
-                    <span class="response-home">50,000.00</span>
-                  </div>
-                  <div class="detail-container-home">
-                    <p class="tag-home"> List Of Properties: </p>
-                    <span class="response-home">
-                      <p>100 units of blocks</p>
-                      <p>50 bags of Cement</p>
-                    </span>
-                  </div>
-                  <div class="detail-container-home">
-                    <p class="tag-home"> Start Date: </p>
-                    <span class="response-home">12-jan-2019</span>
-                  </div>
-                  <div class="detail-container-home">
-                    <p class="tag-home"> Next Deposit Date: </p>
-                    <span class="response-home">12-jan-2019</span>
-                  </div>
-                  <div class="detail-container-actions-home">
-                    <Link to="/editplans">
-                      <span
-                        class="iconify"
-                        data-icon="noto:fountain-pen"
-                        data-inline="false"
-                      ></span>
-                    </Link>
-                    <Link to="/viewplan">
-                      <span
-                        class="iconify"
-                        data-icon="bi:eye-fill"
-                        data-inline="false"
-                      ></span>
-                    </Link>
-                  </div>
-                </div>
+                {planContainer}
               </div>
             </div>
           </div>
-          <div class="footer-home">
-            <div class="footer-inner-home">
-              <table class="stocks-home">
+          <div className="footer-home">
+            <div className="footer-inner-home">
+              <table className="stocks-home">
                 <tr>
                   <td>Rates</td>
                   <td>Blocks</td>
@@ -315,7 +363,7 @@ class Plans extends Component {
                   <td>Internatinal</td>
                   <td>
                     <img
-                      class="down-arrow-home"
+                      className="down-arrow-home"
                       src="../assets/images/Group 44.svg"
                       alt=""
                     />
@@ -323,7 +371,7 @@ class Plans extends Component {
                   </td>
                   <td>
                     <img
-                      class="up-arrow-home"
+                      className="up-arrow-home"
                       src="../assets/images/Group 38.svg"
                       alt=""
                     />
@@ -339,8 +387,13 @@ class Plans extends Component {
   }
 }
 
-const mapStateToProps = (state) => ({})
+const mapStateToProps = (state) => ({
+  plans: state.plan,
+})
 
-const mapDispatchToProps = {}
+const mapDispatchToProps = {
+  getPlans,
+  logoutUser
+}
 
 export default connect(mapStateToProps, mapDispatchToProps)(Plans)

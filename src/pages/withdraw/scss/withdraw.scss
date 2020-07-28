@@ -1,0 +1,951 @@
+.withdraw-wrapper {
+  html {
+    font-size: 62.5%;
+    overflow-x: hidden;
+  }
+
+  *,
+  *::after,
+  *::before {
+    box-sizing: inherit;
+    margin: 0;
+    padding: 0;
+  }
+
+  body {
+    background-color: #f0f0f0;
+    box-sizing: border-box;
+    color: #4a4a4a;
+  }
+
+  .container-withdraw {
+    width: 100%;
+    height: 100%;
+    /* display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center; */
+  }
+
+  /*new side bar*/
+
+  .sidebar-withdraw {
+    width: 17%;
+    background-color: white;
+    box-shadow: 5px 0px 5px #f0f0f0;
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    min-height: 100%;
+    justify-content: space-between;
+  }
+
+  .sidenav__container-withdraw {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    z-index: 300;
+    background-color: rgba(0, 0, 0, 0.3);
+    display: none;
+  }
+
+  .sidebar-withdraw.sidenav-withdraw {
+    width: 0%;
+    position: absolute;
+    transition: 400ms ease;
+    display: flex;
+    overflow: hidden;
+    z-index: 500;
+  }
+
+  .sidenav-close-withdraw {
+    position: absolute;
+    height: 32px;
+    width: 32px;
+    right: 25px;
+    top: 25px;
+    background: transparent;
+    border: none;
+    outline: none;
+  }
+
+  .logo-withdraw {
+    font-size: 20px;
+    color: #502274;
+    margin: 30px auto 0;
+    display: block;
+    width: fit-content;
+    text-decoration: none;
+  }
+
+  .links-withdraw {
+    margin-bottom: auto;
+    margin-top: 30px;
+    margin: 0;
+  }
+
+  .links-withdraw .link-withdraw,
+  .logout__link-withdraw {
+    width: 100%;
+    height: 60px;
+    font-size: 14px;
+    padding-left: 50px;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    transition: 0.3s ease;
+  }
+
+  .links-withdraw .link-withdraw a {
+    color: #502274;
+    text-decoration: none;
+    font-size: 18px;
+  }
+
+  .links-withdraw .link-withdraw.active-withdraw {
+    background-color: #502274;
+    color: white;
+  }
+
+  .links-withdraw .link-withdraw.active-withdraw a,
+  .links-withdraw .link-withdraw:hover a {
+    color: white;
+    height: 100%;
+    display: flex;
+    align-items: center;
+  }
+
+  .links-withdraw .link-withdraw svg,
+  .logout__link-withdraw img {
+    margin-right: 10px;
+  }
+
+  .links-withdraw .link-withdraw:hover {
+    background-color: #502274;
+    color: white;
+  }
+
+  .links-withdraw .link-withdraw svg {
+    fill: #502274;
+    transition: 0.3s ease;
+  }
+
+  .links-withdraw .link-withdraw.active-withdraw svg,
+  .links-withdraw .link-withdraw:hover svg {
+    fill: #fff;
+  }
+
+  .links-withdraw .link-withdraw.active-withdraw {
+    background-color: #502274;
+    color: white;
+  }
+
+  .links-withdraw .link-withdraw img,
+  .logout__link-withdraw img {
+    margin-right: 10px;
+  }
+
+  .logout__link-withdraw {
+    text-decoration: none;
+    margin-bottom: 10px;
+  }
+
+  main {
+    margin-left: 17%;
+    width: 83%;
+    height: 100%;
+    /* background-color: orangered; */
+    position: relative;
+    /* position: relative;  */
+  }
+
+  .overlay-withdraw {
+    position: fixed;
+    display: none;
+    z-index: 200;
+    height: 100vh;
+    min-height: 100%;
+    width: 83%;
+    background-color: rgba(0, 0, 0, 0.57);
+    /* background-color: red; */
+  }
+
+  .withdrawal-confirmation-withdraw {
+    background-color: #ffffff;
+    position: absolute;
+    border-radius: 10px;
+    height: 70%;
+    width: 70%;
+    left: 50%;
+    top: 50%;
+    /* left: 50%; */
+    transform: translate(-50%, -50%);
+    padding: 3rem 5rem;
+    overflow: hidden;
+  }
+
+  .confirmation-header-withdraw {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .confirmation-header-withdraw h2 {
+    color: #000;
+  }
+
+  .underline-withdraw {
+    border-bottom: 2px solid #502274;
+    padding-bottom: 0.5rem;
+  }
+  .confirmation-body-withdraw {
+    height: 80%;
+    overflow: hidden;
+    margin-bottom: 1rem;
+  }
+
+  table.popup-withdraw {
+    margin-top: 3rem;
+    margin-bottom: 2rem;
+    width: 100%;
+    height: 100%;
+    border-collapse: collapse;
+  }
+
+  table.popup-withdraw tbody.rows-withdraw {
+    display: block;
+    overflow-y: scroll;
+    height: 100%;
+    width: 100%;
+    padding: 5rem 1rem;
+    padding-top: 0;
+  }
+
+  tbody.rows-withdraw::-webkit-scrollbar {
+    background-color: #fff;
+    width: 6px;
+    cursor: pointer;
+  }
+
+  tbody.rows-withdraw::-webkit-scrollbar-thumb-withdraw {
+    background-color: #9b9b9b;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+
+  table.popup-withdraw tr {
+    height: 6rem;
+    padding: 0.8rem 2rem;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  table.popup-withdraw tr:nth-child(2n) {
+    background-color: #f7f7f7;
+  }
+
+  th {
+    font-size: 1.2rem;
+  }
+
+  td {
+  }
+
+  .popup-withdraw td {
+    font-size: 1rem;
+    flex-basis: 33.3%;
+    color: #4a4a4a;
+  }
+  .popup-withdraw th {
+    flex-basis: 33.3%;
+    text-align: left;
+  }
+
+  .bottom-cell-withdraw {
+    border: 1x solid #f0f0f0;
+    border-bottom: none;
+  }
+
+  .ast{
+    color: red;
+  }
+
+  .links-withdraw .link-withdraw .iconify,
+  .logout__link-withdraw .iconify {
+    margin-right: 10px;
+  }
+  .iconify {
+    color: #502274;
+  }
+
+  .link-withdraw:hover {
+    background-color: #502274;
+    color: white !important;
+    & {
+      a,
+      span,
+      .iconify {
+        color: #ffffff;
+      }
+    }
+  }
+
+  .links-withdraw .active-withdraw {
+    background-color: #502274;
+    color: white;
+    & {
+      a,
+      .iconify {
+        color: #fff;
+      }
+    }
+  }
+
+  .select-css {
+    display: block;
+    font-size: 15px;
+    // font-family: sans-serif;
+    // font-weight: 700;
+    color: #757575;
+    line-height: 1.3;
+    padding: 0.6em 1.4em 0.5em 0.8em;
+    width: 100%;
+    max-width: 100%; /* useful when width is set to anything other than 100% */
+    box-sizing: border-box;
+    margin: 0;
+    border: 1px solid rgba(155, 155, 155, 0.3);
+    box-shadow: 0 1px 0 1px rgba(0, 0, 0, 0.04);
+    // border-radius: 0.5em;
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    appearance: none;
+    background-color: #fff;
+    /* note: bg image below uses 2 urls. The first is an svg data uri for the arrow icon, and the second is the gradient. 
+            for the icon, if you want to change the color, be sure to use `%23` instead of `#`, since it's a url. You can also swap in a different svg icon or an external image reference
+            
+        */
+    background-image: url("data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%23007CB2%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.5-12.8z%22%2F%3E%3C%2Fsvg%3E");
+    background-repeat: no-repeat, repeat;
+    /* arrow icon position (1em from the right, 50% vertical) , then gradient position*/
+    background-position: right 0.7em top 50%, 0 0;
+    /* icon size, then gradient */
+    background-size: 0.65em auto, 100%;
+  }
+  /* Hide arrow icon in IE browsers */
+  .select-css::-ms-expand {
+    display: none;
+  }
+  /* Hover style */
+  .select-css:hover {
+    border-color: #888;
+  }
+  /* Focus style */
+  .select-css:focus {
+    border-color: #aaa;
+    /* It'd be nice to use -webkit-focus-ring-color here but it doesn't work on box-shadow */
+    box-shadow: 0 0 1px 3px rgba(59, 153, 252, 0.7);
+    box-shadow: 0 0 0 3px -moz-mac-focusring;
+    color: #222;
+    outline: none;
+  }
+
+  /* Set options to normal weight */
+  .select-css option {
+    font-weight: normal;
+  }
+
+  /* Support for rtl text, explicit support for Arabic and Hebrew */
+  *[dir="rtl"] .select-css,
+  :root:lang(ar) .select-css,
+  :root:lang(iw) .select-css {
+    background-position: left 0.7em top 50%, 0 0;
+    padding: 0.6em 0.8em 0.5em 1.4em;
+  }
+
+  .right-cell-withdraw {
+    border: 1x solid #f0f0f0;
+    border-right: none;
+  }
+
+  .left-cell-withdraw {
+    border: 1x solid #f0f0f0;
+    border-left: none;
+  }
+
+  .confirm-withdraw {
+    float: right;
+    text-decoration: none;
+    padding: 0.7rem 3rem;
+    color: #ffffff;
+    font-size: 1rem;
+    background-color: #502274;
+    border: none;
+    border-radius: 4px;
+  }
+
+  .notify-img-container-withdraw {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  .close-img-withdraw {
+    position: absolute;
+    z-index: 10;
+    right: 2rem;
+    top: 2rem;
+    display: none;
+  }
+
+  .success-img-withdraw {
+    display: none;
+  }
+
+  .failed-img-withdraw {
+    display: none;
+  }
+
+  .main-container-withdraw {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+  }
+
+  .main-header-withdraw {
+    height: 7rem;
+    background-color: #dddbf1;
+    width: 100%;
+    padding: 1.5rem 2.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .main-body-withdraw {
+    padding: 6rem 5rem;
+    width: 100%;
+  }
+
+  .plans-withdraw {
+    width: 50%;
+  }
+
+  .checkbox-div-withdraw {
+    margin: 1.2rem 0;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+  }
+
+  .checkbox-div-withdraw input {
+    margin-right: 0.5rem;
+  }
+
+  form input {
+    font-size: 10px;
+  }
+
+  .form-group-full-withdraw {
+    width: 100%;
+    margin-bottom: 3rem;
+  }
+
+  .form-group-header-withdraw {
+    margin-bottom: 0.3rem;
+    display: flex;
+  }
+
+  .form-group-header-withdraw h2 {
+    font-size: 1.2rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .form-group-full-withdraw label {
+    color: #4a4a4a;
+  }
+
+  .form-input-full-withdraw {
+    width: 100%;
+    padding: 0.8rem 1rem;
+    border: 1px solid #d8d8d8;
+    border-radius: 3px;
+  }
+
+  .select-group-withdraw {
+    width: 70%;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .radio-group-withdraw input[type="radio"] {
+    vertical-align: bottom;
+  }
+
+  .units-of-withdraw {
+    width: 90%;
+    display: flex;
+    margin-bottom: 2rem;
+  }
+
+  .half-input-withdraw {
+    padding: 0.8rem 1rem;
+    border: 1px solid #d8d8d8;
+    border-radius: 3px;
+    width: 60%;
+  }
+
+  .half-groups-withdraw {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .half-groups-withdraw label {
+    margin-bottom: 0.6rem;
+  }
+
+  .add-location-withdraw {
+    float: right;
+    text-decoration: none;
+    margin-top: 1rem;
+    color: #6c63ff;
+    text-transform: capitalize;
+  }
+
+  .btn-withdraw {
+    background-color: #502274;
+    border: none;
+    color: #ffffff;
+    padding: 1rem 3.5rem;
+    border-radius: 3px;
+    font-size: 1rem;
+  }
+
+  a.backlink-withdraw {
+    text-decoration: none;
+    color: inherit;
+    width: 20%;
+  }
+
+  .back-withdraw {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    height: 100%;
+  }
+
+  .back-withdraw h2 {
+    font-size: 1.4rem;
+    letter-spacing: 0.53;
+    margin-left: 1rem;
+  }
+
+  .stocks-withdraw {
+    width: 38%;
+  }
+
+  .stocks-withdraw tr {
+    width: 100%;
+    /* background-color: red; */
+  }
+
+  .stocks-withdraw td {
+    text-align: left;
+    min-width: 100px;
+    font-size: 10px;
+  }
+
+  .stocks-withdraw td h3 {
+    display: inline-block;
+    font-size: 10px;
+  }
+
+  .stocks-withdraw td img {
+    margin-right: 0.5rem;
+  }
+
+  .personalize-withdraw {
+    display: flex;
+    height: 100%;
+    align-items: center;
+    justify-content: space-between;
+    flex-basis: 20%;
+  }
+
+  .logoutNav-withdraw {
+    padding: 0.75rem 1.5rem;
+    border: 1px solid #502274;
+    border-radius: 4px;
+    text-decoration: none;
+    color: #502274;
+    font-size: 1rem;
+  }
+
+  .block-international-withdraw {
+    transform: translateX(-2rem);
+  }
+
+  /*update*/
+  .show-form-withdraw {
+    display: block;
+    opacity: 0;
+    animation: showForm 1s ease 0.2s 1 forwards;
+  }
+  .show-form-flex-withdraw {
+    display: flex;
+    opacity: 0;
+    animation: showForm 1s ease 0.2s 1 forwards;
+  }
+
+  .x-button-withdraw {
+    cursor: pointer;
+  }
+
+  @keyframes showForm {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  /* sidebar action classes */
+  .bar-withdraw {
+    /* width: 7px; */
+    height: 3px;
+    padding: 0 1.3rem;
+    border-radius: 1px;
+  }
+
+  .bar-left-withdraw {
+    transform: rotate(45deg) translateY(0.2rem);
+  }
+
+  .bar-right-withdraw {
+    transform: rotate(-45deg) translateY(-0.2rem);
+    /* background-color: #FFFFFF; */
+  }
+
+  .open-withdraw {
+    padding: 1rem 1.5rem 1rem 0;
+    background-color: transparent;
+    border-radius: 3px;
+    display: none;
+  }
+
+  .open-withdraw .bar-withdraw {
+    width: 100%;
+    background-color: #502274;
+  }
+
+  .open-withdraw .bar-withdraw:not(:last-child) {
+    margin-bottom: 0.5rem;
+  }
+
+  /* Action classes */
+
+  .openOverlay-withdraw {
+    opacity: 0;
+    display: block;
+    animation: openOverlay 1s ease 1 forwards;
+  }
+
+  .hideConfirmation-withdraw {
+    opacity: 0;
+    display: none;
+  }
+
+  .showSuccess-withdraw {
+    opacity: 0;
+    display: block;
+    animation: displayImage 1s ease 1s 1 forwards;
+  }
+
+  .showFailed-withdraw {
+    opacity: 0;
+    display: block;
+    animation: displayImage 1s ease 1s 1 forwards;
+  }
+
+  /* Animations */
+
+  .slidein-withdraw {
+    animation: slideIn 0.4s 1 forwards;
+  }
+
+  .slideout-withdraw {
+    animation: slideOut 0.4s 1 forwards;
+  }
+
+  .footer-withdraw {
+    padding: 0rem 5rem 1rem;
+    background-color: #50227410;
+    display: none;
+    margin-top: 10px;
+  }
+
+  h2.footer-heading-withdraw {
+    font-size: 1.75rem;
+    margin-bottom: 3rem;
+  }
+
+  .footer-withdraw .stocks-withdraw {
+    width: 100%;
+    display: block;
+    border-spacing: 0 5px;
+    border-collapse: separate;
+  }
+
+  .footer-withdraw .stocks-withdraw tr {
+    width: fit-content;
+    /* background-color: #502274; */
+  }
+
+  .footer-withdraw .stocks-withdraw td {
+    text-align: left;
+    font-size: 1rem;
+    /* padding: 1rem 2rem; */
+  }
+
+  @keyframes displayImage {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  @keyframes openOverlay {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  @keyframes slideIn {
+    from {
+      opacity: 1;
+      transform: translateX(-100%);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
+  @keyframes slideOut {
+    from {
+      opacity: 1;
+      transform: translateX(0%);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(-100%);
+    }
+  }
+
+  /* Responsiveness design */
+
+  @media (max-width: 1300px) {
+    .sidebar-withdraw {
+      width: 24%;
+    }
+
+    .center-me-withdraw {
+      width: 100%;
+      text-align: center;
+      padding: 0 0.5rem;
+    }
+
+    main {
+      margin-left: 24%;
+      width: 76%;
+    }
+    .overlay-withdraw {
+      width: 75%;
+    }
+    .plans-withdraw {
+      width: 60%;
+    }
+
+    .main-body-withdraw {
+      padding: 8rem 6rem;
+    }
+  }
+
+  @media (max-width: 1000px) {
+    .sidebar-withdraw {
+      width: 30%;
+    }
+
+    main {
+      margin-left: 30%;
+      width: 70%;
+    }
+    .overlay-withdraw {
+      width: 76%;
+    }
+    .plans-withdraw {
+      width: 100%;
+    }
+    .logoutNav-withdraw {
+      display: none;
+    }
+    .stocks-withdraw {
+      flex-basis: 50%;
+    }
+    .personalize-withdraw {
+      flex-basis: 13%;
+    }
+    a.backlink-withdraw {
+      flex-basis: 10%;
+    }
+
+    .withdrawal-confirmation-withdraw {
+      width: 90%;
+      height: 85%;
+    }
+
+    .notify-img-container-withdraw {
+      width: 80%;
+    }
+    .notify-img-withdraw {
+      width: 100%;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .cover-overlay-withdraw {
+      position: absolute;
+      display: none;
+      z-index: 100;
+      width: 100%;
+      height: 100%;
+      min-height: 100vh;
+      background-color: rgba(155, 155, 155, 0.57);
+    }
+
+    .main-container-withdraw {
+      min-height: 86vh;
+    }
+
+    .sidebar.sidenav.active-withdraw {
+      width: 50%;
+      box-shadow: 0 0 40px rgba(0, 0, 0, 0.5);
+    }
+    .sidenav__container-withdraw.active-withdraw {
+      display: block;
+    }
+    .sidebar-withdraw {
+      display: none;
+    }
+    .sidenav-btn-withdraw {
+      display: inline-block;
+    }
+
+    main {
+      margin-left: 0;
+      width: 100%;
+      min-height: 100vh;
+      height: 100%;
+    }
+
+    .overlay-withdraw {
+      width: 100%;
+      min-height: 100vh;
+    }
+
+    .plans-withdraw {
+      width: 90%;
+    }
+
+    a.backlink-withdraw {
+      display: none;
+    }
+
+    .open-withdraw {
+      display: block;
+    }
+
+    .withdrawal-confirmation-withdraw {
+      width: 90%;
+      height: 85%;
+      padding: 3rem 2rem;
+    }
+
+    .notify-img-container-withdraw {
+      width: 80%;
+    }
+    .visible-withdraw {
+      visibility: visible;
+    }
+  }
+
+  @media (max-width: 575px) {
+    .sidebar-withdraw.sidenav-withdraw.active-withdraw {
+      width: 70%;
+    }
+
+    .plans-withdraw {
+      width: 100%;
+    }
+
+    .main-body-withdraw {
+      padding: 8rem 3rem 0;
+    }
+
+    .stocks-withdraw {
+      display: none;
+    }
+
+    .personalize-withdraw {
+      flex-basis: 20%;
+    }
+
+    .withdrawal-confirmation-withdraw {
+      width: 95%;
+    }
+
+    .notify-img-container-withdraw {
+      width: 90%;
+    }
+
+    .footer-withdraw {
+      display: block;
+      display: flex;
+      justify-content: center;
+      position: relative;
+    }
+
+    h2.footer-heading-withdraw {
+      position: absolute;
+      top: 2.5rem;
+      /* left: 4.5rem; */
+    }
+
+    .footer-withdraw .stocks-withdraw {
+      margin-top: 3rem;
+    }
+  }
+
+  @media (max-width: 575px) {
+    .sidebar-withdraw.sidenav-withdraw.active-withdraw {
+      width: 80%;
+    }
+
+    .main-body-withdraw {
+      padding: 8rem 2rem;
+    }
+
+    .personalize-withdraw {
+      flex-basis: 23%;
+    }
+  }
+}
