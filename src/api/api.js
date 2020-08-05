@@ -1,20 +1,22 @@
-import axios from "axios";
+import axios from 'axios'
+
+export const baseURL = 'https://api.laybuy.app'
 
 const instance = axios.create({
-  baseURL: "https://laybuy.app/api"
-});
+  baseURL,
+})
 
 instance.interceptors.request.use(
-  async config => {
-    const token = localStorage.getItem("jwtToken");
+  async (config) => {
+    const token = localStorage.getItem('jwtToken')
     if (token) {
-      config.headers.Authorization = `Bearer ${token}`;
+      config.headers.Authorization = `Bearer ${token}`
     }
-    return config;
+    return config
   },
-  err => {
-    return Promise.reject(err);
-  }
-);
+  (err) => {
+    return Promise.reject(err)
+  },
+)
 
-export default instance;
+export default instance

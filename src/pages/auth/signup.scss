@@ -33,15 +33,21 @@
   }
 
   .signup {
-    width: 50%;
+    width: 40%;
     box-sizing: border-box;
     padding-top: 40px;
-    padding-left: 75px;
+    padding-left: 90px;
   }
 
   .signup-header {
     font-size: 24px;
     margin-bottom: 20px;
+  }
+
+  .card-signup{
+    background-color: #502274;
+    color: #ffffff;
+    padding: 70px;
   }
 
   .mb-10 {
@@ -51,7 +57,7 @@
   .signup input:not([type="checkbox"]) {
     border: 1px solid rgba(155, 155, 155, 0.3);
     width: 100%;
-    height: 30px;
+    height: 40px;
     display: block;
     margin: 10px 0;
     outline: none;
@@ -84,7 +90,7 @@
     // font-weight: 700;
     color: #757575;
     line-height: 1.3;
-    padding: 0.6em 1.4em 0.5em 0.8em;
+    padding: 1em 1.4em 1em 0.8em;
     width: 100%;
     max-width: 100%; /* useful when width is set to anything other than 100% */
     box-sizing: border-box;
@@ -256,6 +262,7 @@
     font-size: 14px;
     text-align: center;
     margin-top: 20px;
+    border: 1px solid;
   }
 
   .login {
@@ -265,11 +272,11 @@
     font-size: 12px;
     margin: 20px auto;
     outline: none;
-    color: #828282;
+    color: #fff;
   }
 
   .login a {
-    color: #6c63ff;
+    color: #fff;
     text-decoration: none;
     margin-left: 5px;
   }
@@ -284,12 +291,12 @@
     font-size: 12px;
     width: 100%;
     text-align: center;
-    color: #828282;
+    color: #ffffff;
   }
 
   .forgot-password a,
   .terms-and-conditions a {
-    color: #6c63ff;
+    color: #ffffff;
     text-decoration: none;
   }
 
@@ -435,6 +442,16 @@
     .signup input.half:last-of-type {
       margin-top: 10px;
     }
+    .card-signup {
+      background-color: #502274;
+      color: #ffffff;
+      padding: 30px;
+  }
+  .select--inline {
+    display: inline-block;
+    width: 100%;
+    margin-top: 12px;
+}
   }
 
   @media (max-height: 720px) {

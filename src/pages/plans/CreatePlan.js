@@ -1,100 +1,99 @@
-import React, { Component } from "react";
-import { connect } from "react-redux";
-import { Link } from "react-router-dom";
-import { logoutUser, me } from "../../store/actions/authActions";
-import { addPlan } from "../../store/actions/planActions";
-import "./scss/plans.scss";
-import { toast } from "react-toastify";
-import { PaystackConsumer } from "react-paystack";
-import api from "../../api/api";
+import React, { Component } from 'react'
+import { connect } from 'react-redux'
+import { Link } from 'react-router-dom'
+import { logoutUser, me } from '../../store/actions/authActions'
+import { addPlan } from '../../store/actions/planActions'
+import './scss/plans.scss'
+import { toast } from 'react-toastify'
+import { PaystackConsumer } from 'react-paystack'
+import api, { baseURL } from '../../api/api'
 
 class CreatePlan extends Component {
   constructor() {
-    super();
+    super()
 
     this.state = {
-      plan_type: "",
-      plan_name: "",
-      building_type: "",
-      material_type: "",
-      cement_percentage: "",
-      block_percentage: "",
-      start_date: "",
-      country: "",
-      deposit: "",
-      material_estimation: "",
-      deposit_frequency: "",
-      block_target: "",
-      cement_target: "",
+      plan_type: '',
+      plan_name: '',
+      building_type: '',
+      material_type: '',
+      cement_percentage: '',
+      block_percentage: '',
+      start_date: '',
+      country: '',
+      deposit: '',
+      material_estimation: '',
+      deposit_frequency: '',
+      block_target: '',
+      cement_target: '',
       cementOnly: false,
       blockOnly: false,
       both: false,
       isRecurrent: false,
       submitting: false,
       userData: {},
-      plan_id: "",
+      plan_id: '',
       errors: {},
-      clickValue: "pay",
-    };
-    this.myRef = React.createRef();
+      clickValue: 'pay',
+    }
+    this.myRef = React.createRef()
 
-    this.logout = this.logout.bind(this);
-    this.onChange = this.onChange.bind(this);
-    this.onSubmit = this.onSubmit.bind(this);
+    this.logout = this.logout.bind(this)
+    this.onChange = this.onChange.bind(this)
+    this.onSubmit = this.onSubmit.bind(this)
   }
 
   logout(e) {
-    e.preventDefault();
+    e.preventDefault()
 
-    this.props.logoutUser();
+    this.props.logoutUser()
   }
 
   componentDidMount() {
     this.props.match.params.type == 1
       ? this.setState({ isRecurrent: true })
-      : this.setState({ isRecurrent: false });
+      : this.setState({ isRecurrent: false })
 
-    this.props.me();
+    this.props.me()
   }
 
   static getDerivedStateFromProps(nextProps, prevState) {
     if (nextProps.errors) {
       return {
         errors: nextProps.errors,
-      };
+      }
     }
   }
 
   onChange(e) {
-    this.setState({ [e.target.name]: e.target.value });
+    this.setState({ [e.target.name]: e.target.value })
   }
 
   processClick = (val) => {
-    this.setState({ clickValue: val });
-    const f = document.getElementById("submitBtn");
-    f.click();
-  };
+    this.setState({ clickValue: val })
+    const f = document.getElementById('submitBtn')
+    f.click()
+  }
 
   onSubmit = (e) => {
-    e.preventDefault();
+    e.preventDefault()
 
-    this.setState({ submitting: true });
+    this.setState({ submitting: true })
 
-    const plan_type =
-      this.props.match.params.type == 1 ? "recurrent" : "single";
-    let material_type;
+    const plan_type = this.props.match.params.type == 1 ? 'recurrent' : 'single'
+    let material_type
     if (this.state.cementOnly) {
-      material_type = "cement";
+      material_type = 'cement'
     } else if (this.state.blockOnly) {
-      material_type = "blocks";
+      material_type = 'blocks'
     } else {
-      material_type = "both";
+      material_type = 'both'
     }
-    let deposit_frequency;
+    let deposit_frequency
     if (typeof this.state.deposit_frequency !== String) {
-      deposit_frequency = "None";
+      deposit_frequency = 'None'
     } else {
-      deposit_frequency = this.state.deposit_frequency;
+      deposit_frequency = this.state.deposit_frequency
     }
     const payload = {
       plan_type,
@@ -110,25 +109,25 @@ class CreatePlan extends Component {
       deposit: this.state.deposit,
       material_estimation: this.state.material_estimation,
       deposit_frequency,
-    };
+    }
 
     this.props
       .addPlan(payload)
       .then((res) => {
-        if (res.type && res.type === "GET_ERRORS") {
-          return toast.error(res.payload.status);
+        if (res.type && res.type === 'GET_ERRORS') {
+          return toast.error(res.payload.status)
         }
         if (res && res.payload.status_code === 201) {
-          this.setState({ plan_id: res.payload.data.id });
-          if (this.state.clickValue === "pay") {
-            return this.myRef.current.click();
+          this.setState({ plan_id: res.payload.data.id })
+          if (this.state.clickValue === 'pay') {
+            return this.myRef.current.click()
           }
-          toast.success("Plan created successfully");
+          toast.success('Plan created successfully')
         }
       })
       .catch((err) => console.log(err))
-      .finally(() => this.setState({ submitting: false }));
-  };
+      .finally(() => this.setState({ submitting: false }))
+  }
 
   render() {
     const {
@@ -149,40 +148,87 @@ class CreatePlan extends Component {
       cement_target,
       submitting,
       errors,
-    } = this.state;
+    } = this.state
 
-    const { userData, loading } = this.props.auth;
+    const { userData, loading } = this.props.auth
+
+    console.log(errors)
 
     const config = {
       reference: new Date().getTime(),
       email: userData.email,
       amount: this.state.deposit * 100,
-      publicKey: "pk_test_bf7f7fd26a659d22a09510c20e98d7bc55151855",
-    };
+      publicKey: 'pk_test_bf7f7fd26a659d22a09510c20e98d7bc55151855',
+      metadata: {
+        block_target: this.state.block_target,
+        cement_target: this.state.cement_target,
+        plan_id: this.state.plan_id,
+        custom_fields: [
+          {
+            display_name: 'Plan Id',
+            variable_name: 'plan_id',
+            value: this.state.plan_id,
+          },
+          {
+            display_name: 'Block Target',
+            variable_name: 'block_target',
+            value: this.state.block_target,
+          },
+          {
+            display_name: 'Cement Target',
+            variable_name: 'cement_target',
+            value: this.state.cement_target,
+          },
+        ],
+      },
+      block_target: this.state.block_target,
+      cement_target: this.state.cement_target,
+      plan_id: this.state.plan_id,
+    }
 
     const componentProps = {
       ...config,
-      text: "Paystack Button Implementation",
+      text: 'Paystack Button Implementation',
       onSuccess: (data) => {
-        console.log(data);
+        console.log(data)
         const payload = {
           user_id: userData.uuid,
           reference: data.trxref,
+          block_target: this.state.block_target,
+          cement_target: this.state.cement_target,
           plan_id: this.state.plan_id,
-        };
+          amount: this.state.deposit,
+        }
         api
-          .post("/payment/verify", payload)
+          .post('/payment/verify', payload)
           .then((res) => {
             if (res.data.status_code === 200) {
-              toast.success("Payment successfully completed");
+              toast.success('Payment successfully completed')
+              this.setState({
+                isRecurrent: '',
+                plan_name: '',
+                building_type: '',
+                material_estimation: '',
+                cementOnly: '',
+                blockOnly: '',
+                both: '',
+                start_date: '',
+                country: '',
+                deposit: '',
+                deposit_frequency: '',
+                cement_percentage: '',
+                block_percentage: '',
+                block_target: '',
+                cement_target: '',
+              })
             } else {
-              toast.error("Something went wrong");
+              toast.error('Something went wrong')
             }
           })
-          .catch((err) => toast.error("Something went wrong"));
+          .catch((err) => toast.error('Something went wrong'))
       },
       onClose: () => null,
-    };
+    }
 
     return (
       <div className="plans-wrapper">
@@ -342,13 +388,13 @@ class CreatePlan extends Component {
                 <div class="bar-home"></div>
                 <div class="bar-home"></div>
               </div>
-              <a href="http://" class="backlink-home">
+              {/* <a href="http://" class="backlink-home">
                 <div class="back-home">
                   <img src="../assets/images/Path 3 Copy.svg" alt="" />
                   <h2>Back</h2>
                 </div>
-              </a>
-              <table class="stocks-home">
+              </a> */}
+              {/* <table class="stocks-home">
                 <tr>
                   <td>Rates</td>
                   <td>Blocks</td>
@@ -384,7 +430,7 @@ class CreatePlan extends Component {
                     <h3>$2</h3>
                   </td>
                 </tr>
-              </table>
+              </table> */}
               <div class="personalize-home">
                 <img
                   class="notification-bell-home"
@@ -409,13 +455,13 @@ class CreatePlan extends Component {
                 <div class="form-group-full-home">
                   <div class="form-group-header-home">
                     <h2>
-                      Plan Name{" "}
+                      Plan Name{' '}
                       <span class="Important-home">
                         <img
                           src="../assets/images/Reason for saving.svg"
                           alt=""
                         />
-                      </span>{" "}
+                      </span>{' '}
                     </h2>
                     <span className="ast">*</span>
                   </div>
@@ -428,7 +474,7 @@ class CreatePlan extends Component {
                     required
                   />
                   {errors.errors && errors.errors.plan_name && (
-                    <span style={{ color: "red" }}>
+                    <span style={{ color: 'red' }}>
                       {errors.errors.plan_name}
                     </span>
                   )}
@@ -447,7 +493,7 @@ class CreatePlan extends Component {
                     onChange={this.onChange}
                   />
                   {errors.errors && errors.errors.building_type && (
-                    <span style={{ color: "red" }}>
+                    <span style={{ color: 'red' }}>
                       {errors.errors.building_type}
                     </span>
                   )}
@@ -466,7 +512,7 @@ class CreatePlan extends Component {
                     placeholder="1000 Units of Blocks, 100 Bags of Cement"
                   />
                   {errors.errors && errors.errors.material_estimation && (
-                    <span style={{ color: "red" }}>
+                    <span style={{ color: 'red' }}>
                       {errors.errors.material_estimation}
                     </span>
                   )}
@@ -492,7 +538,7 @@ class CreatePlan extends Component {
                         <option value="monthly">Monthly</option>
                       </select>
                       {errors.errors && errors.errors.deposit_frequency && (
-                        <span style={{ color: "red" }}>
+                        <span style={{ color: 'red' }}>
                           {errors.errors.deposit_frequency}
                         </span>
                       )}
@@ -563,7 +609,7 @@ class CreatePlan extends Component {
                         value={block_target}
                       />
                       {errors.errors && errors.errors.block_target && (
-                        <span style={{ color: "red" }}>
+                        <span style={{ color: 'red' }}>
                           {errors.errors.block_target}
                         </span>
                       )}
@@ -581,7 +627,7 @@ class CreatePlan extends Component {
                         value={cement_target}
                       />
                       {errors.errors && errors.errors.cement_target && (
-                        <span style={{ color: "red" }}>
+                        <span style={{ color: 'red' }}>
                           {errors.errors.cement_target}
                         </span>
                       )}
@@ -608,7 +654,7 @@ class CreatePlan extends Component {
                         class="half-input-home"
                       />
                       {errors.errors && errors.errors.block_percentage && (
-                        <span style={{ color: "red" }}>
+                        <span style={{ color: 'red' }}>
                           {errors.errors.block_percentage}
                         </span>
                       )}
@@ -626,7 +672,7 @@ class CreatePlan extends Component {
                         class="half-input-home"
                       />
                       {errors.errors && errors.errors.cement_percentage && (
-                        <span style={{ color: "red" }}>
+                        <span style={{ color: 'red' }}>
                           {errors.errors.cement_percentage}
                         </span>
                       )}
@@ -648,7 +694,7 @@ class CreatePlan extends Component {
                     required
                   />
                   {errors.errors && errors.errors.start_date && (
-                    <span style={{ color: "red" }}>
+                    <span style={{ color: 'red' }}>
                       {errors.errors.start_date}
                     </span>
                   )}
@@ -673,7 +719,7 @@ class CreatePlan extends Component {
                       <option value="kenya">Kenya</option>
                     </select>
                     {errors.errors && errors.errors.country && (
-                      <span style={{ color: "red" }}>
+                      <span style={{ color: 'red' }}>
                         {errors.errors.country}
                       </span>
                     )}
@@ -696,7 +742,7 @@ class CreatePlan extends Component {
                     required
                   />
                   {errors.errors && errors.errors.deposit && (
-                    <span style={{ color: "red" }}>
+                    <span style={{ color: 'red' }}>
                       {errors.errors.deposit}
                     </span>
                   )}
@@ -708,8 +754,8 @@ class CreatePlan extends Component {
                       class="btn-home plans-submit-home"
                       type="button"
                       children="Save Plan Draft"
-                      style={{ marginRight: "10px" }}
-                      onClick={() => this.processClick("save")}
+                      style={{ marginRight: '10px' }}
+                      onClick={() => this.processClick('save')}
                     />
 
                     {!loading && (
@@ -717,7 +763,7 @@ class CreatePlan extends Component {
                         class="btn-home plans-submit-home"
                         children="Add Plan & Pay"
                         type="button"
-                        onClick={() => this.processClick("pay")}
+                        onClick={() => this.processClick('pay')}
                       />
                     )}
                     <input type="submit" hidden id="submitBtn" />
@@ -745,18 +791,18 @@ class CreatePlan extends Component {
           </div>
         </main>
       </div>
-    );
+    )
   }
 }
 
 const mapStateToProps = (state) => ({
   auth: state.auth,
-});
+})
 
 const mapDispatchToProps = {
   logoutUser,
   addPlan,
   me,
-};
+}
 
-export default connect(mapStateToProps, mapDispatchToProps)(CreatePlan);
+export default connect(mapStateToProps, mapDispatchToProps)(CreatePlan)

@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import { logoutUser } from "../../store/actions/authActions";
+import { getCards } from "../../store/actions/transactionActions";
+import Skeleton from "@yisheng90/react-loading";
 import "./scss/nav.scss";
 import "./scss/card.scss";
 
@@ -11,12 +13,112 @@ class Cards extends Component {
 
     this.logout = this.logout.bind(this);
   }
+
+  componentDidMount() {
+    this.props.getCards();
+  }
+
   logout(e) {
     e.preventDefault();
 
     this.props.logoutUser();
   }
+
   render() {
+    const { cards, loading } = this.props.cards;
+
+    let cardContainer;
+
+    if (loading) {
+      cardContainer = (
+        <div class="card-cards">
+          {/* <button class="remove-card-cards">
+        <img src="https://res.cloudinary.com/djnhrvjyf/image/upload/v1595630864/delete-card_ii5tnb.svg" />
+      </button>
+      <div class="remove-card-box-cards">
+        <p class="remove-card-box__header-cards">Remove Card</p>
+        <div class="remove-card-box__description-cards">
+          Kindly note that this card would be removed permanently from
+          this platform.
+        </div>
+        <div class="remove-card__buttons-cards">
+          <button class="remove-card__button-cards">Cancel</button>
+          <button class="remove-card__button-cards remove-card__button--bg-purple-cards">
+            Remove
+          </button>
+        </div>
+      </div>
+      <div class="card__brands-cards">
+        <img src="https://res.cloudinary.com/djnhrvjyf/image/upload/v1595631383/card-rect_mle5ec.svg" />
+        <img src="../assets/images/master-card-2.svg" alt="" />
+      </div>
+      <div class="card__numbers-cards">
+        <span>5399</span>
+        <span>3456</span>
+        <span>6788</span>
+        <span>2345</span>
+      </div>
+      <div class="card__details-cards">
+        <div>
+          <p>CARD HOLDER</p>
+          <p>SAMUEL FAPOUN</p>
+        </div>
+        <div>
+          <p>EXPIRES</p>
+          <p>09/21</p>
+        </div>
+      </div> */}
+          <Skeleton height={30} />
+          <Skeleton height={30} />
+          <Skeleton height={30} />
+          <Skeleton height={30} />
+          <Skeleton height={30} />
+          <Skeleton height={30} />
+        </div>
+      );
+    } else if (Object.keys(cards).length > 0) {
+      cardContainer = cards.map((c, i) => (
+        <div class="card-cards blue-cards" key={i}>
+          <button class="remove-card-cards">
+            <img src="https://res.cloudinary.com/djnhrvjyf/image/upload/v1595630864/delete-card_ii5tnb.svg" />
+          </button>
+          <div class="remove-card-box-cards">
+            <p class="remove-card-box__header-cards">Remove Card</p>
+            <div class="remove-card-box__description-cards">
+              Kindly note that this card would be removed permanently from this
+              platform.
+            </div>
+            <div class="remove-card__buttons-cards">
+              <button class="remove-card__button-cards">Cancel</button>
+              <button class="remove-card__button-cards remove-card__button--bg-purple-cards">
+                Remove
+              </button>
+            </div>
+          </div>
+          <div class="card__brands-cards">
+            <img src="https://res.cloudinary.com/djnhrvjyf/image/upload/v1595631383/card-rect_mle5ec.svg" />
+            <img src="../assets/images/master-card-2.svg" alt="" />
+          </div>
+          <div class="card__numbers-cards">
+            <span>XXXX</span>
+            <span>XXXX</span>
+            <span>XXXX</span>
+            <span>{c.last_four}</span>
+          </div>
+          <div class="card__details-cards">
+            <div>
+              <p>CARD HOLDER</p>
+              <p>******* *******</p>
+            </div>
+            <div>
+              <p>EXPIRES</p>
+              <p>**/**</p>
+            </div>
+          </div>
+        </div>
+      ));
+    }
+
     return (
       <div className="card-wrapper">
         <div className="container-cards">
@@ -98,7 +200,7 @@ class Cards extends Component {
           </div>
           <div className="sidebar-cards">
             <Link class="logo-cards" to="/">
-            Laybuy
+              Laybuy
             </Link>
             <div class="links-cards">
               <div class="link-cards">
@@ -179,11 +281,11 @@ class Cards extends Component {
                 <div className="bar-cards"></div>
                 <div className="bar-cards"></div>
               </button>
-              <div className="back-cards">
+              {/* <div className="back-cards">
                 <img src="../assets/images/back.svg" alt="" />
                 <a href="">Back</a>
-              </div>
-              <table className="rates-cards top">
+              </div> */}
+              {/* <table className="rates-cards top">
                 <tr>
                   <td>Rates</td>
                   <td>Block</td>
@@ -211,7 +313,7 @@ class Cards extends Component {
                     $2
                   </td>
                 </tr>
-              </table>
+              </table> */}
               <div className="user-controls-cards">
                 <div className="notifications-cards">
                   <img src="../assets/images/notifications.svg" alt="" />
@@ -226,129 +328,17 @@ class Cards extends Component {
             </div>
 
             <div class="cards-cards">
-              <div class="card-cards black-cards">
-                <button class="remove-card-cards">
-                  <img src="https://res.cloudinary.com/djnhrvjyf/image/upload/v1595630864/delete-card_ii5tnb.svg" />
-                </button>
-                <div class="remove-card-box-cards">
-                  <p class="remove-card-box__header-cards">Remove Card</p>
-                  <div class="remove-card-box__description-cards">
-                    Kindly note that this card would be removed permanently from
-                    this platform.
-                  </div>
-                  <div class="remove-card__buttons-cards">
-                    <button class="remove-card__button-cards">Cancel</button>
-                    <button class="remove-card__button-cards remove-card__button--bg-purple-cards">
-                      Remove
-                    </button>
-                  </div>
-                </div>
-                <div class="card__brands-cards">
-                  <img src="https://res.cloudinary.com/djnhrvjyf/image/upload/v1595631383/card-rect_mle5ec.svg" />
-                  <img src="../assets/images/master-card-2.svg" alt="" />
-                </div>
-                <div class="card__numbers-cards">
-                  <span>5399</span>
-                  <span>3456</span>
-                  <span>6788</span>
-                  <span>2345</span>
-                </div>
-                <div class="card__details-cards">
-                  <div>
-                    <p>CARD HOLDER</p>
-                    <p>SAMUEL FAPOUN</p>
-                  </div>
-                  <div>
-                    <p>EXPIRES</p>
-                    <p>09/21</p>
-                  </div>
-                </div>
-              </div>
-              <div class="card-cards light-green-cards">
-                <button class="remove-card-cards">
-                  <img src="https://res.cloudinary.com/djnhrvjyf/image/upload/v1595630864/delete-card_ii5tnb.svg" />
-                </button>
-                <div class="remove-card-box-cards">
-                  <p class="remove-card-box__header-cards">Remove Card</p>
-                  <div class="remove-card-box__description-cards">
-                    Kindly note that this card would be removed permanently from
-                    this platform.
-                  </div>
-                  <div class="remove-card__buttons-cards">
-                    <button class="remove-card__button-cards">Cancel</button>
-                    <button class="remove-card__button-cards remove-card__button--bg-purple-cards">
-                      Remove
-                    </button>
-                  </div>
-                </div>
-                <div class="card__brands-cards">
-                  <img src="https://res.cloudinary.com/djnhrvjyf/image/upload/v1595631383/card-rect_mle5ec.svg" />
-                  <img src="../assets/images/master-card-2.svg" alt="" />
-                </div>
-                <div class="card__numbers-cards">
-                  <span>5399</span>
-                  <span>3456</span>
-                  <span>6788</span>
-                  <span>2345</span>
-                </div>
-                <div class="card__details-cards">
-                  <div>
-                    <p>CARD HOLDER</p>
-                    <p>SAMUEL FAPOUN</p>
-                  </div>
-                  <div>
-                    <p>EXPIRES</p>
-                    <p>09/21</p>
-                  </div>
-                </div>
-              </div>
-              <div class="card-cards blue-cards">
-                <button class="remove-card-cards">
-                  <img src="https://res.cloudinary.com/djnhrvjyf/image/upload/v1595630864/delete-card_ii5tnb.svg" />
-                </button>
-                <div class="remove-card-box-cards">
-                  <p class="remove-card-box__header-cards">Remove Card</p>
-                  <div class="remove-card-box__description-cards">
-                    Kindly note that this card would be removed permanently from
-                    this platform.
-                  </div>
-                  <div class="remove-card__buttons-cards">
-                    <button class="remove-card__button-cards">Cancel</button>
-                    <button class="remove-card__button-cards remove-card__button--bg-purple-cards">
-                      Remove
-                    </button>
-                  </div>
-                </div>
-                <div class="card__brands-cards">
-                  <img src="https://res.cloudinary.com/djnhrvjyf/image/upload/v1595631383/card-rect_mle5ec.svg" />
-                  <img src="../assets/images/master-card-2.svg" alt="" />
-                </div>
-                <div class="card__numbers-cards">
-                  <span>5399</span>
-                  <span>3456</span>
-                  <span>6788</span>
-                  <span>2345</span>
-                </div>
-                <div class="card__details-cards">
-                  <div>
-                    <p>CARD HOLDER</p>
-                    <p>SAMUEL FAPOUN</p>
-                  </div>
-                  <div>
-                    <p>EXPIRES</p>
-                    <p>09/21</p>
-                  </div>
-                </div>
-              </div>
-              <a class="add-card-cards" href="no-card.html">
+              {cardContainer}
+              
+              {/* <a class="add-card-cards" href="no-card.html">
                 <img
                   src="https://res.cloudinary.com/djnhrvjyf/image/upload/v1595631171/add-purple_nldgo1.svg"
                   alt=""
                 />
                 Add Card
-              </a>
+              </a> */}
             </div>
-            <table class="rates-cards bottom-cards">
+            {/* <table class="rates-cards bottom-cards">
               <tr>
                 <td>Rates</td>
                 <td>Block</td>
@@ -376,7 +366,7 @@ class Cards extends Component {
                   $2
                 </td>
               </tr>
-            </table>
+            </table> */}
           </div>
         </div>
       </div>
@@ -384,10 +374,13 @@ class Cards extends Component {
   }
 }
 
-const mapStateToProps = (state) => ({});
+const mapStateToProps = (state) => ({
+  cards: state.transactions,
+});
 
 const mapDispatchToProps = {
   logoutUser,
+  getCards,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Cards);

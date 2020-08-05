@@ -1,39 +1,39 @@
-import React, { useState, useEffect, useCallback } from "react";
-import { useParams, Link } from "react-router-dom";
-import "./scss/plans.scss";
-import { toast } from "react-toastify";
-import api from "../../api/api";
+import React, { useState, useEffect, useCallback } from 'react'
+import { useParams, Link } from 'react-router-dom'
+import './scss/plans.scss'
+import { toast } from 'react-toastify'
+import api from '../../api/api'
 
 export default function EditPlan() {
-  const { id } = useParams();
+  const { id } = useParams()
 
   const handleOnChange = useCallback((event) => {
-    const { name, value } = event.target;
-    setFormValues({ ...formValues, [name]: value });
-  });
+    const { name, value } = event.target
+    setFormValues({ ...formValues, [name]: value })
+  })
 
-  const [both, setBoth] = useState(false);
-  const [cement, setCement] = useState(false);
-  const [block, setBlock] = useState(false);
-  const [submitting, setSubmitting] = useState(false);
+  const [both, setBoth] = useState(false)
+  const [cement, setCement] = useState(false)
+  const [block, setBlock] = useState(false)
+  const [submitting, setSubmitting] = useState(false)
 
   const [formValues, setFormValues] = useState({
-    plan_name: "",
-    building_type: "",
-    material_estimation: "",
-    material_type: "",
-    cement_percentage: "",
-    block_percentage: "",
-    start_date: "",
-    block_target: "",
-    cement_target: "",
-    deposit: "",
-    plan_type: "",
-    country: "",
-    deposit_frequency: "",
-  });
-  const [plan, setPlan] = useState({});
-  const [loading, setLoading] = useState(false);
+    plan_name: '',
+    building_type: '',
+    material_estimation: '',
+    material_type: '',
+    cement_percentage: '',
+    block_percentage: '',
+    start_date: '',
+    block_target: '',
+    cement_target: '',
+    deposit: '',
+    plan_type: '',
+    country: '',
+    deposit_frequency: '',
+  })
+  const [plan, setPlan] = useState({})
+  const [loading, setLoading] = useState(false)
 
   const getPlan = () => {
     api.get(`/plan/${id}`).then((res) => {
@@ -52,31 +52,32 @@ export default function EditPlan() {
         plan_type: res.data.data.plan_type,
         country: res.data.data.country,
         deposit_frequency: res.data.data.deposit_frequency,
-      });
-      setBlock(res.data.data.material_type === "block");
-      setCement(res.data.data.material_type === "cement");
-      setBoth(res.data.data.material_type === "both");
-      setLoading(false);
-    });
-  };
+      })
+      setBlock(res.data.data.material_type === 'block')
+      setCement(res.data.data.material_type === 'cement')
+      setBoth(res.data.data.material_type === 'both')
+      console.log(res.data.data.deposit_frequency)
+      setLoading(false)
+    })
+  }
 
   const submitPlan = (e) => {
-    e.preventDefault();
-    setSubmitting(true);
+    e.preventDefault()
+    setSubmitting(true)
 
-    let material_type;
+    let material_type
     if (cement) {
-      material_type = "cement";
+      material_type = 'cement'
     } else if (block) {
-      material_type = "blocks";
+      material_type = 'blocks'
     } else {
-      material_type = "both";
+      material_type = 'both'
     }
-    let deposit_frequency;
+    let deposit_frequency
     if (typeof formValues.deposit_frequency !== String) {
-      deposit_frequency = "None";
+      deposit_frequency = 'None'
     } else {
-      deposit_frequency = formValues.deposit_frequency;
+      deposit_frequency = formValues.deposit_frequency
     }
 
     const payload = {
@@ -93,18 +94,18 @@ export default function EditPlan() {
       country: formValues.country,
       deposit: formValues.deposit,
       material_estimation: formValues.material_estimation,
-    };
+    }
 
     api
       .put(`/plan/${id}`, payload)
       .then((res) => console.log(res))
       .catch((err) => console.log(err))
-      .finally(() => setSubmitting(false));
-  };
+      .finally(() => setSubmitting(false))
+  }
 
   useEffect(() => {
-    getPlan();
-  }, []);
+    getPlan()
+  }, [])
   return (
     <div className="plans-wrapper">
       <div className="sidenav__container-home">
@@ -263,7 +264,7 @@ export default function EditPlan() {
               <div class="bar-home"></div>
               <div class="bar-home"></div>
             </div>
-            <a href="http://" class="backlink-home">
+            {/* <a href="http://" class="backlink-home">
               <div class="back-home">
                 <img src="../assets/images/Path 3 Copy.svg" alt="" />
                 <h2>Back</h2>
@@ -305,7 +306,7 @@ export default function EditPlan() {
                   <h3>$2</h3>
                 </td>
               </tr>
-            </table>
+            </table> */}
             <div class="personalize-home">
               <img
                 class="notification-bell-home"
@@ -328,13 +329,13 @@ export default function EditPlan() {
               <div class="form-group-full-home">
                 <div class="form-group-header-home">
                   <h2>
-                    Plan Name{" "}
+                    Plan Name{' '}
                     <span class="Important-home">
                       <img
                         src="../assets/images/Reason for saving.svg"
                         alt=""
                       />
-                    </span>{" "}
+                    </span>{' '}
                   </h2>
                   <span className="ast">*</span>
                 </div>
@@ -391,7 +392,7 @@ export default function EditPlan() {
                 )} */}
               </div>
 
-              {formValues.plan_type === "recurrent" && (
+              {formValues.plan_type === 'recurrent' && (
                 <div class="form-group-full-home">
                   <div className="select select--inline form-group custom-select">
                     <div class="form-group-header-home">
@@ -630,5 +631,5 @@ export default function EditPlan() {
         </div>
       </main>
     </div>
-  );
+  )
 }

@@ -1,33 +1,78 @@
-import React, { Component } from "react";
-import { connect } from "react-redux";
-import { Link } from "react-router-dom";
-import { logoutUser } from "../../store/actions/authActions";
-import "./scss/nav-password.scss";
-import "./scss/password.scss";
+import React, { Component } from 'react'
+import { connect } from 'react-redux'
+import { Link } from 'react-router-dom'
+import { logoutUser, updatePassword } from '../../store/actions/authActions'
+import './scss/nav-password.scss'
+import './scss/password.scss'
+import { toast } from 'react-toastify'
 
 class ChangePassword extends Component {
   constructor() {
-    super();
+    super()
 
     this.state = {
       visible: false,
-    };
+      current: '',
+      password: '',
+      confirm: '',
+      errors: {},
+    }
 
-    this.togglePassword = this.togglePassword.bind(this);
-    this.logout = this.logout.bind(this);
+    this.togglePassword = this.togglePassword.bind(this)
+    this.logout = this.logout.bind(this)
+    this.onChange = this.onChange.bind(this)
+    this.onSubmit = this.onSubmit.bind(this)
+  }
+
+  static getDerivedStateFromProps(nextProps, prevState) {
+    if (nextProps.errors) {
+      return {
+        errors: nextProps.errors,
+      }
+    }
   }
 
   togglePassword(e) {
-    this.setState({ visible: !this.state.visible });
+    this.setState({ visible: !this.state.visible })
+  }
+
+  onChange(e) {
+    this.setState({ [e.target.name]: e.target.value })
+  }
+
+  onSubmit(e) {
+    e.preventDefault()
+
+    const payload = {
+      current: this.state.current,
+      password: this.state.password,
+      confirm: this.state.confirm,
+    }
+
+    if (payload.password !== payload.confirm) {
+      return toast.error('Passwords do not match')
+    }
+
+    this.props
+      .updatePassword(payload)
+      .then((res) => {
+        if (res && res.type === 'UPDATE_PASSWORD') {
+          this.setState({ current: '', password: '', confirm: '' })
+          toast.success('Password updated successfully')
+        }
+      })
+      .catch((err) => console.log(err))
   }
 
   logout(e) {
-    e.preventDefault();
+    e.preventDefault()
 
-    this.props.logoutUser();
+    this.props.logoutUser()
   }
   render() {
-    const { visible } = this.state;
+    const { visible, errors } = this.state
+    const { loading } = this.props.auth
+
     return (
       <div className="password-wrapper">
         <div class="container-passwords">
@@ -290,14 +335,20 @@ class ChangePassword extends Component {
                 <p class="content__form__subtext-passwords">
                   Details about your Personal Information
                 </p>
-                <form>
+                <form onSubmit={this.onSubmit}>
+                  <p className="text-danger">
+                    {errors && errors.error ? errors.error : ''}
+                  </p>
                   <div class="form-group-passwords">
                     <label for="old-password-passwords">Old Password</label>
                     <div class="password-div-passwords">
                       <input
-                        type={visible ? "text" : "password"}
+                        type={visible ? 'text' : 'password'}
                         id="old-password"
                         required
+                        onChange={this.onChange}
+                        name="current"
+                        value={this.state.current}
                       />
                       <button type="button" onClick={this.togglePassword}>
                         <img src="https://res.cloudinary.com/djnhrvjyf/image/upload/v1594376838/eye_s3luq1.svg" />
@@ -308,8 +359,11 @@ class ChangePassword extends Component {
                     <label for="new-password">New Password</label>
                     <div class="password-div-passwords">
                       <input
-                        type={visible ? "text" : "password"}
+                        type={visible ? 'text' : 'password'}
                         id="new-password"
+                        name="password"
+                        value={this.state.password}
+                        onChange={this.onChange}
                         required
                       />
                       <button type="button" onClick={this.togglePassword}>
@@ -323,8 +377,11 @@ class ChangePassword extends Component {
                     </label>
                     <div class="password-div-passwords">
                       <input
-                        type={visible ? "text" : "password"}
+                        type={visible ? 'text' : 'password'}
                         id="confirm-new-password"
+                        name="confirm"
+                        value={this.state.confirm}
+                        onChange={this.onChange}
                         required
                       />
                       <button type="button" onClick={this.togglePassword}>
@@ -332,7 +389,12 @@ class ChangePassword extends Component {
                       </button>
                     </div>
                   </div>
-                  <button type="submit">Update</button>
+                  {loading && (
+                    <button type="submit" disabled>
+                      Updating...
+                    </button>
+                  )}
+                  {!loading && <button type="submit">Update</button>}
                 </form>
                 <div class="page-links-passwords">
                   <button class="link-toggle-passwords">
@@ -404,14 +466,18 @@ class ChangePassword extends Component {
           </div>
         </div>
       </div>
-    );
+    )
   }
 }
 
-const mapStateToProps = (state) => ({});
+const mapStateToProps = (state) => ({
+  auth: state.auth,
+  errors: state.errors,
+})
 
 const mapDispatchToProps = {
   logoutUser,
-};
+  updatePassword,
+}
 
-export default connect(mapStateToProps, mapDispatchToProps)(ChangePassword);
+export default connect(mapStateToProps, mapDispatchToProps)(ChangePassword)

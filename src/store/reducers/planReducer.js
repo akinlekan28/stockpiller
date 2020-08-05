@@ -5,7 +5,8 @@ import {
   PLAN_LOADING,
   GET_ERRORS,
   REMOVE_LOADING,
-  REMOVE_PLAN_LOADING
+  DASHBOARD_PLANS,
+  REMOVE_PLAN_LOADING,
 } from '../types'
 
 const initialState = {
@@ -24,6 +25,13 @@ export default function (state = initialState, action) {
       }
 
     case VIEW_PLANS:
+      return {
+        ...state,
+        plans: action.payload,
+        loading: false,
+      }
+
+    case DASHBOARD_PLANS:
       return {
         ...state,
         plans: action.payload,

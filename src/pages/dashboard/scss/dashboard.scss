@@ -1,11 +1,4 @@
 .dashboard-wrapper {
-  :root {
-    --brown-bg: #d4d2a5;
-    --blue-bg: #b4c5e4;
-    --pink-bg: #efbcd5;
-    --green-bg: #92c9b1;
-  }
-
   body {
     margin: 0;
     background-color: #f0f0f0;
@@ -155,19 +148,19 @@
   }
 
   .card-dashboard.brown-dashboard .header-dashboard {
-    background-color: var(--brown-bg);
+    background-color: #d4d2a5;
   }
 
   .card-dashboard.blue-dashboard .header-dashboard {
-    background-color: var(--blue-bg);
+    background-color: #b4c5e4;
   }
 
   .card-dashboard.pink-dashboard .header-dashboard {
-    background-color: var(--pink-bg);
+    background-color: #efbcd5;
   }
 
   .card-dashboard.green-dashboard .header-dashboard {
-    background-color: var(--green-bg);
+    background-color: #92c9b1;
   }
 
   @media (max-width: 1300px) {

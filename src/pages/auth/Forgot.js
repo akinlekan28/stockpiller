@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import Tada from 'react-reveal/Tada';
 import "./forgot.scss";
 
 export default function Forgot() {
@@ -7,13 +8,15 @@ export default function Forgot() {
     <div className="forgot-wrapper">
       <div className="container">
         <Link to="/" className="logo">
-          Stokkpile
+          Laybuy
         </Link>
         <img
           src="https://res.cloudinary.com/djnhrvjyf/image/upload/v1594397518/forgotlarge_dfetd5.svg"
           className="forgot-password"
         />
         <div className="reset">
+          <Tada>
+          <div className="reset-card">
           <p className="reset-header">Reset Password</p>
           <p className="reset-text">
             Enter the email attached to your account to get a password reset
@@ -28,11 +31,13 @@ export default function Forgot() {
           <Link to="/login" className="cancel">
             Cancel
           </Link>
-          <hr />
+          {/* <hr />
           <p className="terms-and-conditions">
             <Link to="/terms">Terms & Conditions</Link> and
             <Link to="/privacy"> Privacy Policy</Link>
-          </p>
+          </p> */}
+          </div>
+          </Tada>
         </div>
       </div>
     </div>

@@ -1,7 +1,9 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { logoutUser } from "../../store/actions/authActions";
+import { getTransactions } from "../../store/actions/transactionActions";
 import { Link } from "react-router-dom";
+import Skeleton from "@yisheng90/react-loading";
 import "./scss/transaction.scss";
 
 class Transactions extends Component {
@@ -11,6 +13,10 @@ class Transactions extends Component {
     this.logout = this.logout.bind(this);
   }
 
+  componentDidMount() {
+    this.props.getTransactions();
+  }
+
   logout(e) {
     e.preventDefault();
 
@@ -18,13 +24,183 @@ class Transactions extends Component {
   }
 
   render() {
+    const { transactions, loading } = this.props.transactions;
+
+    let transactionContainer, transactionTable;
+
+    if (loading) {
+      transactionContainer = (
+        <>
+          <div className="total-amount-transaction">
+            <Skeleton height={25} />
+            <Skeleton height={25} />
+            <Skeleton height={25} />
+            <Skeleton height={25} />
+            <Skeleton height={30} />
+          </div>
+          <div className="materials-withdrawn-transaction">
+            <Skeleton height={25} />
+            <Skeleton height={25} />
+            <Skeleton height={25} />
+            <Skeleton height={25} />
+            <Skeleton height={30} />
+          </div>
+          <div className="materials-left-transaction">
+            <Skeleton height={25} />
+            <Skeleton height={25} />
+            <Skeleton height={25} />
+            <Skeleton height={25} />
+            <Skeleton height={30} />
+          </div>
+        </>
+      );
+
+      transactionTable = (
+        <>
+          <div className="transaction-transaction deposit-transaction">
+            <Skeleton height={25} />
+            <Skeleton height={25} />
+            <Skeleton height={25} />
+            <Skeleton height={25} />
+            <Skeleton height={25} />
+          </div>
+          <div className="transaction-transaction deposit-transaction">
+            <Skeleton height={25} />
+            <Skeleton height={25} />
+            <Skeleton height={25} />
+            <Skeleton height={25} />
+            <Skeleton height={25} />
+          </div>
+          <div className="transaction-transaction deposit-transaction">
+            <Skeleton height={25} />
+            <Skeleton height={25} />
+            <Skeleton height={25} />
+            <Skeleton height={25} />
+            <Skeleton height={25} />
+          </div>
+          <div className="transaction-transaction deposit-transaction">
+            <Skeleton height={25} />
+            <Skeleton height={25} />
+            <Skeleton height={25} />
+            <Skeleton height={25} />
+            <Skeleton height={25} />
+          </div>
+          <div className="transaction-transaction deposit-transaction">
+            <Skeleton height={25} />
+            <Skeleton height={25} />
+            <Skeleton height={25} />
+            <Skeleton height={25} />
+            <Skeleton height={25} />
+          </div>
+        </>
+      );
+    } else if (Object.keys(transactions).length > 0) {
+      transactionContainer = (
+        <>
+          <div className="total-amount-transaction">
+            <p className="header-transaction">Total Amount Deposited</p>
+            <span className="line-h-transaction"></span>
+            <p className="bold-transaction">N{transactions.total_paid}</p>
+          </div>
+          <div className="materials-withdrawn-transaction">
+            <p className="header-transaction">Materials Withdrawn</p>
+            <span className="line-h-transaction"></span>
+            <div className="grid-transaction">
+              <div>
+                <p className="light-transaction">Units of Block</p>
+                <p className="bold-transaction">
+                  {transactions.material_withdrawn.blocks}
+                </p>
+              </div>
+              <div>
+                <p className="light-transaction">Bags of cement</p>
+                <p className="bold-transaction">
+                  {transactions.material_withdrawn.cements}
+                </p>
+              </div>
+            </div>
+          </div>
+          <div className="materials-left-transaction">
+            <p className="header-transaction">Materials Left</p>
+            <span className="line-h-transaction"></span>
+            <div className="grid-transaction">
+              <div>
+                <p className="light-transaction">Units of Block</p>
+                <p className="bold-transaction">
+                  {transactions.material_deposited.blocks}
+                </p>
+              </div>
+              <div>
+                <p className="light-transaction">Bags of cement</p>
+                <p className="bold-transaction">
+                  {transactions.material_deposited.cements}
+                </p>
+              </div>
+            </div>
+          </div>
+        </>
+      );
+      transactionTable = transactions.transactions.map((t, index) => (
+        <React.Fragment key={index}>
+          {t.type === "credit" && (
+            <div className="transaction-transaction deposit-transaction">
+              <p>
+                <span className="label-transaction">Billing Date:</span>{" "}
+                {t.created_at}
+              </p>
+              <p>
+                <span className="label-transaction">Transaction ID:</span>{" "}
+                {t.reference}
+              </p>
+              <p>
+                <span className="label-transaction">Materials Withdrawn:</span>-{" "}
+              </p>
+              <p>
+                <span className="label-transaction">Amount:</span>N {t.amount}
+              </p>
+              <p>
+                <span className="label-transaction">Status:</span>{" "}
+                {t.completed === 1 ? "Paid" : "Not Paid"}
+              </p>
+            </div>
+          )}
+          {t.type !== "credit" && (
+            <div className="transaction-transaction withdraw-transaction">
+              <p>
+                <span className="label-transaction">Billing Date</span>{" "}
+                {t.created_at}
+              </p>
+              <p>
+                <span className="label-transaction">Transaction ID</span>{" "}
+                {t.reference}
+              </p>
+              <p>
+                <span className="label-transaction">Materials Withdrawn:</span>
+                <span>
+                  {t.cement} Bags of cement
+                  <span className="br-transaction"></span>
+                  {t.block} Units of Blocks
+                </span>
+              </p>
+              <p>
+                <span className="label-transaction">Amount:</span> -
+              </p>
+              <p>
+                <span className="label-transaction">Status:</span> Debit
+              </p>
+            </div>
+          )}
+        </React.Fragment>
+      ));
+    }
+
     return (
       <div className="transaction-wrapper">
         <div className="container-transaction">
           <div className="sidenav__container-transaction">
             <div className="sidebar-transaction sidenav-transaction">
               <Link className="logo-transaction" to="/">
-              Laybuy
+                Laybuy
               </Link>
               <button className="sidenav-close-transaction">
                 <img src="../assets/images/close.svg" />
@@ -103,7 +279,7 @@ class Transactions extends Component {
           </div>
           <div className="sidebar-transaction">
             <Link className="logo-transaction" to="/">
-            Laybuy
+              Laybuy
             </Link>
             <div className="links-transaction">
               <div class="link-transaction">
@@ -184,11 +360,11 @@ class Transactions extends Component {
                 <div className="bar-transaction"></div>
               </button>
 
-              <div className="back-transaction">
+              {/* <div className="back-transaction">
                 <img src="../assets/images/back.svg" alt="" />
                 <a href="">Back</a>
-              </div>
-              <table class="rates-transaction top">
+              </div> */}
+              {/* <table class="rates-transaction top">
                 <tr>
                   <td>Rates</td>
                   <td>Block</td>
@@ -216,7 +392,7 @@ class Transactions extends Component {
                     $2
                   </td>
                 </tr>
-              </table>
+              </table> */}
               <div className="user-controls-transaction">
                 <div className="notifications-transaction">
                   <img src="../assets/images/notifications.svg" alt="" />
@@ -232,39 +408,7 @@ class Transactions extends Component {
 
             <div className="content-transaction">
               <div className="cards-transaction">
-                <div className="total-amount-transaction">
-                  <p className="header-transaction">Total Amount Deposited</p>
-                  <span className="line-h-transaction"></span>
-                  <p className="bold-transaction">N2,000,000</p>
-                </div>
-                <div className="materials-withdrawn-transaction">
-                  <p className="header-transaction">Materials Withdrawn</p>
-                  <span className="line-h-transaction"></span>
-                  <div className="grid-transaction">
-                    <div>
-                      <p className="light-transaction">Units of Block</p>
-                      <p className="bold-transaction">14,000</p>
-                    </div>
-                    <div>
-                      <p className="light-transaction">Bags of cement</p>
-                      <p className="bold-transaction">200</p>
-                    </div>
-                  </div>
-                </div>
-                <div className="materials-left-transaction">
-                  <p className="header-transaction">Materials Left</p>
-                  <span className="line-h-transaction"></span>
-                  <div className="grid-transaction">
-                    <div>
-                      <p className="light-transaction">Units of Block</p>
-                      <p className="bold-transaction">14,000</p>
-                    </div>
-                    <div>
-                      <p className="light-transaction">Bags of cement</p>
-                      <p className="bold-transaction">200</p>
-                    </div>
-                  </div>
-                </div>
+                {transactionContainer}
                 <Link to="/plan/new" className="add-plan-transaction">
                   <button>
                     <img src="https://res.cloudinary.com/djnhrvjyf/image/upload/v1595208746/ios-add_bfykkz.svg" />
@@ -290,190 +434,9 @@ class Transactions extends Component {
                 <p className="transactions__header__small-transaction">
                   TRANSACTIONS
                 </p>
-                <div className="transaction-transaction deposit-transaction">
-                  <p>
-                    <span className="label-transaction">Billing Date:</span>{" "}
-                    14.09.2019 00:00
-                  </p>
-                  <p>
-                    <span className="label-transaction">Transaction ID:</span>{" "}
-                    345648097657IF
-                  </p>
-                  <p>
-                    <span className="label-transaction">
-                      Materials Withdrawn:
-                    </span>
-                    -{" "}
-                  </p>
-                  <p>
-                    <span className="label-transaction">Amount:</span> N2,000.00
-                  </p>
-                  <p>
-                    <span className="label-transaction">Status:</span> Paid
-                  </p>
-                </div>
-                <div className="transaction-transaction deposit-transaction">
-                  <p>
-                    <span className="label-transaction">Billing Date:</span>{" "}
-                    14.09.2019 00:00
-                  </p>
-                  <p>
-                    <span className="label-transaction">Transaction ID:</span>{" "}
-                    345648097657IF
-                  </p>
-                  <p>
-                    <span className="label-transaction">
-                      Materials Withdrawn:
-                    </span>
-                    -{" "}
-                  </p>
-                  <p>
-                    <span className="label-transaction">Amount:</span> N2,000.00
-                  </p>
-                  <p>
-                    <span className="label-transaction">Status:</span> Paid
-                  </p>
-                </div>
-                <div className="transaction-transaction deposit-transaction">
-                  <p>
-                    <span className="label-transaction">Billing Date:</span>{" "}
-                    14.09.2019 00:00
-                  </p>
-                  <p>
-                    <span className="label-transaction">Transaction ID:</span>{" "}
-                    345648097657IF
-                  </p>
-                  <p>
-                    <span className="label-transaction">
-                      Materials Withdrawn:
-                    </span>
-                    -{" "}
-                  </p>
-                  <p>
-                    <span className="label-transaction">Amount:</span> N2,000.00
-                  </p>
-                  <p>
-                    <span className="label-transaction">Status:</span> Paid
-                  </p>
-                </div>
-                <div className="transaction-transaction deposit-transaction">
-                  <p>
-                    <span className="label-transaction">Billing Date:</span>{" "}
-                    14.09.2019 00:00
-                  </p>
-                  <p>
-                    <span className="label-transaction">Transaction ID:</span>{" "}
-                    345648097657IF
-                  </p>
-                  <p>
-                    <span className="label-transaction">
-                      Materials Withdrawn:
-                    </span>
-                    -{" "}
-                  </p>
-                  <p>
-                    <span className="label-transaction">Amount:</span> N2,000.00
-                  </p>
-                  <p>
-                    <span className="label-transaction">Status:</span> Paid
-                  </p>
-                </div>
-                <div className="transaction-transaction deposit-transaction">
-                  <p>
-                    <span className="label-transaction">Billing Date:</span>{" "}
-                    14.09.2019 00:00
-                  </p>
-                  <p>
-                    <span className="label-transaction">Transaction ID:</span>{" "}
-                    345648097657IF
-                  </p>
-                  <p>
-                    <span className="label-transaction">
-                      Materials Withdrawn:
-                    </span>
-                    -{" "}
-                  </p>
-                  <p>
-                    <span className="label-transaction">Amount:</span> N2,000.00
-                  </p>
-                  <p>
-                    <span className="label-transaction">Status:</span> Paid
-                  </p>
-                </div>
-                <div className="transaction-transaction withdraw-transaction">
-                  <p>
-                    <span className="label-transaction">Billing Date</span>{" "}
-                    14.09.2019 00:00
-                  </p>
-                  <p>
-                    <span className="label-transaction">Transaction ID</span>{" "}
-                    345648097657IF
-                  </p>
-                  <p>
-                    <span className="label-transaction">
-                      Materials Withdrawn:
-                    </span>
-                    <span>100 Bags of cement</span>
-                    <span className="br-transaction"></span>
-                    7,000 Units of Blocks
-                  </p>
-                  <p>
-                    <span className="label-transaction">Amount:</span> -
-                  </p>
-                  <p>
-                    <span className="label-transaction">Status:</span> Debit
-                  </p>
-                </div>
-                <div className="transaction-transaction withdraw-transaction">
-                  <p>
-                    <span className="label-transaction">Billing Date</span>{" "}
-                    14.09.2019 00:00
-                  </p>
-                  <p>
-                    <span className="label-transaction">Transaction ID</span>{" "}
-                    345648097657IF
-                  </p>
-                  <p>
-                    <span className="label-transaction">
-                      Materials Withdrawn:
-                    </span>
-                    <span>
-                      100 Bags of cement
-                      <span className="br-transaction"></span>
-                      7,000 Units of Blocks
-                    </span>
-                  </p>
-                  <p>
-                    <span className="label-transaction">Amount:</span> -
-                  </p>
-                  <p>
-                    <span className="label-transaction">Status:</span> Debit
-                  </p>
-                </div>
-                <div className="transaction-transaction deposit-transaction">
-                  <p>
-                    <span className="label-transaction">Billing Date:</span>{" "}
-                    14.09.2019 00:00
-                  </p>
-                  <p>
-                    <span className="label-transaction">Transaction ID:</span>{" "}
-                    345648097657IF
-                  </p>
-                  <p>
-                    <span className="label-transaction">
-                      Materials Withdrawn:
-                    </span>
-                    -
-                  </p>
-                  <p>
-                    <span className="label-transaction">Amount:</span> N2,000.00
-                  </p>
-                  <p>
-                    <span className="label-transaction">Status:</span> Paid
-                  </p>
-                </div>
+                {transactionTable}
               </div>
-              <table className="rates-transaction bottom-transaction">
+              {/* <table className="rates-transaction bottom-transaction">
                 <tr>
                   <td>Rates</td>
                   <td>Block</td>
@@ -501,7 +464,7 @@ class Transactions extends Component {
                     $2
                   </td>
                 </tr>
-              </table>
+              </table> */}
             </div>
           </div>
         </div>
@@ -510,10 +473,13 @@ class Transactions extends Component {
   }
 }
 
-const mapStateToProps = (state) => ({});
+const mapStateToProps = (state) => ({
+  transactions: state.transactions,
+});
 
 const mapDispatchToProps = {
   logoutUser,
+  getTransactions,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Transactions);

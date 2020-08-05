@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { loginUser } from "../../store/actions/authActions";
 import "./login.scss";
 import { toast } from "react-toastify";
+import Tada from 'react-reveal/Tada';
 
 class Login extends Component {
   constructor() {
@@ -25,8 +26,8 @@ class Login extends Component {
   componentWillUnmount() {
     // fix Warning: Can't perform a React state update on an unmounted component
     this.setState = (state, callback) => {
-      return
-    }
+      return;
+    };
   }
 
   onChange(e) {
@@ -49,11 +50,14 @@ class Login extends Component {
     this.props
       .loginUser(payload)
       .then((res) => {
-        if (res.type === "GET_ERRORS") {
+        if (res.response.status === 400) {
+          toast.error(res.response.data.error);
+        }
+        if (res && res.type === "GET_ERRORS") {
           toast.error(res.payload.error);
         }
       })
-      .catch((err) => () => {})
+      .catch((err) => console.log(err))
       .finally(() => this.setState({ loading: false }));
   }
 
@@ -69,19 +73,24 @@ class Login extends Component {
   }
 
   render() {
-    const { phone, password, visible, loading } = this.state;
+    const { phone, password, visible, loading, errors } = this.state;
     return (
       <div className="login-wrapper">
         <div className="container">
           <Link to="/" className="logo">
-            Stokkpile
+            Laybuy
           </Link>
           <img
             src="https://res.cloudinary.com/djnhrvjyf/image/upload/v1594376370/woman-with-laptop_f7fyle.svg"
             className="woman"
           />
           <div className="login">
-            <p className="login-header">Log In</p>
+          <Tada>
+            <div className="card-login">
+              <p className="login-header">Log In</p>
+            <p className="text-danger">
+              {errors && errors.network ? errors.network : ""}
+            </p>
             <form onSubmit={this.onSubmit}>
               <input
                 type="text"
@@ -124,12 +133,16 @@ class Login extends Component {
                   <img src="../assets/images/ig.svg" />
                 </button>
               </div> */}
-              {!loading && <button type="submit" className="submit">
-                Log In
-              </button>}
-              {loading && <button type="button" className="submit" disabled>
-                Authenticating...
-              </button>}
+              {!loading && (
+                <button type="submit" className="submit">
+                  Log In
+                </button>
+              )}
+              {loading && (
+                <button type="button" className="submit" disabled>
+                  Authenticating...
+                </button>
+              )}
             </form>
             <Link to="/signup" className="sign-up">
               Sign Up
@@ -142,8 +155,9 @@ class Login extends Component {
               <Link to="/terms">Terms & Conditions</Link> and
               <Link to="/privacy"> Privacy Policy</Link>
             </p>
-            <script src="../assets/js/login.js"></script>
-            <script src="../assets/js/Required-inputs.js"></script>
+              
+            </div>
+            </Tada>
           </div>
         </div>
       </div>

@@ -1,9 +1,49 @@
-import React, { Component, createRef } from "react";
+import React, { Component, createRef, Fragment } from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
+import Fade from "react-reveal/Fade";
 import "./homepage.scss";
+import Slide from "react-reveal/Fade";
+import LightSpeed from "react-reveal/LightSpeed";
 
 class Homepage extends Component {
+  constructor() {
+    super();
+
+    this.hamburger = createRef();
+    this.outsideOverlay = createRef();
+    this.clickAble = createRef();
+    this.sidebar = createRef();
+  }
+
+  // const hamburger = document.querySelector(".hamburger");
+  // const overlay = document.querySelector(".outside-overlay");
+  // const sidebar = document.querySelector(".sidebar");
+  // const close = document.querySelector(".sidebar-close");
+  // const clickable = document.querySelector(".clickable");
+
+  // hamburger.addEventListener('click', open)
+
+  // close.addEventListener("click", closeSideBar)
+
+  // clickable.addEventListener("click", closeSideBar)
+
+  open = () => {
+    this.outsideOverlay.current.style.display = "flex";
+    this.clickAble.current.style.display = "block";
+    this.sidebar.current.classList.add("sidebarAnim");
+  };
+
+  closeSideBar = () => {
+    this.sidebar.current.classList.add("slideOutAnim");
+    setTimeout(() => {
+      this.sidebar.current.classList.remove("slideOutAnim");
+      this.sidebar.current.classList.remove("sidebarAnim");
+      this.clickAble.current.style.display = "none";
+      this.outsideOverlay.current.style.display = "none";
+    }, 700);
+  };
+
   static getDerivedStateFromProps(nextProps, prevState) {
     if (nextProps.auth.isAuthenticated) {
       nextProps.history.push("/home");
@@ -36,13 +76,29 @@ class Homepage extends Component {
 
     return (
       <div className="homepage-wrapper">
-        <div className="outside-overlay">
-          <div className="clickable"></div>
-          <div className="sidebar">
+        <div className="outside-overlay" ref={this.outsideOverlay}>
+          <div
+            className="clickable"
+            ref={this.clickAble}
+            onClick={this.closeSideBar.bind(this)}
+          ></div>
+          <div className="sidebar" ref={this.sidebar}>
             <div className="sidebar-header">
-              <div className="sidebar-logo">Stokkpile</div>
-              <div className="sidebar-close">
-                <i className="fas fa-arrow-right"></i>
+              <div className="sidebar-logo">Laybuy</div>
+              <div
+                className="sidebar-close"
+                onClick={this.closeSideBar.bind(this)}
+              >
+                <span
+                  class="iconify"
+                  data-icon="bx:bx-arrow-back"
+                  data-inline="false"
+                  style={{
+                    color: "#ffffff",
+                    fontSize: "20px",
+                    marginTop: "7px",
+                  }}
+                ></span>
               </div>
             </div>
             <div className="sidebar-content">
@@ -82,9 +138,13 @@ class Homepage extends Component {
             <div className="Header-content">
               <div className="heading-top">
                 <div className="logo">
-                  <Link to="/">Stokkpile</Link>
+                  <Link to="/">Laybuy</Link>
                 </div>
-                <div className="hamburger">
+                <div
+                  className="hamburger"
+                  ref={this.hamburger}
+                  onClick={this.open.bind(this)}
+                >
                   <span className="hamburger-child"></span>
                   <span className="hamburger-child"></span>
                   <span className="hamburger-child"></span>
@@ -125,64 +185,81 @@ class Homepage extends Component {
                 </nav>
               </div>
               <div className="header-bottom">
-                <div className="text-section">
-                  <h1 className="Header-Large-Heading">
-                    Stockpile building materials.
-                  </h1>
-                  <p className="Header-lead-text">
-                    Accumulate building materials by automatically depositing
-                    small amounts of money, which is instantly converted to
-                    equivalent amount of building materials which you can
-                    witdraw and pick up tommorow or in several years time.
-                  </p>
-                  <Link to="/signup" className="header-btn btn">
-                    Sign Up
-                  </Link>
-                </div>
-                <img
-                  className="img-blocks"
-                  src="https://res.cloudinary.com/djnhrvjyf/image/upload/q_auto,f_auto/v1594330427/buildingblock_odamev.svg"
-                  alt="undraw_building_blocks_n0nc"
-                />
+                <Fade left delay={600}>
+                  <div className="text-section">
+                    <h1 className="Header-Large-Heading">
+                      Stock pile building materials.
+                    </h1>
+                    <p className="Header-lead-text">
+                      Accumulate building materials by automatically depositing
+                      small amounts of money, which is instantly converted to
+                      equivalent amount of building materials which you can
+                      witdraw and pick up tommorow or in several years time.
+                    </p>
+                    <Link to="/signup" className="header-btn btn">
+                      Sign Up
+                    </Link>
+                  </div>
+                </Fade>
+
+                <Fade right delay={600}>
+                  <img
+                    className="img-blocks"
+                    src="https://res.cloudinary.com/djnhrvjyf/image/upload/q_auto,f_auto/v1594330427/buildingblock_odamev.svg"
+                    alt="undraw_building_blocks_n0nc"
+                    data-aos="fade-right"
+                  />
+                </Fade>
               </div>
             </div>
           </header>
 
           <section className="why-stockpiler">
             <div className="why-stockpiler-heading">
-              <h1 className="why-stockpiler-heading-lead">Why Stokkpiler?</h1>
+              <h1 className="why-stockpiler-heading-lead">Why Laybuy?</h1>
               <p className="why-stockpiler-heading-sub">
-                We offer the best services for Stockpiling
+                We offer the best services for Stock piling
               </p>
             </div>
 
             <div className="why-stockpiler-body">
-              <div className="reason">
-                <h2 className="reason-header">Easy to use.</h2>
-                <p className="reason-text">
-                  Deposit regular amounts of money on a recurring basis,
-                  automatically or manually.
-                </p>
-              </div>
-              <div className="reason">
-                <h2 className="reason-header">Enforces discipline.</h2>
-                <p className="reason-text">
-                  Once you deposit, you can only withdraw in materials not cash.
-                </p>
-              </div>
-              <div className="reason">
-                <h2 className="reason-header">Flexible</h2>
-                <p className="reason-text">
-                  You can withdraw and pickup materials anywhere in the Country.
-                </p>
-              </div>
-              <div className="reason">
-                <h2 className="reason-header">Transparent</h2>
-                <p className="reason-text">
-                  Login to see accumulated materials in your virtual store,
-                  track transactions.
-                </p>
-              </div>
+              <Fade left delay={400}>
+                <div className="reason">
+                  <h2 className="reason-header">Easy to use.</h2>
+                  <p className="reason-text">
+                    Deposit regular amounts of money on a recurring basis,
+                    automatically or manually.
+                  </p>
+                </div>
+              </Fade>
+
+              <Fade right delay={400}>
+                <div className="reason">
+                  <h2 className="reason-header">Enforces discipline.</h2>
+                  <p className="reason-text">
+                    Once you deposit, you can only withdraw in materials not
+                    cash.
+                  </p>
+                </div>
+              </Fade>
+              <Fade left delay={400}>
+                <div className="reason">
+                  <h2 className="reason-header">Flexible</h2>
+                  <p className="reason-text">
+                    You can withdraw and pickup materials anywhere in the
+                    Country.
+                  </p>
+                </div>
+              </Fade>
+              <Fade right delay={400}>
+                <div className="reason">
+                  <h2 className="reason-header">Transparent</h2>
+                  <p className="reason-text">
+                    Login to see accumulated materials in your virtual store,
+                    track transactions.
+                  </p>
+                </div>
+              </Fade>
             </div>
           </section>
 
@@ -202,11 +279,13 @@ class Homepage extends Component {
                     alt=""
                   />
                 </div>
-                <h2 className="feature-heading">Start with any amount</h2>
-                <p className="feature-text">
-                  Deposit regular amounts of money on a recurring basis
-                  automatically or manually.
-                </p>
+                <Fade bottom delay={600}>
+                  <h2 className="feature-heading">Start with any amount</h2>
+                  <p className="feature-text">
+                    Deposit regular amounts of money on a recurring basis
+                    automatically or manually.
+                  </p>
+                </Fade>
               </div>
               <div className="feature">
                 <div className="feature-image-container">
@@ -216,11 +295,13 @@ class Homepage extends Component {
                     alt=""
                   />
                 </div>
-                <h2 className="feature-heading">Withdrawal is simple</h2>
-                <p className="feature-text">
-                  Deposit regular amounts of money on a recurring basis
-                  automatically or manually.
-                </p>
+                <Fade bottom delay={600}>
+                  <h2 className="feature-heading">Withdrawal is simple</h2>
+                  <p className="feature-text">
+                    Deposit regular amounts of money on a recurring basis
+                    automatically or manually.
+                  </p>
+                </Fade>
               </div>
               <div className="feature">
                 <div className="feature-image-container">
@@ -230,11 +311,13 @@ class Homepage extends Component {
                     alt=""
                   />
                 </div>
-                <h2 className="feature-heading">Coperate savings</h2>
-                <p className="feature-text">
-                  Deposit regular amounts of money on a recurring basis
-                  automatically or manually.
-                </p>
+                <Fade bottom delay={600}>
+                  <h2 className="feature-heading">Coperate savings</h2>
+                  <p className="feature-text">
+                    Deposit regular amounts of money on a recurring basis
+                    automatically or manually.
+                  </p>
+                </Fade>
               </div>
               <div className="feature">
                 <div className="feature-image-container">
@@ -244,11 +327,13 @@ class Homepage extends Component {
                     alt=""
                   />
                 </div>
-                <h2 className="feature-heading">Set a target</h2>
-                <p className="feature-text">
-                  Deposit regular amounts of money on a recurring basis
-                  automatically or manually.
-                </p>
+                <Fade bottom delay={600}>
+                  <h2 className="feature-heading">Set a target</h2>
+                  <p className="feature-text">
+                    Deposit regular amounts of money on a recurring basis
+                    automatically or manually.
+                  </p>
+                </Fade>
               </div>
             </div>
           </section>
@@ -262,63 +347,79 @@ class Homepage extends Component {
             </div>
             <div className="How-it-works-body">
               <div className="method-group">
-                <div className="method">
-                  <p className="method-heading">Sign Up</p>
-                  <p className="method-text">
-                    Sign up with us today, we require only your name, email and
-                    phone number.
-                  </p>
-                </div>
-                <img
-                  className="method-image"
-                  src="https://res.cloudinary.com/djnhrvjyf/image/upload/q_auto,f_auto/v1594330427/podcast_taktxo.svg"
-                  alt="lady using laptop"
-                />
+                <Slide top delay={400}>
+                  <div className="method">
+                    <p className="method-heading">Sign Up</p>
+                    <p className="method-text">
+                      Sign up with us today, we require only your name, email
+                      and phone number.
+                    </p>
+                  </div>
+                </Slide>
+                <Slide bottom delay={400}>
+                  <img
+                    className="method-image"
+                    src="https://res.cloudinary.com/djnhrvjyf/image/upload/q_auto,f_auto/v1594330427/podcast_taktxo.svg"
+                    alt="lady using laptop"
+                  />
+                </Slide>
               </div>
               <div className="method-group reverse">
-                <div className="method">
-                  <p className="method-heading">Add your card</p>
-                  <p className="method-text">
-                    Sign up with us today, we require only your name, email and
-                    phone number.
-                  </p>
-                </div>
-                <img
-                  className="method-image push"
-                  src="https://res.cloudinary.com/djnhrvjyf/image/upload/q_auto,f_auto/v1594330427/creditcard_k5gcmc.svg"
-                  alt="woman hold credit card"
-                />
+                <Slide top delay={400}>
+                  <div className="method">
+                    <p className="method-heading">Add your card</p>
+                    <p className="method-text">
+                      Sign up with us today, we require only your name, email
+                      and phone number.
+                    </p>
+                  </div>
+                </Slide>
+                <Slide bottom delay={400}>
+                  <img
+                    className="method-image push"
+                    src="https://res.cloudinary.com/djnhrvjyf/image/upload/q_auto,f_auto/v1594330427/creditcard_k5gcmc.svg"
+                    alt="woman hold credit card"
+                  />
+                </Slide>
               </div>
               <div className="method-group">
-                <div className="method">
-                  <p className="method-heading">Specify the materials</p>
-                  <p className="method-text">
-                    Sign up with us today, we require only your name, email and
-                    phone number.
-                  </p>
-                </div>
-                <img
-                  className="method-image"
-                  src="https://res.cloudinary.com/djnhrvjyf/image/upload/q_auto,f_auto/v1594330427/addcart_upkpg2.svg"
-                  alt="add the cart"
-                />
+                <Slide top delay={400}>
+                  <div className="method">
+                    <p className="method-heading">Specify the materials</p>
+                    <p className="method-text">
+                      Sign up with us today, we require only your name, email
+                      and phone number.
+                    </p>
+                  </div>
+                </Slide>
+                <Slide bottom delay={400}>
+                  <img
+                    className="method-image"
+                    src="https://res.cloudinary.com/djnhrvjyf/image/upload/q_auto,f_auto/v1594330427/addcart_upkpg2.svg"
+                    alt="add the cart"
+                  />
+                </Slide>
               </div>
               <div className="method-group reverse">
-                <div className="method">
-                  <p className="method-heading">Sit back and Relax</p>
-                  <p className="method-text method-last">
-                    Sign up with us today, we require only your name, email and
-                    phone number.
-                  </p>
-                  <Link to="/signup" className="Method-button">
-                    Sign Up
-                  </Link>
-                </div>
-                <img
-                  className="method-image push"
-                  src="https://res.cloudinary.com/djnhrvjyf/image/upload/q_auto,f_auto/v1594332065/investing_7u74_quhe93.svg"
-                  alt="investment image"
-                />
+                <Slide top delay={400}>
+                  <div className="method">
+                    <p className="method-heading">Sit back and Relax</p>
+                    <p className="method-text method-last">
+                      Sign up with us today, we require only your name, email
+                      and phone number.
+                    </p>
+                    <Link to="/signup" className="Method-button">
+                      Sign Up
+                    </Link>
+                  </div>
+                </Slide>
+                <Slide bottom delay={400}>
+                  <img
+                    className="method-image push"
+                    src="https://res.cloudinary.com/djnhrvjyf/image/upload/q_auto,f_auto/v1594332065/investing_7u74_quhe93.svg"
+                    alt="investment image"
+                  />
+                </Slide>
               </div>
             </div>
           </section>
@@ -339,11 +440,13 @@ class Homepage extends Component {
                     alt=""
                   />
                 </div>
-                <h2 className="faq-heading">Question 1</h2>
-                <p className="faq-text">
-                  Deposit regular amounts of money on a recurring basis
-                  automatically or manually.
-                </p>
+                <LightSpeed>
+                  <h2 className="faq-heading">Question 1</h2>
+                  <p className="faq-text">
+                    Deposit regular amounts of money on a recurring basis
+                    automatically or manually.
+                  </p>
+                </LightSpeed>
               </div>
               <div className="faq">
                 <div className="feature-image-container">
@@ -353,11 +456,13 @@ class Homepage extends Component {
                     alt=""
                   />
                 </div>
-                <h2 className="faq-heading">Question 2</h2>
-                <p className="faq-text">
-                  Deposit regular amounts of money on a recurring basis
-                  automatically or manually.
-                </p>
+                <LightSpeed>
+                  <h2 className="faq-heading">Question 2</h2>
+                  <p className="faq-text">
+                    Deposit regular amounts of money on a recurring basis
+                    automatically or manually.
+                  </p>
+                </LightSpeed>
               </div>
               <div className="faq">
                 <div className="feature-image-container">
@@ -367,11 +472,13 @@ class Homepage extends Component {
                     alt=""
                   />
                 </div>
-                <h2 className="faq-heading">Question 3</h2>
-                <p className="faq-text">
-                  Deposit regular amounts of money on a recurring basis
-                  automatically or manually.
-                </p>
+                <LightSpeed>
+                  <h2 className="faq-heading">Question 3</h2>
+                  <p className="faq-text">
+                    Deposit regular amounts of money on a recurring basis
+                    automatically or manually.
+                  </p>
+                </LightSpeed>
               </div>
               <div className="faq">
                 <div className="feature-image-container">
@@ -381,11 +488,13 @@ class Homepage extends Component {
                     alt=""
                   />
                 </div>
-                <h2 className="faq-heading">Question 4</h2>
-                <p className="faq-text">
-                  Deposit regular amounts of money on a recurring basis
-                  automatically or manually.
-                </p>
+                <LightSpeed>
+                  <h2 className="faq-heading">Question 4</h2>
+                  <p className="faq-text">
+                    Deposit regular amounts of money on a recurring basis
+                    automatically or manually.
+                  </p>
+                </LightSpeed>
               </div>
             </div>
           </section>
@@ -416,7 +525,7 @@ class Homepage extends Component {
                       data-inline="false"
                       style={{ color: "#ffffff", fontSize: "16px" }}
                     ></span>
-                    <h3>info@stokkpiler.com</h3>
+                    <h3>info@laybuy.app</h3>
                   </div>
                 </div>
               </div>
@@ -452,7 +561,7 @@ class Homepage extends Component {
             </div>
             <hr className="footer-hr" />
             <div className="bottom-contents">
-              <p className="copyright"> &copy; stokkpiler 2020 </p>
+              <p className="copyright"> &copy; Laybuy 2020 </p>
               <div className="social-media">
                 <h4 className="social-media-lead">Follow us on social media</h4>
                 <div className="soc-icons">

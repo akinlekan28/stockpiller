@@ -428,7 +428,7 @@ class ViewPlans extends Component {
                 <div class="bar-viewplans"></div>
                 <div class="bar-viewplans"></div>
               </div>
-              <a
+              {/* <a
                 href=""
                 class="backlink-viewplans"
                 onClick={() => this.props.history.go(-1)}
@@ -474,7 +474,7 @@ class ViewPlans extends Component {
                     <h3>$2</h3>
                   </td>
                 </tr>
-              </table>
+              </table> */}
               <div class="personalize-viewplans">
                 <img
                   class="notification-bell-viewplans"
@@ -710,7 +710,7 @@ class ViewPlans extends Component {
           </div>
           <div class="footer-viewplans">
             <div class="footer-inner-viewplans">
-              <table class="stocks-viewplans">
+              {/* <table class="stocks-viewplans">
                 <tr>
                   <td>Rates</td>
                   <td>Blocks</td>
@@ -746,7 +746,7 @@ class ViewPlans extends Component {
                     <h3>$2</h3>
                   </td>
                 </tr>
-              </table>
+              </table> */}
             </div>
           </div>
         </main>

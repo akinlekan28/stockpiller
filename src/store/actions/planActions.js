@@ -7,32 +7,48 @@ import {
   GET_PLAN,
   VIEW_PLANS,
   REMOVE_LOADING,
+  DASHBOARD_PLANS,
   REMOVE_PLAN_LOADING,
 } from '../types'
+
+import { setErrors } from './authActions'
 
 //Add plan
 export const addPlan = (planData) => (dispatch) => {
   dispatch(clearErrors())
-  return api
-    .post('/plan', planData)
-    .then((res) =>
-      dispatch({
-        type: ADD_PLAN,
-        payload: res.data,
-      }),
-    )
-    .catch(
-      (err) =>
+  return (
+    api
+      .post('/plan', planData)
+      .then((res) =>
         dispatch({
-          type: GET_ERRORS,
-          payload: err.response.data,
+          type: ADD_PLAN,
+          payload: res.data,
         }),
-      dispatch(() => {
-        setTimeout(function () {
+      )
+      // .catch(
+      //   (err) => console.log(err),
+      //     dispatch({
+      //       type: GET_ERRORS,
+      //       payload: err.response.data,
+      //     }),
+      //   dispatch(() => {
+      //     setTimeout(function () {
+      //       dispatch(clearErrors())
+      //     }, 5000)
+      //   }),
+      // )
+      .catch((err) => {
+        if (err.request && !err.response.data) {
+          dispatch(setErrors({ network: 'Check your network connection' }))
+        } else {
+          dispatch(setErrors(err.response.data))
+        }
+        dispatch({ type: REMOVE_PLAN_LOADING })
+        setTimeout(() => {
           dispatch(clearErrors())
         }, 5000)
-      }),
-    )
+      })
+  )
 }
 
 //get plans
@@ -46,22 +62,39 @@ export const getPlans = () => (dispatch) => {
         payload: res.data.data,
       }),
     )
-    .catch(
-      (err) =>
-        dispatch({
-          type: GET_ERRORS,
-          payload: err.response.data,
-        }),
-      dispatch(() => {
-        setTimeout(function () {
-          dispatch(clearErrors())
-        }, 5000)
-      }),
-    )
+    .catch((err) => {
+      if (err.request && !err.response.data) {
+        dispatch(setErrors({ network: 'Check your network connection' }))
+      } else {
+        dispatch(setErrors(err.response.data))
+      }
+      dispatch({ type: REMOVE_PLAN_LOADING })
+      setTimeout(() => {
+        dispatch(clearErrors())
+      }, 5000)
+    })
+}
+
+export const getLastPlans = () => (dispatch) => {
+  dispatch(setLoading())
+  api
+    .get('/plan/latest')
+    .then((res) => dispatch({ type: DASHBOARD_PLANS, payload: res.data.data }))
+    .catch((err) => {
+      if (err.request && !err.response.data) {
+        dispatch(setErrors({ network: 'Check your network connection' }))
+      } else {
+        dispatch(setErrors(err.response.data))
+      }
+      dispatch({ type: REMOVE_PLAN_LOADING })
+      setTimeout(() => {
+        dispatch(clearErrors())
+      }, 5000)
+    })
 }
 
 //get plan
-export const getPlan = planId => (dispatch) => {
+export const getPlan = (planId) => (dispatch) => {
   dispatch(setLoading())
   api
     .get(`/plan/${planId}`)

@@ -24,6 +24,8 @@ import Cards from "./pages/cards/Cards";
 import EditPlan from "./pages/plans/EditPlan";
 import Settings from "./pages/settings/Settings";
 import ChangePassword from "./pages/settings/ChangePassword";
+// import AOS from "aos";
+// import "aos/dist/aos.css";
 
 //check for token
 if (localStorage.jwtToken) {
@@ -44,6 +46,13 @@ if (localStorage.jwtToken) {
 }
 
 class App extends Component {
+  // componentDidMount() {
+  //   AOS.init({
+  //     duration: 2000,
+  //   });
+  //   AOS.refresh();
+  // }
+
   render() {
     return (
       <Provider store={store}>
@@ -92,7 +101,11 @@ class App extends Component {
             <PrivateRoute exact path="/settings" component={Settings} />
           </Switch>
           <Switch>
-            <PrivateRoute exact path="/change-password" component={ChangePassword} />
+            <PrivateRoute
+              exact
+              path="/change-password"
+              component={ChangePassword}
+            />
           </Switch>
         </Router>
       </Provider>

@@ -188,7 +188,7 @@ class NewPlan extends Component {
                 <div class="bar-home"></div>
                 <div class="bar-home"></div>
               </div>
-              <a href="http://" class="backlink-home">
+              {/* <a href="http://" class="backlink-home">
                 <div class="back-home">
                   <img src="../assets/images/Path 3 Copy.svg" alt="" />
                   <h2>Back</h2>
@@ -230,7 +230,7 @@ class NewPlan extends Component {
                     <h3>$2</h3>
                   </td>
                 </tr>
-              </table>
+              </table> */}
               <div class="personalize-home">
                 <img
                   class="notification-bell-home"

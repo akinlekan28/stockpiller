@@ -176,13 +176,13 @@ class Home extends Component {
                 <div className="bar-home"></div>
                 <div className="bar-home"></div>
               </div>
-              <a href="http://" className="backlink-home">
+              {/* <a href="http://" className="backlink-home">
                 <div className="back-home">
                   <img src="../assets/images/Path 3 Copy.svg" alt="" />
                   <h2>Back</h2>
                 </div>
-              </a>
-              <table className="stocks-home">
+              </a> */}
+              {/* <table className="stocks-home">
                 <tr>
                   <td>Rates</td>
                   <td>Blocks</td>
@@ -218,7 +218,7 @@ class Home extends Component {
                     <h3>$2</h3>
                   </td>
                 </tr>
-              </table>
+              </table> */}
               <div className="personalize-home">
                 <img
                   className="notification-bell-home"
@@ -353,7 +353,7 @@ class Home extends Component {
           </div>
           <div className="footer-home">
             <div className="footer-inner-home">
-              <table className="stocks-home">
+              {/* <table className="stocks-home">
                 <tr>
                   <td>Rates</td>
                   <td>Blocks</td>
@@ -389,7 +389,7 @@ class Home extends Component {
                     <h3>$2</h3>
                   </td>
                 </tr>
-              </table>
+              </table> */}
             </div>
           </div>
         </main>

@@ -1,45 +1,59 @@
-import React, { Component } from 'react'
-import { connect } from 'react-redux'
-import { Link } from 'react-router-dom'
-import { getPlans } from '../../store/actions/planActions'
-import { logoutUser } from '../../store/actions/authActions'
-import './scss/plans.scss'
+import React, { Component } from "react";
+import { connect } from "react-redux";
+import { Link } from "react-router-dom";
+import { getPlans } from "../../store/actions/planActions";
+import { logoutUser } from "../../store/actions/authActions";
+import Skeleton from "@yisheng90/react-loading";
+import "./scss/plans.scss";
 
 class Plans extends Component {
   constructor() {
-    super()
+    super();
 
-    this.logout = this.logout.bind(this)
+    this.logout = this.logout.bind(this);
   }
 
   componentDidMount() {
-    this.props.getPlans()
+    this.props.getPlans();
   }
 
   logout(e) {
-    e.preventDefault()
+    e.preventDefault();
 
-    this.props.logoutUser()
+    this.props.logoutUser();
   }
 
   render() {
-    const { plans, loading } = this.props.plans
-    let i = 1
+    const { plans, loading } = this.props.plans;
+    let i = 1;
 
-    let planContainer
+    let planContainer;
     const formatMoney = (money) => {
       let formatedValue = money
         .toFixed(2)
         .toString()
-        .replace(/(\d)(?=(\d\d\d)+(?!\d))/g, '$1,')
-      return formatedValue
-    }
+        .replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,");
+      return formatedValue;
+    };
 
     if (loading || plans === null) {
-      planContainer = <h4>Loading..</h4>
+      planContainer = (
+        <>
+          <Skeleton height={40} />
+          <Skeleton height={40} />
+          <Skeleton height={40} />
+          <Skeleton height={40} />
+          <Skeleton height={40} />
+          <Skeleton height={40} />
+          <Skeleton height={40} />
+          <Skeleton height={30} />
+          <Skeleton height={30} />
+          <Skeleton height={30} />
+          <Skeleton height={30} />
+        </>
+      );
     } else {
       if (Object.keys(plans).length > 0) {
-        console.log(plans)
         planContainer = plans.map((p) => (
           <div className="plan-group-home" key={p.id}>
             <div className="detail-container-home">
@@ -52,7 +66,9 @@ class Plans extends Component {
             </div>
             <div className="detail-container-home">
               <p className="tag-home"> Auto Deposits </p>
-              <span className="response-home">&#8358;{formatMoney(p.deposit)}</span>
+              <span className="response-home">
+                &#8358;{formatMoney(p.deposit)}
+              </span>
             </div>
             <div className="detail-container-home">
               <p className="tag-home"> List Of Properties: </p>
@@ -67,8 +83,9 @@ class Plans extends Component {
             </div>
             <div className="detail-container-home">
               <p className="tag-home"> Next Deposit Date: </p>
-              <span className="response-home">{new Date(p.next_deposit_date).toISOString()
-                        .substring(0, 10)}</span>
+              <span className="response-home">
+                {new Date(p.next_deposit_date).toISOString().substring(0, 10)}
+              </span>
             </div>
             <div className="detail-container-actions-home">
               <Link to={`/editplans/${p.id}`}>
@@ -87,7 +104,7 @@ class Plans extends Component {
               </Link>
             </div>
           </div>
-        ))
+        ));
       }
     }
 
@@ -164,7 +181,7 @@ class Plans extends Component {
                 className="iconify"
                 data-icon="ri:logout-box-line"
                 data-inline="false"
-              ></span>{' '}
+              ></span>{" "}
               Logout
             </a>
           </div>
@@ -250,13 +267,13 @@ class Plans extends Component {
                 <div className="bar-home"></div>
                 <div className="bar-home"></div>
               </div>
-              <a href="http://" className="backlink-home">
+              {/* <a href="http://" className="backlink-home">
                 <div className="back-home">
                   <img src="../assets/images/Path 3 Copy.svg" alt="" />
                   <h2>Back</h2>
                 </div>
-              </a>
-              <table className="stocks-home">
+              </a> */}
+              {/* <table className="stocks-home">
                 <tr>
                   <td>Rates</td>
                   <td>Blocks</td>
@@ -292,7 +309,7 @@ class Plans extends Component {
                     <h3>$2</h3>
                   </td>
                 </tr>
-              </table>
+              </table> */}
               <div className="personalize-home">
                 <img
                   className="notification-bell-home"
@@ -311,7 +328,7 @@ class Plans extends Component {
             <div className="main-body-home">
               <div className="header-bar-home">
                 <h2>
-                  {' '}
+                  {" "}
                   <span className="underline-home">My p</span>lans
                 </h2>
                 <Link to="/plan/new" className="new-plan-home">
@@ -319,7 +336,7 @@ class Plans extends Component {
                     className="iconify"
                     data-icon="bx:bx-plus"
                     data-inline="false"
-                    style={{ marginRight: '10px', marginBottom: '-2px' }}
+                    style={{ marginRight: "10px", marginBottom: "-2px" }}
                   ></span>
                   <span className="">New plan</span>
                 </Link>
@@ -342,7 +359,7 @@ class Plans extends Component {
           </div>
           <div className="footer-home">
             <div className="footer-inner-home">
-              <table className="stocks-home">
+              {/* <table className="stocks-home">
                 <tr>
                   <td>Rates</td>
                   <td>Blocks</td>
@@ -378,22 +395,22 @@ class Plans extends Component {
                     <h3>$2</h3>
                   </td>
                 </tr>
-              </table>
+              </table> */}
             </div>
           </div>
         </main>
       </div>
-    )
+    );
   }
 }
 
 const mapStateToProps = (state) => ({
   plans: state.plan,
-})
+});
 
 const mapDispatchToProps = {
   getPlans,
-  logoutUser
-}
+  logoutUser,
+};
 
-export default connect(mapStateToProps, mapDispatchToProps)(Plans)
+export default connect(mapStateToProps, mapDispatchToProps)(Plans);

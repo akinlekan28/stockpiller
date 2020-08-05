@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom'
 import { registerUser } from '../../store/actions/authActions'
 import './signup.scss'
 import { toast } from 'react-toastify'
+import Tada from 'react-reveal/Tada';
 
 class Signup extends Component {
   constructor() {
@@ -90,14 +91,16 @@ class Signup extends Component {
       <div className="signup-wrapper">
         <div className="container">
           <Link to="/" className="logo">
-            Stokkpile
+            Laybuy
           </Link>
           <img
             src="https://res.cloudinary.com/djnhrvjyf/image/upload/v1594376370/woman-with-laptop_f7fyle.svg"
             className="woman"
           />
           <div className="signup">
-            <p className="signup-header">Join Us</p>
+          <Tada>
+           <div className="card-signup">
+           <p className="signup-header">Join Us</p>
             <p style={{ color: 'red' }}>
               {errors.errors ? errors.errors.first_name : ''}
             </p>
@@ -145,7 +148,7 @@ class Signup extends Component {
                   onChange={this.onChange}
                   required
                 />
-                <div className="select select--inline form-group custom-select">
+                <div className="select select--inline form-group">
                   <select
                     className="select-css"
                     onChange={this.onChange}
@@ -159,6 +162,7 @@ class Signup extends Component {
                   </select>
                 </div>
               </div>
+              <div className="row">
               <input
                 type="text"
                 name="phone"
@@ -167,7 +171,18 @@ class Signup extends Component {
                 onChange={this.onChange}
                 required
               />
-              <div className="password-div">
+              </div>
+              <div className="row">
+              <input
+                  type={visible ? 'text' : 'password'}
+                  name="password"
+                  value={password}
+                  placeholder="Password"
+                  onChange={this.onChange}
+                  required
+                />
+              </div>
+              {/* <div className="password-div">
                 <input
                   type={visible ? 'text' : 'password'}
                   name="password"
@@ -179,8 +194,8 @@ class Signup extends Component {
                 <button type="button" onClick={this.togglePassword}>
                   <img src="https://res.cloudinary.com/djnhrvjyf/image/upload/v1594376838/eye_s3luq1.svg" />
                 </button>
-              </div>
-              <p className="">
+              </div> */}
+              <p className="row">
                 <input
                   name="agree"
                   id="agree"
@@ -214,6 +229,7 @@ class Signup extends Component {
                   <img src="../assets/images/google.svg" />
                 </button>
               </div> */}
+              <div className="row">
               {!loading && (
                 <button type="submit" className="submit">
                   Next
@@ -224,6 +240,7 @@ class Signup extends Component {
                   Submitting...
                 </button>
               )}
+              </div>
             </form>
             <p className="login">
               Already have an account?<Link to="/login">Log In</Link>
@@ -233,6 +250,8 @@ class Signup extends Component {
               <Link to="/terms">Terms & Conditions</Link> and
               <Link to="/privacy"> Privacy Policy</Link>
             </p>
+           </div>
+           </Tada>
           </div>
         </div>
       </div>
