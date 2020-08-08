@@ -1,47 +1,49 @@
-import React, { Component } from "react";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import { Provider } from "react-redux";
-import store from "./store/store";
-import { ToastContainer } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
-import setAuthToken from "./utils/setAuthToken";
-import jwt_decode from "jwt-decode";
-import { setCurrentUser, logoutUser } from "./store/actions/authActions";
-import PrivateRoute from "./components/common/PrivateRoute";
-import Homepage from "./pages/homepage/Homepage";
-import Login from "./pages/auth/Login";
-import Signup from "./pages/auth/Signup";
-import Forgot from "./pages/auth/Forgot";
-import Home from "./pages/home/Home";
-import Plans from "./pages/plans/Plans";
-import ViewPlans from "./pages/plans/ViewPlans";
-import NewPlan from "./pages/plans/NewPlan";
-import CreatePlan from "./pages/plans/CreatePlan";
-import Transactions from "./pages/transactions/Transactions";
-import Withdraw from "./pages/withdraw/Withdraw";
-import Dashboard from "./pages/dashboard/Dashboard";
-import Cards from "./pages/cards/Cards";
-import EditPlan from "./pages/plans/EditPlan";
-import Settings from "./pages/settings/Settings";
-import ChangePassword from "./pages/settings/ChangePassword";
+import React, { Component } from 'react'
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
+import { Provider } from 'react-redux'
+import store from './store/store'
+import { ToastContainer } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
+import setAuthToken from './utils/setAuthToken'
+import jwt_decode from 'jwt-decode'
+import { setCurrentUser, logoutUser } from './store/actions/authActions'
+import PrivateRoute from './components/common/PrivateRoute'
+import Homepage from './pages/homepage/Homepage'
+import Login from './pages/auth/Login'
+import Signup from './pages/auth/Signup'
+import Forgot from './pages/auth/Forgot'
+import Home from './pages/home/Home'
+import Plans from './pages/plans/Plans'
+import ViewPlans from './pages/plans/ViewPlans'
+import NewPlan from './pages/plans/NewPlan'
+import CreatePlan from './pages/plans/CreatePlan'
+import Transactions from './pages/transactions/Transactions'
+import Withdraw from './pages/withdraw/Withdraw'
+import Dashboard from './pages/dashboard/Dashboard'
+import Cards from './pages/cards/Cards'
+import EditPlan from './pages/plans/EditPlan'
+import Settings from './pages/settings/Settings'
+import ChangePassword from './pages/settings/ChangePassword'
+import Terms from './pages/terms/Terms'
+import Privacy from './pages/terms/Privacy'
 // import AOS from "aos";
 // import "aos/dist/aos.css";
 
 //check for token
 if (localStorage.jwtToken) {
   //set auth token header auth
-  setAuthToken(localStorage.jwtToken);
+  setAuthToken(localStorage.jwtToken)
   //decode token and get user info
-  const decoded = jwt_decode(localStorage.jwtToken);
+  const decoded = jwt_decode(localStorage.jwtToken)
   //set user and isAuthenticated
-  store.dispatch(setCurrentUser(decoded));
+  store.dispatch(setCurrentUser(decoded))
   //check for expired token
   if (Date.now() >= decoded.exp * 1000) {
     // Logout user
-    store.dispatch(logoutUser());
+    store.dispatch(logoutUser())
 
     // Redirect to login
-    window.location.href = "/";
+    window.location.href = '/'
   }
 }
 
@@ -62,6 +64,8 @@ class App extends Component {
           <Route exact path="/login" component={Login} />
           <Route exact path="/signup" component={Signup} />
           <Route exact path="/reset" component={Forgot} />
+          <Route exact path="/terms" component={Terms} />
+          <Route exact path="/privacy" component={Privacy} />
           <Switch>
             <PrivateRoute exact path="/dashboard" component={Dashboard} />
           </Switch>
@@ -109,8 +113,8 @@ class App extends Component {
           </Switch>
         </Router>
       </Provider>
-    );
+    )
   }
 }
 
-export default App;
+export default App

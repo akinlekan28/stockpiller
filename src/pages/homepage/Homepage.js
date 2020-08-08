@@ -1,78 +1,66 @@
-import React, { Component, createRef, Fragment } from "react";
-import { connect } from "react-redux";
-import { Link } from "react-router-dom";
-import Fade from "react-reveal/Fade";
-import "./homepage.scss";
-import Slide from "react-reveal/Fade";
-import LightSpeed from "react-reveal/LightSpeed";
+import React, { Component, createRef, Fragment } from 'react'
+import { connect } from 'react-redux'
+import { Link } from 'react-router-dom'
+import Fade from 'react-reveal/Fade'
+import './homepage.scss'
+import Slide from 'react-reveal/Fade'
+import LightSpeed from 'react-reveal/LightSpeed'
 
 class Homepage extends Component {
   constructor() {
-    super();
+    super()
 
-    this.hamburger = createRef();
-    this.outsideOverlay = createRef();
-    this.clickAble = createRef();
-    this.sidebar = createRef();
+    this.hamburger = createRef()
+    this.outsideOverlay = createRef()
+    this.clickAble = createRef()
+    this.sidebar = createRef()
   }
 
-  // const hamburger = document.querySelector(".hamburger");
-  // const overlay = document.querySelector(".outside-overlay");
-  // const sidebar = document.querySelector(".sidebar");
-  // const close = document.querySelector(".sidebar-close");
-  // const clickable = document.querySelector(".clickable");
-
-  // hamburger.addEventListener('click', open)
-
-  // close.addEventListener("click", closeSideBar)
-
-  // clickable.addEventListener("click", closeSideBar)
-
   open = () => {
-    this.outsideOverlay.current.style.display = "flex";
-    this.clickAble.current.style.display = "block";
-    this.sidebar.current.classList.add("sidebarAnim");
-  };
+    this.outsideOverlay.current.style.display = 'flex'
+    this.clickAble.current.style.display = 'block'
+    this.sidebar.current.classList.add('sidebarAnim')
+  }
 
   closeSideBar = () => {
-    this.sidebar.current.classList.add("slideOutAnim");
+    this.sidebar.current.classList.add('slideOutAnim')
     setTimeout(() => {
-      this.sidebar.current.classList.remove("slideOutAnim");
-      this.sidebar.current.classList.remove("sidebarAnim");
-      this.clickAble.current.style.display = "none";
-      this.outsideOverlay.current.style.display = "none";
-    }, 700);
-  };
+      this.sidebar.current.classList.remove('slideOutAnim')
+      this.sidebar.current.classList.remove('sidebarAnim')
+      this.clickAble.current.style.display = 'none'
+      this.outsideOverlay.current.style.display = 'none'
+    }, 700)
+  }
 
   static getDerivedStateFromProps(nextProps, prevState) {
     if (nextProps.auth.isAuthenticated) {
-      nextProps.history.push("/home");
+      nextProps.history.push('/home')
     }
-    return null;
+    return null
   }
 
   render() {
-    const aboutScroll = createRef();
-    const howScroll = createRef();
-    const contactScroll = createRef();
+    const aboutScroll = createRef()
+    const howScroll = createRef()
+    const contactScroll = createRef()
 
     const gotoAbout = () => {
       aboutScroll.current.scrollIntoView({
-        behavior: "smooth",
-        block: "center",
-      });
-    };
+        behavior: 'smooth',
+        block: 'center',
+      })
+    }
 
     const gotoHow = () => {
-      howScroll.current.scrollIntoView({ behavior: "smooth", block: "start" });
-    };
+      howScroll.current.scrollIntoView({ behavior: 'smooth', block: 'start' })
+    }
 
     const gotoContact = () => {
       contactScroll.current.scrollIntoView({
-        behavior: "smooth",
-        block: "center",
-      });
-    };
+        behavior: 'smooth',
+        block: 'center',
+      })
+    }
 
     return (
       <div className="homepage-wrapper">
@@ -94,9 +82,9 @@ class Homepage extends Component {
                   data-icon="bx:bx-arrow-back"
                   data-inline="false"
                   style={{
-                    color: "#ffffff",
-                    fontSize: "20px",
-                    marginTop: "7px",
+                    color: '#ffffff',
+                    fontSize: '20px',
+                    marginTop: '7px',
                   }}
                 ></span>
               </div>
@@ -514,7 +502,7 @@ class Homepage extends Component {
                       className="iconify"
                       data-icon="clarity:phone-handset-solid"
                       data-inline="false"
-                      style={{ color: "#ffffff", fontSize: "16px" }}
+                      style={{ color: '#ffffff', fontSize: '16px' }}
                     ></span>
                     <h3>1234 5567 8877</h3>
                   </div>
@@ -523,7 +511,7 @@ class Homepage extends Component {
                       className="iconify"
                       data-icon="ic:round-mail"
                       data-inline="false"
-                      style={{ color: "#ffffff", fontSize: "16px" }}
+                      style={{ color: '#ffffff', fontSize: '16px' }}
                     ></span>
                     <h3>info@laybuy.app</h3>
                   </div>
@@ -574,7 +562,7 @@ class Homepage extends Component {
                       className="iconify"
                       data-icon="brandico:facebook"
                       data-inline="false"
-                      style={{ color: "#ffffff", fontSize: "16px" }}
+                      style={{ color: '#ffffff', fontSize: '16px' }}
                     ></span>
                   </a>
                   <a href="#" className="soc-link">
@@ -582,7 +570,7 @@ class Homepage extends Component {
                       className="iconify"
                       data-icon="cib:linkedin"
                       data-inline="false"
-                      style={{ color: "#ffffff", fontSize: "16px" }}
+                      style={{ color: '#ffffff', fontSize: '16px' }}
                     ></span>
                   </a>
                   <a href="#" className="soc-link">
@@ -590,7 +578,7 @@ class Homepage extends Component {
                       className="iconify"
                       data-icon="cib:twitter"
                       data-inline="false"
-                      style={{ color: "#ffffff", fontSize: "17px" }}
+                      style={{ color: '#ffffff', fontSize: '17px' }}
                     ></span>
                   </a>
                   <a href="#" className="soc-link">
@@ -598,29 +586,29 @@ class Homepage extends Component {
                       className="iconify"
                       data-icon="carbon:logo-instagram"
                       data-inline="false"
-                      style={{ color: "#ffffff", fontSize: "20px" }}
+                      style={{ color: '#ffffff', fontSize: '20px' }}
                     ></span>
                   </a>
                 </div>
               </div>
               <div className="policies">
-                <a href="#" className="policy-links">
+                <Link to="/privacy" className="policy-links">
                   Privacy,
-                </a>
-                <a href="#" className="policy-links">
+                </Link>
+                <Link to="/terms" className="policy-links">
                   Terms & Conditions
-                </a>
+                </Link>
               </div>
             </div>
           </footer>
         </div>
       </div>
-    );
+    )
   }
 }
 
 const mapStateToProps = (state) => ({
   auth: state.auth,
-});
+})
 
-export default connect(mapStateToProps, {})(Homepage);
+export default connect(mapStateToProps, {})(Homepage)
