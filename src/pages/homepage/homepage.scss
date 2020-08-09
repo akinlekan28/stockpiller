@@ -1,4 +1,6 @@
 // .homepage-wrapper{
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap');
+
 html {
   box-sizing: border-box;
   font-size: 69%;
@@ -10,11 +12,12 @@ html {
 *::before {
   box-sizing: inherit;
   margin: 0;
+  font-family: 'Lato', sans-serif;
   padding: 0;
 }
 
 body {
-  background-color: #f0f0f0;
+  background-color: #FFFFFF;
 }
 
 .container {
@@ -192,6 +195,7 @@ section.why-stockpiler {
   border-radius: 18px;
   padding: 18px;
 }
+
 .reason:nth-child(odd) {
   text-align: right;
 }
@@ -345,6 +349,7 @@ section.why-stockpiler {
 .reverse {
   flex-direction: row-reverse;
 }
+
 .reverse img {
   margin-right: 2rem;
 }
@@ -1168,4 +1173,5 @@ a.sidebar-link {
   //   color: #ffffff;
   // }
 }
+
 // }
