@@ -26,7 +26,7 @@ import ChangePassword from './pages/settings/ChangePassword'
 import Terms from './pages/terms/Terms'
 import Privacy from './pages/terms/Privacy'
 // import AOS from "aos";
-// import "aos/dist/aos.css";
+import "./App.css";
 
 //check for token
 if (localStorage.jwtToken) {

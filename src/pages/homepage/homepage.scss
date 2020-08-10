@@ -1,5 +1,5 @@
 // .homepage-wrapper{
-@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap');
+//@import url('https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css');
 
 html {
   box-sizing: border-box;
@@ -58,7 +58,7 @@ header {
   width: 100%;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 7rem;
+  margin-bottom: 4rem;
 }
 
 .logo {
@@ -100,7 +100,8 @@ nav.navbar {
 }
 
 .nav-item a {
-  font-size: 1.3rem;
+  font-size: 16px;
+  font-weight: 500;
   text-decoration: none;
   color: #ffffff;
   text-transform: capitalize;
@@ -128,8 +129,9 @@ nav.navbar {
 
 .Header-Large-Heading {
   font-size: 4.5rem;
+
   color: #ffffff;
-  font-weight: 100;
+  font-weight: 700;
   margin: 0 auto;
   margin-top: 7rem;
   margin-bottom: 3rem;
@@ -138,13 +140,13 @@ nav.navbar {
 }
 
 .Header-lead-text {
-  font-size: 1.6rem;
+  font-size: 15px;
   text-align: left;
-  color: #e2e1e7;
+  color: #fff;
   width: 100%;
   line-height: 2;
   margin: 0 auto;
-  margin-bottom: 5rem;
+  margin-bottom: 3rem;
 }
 
 .header-btn {
@@ -162,7 +164,7 @@ nav.navbar {
 
 section.why-stockpiler {
   padding: 5rem 20rem;
-  padding-top: 10rem;
+  padding-top: 8rem;
   margin: 0 auto;
   text-align: center;
 }
@@ -185,19 +187,20 @@ section.why-stockpiler {
 
 .why-stockpiler-body {
   text-align: left;
-  width: 80%;
+  width: 85%;
   margin: 0 auto;
 }
 
 .reason {
   margin-bottom: 3rem;
+  width: fit-content;
   background-color: #ededed;
   border-radius: 18px;
   padding: 18px;
 }
 
 .reason:nth-child(odd) {
-  text-align: right;
+  margin-left: auto;
 }
 
 .reason-header {
@@ -207,12 +210,12 @@ section.why-stockpiler {
 }
 
 .reason-text {
-  font-size: 1.6rem;
+  font-size: 14px;
   color: #4a4a4a;
 }
 
 .Features {
-  padding: 5rem 20rem;
+  padding: 2rem 10rem;
   padding-bottom: 0;
   margin: 2rem auto;
 }
@@ -241,7 +244,7 @@ section.why-stockpiler {
 
 .feature {
   position: relative;
-  flex-basis: 40%;
+  flex-basis: 45%;
   padding: 2rem;
   text-align: left;
   margin: 5rem 0;
@@ -452,7 +455,7 @@ section.why-stockpiler {
 footer {
   padding: 15rem 10rem;
   padding-bottom: 0;
-  background-color: #262c30;
+  background-color: #502274;
 }
 
 .footer-body {
@@ -518,11 +521,15 @@ footer {
 .fifty-percent-input {
   background-color: transparent;
   border: none;
-  border-bottom: 2px solid #9b9b9b;
-  color: #9b9b9b;
+  border-bottom: 2px solid #fff;
+  color: #fff;
   padding: 0.8rem 0;
   outline: none;
   width: 90%;
+
+  &::placeholder {
+    color: #fff;
+  }
 }
 
 .hundred-percent {
@@ -541,11 +548,15 @@ footer {
 .hundred-percent-input {
   background-color: transparent;
   border: none;
-  border-bottom: 2px solid #9b9b9b;
-  color: #9b9b9b;
+  border-bottom: 2px solid #fff;
+  color: #fff;
   padding: 0.8rem 0;
   outline: none;
   width: 94%;
+
+  &::placeholder {
+    color: #fff;
+  }
 }
 
 .footer-form-submit {
@@ -570,7 +581,7 @@ footer {
 
 .copyright {
   color: #ffffff;
-  font-size: 1rem;
+  font-size: 14px;
 }
 
 .social-media {
@@ -756,7 +767,7 @@ a.sidebar-link {
   }
   .Header-lead-text {
     width: 100%;
-    margin-bottom: 7rem;
+    margin-bottom: 4rem;
   }
   .Header-background-2 {
     display: none;
@@ -785,11 +796,11 @@ a.sidebar-link {
   }
 
   .heading-top {
-    margin-bottom: 7rem;
+    margin-bottom: 4rem;
   }
 
   section.why-stockpiler {
-    padding: 15rem 8rem;
+    padding:  8rem;
     text-align: center;
     padding-bottom: 0;
   }
@@ -798,8 +809,8 @@ a.sidebar-link {
     padding-bottom: 0;
   }
   .Features {
-    padding: 15rem 8rem;
-    padding-bottom: 0;
+    padding: 1rem 2rem;
+    //padding-bottom: 0;
   }
   .FAQs {
     padding: 15rem 8rem;
@@ -887,7 +898,7 @@ a.sidebar-link {
     flex-basis: 77%;
   }
   .Header-lead-text {
-    margin-bottom: 5rem;
+    margin-bottom: 3rem;
     color: #7aa1b9;
   }
   .talk {

@@ -125,7 +125,7 @@ class Homepage extends Component {
             />
             <div className="Header-content">
               <div className="heading-top">
-                <div className="logo">
+                <div className="logo fw-700 fs-18">
                   <Link to="/">Laybuy</Link>
                 </div>
                 <div
@@ -536,22 +536,22 @@ class Homepage extends Component {
                 </div>
                 <div className="hundred-percent">
                   <h3 className="hundred-percent-header">MESSAGE</h3>
-                  <input
-                    type="text"
+                  <textarea
+                    rows="5"
                     className="hundred-percent-input"
                     placeholder="Hi there..."
                   />
                 </div>
-                <button type="submit" className="footer-form-submit">
+                <button type="submit" className="footer-form-submit btn">
                   Send
                 </button>
               </form>
             </div>
             <hr className="footer-hr" />
             <div className="bottom-contents">
-              <p className="copyright"> &copy; Laybuy 2020 </p>
+              <p className="copyright "> &copy; Laybuy 2020 </p>
               <div className="social-media">
-                <h4 className="social-media-lead">Follow us on social media</h4>
+                <h4 className="social-media-lead fs-14">Follow us on social media</h4>
                 <div className="soc-icons">
                   <a
                     href="https://facebook.com/stokkpiler"
@@ -562,7 +562,7 @@ class Homepage extends Component {
                       className="iconify"
                       data-icon="brandico:facebook"
                       data-inline="false"
-                      style={{ color: '#ffffff', fontSize: '16px' }}
+                      style={{ color: '#ffffff', fontSize: 24 }}
                     ></span>
                   </a>
                   <a href="#" className="soc-link">
@@ -570,7 +570,7 @@ class Homepage extends Component {
                       className="iconify"
                       data-icon="cib:linkedin"
                       data-inline="false"
-                      style={{ color: '#ffffff', fontSize: '16px' }}
+                      style={{ color: '#ffffff', fontSize: 24 }}
                     ></span>
                   </a>
                   <a href="#" className="soc-link">
@@ -578,7 +578,7 @@ class Homepage extends Component {
                       className="iconify"
                       data-icon="cib:twitter"
                       data-inline="false"
-                      style={{ color: '#ffffff', fontSize: '17px' }}
+                      style={{ color: '#ffffff', fontSize: 24 }}
                     ></span>
                   </a>
                   <a href="#" className="soc-link">
@@ -586,16 +586,16 @@ class Homepage extends Component {
                       className="iconify"
                       data-icon="carbon:logo-instagram"
                       data-inline="false"
-                      style={{ color: '#ffffff', fontSize: '20px' }}
+                      style={{ color: '#ffffff', fontSize: 24}}
                     ></span>
                   </a>
                 </div>
               </div>
               <div className="policies">
-                <Link to="/privacy" className="policy-links">
+                <Link to="/privacy" className="policy-links fs-14">
                   Privacy,
                 </Link>
-                <Link to="/terms" className="policy-links">
+                <Link to="/terms" className="policy-links fs-14">
                   Terms & Conditions
                 </Link>
               </div>

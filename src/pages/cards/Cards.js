@@ -112,7 +112,7 @@ class Cards extends Component {
             </div>
             <div>
               <p>EXPIRES</p>
-              <p>**/**</p>
+              <p>{'**/**'}</p>
             </div>
           </div>
         </div>
@@ -329,7 +329,7 @@ class Cards extends Component {
 
             <div class="cards-cards">
               {cardContainer}
-              
+
               {/* <a class="add-card-cards" href="no-card.html">
                 <img
                   src="https://res.cloudinary.com/djnhrvjyf/image/upload/v1595631171/add-purple_nldgo1.svg"
