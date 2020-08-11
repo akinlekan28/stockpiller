@@ -1,9 +1,10 @@
-// .homepage-wrapper{
-//@import url('https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css');
-
+@import url('https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css');
 html {
   box-sizing: border-box;
-  font-size: 69%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  font-size: 63%;
   overflow-x: hidden;
 }
 
@@ -35,7 +36,7 @@ header {
 .Header-background {
   position: absolute;
   transform: translateY(-30%);
-  width: 108%;
+  width: 100%;
   z-index: -1;
 }
 
@@ -97,6 +98,12 @@ nav.navbar {
   list-style: none;
   display: flex;
   justify-content: space-evenly;
+
+  .nav-item {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
 }
 
 .nav-item a {
@@ -215,8 +222,8 @@ section.why-stockpiler {
 }
 
 .Features {
-  padding: 2rem 10rem;
-  padding-bottom: 0;
+  padding: 10rem 10rem;
+  background-color: #EDEDED;
   margin: 2rem auto;
 }
 
@@ -244,10 +251,9 @@ section.why-stockpiler {
 
 .feature {
   position: relative;
-  flex-basis: 45%;
+  flex-basis: 40%;
   padding: 2rem;
-  text-align: left;
-  margin: 5rem 0;
+  margin: 20px 0 0;
 }
 
 .feature-img {
@@ -255,17 +261,16 @@ section.why-stockpiler {
 }
 
 .feature-heading {
-  font-size: 1.8rem;
+  font-size: 18px;
+  text-align: center;
   margin-bottom: 1rem;
   color: #000000;
-  width: 90%;
 }
 
 .feature-text {
-  font-size: 1.6rem;
+  font-size: 15px;
+  text-align: center;
   color: #4a4a4a;
-  text-align: left;
-  width: 80%;
   line-height: 24px;
 }
 
@@ -354,12 +359,12 @@ section.why-stockpiler {
 }
 
 .reverse img {
-  margin-right: 2rem;
+  margin-right: 6rem;
 }
 
 .method {
   width: fit-content;
-  max-width: 300px;
+  //max-width: 300px;
 }
 
 .method-image {
@@ -368,13 +373,13 @@ section.why-stockpiler {
 
 .method-heading {
   font-size: 2rem;
-  margin-bottom: 0.8rem;
+  //margin-bottom: 0.8rem;
   color: #000;
 }
 
 .method-text {
   width: 80%;
-  font-size: 1.6rem;
+  font-size: 16px;
   text-align: left;
   color: #4a4a4a;
   line-height: 24px;
@@ -384,7 +389,7 @@ section.why-stockpiler {
 }
 
 .method-last {
-  margin-bottom: 3rem;
+  margin-bottom: 20px;
 }
 
 .Method-button {
@@ -403,17 +408,17 @@ section.why-stockpiler {
 
 .FAQs-heading {
   text-align: center;
-  margin-bottom: 8rem;
+  //margin-bottom: 8rem;
 }
 
 .FAQs-heading-lead {
-  font-size: 2.5rem;
+  font-size: 18px;
   color: #23616d;
   margin-bottom: 1rem;
 }
 
 .FAQs-heading-sub {
-  font-size: 1.4rem;
+  font-size: 16px;
   color: #7aa1b9;
 }
 
@@ -428,7 +433,7 @@ section.why-stockpiler {
   flex-basis: 45%;
   padding: 4rem;
   text-align: center;
-  margin: 5rem 0;
+  margin: 25px 0 0;
 }
 
 .feature-img {
@@ -445,10 +450,10 @@ section.why-stockpiler {
 }
 
 .faq-text {
-  font-size: 1.6rem;
+  font-size: 14px;
   color: #4a4a4a;
   text-align: left;
-  width: 80%;
+  width: 100%;
   line-height: 24px;
 }
 
@@ -800,7 +805,7 @@ a.sidebar-link {
   }
 
   section.why-stockpiler {
-    padding:  8rem;
+    padding: 8rem;
     text-align: center;
     padding-bottom: 0;
   }
