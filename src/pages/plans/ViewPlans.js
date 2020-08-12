@@ -1,48 +1,48 @@
-import React, { Component } from 'react'
-import { connect } from 'react-redux'
-import { Link } from 'react-router-dom'
-import { logoutUser } from '../../store/actions/authActions'
-import { getPlan } from '../../store/actions/planActions'
-import './scss/viewplans.scss'
+import React, { Component } from "react";
+import { connect } from "react-redux";
+import { Link } from "react-router-dom";
+import { logoutUser } from "../../store/actions/authActions";
+import { getPlan } from "../../store/actions/planActions";
+import "./scss/viewplans.scss";
 
 class ViewPlans extends Component {
   constructor() {
-    super()
+    super();
 
-    this.logout = this.logout.bind(this)
+    this.logout = this.logout.bind(this);
   }
 
   componentDidMount() {
-    this.props.getPlan(this.props.match.params.id)
+    this.props.getPlan(this.props.match.params.id);
   }
 
   logout(e) {
-    e.preventDefault()
+    e.preventDefault();
 
-    this.props.logoutUser()
+    this.props.logoutUser();
   }
 
   render() {
-    const { plan, loading } = this.props.plan
+    const { plan, loading } = this.props.plan;
     const formatMoney = (money) => {
       let formatedValue = money
         .toFixed(2)
         .toString()
-        .replace(/(\d)(?=(\d\d\d)+(?!\d))/g, '$1,')
-      return formatedValue
-    }
+        .replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,");
+      return formatedValue;
+    };
 
-    let planContainer
+    let planContainer;
 
     if (loading || plan === null) {
-      planContainer = <h4>Loading...</h4>
+      planContainer = <h4>Loading...</h4>;
     } else {
       if (Object.keys(plan).length > 0) {
         planContainer = (
           <>
             <div class="header-bar-viewplans">
               <h2>
-                {' '}
+                {" "}
                 <span class="underline-viewplans">{plan.plan_name}</span>
               </h2>
               <div class="header-bar-options-viewplans">
@@ -64,7 +64,7 @@ class ViewPlans extends Component {
               </div>
             </div>
             <div class="view-body-viewplans">
-              <div class="left-detail-viewplans">
+              <div class="left-detail-viewplans" >
                 <div class="left-detail-Box-viewplans">
                   <h2 class="box-header-viewplans">Balance</h2>
                   <div class="box-block-viewplans giant-viewplans">
@@ -83,7 +83,7 @@ class ViewPlans extends Component {
                       </div>
                     </div>
                     <p class="deposit-viewplans">
-                      Auto deposit amount{' '}
+                      Auto deposit amount{" "}
                       <span class="green-viewplans">
                         &#8358; {formatMoney(plan.deposit)}
                       </span>
@@ -95,7 +95,7 @@ class ViewPlans extends Component {
                       <p class="unit-box-header-viewplans">Deposit Frequency</p>
                       <div class="unit-value-viewplans">
                         {plan.deposit_frequency === null
-                          ? 'Not Available'
+                          ? "Not Available"
                           : plan.deposit_frequency}
                       </div>
                     </div>
@@ -120,7 +120,9 @@ class ViewPlans extends Component {
                   </div> */}
                 </div>
 
-                <button class="btn-viewplans">Cash Out</button>
+                <Link to="/withdraw" class="btn-viewplans">
+                  Cash Out
+                </Link>
 
                 <p class="warning-viewplans">
                   When you cash out Stokkpile buys the materials accumuated at a
@@ -128,7 +130,7 @@ class ViewPlans extends Component {
                 </p>
               </div>
 
-              {plan.plan_type != 'single' && (
+              {/* {plan.plan_type != "single" && (
                 <div class="plans-body-viewplans list-viewplans">
                   <div class="plan-Header-viewplans">
                     <div class="detail-container-viewplans">S/N</div>
@@ -151,7 +153,7 @@ class ViewPlans extends Component {
                     <div class="detail-container-viewplans">
                       <p class="tag-viewplans"> Biling Date: </p>
                       <span class="response-viewplans">
-                        14.09.2019<span class="time">00:00</span>{' '}
+                        14.09.2019<span class="time">00:00</span>{" "}
                       </span>
                     </div>
                     <div class="detail-container-viewplans">
@@ -172,7 +174,7 @@ class ViewPlans extends Component {
                     <div class="detail-container-viewplans">
                       <p class="tag-viewplans"> Biling Date: </p>
                       <span class="response-viewplans">
-                        14.09.2019<span class="time-viewplans">00:00</span>{' '}
+                        14.09.2019<span class="time-viewplans">00:00</span>{" "}
                       </span>
                     </div>
                     <div class="detail-container-viewplans">
@@ -193,7 +195,7 @@ class ViewPlans extends Component {
                     <div class="detail-container-viewplans">
                       <p class="tag-viewplans"> Biling Date: </p>
                       <span class="response-viewplans">
-                        14.09.2019<span class="time-viewplans">00:00</span>{' '}
+                        14.09.2019<span class="time-viewplans">00:00</span>{" "}
                       </span>
                     </div>
                     <div class="detail-container-viewplans">
@@ -202,9 +204,9 @@ class ViewPlans extends Component {
                     </div>
                   </div>
                 </div>
-              )}
-              {plan.plan_type === 'single' && <h4>No transaction history</h4>}
-              <div class="plans-body-viewplans invoice-viewplans">
+              )} */}
+              {plan.plan_type === "single" && <h4>No transaction history</h4>}
+              {/* <div class="plans-body-viewplans invoice-viewplans">
                 <div class="invoice-row-viewplans invoice-row-header-viewplans">
                   <div class="left-heading-viewplans">
                     <p class="additonal-info-viewplans">Reciept for</p>
@@ -258,10 +260,10 @@ class ViewPlans extends Component {
                     <p class="value-viewplans value-price-viewplans">$ 3000</p>
                   </div>
                 </div>
-              </div>
+              </div> */}
             </div>
           </>
-        )
+        );
       }
     }
 
@@ -269,21 +271,15 @@ class ViewPlans extends Component {
       <div className="view-plans-wrapper">
         <div className="sidenav__container-viewplans">
           <div className="sidebar-viewplans sidenav-viewplans">
-            <Link className="logo" to="/">
-              Stokkpile
-            </Link>
+            <div className="header-title">
+              <Link className="logo" to="/">
+                Stokkpiler
+              </Link>
+            </div>
             <button className="sidenav-close-viewplans">
               <img src="../assets/images/close.svg" />
             </button>
             <div className="links-viewplans">
-              <div className="link-viewplans">
-                <span
-                  class="iconify"
-                  data-icon="fa-regular:building"
-                  data-inline="false"
-                ></span>
-                <Link to="/home">Home</Link>
-              </div>
               <div className="link-viewplans">
                 <span
                   class="iconify"
@@ -342,24 +338,18 @@ class ViewPlans extends Component {
                 class="iconify"
                 data-icon="ri:logout-box-line"
                 data-inline="false"
-              ></span>{' '}
+              ></span>{" "}
               Logout
             </a>
           </div>
         </div>
         <div className="sidebar-viewplans">
-          <Link className="logo-viewplans" to="/">
-            Stokkpile
-          </Link>
+          <div className="header-title">
+            <Link className="logo-viewplans" to="/">
+              Stokkpiller
+            </Link>
+          </div>
           <div className="links-viewplans">
-            <div className="link-viewplans">
-              <span
-                class="iconify"
-                data-icon="fa-regular:building"
-                data-inline="false"
-              ></span>
-              <Link to="/home">Home</Link>
-            </div>
             <div className="link-viewplans">
               <span
                 class="iconify"
@@ -428,17 +418,13 @@ class ViewPlans extends Component {
                 <div class="bar-viewplans"></div>
                 <div class="bar-viewplans"></div>
               </div>
-              {/* <a
-                href=""
-                class="backlink-viewplans"
-                onClick={() => this.props.history.go(-1)}
-              >
+              <a href="" class="backlink-viewplans">
                 <div class="back-viewplans">
                   <img src="../assets/images/Path 3 Copy.svg" alt="" />
-                  <h2>Back</h2>
+                  {/* <h2>Back</h2> */}
                 </div>
               </a>
-              <table class="stocks-viewplans">
+              {/*<table class="stocks-viewplans">
                 <tr>
                   <td>Rates</td>
                   <td>Blocks</td>
@@ -490,7 +476,7 @@ class ViewPlans extends Component {
               </div>
             </div>
 
-            <div class="main-body-viewplans">
+            <div class="main-body-viewplans" style={{height: '90vh'}}>
               {planContainer}
               {/* <div class="header-bar-viewplans">
                 <h2>
@@ -751,17 +737,17 @@ class ViewPlans extends Component {
           </div>
         </main>
       </div>
-    )
+    );
   }
 }
 
 const mapStateToProps = (state) => ({
   plan: state.plan,
-})
+});
 
 const mapDispatchToProps = {
   logoutUser,
   getPlan,
-}
+};
 
-export default connect(mapStateToProps, mapDispatchToProps)(ViewPlans)
+export default connect(mapStateToProps, mapDispatchToProps)(ViewPlans);

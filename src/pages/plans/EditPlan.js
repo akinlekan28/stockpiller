@@ -1,39 +1,42 @@
-import React, { useState, useEffect, useCallback } from 'react'
-import { useParams, Link } from 'react-router-dom'
-import './scss/plans.scss'
-import { toast } from 'react-toastify'
-import api from '../../api/api'
+import React, { useState, useEffect, useCallback } from "react";
+import { useParams, Link } from "react-router-dom";
+import "./scss/plans.scss";
+import { toast } from "react-toastify";
+import api from "../../api/api";
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
 
 export default function EditPlan() {
-  const { id } = useParams()
+  const { id } = useParams();
 
   const handleOnChange = useCallback((event) => {
-    const { name, value } = event.target
-    setFormValues({ ...formValues, [name]: value })
-  })
+    const { name, value } = event.target;
+    setFormValues({ ...formValues, [name]: value });
+  });
 
-  const [both, setBoth] = useState(false)
-  const [cement, setCement] = useState(false)
-  const [block, setBlock] = useState(false)
-  const [submitting, setSubmitting] = useState(false)
+  const [both, setBoth] = useState(false);
+  const [cement, setCement] = useState(false);
+  const [block, setBlock] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
+  const [start_date, setStart_date] = useState(new Date());
 
   const [formValues, setFormValues] = useState({
-    plan_name: '',
-    building_type: '',
-    material_estimation: '',
-    material_type: '',
-    cement_percentage: '',
-    block_percentage: '',
-    start_date: '',
-    block_target: '',
-    cement_target: '',
-    deposit: '',
-    plan_type: '',
-    country: '',
-    deposit_frequency: '',
-  })
-  const [plan, setPlan] = useState({})
-  const [loading, setLoading] = useState(false)
+    plan_name: "",
+    building_type: "",
+    material_estimation: "",
+    material_type: "",
+    cement_percentage: "",
+    block_percentage: "",
+    start_date: new Date(),
+    block_target: "",
+    cement_target: "",
+    deposit: "",
+    plan_type: "",
+    country: "",
+    deposit_frequency: "",
+  });
+  const [plan, setPlan] = useState({});
+  const [loading, setLoading] = useState(false);
 
   const getPlan = () => {
     api.get(`/plan/${id}`).then((res) => {
@@ -52,32 +55,31 @@ export default function EditPlan() {
         plan_type: res.data.data.plan_type,
         country: res.data.data.country,
         deposit_frequency: res.data.data.deposit_frequency,
-      })
-      setBlock(res.data.data.material_type === 'block')
-      setCement(res.data.data.material_type === 'cement')
-      setBoth(res.data.data.material_type === 'both')
-      console.log(res.data.data.deposit_frequency)
-      setLoading(false)
-    })
-  }
+      });
+      setBlock(res.data.data.material_type === "block");
+      setCement(res.data.data.material_type === "cement");
+      setBoth(res.data.data.material_type === "both");
+      setLoading(false);
+    });
+  };
 
   const submitPlan = (e) => {
-    e.preventDefault()
-    setSubmitting(true)
+    e.preventDefault();
+    setSubmitting(true);
 
-    let material_type
+    let material_type;
     if (cement) {
-      material_type = 'cement'
+      material_type = "cement";
     } else if (block) {
-      material_type = 'blocks'
+      material_type = "blocks";
     } else {
-      material_type = 'both'
+      material_type = "both";
     }
-    let deposit_frequency
+    let deposit_frequency;
     if (typeof formValues.deposit_frequency !== String) {
-      deposit_frequency = 'None'
+      deposit_frequency = "None";
     } else {
-      deposit_frequency = formValues.deposit_frequency
+      deposit_frequency = formValues.deposit_frequency;
     }
 
     const payload = {
@@ -94,37 +96,35 @@ export default function EditPlan() {
       country: formValues.country,
       deposit: formValues.deposit,
       material_estimation: formValues.material_estimation,
-    }
+    };
 
     api
       .put(`/plan/${id}`, payload)
       .then((res) => console.log(res))
       .catch((err) => console.log(err))
-      .finally(() => setSubmitting(false))
-  }
+      .finally(() => setSubmitting(false));
+  };
+
+  const handleChange = (date) => {
+    setStart_date(date);
+  };
 
   useEffect(() => {
-    getPlan()
-  }, [])
+    getPlan();
+  }, []);
   return (
     <div className="plans-wrapper">
       <div className="sidenav__container-home">
         <div className="sidebar-home sidenav-home">
-          <Link className="logo" to="/">
-            Stokkpile
-          </Link>
+          <div className="header-title">
+            <Link className="logo" to="/">
+              Stockpiller
+            </Link>
+          </div>
           <button className="sidenav-close-home">
             <img src="../assets/images/close.svg" />
           </button>
           <div className="links-home">
-            <div className="link-home">
-              <span
-                class="iconify"
-                data-icon="fa-regular:building"
-                data-inline="false"
-              ></span>
-              <Link to="/home">Home</Link>
-            </div>
             <div className="link-home">
               <span
                 class="iconify"
@@ -185,18 +185,12 @@ export default function EditPlan() {
         </div>
       </div>
       <div className="sidebar-home">
-        <Link className="logo-home" to="/">
-          Stokkpile
-        </Link>
+        <div className="header-title">
+          <Link className="logo-home" to="/">
+            Stockpiller
+          </Link>
+        </div>
         <div className="links-home">
-          <div className="link-home">
-            <span
-              className="iconify"
-              data-icon="fa-regular:building"
-              data-inline="false"
-            ></span>
-            <Link to="/home">Home</Link>
-          </div>
           <div className="link-home">
             <span
               className="iconify"
@@ -264,13 +258,13 @@ export default function EditPlan() {
               <div class="bar-home"></div>
               <div class="bar-home"></div>
             </div>
-            {/* <a href="http://" class="backlink-home">
+            <a href="#" class="backlink-home">
               <div class="back-home">
                 <img src="../assets/images/Path 3 Copy.svg" alt="" />
-                <h2>Back</h2>
+                {/* <h2>Back</h2> */}
               </div>
             </a>
-            <table class="stocks-home">
+            {/* <table class="stocks-home">
               <tr>
                 <td>Rates</td>
                 <td>Blocks</td>
@@ -329,13 +323,13 @@ export default function EditPlan() {
               <div class="form-group-full-home">
                 <div class="form-group-header-home">
                   <h2>
-                    Plan Name{' '}
+                    Plan Name{" "}
                     <span class="Important-home">
                       <img
                         src="../assets/images/Reason for saving.svg"
                         alt=""
                       />
-                    </span>{' '}
+                    </span>{" "}
                   </h2>
                   <span className="ast">*</span>
                 </div>
@@ -392,9 +386,9 @@ export default function EditPlan() {
                 )} */}
               </div>
 
-              {formValues.plan_type === 'recurrent' && (
+              {formValues.plan_type === "recurrent" && (
                 <div class="form-group-full-home">
-                  <div className="select select--inline form-group custom-select">
+                  <div className="select select--inline">
                     <div class="form-group-header-home">
                       <h2>Deposit Frequency </h2>
                       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -555,14 +549,21 @@ export default function EditPlan() {
                   <h2>When is your start date? </h2>
                   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span className="ast">*</span>
                 </div>
-                <input
+                {/* <input
                   type="date"
                   class="form-input-full-home"
                   name="start_date"
                   value={formValues.start_date}
                   onChange={handleOnChange}
                   required
+                /> */}
+                <DatePicker
+                  selected={new Date(formValues.start_date)}
+                  onChange={handleChange}
+                  className="form-input-full-home"
+                  style={{ height: "40px" }}
                 />
+
                 {/* {errors.errors && errors.errors.start_date && (
                   <span style={{ color: "red" }}>
                     {errors.errors.start_date}
@@ -571,7 +572,7 @@ export default function EditPlan() {
               </div>
 
               <div class="form-group-full-home">
-                <div className="select select--inline form-group custom-select">
+                <div className="select select--inline">
                   <div class="form-group-header-home">
                     <h2>Stockpile Country </h2>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                     <span className="ast">*</span>
@@ -631,5 +632,5 @@ export default function EditPlan() {
         </div>
       </main>
     </div>
-  )
+  );
 }

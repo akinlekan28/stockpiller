@@ -199,21 +199,15 @@ class Transactions extends Component {
         <div className="container-transaction">
           <div className="sidenav__container-transaction">
             <div className="sidebar-transaction sidenav-transaction">
-              <Link className="logo-transaction" to="/">
-                Laybuy
-              </Link>
+              <div className="header-title">
+                <Link className="logo-transaction" to="/">
+                  Stockpiller
+                </Link>
+              </div>
               <button className="sidenav-close-transaction">
                 <img src="../assets/images/close.svg" />
               </button>
               <div className="links-transaction">
-                <div className="link-transaction">
-                  <span
-                    className="iconify"
-                    data-icon="fa-regular:building"
-                    data-inline="false"
-                  ></span>
-                  <Link to="/home">Home</Link>
-                </div>
                 <div className="link-transaction">
                   <span
                     className="iconify"
@@ -278,18 +272,12 @@ class Transactions extends Component {
             </div>
           </div>
           <div className="sidebar-transaction">
-            <Link className="logo-transaction" to="/">
-              Laybuy
-            </Link>
+            <div className="header-title">
+              <Link className="logo-transaction" to="/">
+                Stockpiller
+              </Link>
+            </div>
             <div className="links-transaction">
-              <div class="link-transaction">
-                <span
-                  className="iconify"
-                  data-icon="fa-regular:building"
-                  data-inline="false"
-                ></span>
-                <Link to="/home">Home</Link>
-              </div>
               <div className="link-transaction">
                 <span
                   className="iconify"
@@ -360,10 +348,10 @@ class Transactions extends Component {
                 <div className="bar-transaction"></div>
               </button>
 
-              {/* <div className="back-transaction">
+              <div className="back-transaction">
                 <img src="../assets/images/back.svg" alt="" />
-                <a href="">Back</a>
-              </div> */}
+                {/* <a href="">Back</a> */}
+              </div>
               {/* <table class="rates-transaction top">
                 <tr>
                   <td>Rates</td>
@@ -421,7 +409,7 @@ class Transactions extends Component {
                   RECENT TRANSACTIONS
                   <span className="line-transaction"></span>
                 </span>
-                <button>Download (PDF)</button>
+                {/* <button>Download (PDF)</button> */}
               </div>
               <div className="transactions-transaction">
                 <div className="transactions__header-transaction">
@@ -436,35 +424,6 @@ class Transactions extends Component {
                 </p>
                 {transactionTable}
               </div>
-              {/* <table className="rates-transaction bottom-transaction">
-                <tr>
-                  <td>Rates</td>
-                  <td>Block</td>
-                  <td>Cement</td>
-                </tr>
-                <tr>
-                  <td>Local</td>
-                  <td>
-                    <img src="../assets/images/rate-down.svg" />
-                    &#8358 200
-                  </td>
-                  <td>
-                    <img src="../assets/images/rate-up.svg" />
-                    &#8358 2000
-                  </td>
-                </tr>
-                <tr>
-                  <td>International</td>
-                  <td>
-                    <img src="../assets/images/rate-down.svg" />
-                    $2
-                  </td>
-                  <td>
-                    <img src="../assets/images/rate-up.svg" />
-                    $2
-                  </td>
-                </tr>
-              </table> */}
             </div>
           </div>
         </div>

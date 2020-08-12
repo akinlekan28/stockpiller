@@ -1,11 +1,12 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
-import { logoutUser } from "../../store/actions/authActions";
+import { logoutUser, me } from "../../store/actions/authActions";
 import { getLastPlans } from "../../store/actions/planActions";
 import Skeleton from "@yisheng90/react-loading";
 import "./scss/nav.scss";
 import "./scss/dashboard.scss";
+import { toast } from "react-toastify";
 
 class Dashboard extends Component {
   constructor() {
@@ -16,6 +17,17 @@ class Dashboard extends Component {
 
   componentDidMount() {
     this.props.getLastPlans();
+    this.props.me();
+    // const { auth } = this.props.auth;
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    if (prevProps.auth.userData !== this.props.auth.userData) {
+      // if (this.props.auth.userData.is_verified === 0) {
+      //   toast.error("Please verify your account");
+      //   this.props.logoutUser();
+      // }
+    }
   }
 
   logout(e) {
@@ -67,7 +79,7 @@ class Dashboard extends Component {
         </>
       );
     } else {
-      if (Object.keys(plans).length > 0) {
+      if (plans !== null && Object.keys(plans).length > 0) {
         plansContainer = (
           <>
             <div class="card-dashboard brown-dashboard">
@@ -196,6 +208,8 @@ class Dashboard extends Component {
             </div>
           </>
         );
+      } else {
+        plansContainer = <h2>Welcome, You have no active plan!</h2>;
       }
     }
 
@@ -204,21 +218,16 @@ class Dashboard extends Component {
         <div className="container-dashboard">
           <div class="sidenav__container-dashboard ">
             <div class="sidebar-dashboard sidenav-dashboard">
-              <Link class="logo-dashboard" to="/">
-                Laybuy
-              </Link>
+              <div>
+                <Link class="logo-dashboard" to="/">
+                  Stockpiller
+                </Link>
+              </div>
+
               <button class="sidenav-close-dashboard">
                 <img src="../assets/images/close.svg" />
               </button>
               <div class="links-dashboard">
-                <div class="link-dashboard">
-                  <span
-                    class="iconify"
-                    data-icon="fa-regular:building"
-                    data-inline="false"
-                  ></span>
-                  <Link to="/home">Home</Link>
-                </div>
                 <div class="link-dashboard active-dashboard">
                   <span
                     class="iconify"
@@ -273,24 +282,19 @@ class Dashboard extends Component {
                   className="iconify"
                   data-icon="ri:logout-box-line"
                   data-inline="false"
+
                 ></span>
                 Logout
               </a>
             </div>
           </div>
           <div class="sidebar-dashboard">
-            <Link class="logo-dashboard" to="/">
-              Laybuy
-            </Link>
+            <div className="header-title">
+              <Link class="logo-dashboard" to="/">
+                Stockpiller
+              </Link>
+            </div>
             <div class="links-dashboard">
-              <div class="link-dashboard">
-                <span
-                  class="iconify"
-                  data-icon="fa-regular:building"
-                  data-inline="false"
-                ></span>
-                <Link to="/home">Home</Link>
-              </div>
               <div class="link-dashboard active-dashboard">
                 <span
                   class="iconify"
@@ -444,11 +448,13 @@ class Dashboard extends Component {
 
 const mapStateToProps = (state) => ({
   plans: state.plan,
+  auth: state.auth,
 });
 
 const mapDispatchToProps = {
   logoutUser,
   getLastPlans,
+  me,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Dashboard);

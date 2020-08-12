@@ -60,7 +60,7 @@ class Settings extends Component {
       .updateUser(payload)
       .then((res) => {
         if (res && res.payload.status_code === 201) {
-          toast.success("Profie Successfully updated");
+          toast.success("Profile Successfully updated");
         }
       })
       .catch((err) => toast.error("Something went wrong"))
@@ -131,6 +131,7 @@ class Settings extends Component {
               <input
                 type="text"
                 id="last-name"
+                name="last_name"
                 value={last_name}
                 onChange={this.onChange}
                 required
@@ -144,6 +145,7 @@ class Settings extends Component {
                 name="email"
                 value={email}
                 onChange={this.onChange}
+                disabled
                 required
               />
             </div>
@@ -181,21 +183,15 @@ class Settings extends Component {
         <div className="container-settings">
           <div class="sidenav__container-settings">
             <div class="sidebar-settings sidenav-settings">
-              <Link class="logo-settings" to="/">
-                Laybuy
-              </Link>
+              <div className="header-title">
+                <Link class="logo-settings" to="/">
+                  Stockpiller
+                </Link>
+              </div>
               <button class="sidenav-close-settings">
                 <img src="../assets/images/close.svg" />
               </button>
               <div class="links-settings">
-                <div class="link-settings">
-                  <span
-                    class="iconify"
-                    data-icon="fa-regular:building"
-                    data-inline="false"
-                  ></span>
-                  <Link to="/home">Home</Link>
-                </div>
                 <div class="link-settings">
                   <span
                     class="iconify"
@@ -257,18 +253,12 @@ class Settings extends Component {
           </div>
 
           <div class="sidebar-settings">
-            <Link class="logo-settings" to="/">
-              Laybuy
-            </Link>
+            <div className="header-title">
+              <Link class="logo-settings" to="/">
+                Stockpiller
+              </Link>
+            </div>
             <div class="links-settings">
-              <div class="link-settings">
-                <span
-                  class="iconify"
-                  data-icon="fa-regular:building"
-                  data-inline="false"
-                ></span>
-                <Link to="/home">Home</Link>
-              </div>
               <div class="link-settings">
                 <span
                   class="iconify"
@@ -337,37 +327,8 @@ class Settings extends Component {
               </button>
               <div class="back-settings">
                 <img src="../assets/images/back.svg" alt="" />
-                <a href="">Back</a>
+                {/* <a href="">Back</a> */}
               </div>
-              <table class="rates-settings top">
-                <tr>
-                  <td>Rates</td>
-                  <td>Block</td>
-                  <td>Cement</td>
-                </tr>
-                <tr>
-                  <td>Local</td>
-                  <td>
-                    <img src="../assets/images/rate-down.svg" alt="" />
-                    &#8358 200
-                  </td>
-                  <td>
-                    <img src="../assets/images/rate-up.svg" alt="" />
-                    &#8358 2000
-                  </td>
-                </tr>
-                <tr>
-                  <td>International</td>
-                  <td>
-                    <img src="../assets/images/rate-down.svg" alt="" />
-                    $2
-                  </td>
-                  <td>
-                    <img src="../assets/images/rate-up.svg" alt="" />
-                    $2
-                  </td>
-                </tr>
-              </table>
               <div class="user-controls-settings">
                 <div class="notifications-settings">
                   <img src="../assets/images/notifications.svg" alt="" />
@@ -459,35 +420,6 @@ class Settings extends Component {
                   </Link>
                 </div>
               </div>
-              <table class="rates-settings bottom-settings">
-                <tr>
-                  <td>Rates</td>
-                  <td>Block</td>
-                  <td>Cement</td>
-                </tr>
-                <tr>
-                  <td>Local</td>
-                  <td>
-                    <img src="../assets/images/rate-down.svg" />
-                    &#8358 200
-                  </td>
-                  <td>
-                    <img src="../assets/images/rate-up.svg" />
-                    &#8358 2000
-                  </td>
-                </tr>
-                <tr>
-                  <td>International</td>
-                  <td>
-                    <img src="../assets/images/rate-down.svg" />
-                    $2
-                  </td>
-                  <td>
-                    <img src="../assets/images/rate-up.svg" />
-                    $2
-                  </td>
-                </tr>
-              </table>
             </div>
           </div>
         </div>

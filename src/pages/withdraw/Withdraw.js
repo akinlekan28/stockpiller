@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { logoutUser } from "../../store/actions/authActions";
 import { Link } from "react-router-dom";
-import './scss/withdraw.scss'
+import "./scss/withdraw.scss";
 
 class Withdraw extends Component {
   constructor() {
@@ -23,21 +23,15 @@ class Withdraw extends Component {
         <div class="container-withdraw">
           <div class="sidenav__container-withdraw">
             <div class="sidebar-withdraw sidenav-withdraw">
-              <Link class="logo" to="/">
-              Laybuy
-              </Link>
+              <div className="header-title">
+                <Link class="logo" to="/">
+                  Stockpiller
+                </Link>
+              </div>
               <button class="sidenav-close-withdraw">
                 <img src="../assets/images/close.svg" />
               </button>
               <div class="links-withdraw">
-                <div className="link-withdraw">
-                  <span
-                    className="iconify"
-                    data-icon="fa-regular:building"
-                    data-inline="false"
-                  ></span>
-                  <Link to="/home">Home</Link>
-                </div>
                 <div className="link-withdraw">
                   <span
                     className="iconify"
@@ -103,18 +97,12 @@ class Withdraw extends Component {
             </div>
           </div>
           <div class="sidebar-withdraw">
-            <Link class="logo-withdraw" to="/">
-            Laybuy
-            </Link>
+            <div className="header-title">
+              <Link class="logo-withdraw" to="/">
+                Stockpiller
+              </Link>
+            </div>
             <div class="links-withdraw">
-              <div class="link-withdraw">
-                <span
-                  className="iconify"
-                  data-icon="fa-regular:building"
-                  data-inline="false"
-                ></span>
-                <Link to="/home">Home</Link>
-              </div>
               <div class="link-withdraw">
                 <span
                   className="iconify"
@@ -177,7 +165,7 @@ class Withdraw extends Component {
           <div class="cover-overlay-withdraw"></div>
 
           <main>
-            <div class="overlay-withdraw">
+            {/* <div class="overlay-withdraw">
               <div class="withdrawal-confirmation-withdraw">
                 <div class="confirmation-header-withdraw">
                   <h2>
@@ -316,7 +304,7 @@ class Withdraw extends Component {
                   class="notify-img failed-img-withdraw"
                 />
               </div>
-            </div>
+            </div> */}
 
             <div class="main-container-withdraw">
               <div class="main-header-withdraw">
@@ -325,49 +313,12 @@ class Withdraw extends Component {
                   <div class="bar-withdraw"></div>
                   <div class="bar-withdraw"></div>
                 </div>
-                <a href="http://" class="backlink-withdraw">
+                <a href="#" class="backlink-withdraw">
                   <div class="back-withdraw">
                     <img src="../assets/images/Path 3 Copy.svg" alt="" />
-                    <h2>Back</h2>
+                    {/* <h2>Back</h2> */}
                   </div>
                 </a>
-                <table class="stocks-withdraw">
-                  <tr>
-                    <td>Rates</td>
-                    <td>Blocks</td>
-                    <td>Cement</td>
-                  </tr>
-                  <tr>
-                    <td>Local</td>
-                    <td>
-                      <img src="../assets/images/Group 44.svg" alt="" />
-                      <h3>&#8358 200</h3>
-                    </td>
-                    <td>
-                      <img src="../assets/images/Group 38.svg" alt="" />
-                      <h3>&#8358 200</h3>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>Internatinal</td>
-                    <td>
-                      <img
-                        class="down-arrow-withdraw"
-                        src="../assets/images/Group 44.svg"
-                        alt=""
-                      />
-                      <h3>$2</h3>
-                    </td>
-                    <td>
-                      <img
-                        class="up-arrow-withdraw"
-                        src="../assets/images/Group 38.svg"
-                        alt=""
-                      />
-                      <h3>$2</h3>
-                    </td>
-                  </tr>
-                </table>
 
                 <div class="personalize-withdraw">
                   <img
@@ -387,40 +338,53 @@ class Withdraw extends Component {
               <div class="main-body-withdraw">
                 <form action="" class="plans-withdraw">
                   <div class="form-group-full-withdraw">
-                  <div className="select select--inline form-group custom-select">
-                    <div class="form-group-header-withdraw">
-                      <h2>Select Plan </h2>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                      <span className="ast">*</span>
-                    </div>
-                    <select className="select-css" value={""}>
-                      <option value="">Select country</option>
-                      <option value="0">Plan 1</option>
-                      <option value="1">Plan 2</option>
-                      <option value="2">Plan 3</option>
-                    </select>
-                    <br/>
-                    <div class="checkbox-div">
-                      <input type="checkbox" id="checkMe" />
-                      <label for="checkMe">&nbsp;&nbsp;
-                        Click here to schedule for material's delivery to your
-                        construction site by our pick up agents
-                      </label>
+                    <div className="select select--inline form-group">
+                      <div class="form-group-header-withdraw">
+                        <h2>Select Plan </h2>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <span className="ast">*</span>
+                      </div>
+                      <select className="select-css" value={""}>
+                        <option value="">Select country</option>
+                        <option value="0">Plan 1</option>
+                        <option value="1">Plan 2</option>
+                        <option value="2">Plan 3</option>
+                      </select>
+                      <br />
+                      <div class="checkbox-div">
+                        <input type="checkbox" id="checkMe" />
+                        <label for="checkMe">
+                          &nbsp;&nbsp; Click here to schedule for material's
+                          delivery to your construction site by our pick up
+                          agents
+                        </label>
+                      </div>
                     </div>
                   </div>
-                </div>
                   <div class="form-group-full-withdraw">
                     <div class="form-group-header-withdraw">
                       <h2>Choose Location</h2>
                     </div>
                     <div class="select-group-withdraw">
                       <div class="radio-group-withdraw">
-                        <input type="radio" name="connected" id="one" style={{marginBottom: '3px'}} />
+                        <input
+                          type="radio"
+                          name="connected"
+                          id="one"
+                          style={{ marginBottom: "3px" }}
+                        />
                         <label for="one">&nbsp;&nbsp;One Location</label>
                       </div>
 
                       <div class="radio-group-withdraw">
-                        <input type="radio" name="connected" id="various" style={{marginBottom: '3px'}} />
-                        <label for="various">&nbsp;&nbsp;Various Locations</label>
+                        <input
+                          type="radio"
+                          name="connected"
+                          id="various"
+                          style={{ marginBottom: "3px" }}
+                        />
+                        <label for="various">
+                          &nbsp;&nbsp;Various Locations
+                        </label>
                       </div>
                     </div>
                   </div>
@@ -462,7 +426,11 @@ class Withdraw extends Component {
                     <div class="form-group-header-withdraw">
                       <h2>Password</h2>
                     </div>
-                    <input type="password" placeholder="Enter Password" class="form-input-full-withdraw" />
+                    <input
+                      type="password"
+                      placeholder="Enter Password"
+                      class="form-input-full-withdraw"
+                    />
                   </div>
                   <button class="btn-withdraw plans-submit-withdraw">
                     Submit

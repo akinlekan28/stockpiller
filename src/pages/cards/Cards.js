@@ -32,42 +32,6 @@ class Cards extends Component {
     if (loading) {
       cardContainer = (
         <div class="card-cards">
-          {/* <button class="remove-card-cards">
-        <img src="https://res.cloudinary.com/djnhrvjyf/image/upload/v1595630864/delete-card_ii5tnb.svg" />
-      </button>
-      <div class="remove-card-box-cards">
-        <p class="remove-card-box__header-cards">Remove Card</p>
-        <div class="remove-card-box__description-cards">
-          Kindly note that this card would be removed permanently from
-          this platform.
-        </div>
-        <div class="remove-card__buttons-cards">
-          <button class="remove-card__button-cards">Cancel</button>
-          <button class="remove-card__button-cards remove-card__button--bg-purple-cards">
-            Remove
-          </button>
-        </div>
-      </div>
-      <div class="card__brands-cards">
-        <img src="https://res.cloudinary.com/djnhrvjyf/image/upload/v1595631383/card-rect_mle5ec.svg" />
-        <img src="../assets/images/master-card-2.svg" alt="" />
-      </div>
-      <div class="card__numbers-cards">
-        <span>5399</span>
-        <span>3456</span>
-        <span>6788</span>
-        <span>2345</span>
-      </div>
-      <div class="card__details-cards">
-        <div>
-          <p>CARD HOLDER</p>
-          <p>SAMUEL FAPOUN</p>
-        </div>
-        <div>
-          <p>EXPIRES</p>
-          <p>09/21</p>
-        </div>
-      </div> */}
           <Skeleton height={30} />
           <Skeleton height={30} />
           <Skeleton height={30} />
@@ -76,7 +40,7 @@ class Cards extends Component {
           <Skeleton height={30} />
         </div>
       );
-    } else if (Object.keys(cards).length > 0) {
+    } else if (cards != null && Object.keys(cards).length > 0) {
       cardContainer = cards.map((c, i) => (
         <div class="card-cards blue-cards" key={i}>
           <button class="remove-card-cards">
@@ -112,11 +76,17 @@ class Cards extends Component {
             </div>
             <div>
               <p>EXPIRES</p>
-              <p>{'**/**'}</p>
+              <p>{"**/**"}</p>
             </div>
           </div>
         </div>
       ));
+    } else {
+      cardContainer = (
+        <div class="card-cards">
+          <h4 className="text-center">You have no saved cards</h4>
+        </div>
+      );
     }
 
     return (
@@ -124,21 +94,13 @@ class Cards extends Component {
         <div className="container-cards">
           <div className="sidenav__container-cards">
             <div className="sidebar-cards sidenav-cards">
-              <Link className="logo-cards" to="/">
-                Laybuy
-              </Link>
+              <div className="header-title"><Link className="logo-cards" to="/">
+                Stockpiller
+              </Link></div>
               <button className="sidenav-close-cards">
                 <img src="../assets/images/close.svg" />
               </button>
               <div className="links-cards">
-                <div className="link-cards">
-                  <span
-                    className="iconify"
-                    data-icon="fa-regular:building"
-                    data-inline="false"
-                  ></span>
-                  <Link to="/home">Home</Link>
-                </div>
                 <div className="link-cards">
                   <span
                     className="iconify"
@@ -199,18 +161,12 @@ class Cards extends Component {
             </div>
           </div>
           <div className="sidebar-cards">
+            <div className="header-title">
             <Link class="logo-cards" to="/">
-              Laybuy
+              Stockpiller
             </Link>
+            </div>
             <div class="links-cards">
-              <div class="link-cards">
-                <span
-                  className="iconify"
-                  data-icon="fa-regular:building"
-                  data-inline="false"
-                ></span>
-                <Link to="/home">Home</Link>
-              </div>
               <div class="link-cards">
                 <span
                   className="iconify"
@@ -281,39 +237,11 @@ class Cards extends Component {
                 <div className="bar-cards"></div>
                 <div className="bar-cards"></div>
               </button>
-              {/* <div className="back-cards">
+              <div className="back-cards">
                 <img src="../assets/images/back.svg" alt="" />
-                <a href="">Back</a>
-              </div> */}
-              {/* <table className="rates-cards top">
-                <tr>
-                  <td>Rates</td>
-                  <td>Block</td>
-                  <td>Cement</td>
-                </tr>
-                <tr>
-                  <td>Local</td>
-                  <td>
-                    <img src="../assets/images/rate-down.svg" alt="" />
-                    &#8358 200
-                  </td>
-                  <td>
-                    <img src="../assets/images/rate-up.svg" alt="" />
-                    &#8358 2000
-                  </td>
-                </tr>
-                <tr>
-                  <td>International</td>
-                  <td>
-                    <img src="../assets/images/rate-down.svg" alt="" />
-                    $2
-                  </td>
-                  <td>
-                    <img src="../assets/images/rate-up.svg" alt="" />
-                    $2
-                  </td>
-                </tr>
-              </table> */}
+                {/* <a href="">Back</a> */}
+              </div>
+
               <div className="user-controls-cards">
                 <div className="notifications-cards">
                   <img src="../assets/images/notifications.svg" alt="" />
@@ -338,35 +266,6 @@ class Cards extends Component {
                 Add Card
               </a> */}
             </div>
-            {/* <table class="rates-cards bottom-cards">
-              <tr>
-                <td>Rates</td>
-                <td>Block</td>
-                <td>Cement</td>
-              </tr>
-              <tr>
-                <td>Local</td>
-                <td>
-                  <img src="../assets/images/rate-down.svg" />
-                  &#8358 200
-                </td>
-                <td>
-                  <img src="../assets/images/rate-up.svg" />
-                  &#8358 2000
-                </td>
-              </tr>
-              <tr>
-                <td>International</td>
-                <td>
-                  <img src="../assets/images/rate-down.svg" />
-                  $2
-                </td>
-                <td>
-                  <img src="../assets/images/rate-up.svg" />
-                  $2
-                </td>
-              </tr>
-            </table> */}
           </div>
         </div>
       </div>

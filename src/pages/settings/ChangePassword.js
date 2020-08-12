@@ -1,98 +1,100 @@
-import React, { Component } from 'react'
-import { connect } from 'react-redux'
-import { Link } from 'react-router-dom'
-import { logoutUser, updatePassword } from '../../store/actions/authActions'
-import './scss/nav-password.scss'
-import './scss/password.scss'
-import { toast } from 'react-toastify'
+import React, { Component } from "react";
+import { connect } from "react-redux";
+import { Link } from "react-router-dom";
+import { logoutUser, updatePassword } from "../../store/actions/authActions";
+import "./scss/nav-password.scss";
+import "./scss/password.scss";
+import { toast } from "react-toastify";
 
 class ChangePassword extends Component {
   constructor() {
-    super()
+    super();
 
     this.state = {
       visible: false,
-      current: '',
-      password: '',
-      confirm: '',
+      current: "",
+      password: "",
+      confirm: "",
       errors: {},
-    }
+    };
 
-    this.togglePassword = this.togglePassword.bind(this)
-    this.logout = this.logout.bind(this)
-    this.onChange = this.onChange.bind(this)
-    this.onSubmit = this.onSubmit.bind(this)
+    this.togglePassword = this.togglePassword.bind(this);
+    this.logout = this.logout.bind(this);
+    this.onChange = this.onChange.bind(this);
+    this.onSubmit = this.onSubmit.bind(this);
   }
 
   static getDerivedStateFromProps(nextProps, prevState) {
     if (nextProps.errors) {
       return {
         errors: nextProps.errors,
-      }
+      };
     }
   }
 
   togglePassword(e) {
-    this.setState({ visible: !this.state.visible })
+    this.setState({ visible: !this.state.visible });
   }
 
   onChange(e) {
-    this.setState({ [e.target.name]: e.target.value })
+    this.setState({ [e.target.name]: e.target.value });
   }
 
   onSubmit(e) {
-    e.preventDefault()
+    e.preventDefault();
 
     const payload = {
       current: this.state.current,
       password: this.state.password,
       confirm: this.state.confirm,
-    }
+    };
 
     if (payload.password !== payload.confirm) {
-      return toast.error('Passwords do not match')
+      return toast.error("Passwords do not match");
+    }
+
+    if (
+      payload.password == "" &&
+      payload.confirm == "" &&
+      payload.current == ""
+    ) {
+      return toast.error("All fields required");
     }
 
     this.props
       .updatePassword(payload)
       .then((res) => {
-        if (res && res.type === 'UPDATE_PASSWORD') {
-          this.setState({ current: '', password: '', confirm: '' })
-          toast.success('Password updated successfully')
+        if (res && res.type === "UPDATE_PASSWORD") {
+          this.setState({ current: "", password: "", confirm: "" });
+          toast.success("Password updated successfully");
         }
       })
-      .catch((err) => console.log(err))
+      .catch((err) => console.log(err));
   }
 
   logout(e) {
-    e.preventDefault()
+    e.preventDefault();
 
-    this.props.logoutUser()
+    this.props.logoutUser();
   }
   render() {
-    const { visible, errors } = this.state
-    const { loading } = this.props.auth
+    const { visible, errors } = this.state;
+    const { loading } = this.props.auth;
 
     return (
       <div className="password-wrapper">
         <div class="container-passwords">
           <div class="sidenav__container-passwords">
             <div class="sidebar-passwords sidenav-passwords">
-              <Link class="logo-passwords" to="/">
-                Laybuy
-              </Link>
+              <div className="header-title">
+                <Link class="logo-passwords" to="/">
+                  Stockpiller
+                </Link>
+              </div>
               <button class="sidenav-close-passwords">
                 <img src="../assets/images/close.svg" />
               </button>
               <div class="links-passwords">
-                <div class="link-passwords">
-                  <span
-                    class="iconify"
-                    data-icon="fa-regular:building"
-                    data-inline="false"
-                  ></span>
-                  <Link to="/home">Home</Link>
-                </div>
                 <div class="link-passwords">
                   <span
                     class="iconify"
@@ -164,18 +166,12 @@ class ChangePassword extends Component {
             </div>
           </div>
           <div class="sidebar-passwords">
-            <Link class="logo-passwords" to="/">
-              Laybuy
-            </Link>
+            <div className="header-title">
+              <Link class="logo-passwords" to="/">
+                Stockpiller
+              </Link>
+            </div>
             <div class="links-passwords">
-              <div class="link-passwords">
-                <span
-                  class="iconify"
-                  data-icon="fa-regular:building"
-                  data-inline="false"
-                ></span>
-                <Link to="/home">Home</Link>
-              </div>
               <div class="link-passwords">
                 <span
                   class="iconify"
@@ -243,37 +239,8 @@ class ChangePassword extends Component {
               </button>
               <div class="back-passwords">
                 <img src="../assets/images/Path 3 Copy.svg" alt="" />
-                <h4>Back</h4>
+                {/* <h4>Back</h4> */}
               </div>
-              <table class="rates-passwords top">
-                <tr>
-                  <td>Rates</td>
-                  <td>Block</td>
-                  <td>Cement</td>
-                </tr>
-                <tr>
-                  <td>Local</td>
-                  <td>
-                    <img src="../assets/images/rate-down.svg" alt="" />
-                    &#8358 200
-                  </td>
-                  <td>
-                    <img src="../assets/images/rate-up.svg" alt="" />
-                    &#8358 2000
-                  </td>
-                </tr>
-                <tr>
-                  <td>International</td>
-                  <td>
-                    <img src="../assets/images/rate-down.svg" alt="" />
-                    $2
-                  </td>
-                  <td>
-                    <img src="../assets/images/rate-up.svg" alt="" />
-                    $2
-                  </td>
-                </tr>
-              </table>
               <div class="user-controls-passwords">
                 <div class="notifications-passwords">
                   <img src="../assets/images/notifications.svg" alt="" />
@@ -337,13 +304,13 @@ class ChangePassword extends Component {
                 </p>
                 <form onSubmit={this.onSubmit}>
                   <p className="text-danger">
-                    {errors && errors.error ? errors.error : ''}
+                    {errors && errors.error ? errors.error : ""}
                   </p>
                   <div class="form-group-passwords">
                     <label for="old-password-passwords">Old Password</label>
                     <div class="password-div-passwords">
                       <input
-                        type={visible ? 'text' : 'password'}
+                        type={visible ? "text" : "password"}
                         id="old-password"
                         required
                         onChange={this.onChange}
@@ -359,7 +326,7 @@ class ChangePassword extends Component {
                     <label for="new-password">New Password</label>
                     <div class="password-div-passwords">
                       <input
-                        type={visible ? 'text' : 'password'}
+                        type={visible ? "text" : "password"}
                         id="new-password"
                         name="password"
                         value={this.state.password}
@@ -377,7 +344,7 @@ class ChangePassword extends Component {
                     </label>
                     <div class="password-div-passwords">
                       <input
-                        type={visible ? 'text' : 'password'}
+                        type={visible ? "text" : "password"}
                         id="confirm-new-password"
                         name="confirm"
                         value={this.state.confirm}
@@ -433,51 +400,22 @@ class ChangePassword extends Component {
                   </a>
                 </div>
               </div>
-              <table class="rates-passwords bottom-passwords">
-                <tr>
-                  <td>Rates</td>
-                  <td>Block</td>
-                  <td>Cement</td>
-                </tr>
-                <tr>
-                  <td>Local</td>
-                  <td>
-                    <img src="../assets/images/rate-down.svg" />
-                    &#8358 200
-                  </td>
-                  <td>
-                    <img src="../assets/images/rate-up.svg" />
-                    &#8358 2000
-                  </td>
-                </tr>
-                <tr>
-                  <td>International</td>
-                  <td>
-                    <img src="../assets/images/rate-down.svg" />
-                    $2
-                  </td>
-                  <td>
-                    <img src="../assets/images/rate-up.svg" />
-                    $2
-                  </td>
-                </tr>
-              </table>
             </div>
           </div>
         </div>
       </div>
-    )
+    );
   }
 }
 
 const mapStateToProps = (state) => ({
   auth: state.auth,
   errors: state.errors,
-})
+});
 
 const mapDispatchToProps = {
   logoutUser,
   updatePassword,
-}
+};
 
-export default connect(mapStateToProps, mapDispatchToProps)(ChangePassword)
+export default connect(mapStateToProps, mapDispatchToProps)(ChangePassword);

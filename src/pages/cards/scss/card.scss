@@ -26,6 +26,24 @@
     box-sizing: border-box;
   }
 
+  .header-title {
+    // margin-top: -16px;
+    padding-bottom: 10px;
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+    background-color: #ffffff;
+    border-bottom-width: 1px;
+    border-left-width: 1px;
+    border-style: solid;
+    border-left-color: #c4c4c4;
+    border-top-color: transparent;
+    border-right-color: transparent;
+    border-bottom-color: #c4c4c4;
+    width: 100%;
+    box-sizing: border-box;
+  } 
+
   .cards-cards {
     display: grid;
     grid-template-columns: 1fr 1fr;

@@ -25,7 +25,8 @@ import Settings from './pages/settings/Settings'
 import ChangePassword from './pages/settings/ChangePassword'
 import Terms from './pages/terms/Terms'
 import Privacy from './pages/terms/Privacy'
-// import AOS from "aos";
+import Plans from './pages/plans/Plans'
+
 import "./App.css";
 
 //check for token
@@ -46,12 +47,6 @@ if (localStorage.jwtToken) {
 }
 
 class App extends Component {
-    // componentDidMount() {
-    //   AOS.init({
-    //     duration: 2000,
-    //   });
-    //   AOS.refresh();
-    // }
 
     render() {
         return (
@@ -68,6 +63,7 @@ class App extends Component {
                             <Route exact path="/privacy" component={Privacy}/>
                             <PrivateRoute exact path="/dashboard" component={Dashboard}/>
                             <PrivateRoute exact path="/home" component={Home}/>
+                            <PrivateRoute exact path="/plans" component={Plans} />
                             <Route exact path="/viewplan/:id" component={ViewPlans}/>
                             <PrivateRoute exact path="/plan/new" component={NewPlan}/>
                             <PrivateRoute exact path="/plan/create/:type" component={CreatePlan}/>

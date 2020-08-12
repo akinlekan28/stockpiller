@@ -112,21 +112,15 @@ class Plans extends Component {
       <div className="plans-wrapper">
         <div className="sidenav__container-home">
           <div className="sidebar-home sidenav-home">
-            <Link className="logo" to="/">
-              Laybuy
-            </Link>
+            <div className="header-title">
+              <Link className="logo" to="/">
+                Stockpiller
+              </Link>
+            </div>
             <button className="sidenav-close-home">
               <img src="../assets/images/close.svg" />
             </button>
             <div className="links-home">
-              <div className="link-home">
-                <span
-                  className="iconify"
-                  data-icon="fa-regular:building"
-                  data-inline="false"
-                ></span>
-                <Link to="/home">Home</Link>
-              </div>
               <div className="link-home">
                 <span
                   className="iconify"
@@ -187,18 +181,12 @@ class Plans extends Component {
           </div>
         </div>
         <div className="sidebar-home">
-          <Link className="logo-home" to="/">
-            Laybuy
-          </Link>
+          <div className="header-title">
+            <Link className="logo-home" to="/">
+              Stockpiller
+            </Link>
+          </div>
           <div className="links-home">
-            <div className="link-home">
-              <span
-                className="iconify"
-                data-icon="fa-regular:building"
-                data-inline="false"
-              ></span>
-              <Link to="/home">Home</Link>
-            </div>
             <div className="link-home">
               <span
                 className="iconify"
@@ -261,55 +249,17 @@ class Plans extends Component {
 
         <main>
           <div className="main-container-home">
+            
             <div className="main-header-home">
               <div className="open-home">
                 <div className="bar-home"></div>
                 <div className="bar-home"></div>
                 <div className="bar-home"></div>
               </div>
-              {/* <a href="http://" className="backlink-home">
-                <div className="back-home">
-                  <img src="../assets/images/Path 3 Copy.svg" alt="" />
-                  <h2>Back</h2>
-                </div>
-              </a> */}
-              {/* <table className="stocks-home">
-                <tr>
-                  <td>Rates</td>
-                  <td>Blocks</td>
-                  <td>Cement</td>
-                </tr>
-                <tr>
-                  <td>Local</td>
-                  <td>
-                    <img src="../assets/images/Group 44.svg" alt="" />
-                    <h3>&#8358 200</h3>
-                  </td>
-                  <td>
-                    <img src="../assets/images/Group 38.svg" alt="" />
-                    <h3>&#8358 200</h3>
-                  </td>
-                </tr>
-                <tr>
-                  <td>Internatinal</td>
-                  <td>
-                    <img
-                      className="down-arrow-home"
-                      src="../assets/images/Group 44.svg"
-                      alt=""
-                    />
-                    <h3>$2</h3>
-                  </td>
-                  <td>
-                    <img
-                      className="up-arrow-home"
-                      src="../assets/images/Group 38.svg"
-                      alt=""
-                    />
-                    <h3>$2</h3>
-                  </td>
-                </tr>
-              </table> */}
+              <div class="back-home">
+                <img src="../assets/images/back.svg" alt="" />
+                {/* <a href="">Back</a> */}
+              </div>
               <div className="personalize-home">
                 <img
                   className="notification-bell-home"
@@ -359,43 +309,6 @@ class Plans extends Component {
           </div>
           <div className="footer-home">
             <div className="footer-inner-home">
-              {/* <table className="stocks-home">
-                <tr>
-                  <td>Rates</td>
-                  <td>Blocks</td>
-                  <td>Cement</td>
-                </tr>
-                <tr>
-                  <td>Local</td>
-                  <td>
-                    <img src="../assets/images/Group 44.svg" alt="" />
-                    <h3>&#8358 200</h3>
-                  </td>
-                  <td>
-                    <img src="../assets/images/Group 38.svg" alt="" />
-                    <h3>&#8358 200</h3>
-                  </td>
-                </tr>
-                <tr>
-                  <td>Internatinal</td>
-                  <td>
-                    <img
-                      className="down-arrow-home"
-                      src="../assets/images/Group 44.svg"
-                      alt=""
-                    />
-                    <h3>$2</h3>
-                  </td>
-                  <td>
-                    <img
-                      className="up-arrow-home"
-                      src="../assets/images/Group 38.svg"
-                      alt=""
-                    />
-                    <h3>$2</h3>
-                  </td>
-                </tr>
-              </table> */}
             </div>
           </div>
         </main>

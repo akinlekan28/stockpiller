@@ -18,6 +18,24 @@
     color: #4a4a4a;
   }
 
+  .header-title {
+    margin-top: -16px;
+    padding-bottom: 21px;
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+    background-color: #ffffff;
+    border-bottom-width: 1px;
+    border-left-width: 1px;
+    border-style: solid;
+    border-left-color: #c4c4c4;
+    border-top-color: transparent;
+    border-right-color: transparent;
+    border-bottom-color: #c4c4c4;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
   .container-withdraw {
     width: 100%;
     height: 100%;
@@ -80,15 +98,13 @@
 
   .links-withdraw {
     margin-bottom: auto;
-    margin-top: 30px;
-    margin: 0;
   }
 
   .links-withdraw .link-withdraw,
   .logout__link-withdraw {
     width: 100%;
     height: 60px;
-    font-size: 14px;
+    font-size: 18px;
     padding-left: 50px;
     box-sizing: border-box;
     display: flex;
@@ -100,16 +116,24 @@
     color: #502274;
     text-decoration: none;
     font-size: 18px;
+    font-weight: 400;
   }
 
   .links-withdraw .link-withdraw.active-withdraw {
-    background-color: #502274;
-    color: white;
+    background-color: #ededed;
+    border-left-width: 5px;
+    border-style: solid;
+    border-left-color: #502274;
+    border-right-color: #c4c4c4;
+    border-right-color: transparent;
+    border-bottom-color: transparent;
+    border-top-color: transparent;
+    color: #502274;
   }
 
   .links-withdraw .link-withdraw.active-withdraw a,
   .links-withdraw .link-withdraw:hover a {
-    color: white;
+    color: #502274;
     height: 100%;
     display: flex;
     align-items: center;
@@ -121,8 +145,15 @@
   }
 
   .links-withdraw .link-withdraw:hover {
-    background-color: #502274;
-    color: white;
+    background-color: #ededed;
+    border-left-width: 5px;
+    border-style: solid;
+    border-left-color: #502274;
+    border-right-color: #c4c4c4;
+    border-right-color: transparent;
+    border-bottom-color: transparent;
+    border-top-color: transparent;
+    color: #502274;
   }
 
   .links-withdraw .link-withdraw svg {
@@ -136,8 +167,15 @@
   }
 
   .links-withdraw .link-withdraw.active-withdraw {
-    background-color: #502274;
-    color: white;
+    background-color: #ededed;
+    border-left-width: 5px;
+    border-style: solid;
+    border-left-color: #502274;
+    border-right-color: #c4c4c4;
+    border-right-color: transparent;
+    border-bottom-color: transparent;
+    border-top-color: transparent;
+    color: #502274;
   }
 
   .links-withdraw .link-withdraw img,
@@ -268,7 +306,7 @@
     border-bottom: none;
   }
 
-  .ast{
+  .ast {
     color: red;
   }
 
@@ -282,23 +320,23 @@
 
   .link-withdraw:hover {
     background-color: #502274;
-    color: white !important;
+    color: 502274 !important;
     & {
       a,
       span,
       .iconify {
-        color: #ffffff;
+        color: #502274;
       }
     }
   }
 
   .links-withdraw .active-withdraw {
     background-color: #502274;
-    color: white;
+    color: 502274;
     & {
       a,
       .iconify {
-        color: #fff;
+        color: #502274;
       }
     }
   }
@@ -306,8 +344,6 @@
   .select-css {
     display: block;
     font-size: 15px;
-    // font-family: sans-serif;
-    // font-weight: 700;
     color: #757575;
     line-height: 1.3;
     padding: 0.6em 1.4em 0.5em 0.8em;
@@ -417,12 +453,20 @@
 
   .main-header-withdraw {
     height: 7rem;
-    background-color: #dddbf1;
-    width: 100%;
-    padding: 1.5rem 2.5rem;
+    padding: 0 20px;
     display: flex;
     justify-content: space-between;
-    align-items: center;
+    position: relative;
+    background-color: #ffffff;
+    border-bottom-width: 1px;
+    border-left-width: 1px;
+    border-style: solid;
+    border-left-color: #c4c4c4;
+    border-top-color: transparent;
+    border-right-color: transparent;
+    border-bottom-color: #c4c4c4;
+    width: 100%;
+    box-sizing: border-box;
   }
 
   .main-body-withdraw {

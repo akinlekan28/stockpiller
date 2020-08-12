@@ -33,21 +33,15 @@ class NewPlan extends Component {
       <div className="plans-wrapper">
         <div className="sidenav__container-home">
           <div className="sidebar-home sidenav-home">
-            <Link className="logo" to="/">
-              Laybuy
-            </Link>
+            <div className="header-title">
+              <Link className="logo" to="/">
+                Stockpiller
+              </Link>
+            </div>
             <button className="sidenav-close-home">
               <img src="../assets/images/close.svg" />
             </button>
             <div className="links-home">
-              <div className="link-home">
-                <span
-                  class="iconify"
-                  data-icon="fa-regular:building"
-                  data-inline="false"
-                ></span>
-                <Link to="/home">Home</Link>
-              </div>
               <div className="link-home">
                 <span
                   class="iconify"
@@ -108,18 +102,12 @@ class NewPlan extends Component {
           </div>
         </div>
         <div className="sidebar-home">
-          <Link className="logo-home" to="/">
-            Laybuy
-          </Link>
+          <div className="header-title">
+            <Link className="logo-home" to="/">
+              Stockpiller
+            </Link>
+          </div>
           <div className="links-home">
-            <div className="link-home">
-              <span
-                class="iconify"
-                data-icon="fa-regular:building"
-                data-inline="false"
-              ></span>
-              <Link to="/home">Home</Link>
-            </div>
             <div className="link-home">
               <span
                 class="iconify"
@@ -188,49 +176,12 @@ class NewPlan extends Component {
                 <div class="bar-home"></div>
                 <div class="bar-home"></div>
               </div>
-              {/* <a href="http://" class="backlink-home">
+              <a href="#" class="backlink-home">
                 <div class="back-home">
                   <img src="../assets/images/Path 3 Copy.svg" alt="" />
-                  <h2>Back</h2>
+                  {/* <h2>Back</h2> */}
                 </div>
               </a>
-              <table class="stocks-home">
-                <tr>
-                  <td>Rates</td>
-                  <td>Blocks</td>
-                  <td>Cement</td>
-                </tr>
-                <tr>
-                  <td>Local</td>
-                  <td>
-                    <img src="../assets/images/Group 44.svg" alt="" />
-                    <h3>&#8358 200</h3>
-                  </td>
-                  <td>
-                    <img src="../assets/images/Group 38.svg" alt="" />
-                    <h3>&#8358 200</h3>
-                  </td>
-                </tr>
-                <tr>
-                  <td>Internatinal</td>
-                  <td>
-                    <img
-                      class="down-arrow-home"
-                      src="../assets/images/Group 44.svg"
-                      alt=""
-                    />
-                    <h3>$2</h3>
-                  </td>
-                  <td>
-                    <img
-                      class="up-arrow-home"
-                      src="../assets/images/Group 38.svg"
-                      alt=""
-                    />
-                    <h3>$2</h3>
-                  </td>
-                </tr>
-              </table> */}
               <div class="personalize-home">
                 <img
                   class="notification-bell-home"
@@ -248,7 +199,7 @@ class NewPlan extends Component {
             <div class="main-body-home">
               <div class="empty-div-home">
                 {!showDepositType && (
-                  <div class="add-plan-image-home" onClick={this.toggleDeposit}>
+                  <div class="add-plan-image-home" onClick={this.toggleDeposit} style={{height: '70vh'}}>
                     <img
                       src="https://res.cloudinary.com/djnhrvjyf/image/upload/v1594885590/Group_5_upslqf.svg"
                       alt=""
@@ -259,7 +210,7 @@ class NewPlan extends Component {
                 {showDepositType && (
                   <div
                     class="choose-deposit-option-home"
-                    style={{ display: "flex" }}
+                    style={{ display: "flex", height: '70vh' }}
                   >
                     <Link
                       to={`/plan/create/${(type = 1)}`}

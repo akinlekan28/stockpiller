@@ -73,7 +73,7 @@
         width: 100%;
         color: #502274;
         height: 60px;
-        font-size: 14px;
+        font-size: 18px;
         padding-left: 50px;
         box-sizing: border-box;
         display: flex;
@@ -85,15 +85,25 @@
         color: #502274;
         text-decoration: none;
         font-size: 18px;
+        font-weight: 400;
     }
     
     .links-transaction .link-transaction.active-transaction{
-        background-color: #502274;
-        color: white;
+        // background-color: #502274;
+        // color: white;
+        background-color: #ededed;
+        border-left-width: 2px;
+        border-style: solid;
+        border-left-color: #502274;
+        border-right-color: #c4c4c4;
+        border-right-color: transparent;
+        border-bottom-color: transparent;
+        border-top-color: transparent;
+        color: #502274;
     }
     
     .links-transaction .link-transaction.active-transaction a,.links-transaction .link-transaction:hover a{
-        color: white;
+        color: #502274;
     }
     
     .links-transaction .link-transaction svg,.logout__link-transaction img{
@@ -101,8 +111,17 @@
     }
     
     .links-transaction .link-transaction:hover{
-        background-color: #502274;
-        color: white;
+        // background-color: #502274;
+        // color: white;
+        background-color: #ededed;
+        border-left-width: 5px;
+        border-style: solid;
+        border-left-color: #502274;
+        border-right-color: #c4c4c4;
+        border-right-color: transparent;
+        border-bottom-color: transparent;
+        border-top-color: transparent;
+        color: #502274;
     }
     
     .links-transaction .link-transaction svg{
@@ -115,8 +134,17 @@
     }
     
     .links-transaction .link-transaction.active-transaction{
-        background-color: #502274;
-        color: white;
+        // background-color: #502274;
+        // color: white;
+        background-color: #ededed;
+        border-left-width: 5px;
+        border-style: solid;
+        border-left-color: #502274;
+        border-right-color: #c4c4c4;
+        border-right-color: transparent;
+        border-bottom-color: transparent;
+        border-top-color: transparent;
+        color: #502274;
     }
     
     .links-transaction .link-transaction img,.logout__link-transaction img{
@@ -126,14 +154,37 @@
     .logout__link-transaction{
         text-decoration: none;
     }
+
+    .header-title {
+        margin-top: -16px;
+        display: flex;
+        justify-content: space-between;
+        position: relative;
+        background-color: #ffffff;
+        border-bottom-width: 1px;
+        border-left-width: 1px;
+        border-style: solid;
+        border-left-color: #c4c4c4;
+        border-top-color: transparent;
+        border-right-color: transparent;
+        border-bottom-color: #c4c4c4;
+        width: 100%;
+        box-sizing: border-box;
+      } 
     
     .top-transaction{
         padding: 0 20px;
         display: flex;
         justify-content: space-between;
         position: relative;
-        height: 80px;
-        background-color: #DDDBF1;
+        background-color: #ffffff;
+        border-bottom-width: 1px;
+        border-left-width: 1px;
+        border-style: solid;
+        border-left-color: #c4c4c4;
+        border-top-color: transparent;
+        border-right-color: transparent;
+        border-bottom-color: #c4c4c4;
         width: 100%;
         box-sizing: border-box;
     }
@@ -579,6 +630,7 @@
         .top-transaction{
             position: fixed;
             z-index: 10;
+            padding: 20px;
         }
         .sidebar-transaction{
             display: none;
