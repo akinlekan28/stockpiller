@@ -33,16 +33,20 @@
   }
 
   .woman {
-    width: 40%;
-    padding: 0 50px;
+    padding-top: 170px;
+    width: 45%;
+    // padding: 0 50px;
     box-sizing: border-box;
   }
 
   .login {
-    width: 40%;
+    float: right;
+    width: 35%;
     box-sizing: border-box;
-    padding-top: 75px;
-    padding-left: 100px;
+    // padding-top: 75px;
+    // margin-left: 50px;
+    // padding-left: 100px;
+    margin-right: 50px;
   }
 
   .login-header {
@@ -181,6 +185,10 @@
   }
 
   @media (max-width: 1000px) {
+    .login {
+      margin-right: 0px;
+      float: inherit;
+    }
     .woman {
       display: none;
     }

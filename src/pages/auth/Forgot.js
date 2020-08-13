@@ -6,9 +6,9 @@ import "./forgot.scss";
 export default function Forgot() {
   return (
     <div className="forgot-wrapper">
-      <div className="container">
+      <div className="container-fluid">
         <Link to="/" className="logo">
-          Laybuy
+          Stockpiller
         </Link>
         <img
           src="https://res.cloudinary.com/djnhrvjyf/image/upload/v1594397518/forgotlarge_dfetd5.svg"

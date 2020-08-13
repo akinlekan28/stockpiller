@@ -1,23 +1,65 @@
-import React, { Component } from "react";
-import { connect } from "react-redux";
-import { logoutUser } from "../../store/actions/authActions";
-import { Link } from "react-router-dom";
-import "./scss/withdraw.scss";
+import React, { Component } from 'react'
+import { connect } from 'react-redux'
+import { getPlans } from '../../store/actions/planActions'
+import { logoutUser } from '../../store/actions/authActions'
+import { Link } from 'react-router-dom'
+import './scss/withdraw.scss'
 
 class Withdraw extends Component {
   constructor() {
-    super();
+    super()
 
-    this.logout = this.logout.bind(this);
+    this.state = {
+      plan_id: '',
+    }
+
+    this.onSubmit = this.onSubmit.bind(this)
+    this.onChange = this.onChange.bind(this)
+    this.logout = this.logout.bind(this)
+  }
+
+  componentDidMount() {
+    this.props.getPlans()
   }
 
   logout(e) {
-    e.preventDefault();
+    e.preventDefault()
 
-    this.props.logoutUser();
+    this.props.logoutUser()
+  }
+
+  onChange(e) {
+    this.setState({ [e.target.name]: e.target.value })
+  }
+
+  onSubmit = (e) => {
+    e.preventDefault()
   }
 
   render() {
+    const { loading, plans } = this.props.plans
+    const { plan_id } = this.state
+
+    let planSelector
+    if (loading) {
+      planSelector = <h4>Loading plans...</h4>
+    } else {
+      if (Object.keys(plans).length > 0) {
+        planSelector = (
+          <select className="select-css" value={plan_id} name="plan_id">
+            <option value="">Select plan</option>
+            {plans.map((p) => (
+              <option key={p.id.toString()} value={p.id}>
+                {p.plan_name}
+              </option>
+            ))}
+          </select>
+        )
+      } else {
+        planSelector = <h4>You have no active plans</h4>
+      }
+    }
+    console.log(plans)
     return (
       <div className="withdraw-wrapper">
         <div class="container-withdraw">
@@ -165,147 +207,6 @@ class Withdraw extends Component {
           <div class="cover-overlay-withdraw"></div>
 
           <main>
-            {/* <div class="overlay-withdraw">
-              <div class="withdrawal-confirmation-withdraw">
-                <div class="confirmation-header-withdraw">
-                  <h2>
-                    {" "}
-                    <span class="underline-withdraw">WITH</span>DRAWAL
-                    CONFIRMATION
-                  </h2>
-                  <img
-                    src="../assets/images/cancel.svg"
-                    class="x-button-withdraw"
-                    alt=""
-                  />
-                </div>
-                <div class="confirmation-body-withdraw">
-                  <table class="popup-withdraw">
-                    <thead>
-                      <tr>
-                        <th class="top-cell-withdraw left-cell-withdraw">
-                          Plan Name
-                        </th>
-                        <th class="top-cell-withdraw">
-                          Materials to be withdrawn
-                        </th>
-                        <th class="top-cell-withdraw right-cell-withdraw">
-                          Location
-                        </th>
-                      </tr>
-                    </thead>
-                    <tbody class="rows-withdraw">
-                      <tr>
-                        <td class="left-cell-withdraw">Lagos House</td>
-                        <td>
-                          <p>100 Bags of Cement</p>
-                          <p>700 Units of Blocks</p>
-                        </td>
-                        <td class="right-cell-withdraw">
-                          <p>4, samuel Elegushi street, Lagos</p>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td class="left-cell-withdraw">Lagos House</td>
-                        <td>
-                          <p>100 Bags of Cement</p>
-                          <p>700 Units of Blocks</p>
-                        </td>
-                        <td class="right-cell-withdraw">
-                          <p>4, samuel Elegushi street, Lagos</p>
-                        </td>
-                      </tr>
-
-                      <tr>
-                        <td class="left-cell-withdraw">Lagos House</td>
-                        <td>
-                          <p>100 Bags of Cement</p>
-                          <p>700 Units of Blocks</p>
-                        </td>
-                        <td class="right-cell-withdraw">
-                          <p>4, samuel Elegushi street, Lagos</p>
-                        </td>
-                      </tr>
-
-                      <tr>
-                        <td class="left-cell-withdraw">Lagos House</td>
-                        <td>
-                          <p>100 Bags of Cement</p>
-                          <p>700 Units of Blocks</p>
-                        </td>
-                        <td class="right-cell-withdraw">
-                          <p>4, samuel Elegushi street, Lagos</p>
-                        </td>
-                      </tr>
-
-                      <tr>
-                        <td class="left-cell-withdraw">Lagos House</td>
-                        <td>
-                          <p>100 Bags of Cement</p>
-                          <p>700 Units of Blocks</p>
-                        </td>
-                        <td class="right-cell-withdraw">
-                          <p>4, samuel Elegushi street, Lagos</p>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td class="left-cell-withdraw">Lagos House</td>
-                        <td>
-                          <p>100 Bags of Cement</p>
-                          <p>700 Units of Blocks</p>
-                        </td>
-                        <td class="right-cell-withdraw">
-                          <p>4, samuel Elegushi street, Lagos</p>
-                        </td>
-                      </tr>
-
-                      <tr>
-                        <td class="left-cell-withdraw">Lagos House</td>
-                        <td>
-                          <p>100 Bags of Cement</p>
-                          <p>700 Units of Blocks</p>
-                        </td>
-                        <td class="right-cell-withdraw">
-                          <p>4, samuel Elegushi street, Lagos</p>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td class="left-cell-withdraw bottom-cell-withdraw">
-                          Lagos House
-                        </td>
-                        <td class="bottom-cell-withdraw">
-                          <p>100 Bags of Cement</p>
-                          <p>700 Units of Blocks</p>
-                        </td>
-                        <td class="right-cell-withdraw bottom-cell-withdraw">
-                          <p>4, samuel Elegushi street, Lagos</p>
-                        </td>
-                      </tr>
-                    </tbody>
-                  </table>
-                </div>
-
-                <button class="confirm-withdraw">Confirm</button>
-              </div>
-              <div class="notify-img-container-withdraw">
-                <img
-                  src="../assets/images/cancel.svg"
-                  class="close-img-withdraw x-button-withdraw"
-                  alt=""
-                />
-                <img
-                  src="../assets/images/Group 82.svg"
-                  alt="success-img"
-                  class="notify-img success-img-withdraw"
-                />
-                <img
-                  src="../assets/images/Group 86.svg"
-                  alt="failed-img"
-                  class="notify-img failed-img-withdraw"
-                />
-              </div>
-            </div> */}
-
             <div class="main-container-withdraw">
               <div class="main-header-withdraw">
                 <div class="open-withdraw">
@@ -329,7 +230,7 @@ class Withdraw extends Component {
                   <div class="avatar-withdraw">
                     <img src="../assets/images/Oval.svg" alt="" />
                   </div>
-                  <a href="/logout" class="logoutNav-withdraw">
+                  <a href="#" class="logoutNav-withdraw" onClick={this.logout}>
                     Logout
                   </a>
                 </div>
@@ -343,12 +244,7 @@ class Withdraw extends Component {
                         <h2>Select Plan </h2>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                         <span className="ast">*</span>
                       </div>
-                      <select className="select-css" value={""}>
-                        <option value="">Select country</option>
-                        <option value="0">Plan 1</option>
-                        <option value="1">Plan 2</option>
-                        <option value="2">Plan 3</option>
-                      </select>
+                      {planSelector}
                       <br />
                       <div class="checkbox-div">
                         <input type="checkbox" id="checkMe" />
@@ -370,7 +266,7 @@ class Withdraw extends Component {
                           type="radio"
                           name="connected"
                           id="one"
-                          style={{ marginBottom: "3px" }}
+                          style={{ marginBottom: '3px' }}
                         />
                         <label for="one">&nbsp;&nbsp;One Location</label>
                       </div>
@@ -380,7 +276,7 @@ class Withdraw extends Component {
                           type="radio"
                           name="connected"
                           id="various"
-                          style={{ marginBottom: "3px" }}
+                          style={{ marginBottom: '3px' }}
                         />
                         <label for="various">
                           &nbsp;&nbsp;Various Locations
@@ -482,14 +378,17 @@ class Withdraw extends Component {
           </main>
         </div>
       </div>
-    );
+    )
   }
 }
 
-const mapStateToProps = (state) => ({});
+const mapStateToProps = (state) => ({
+  plans: state.plan,
+})
 
 const mapDispatchToProps = {
   logoutUser,
-};
+  getPlans,
+}
 
-export default connect(mapStateToProps, mapDispatchToProps)(Withdraw);
+export default connect(mapStateToProps, mapDispatchToProps)(Withdraw)

@@ -1,55 +1,55 @@
-import React, { Component } from "react";
-import { connect } from "react-redux";
-import { Link } from "react-router-dom";
-import { registerUser } from "../../store/actions/authActions";
-import "./signup.scss";
-import { toast } from "react-toastify";
-import Tada from "react-reveal/Tada";
+import React, { Component } from 'react'
+import { connect } from 'react-redux'
+import { Link } from 'react-router-dom'
+import { registerUser } from '../../store/actions/authActions'
+import './signup.scss'
+import { toast } from 'react-toastify'
+import Tada from 'react-reveal/Tada'
 
 class Signup extends Component {
   constructor() {
-    super();
+    super()
 
     this.state = {
-      firstName: "",
-      lastName: "",
-      email: "",
-      password: "",
-      country: "",
-      phone: "",
+      firstName: '',
+      lastName: '',
+      email: '',
+      password: '',
+      country: '',
+      phone: '',
       check: false,
-      visible: "",
+      visible: '',
       errors: {},
       loading: false,
-    };
+    }
 
-    this.onChange = this.onChange.bind(this);
-    this.onSubmit = this.onSubmit.bind(this);
-    this.togglePassword = this.togglePassword.bind(this);
+    this.onChange = this.onChange.bind(this)
+    this.onSubmit = this.onSubmit.bind(this)
+    this.togglePassword = this.togglePassword.bind(this)
   }
 
   onChange(e) {
-    this.setState({ [e.target.name]: e.target.value });
+    this.setState({ [e.target.name]: e.target.value })
   }
 
   togglePassword() {
-    this.setState({ visible: !this.state.visible });
+    this.setState({ visible: !this.state.visible })
   }
 
   static getDerivedStateFromProps(nextProps, prevState) {
     if (nextProps.auth.isAuthenticated) {
-      nextProps.history.push("/dashboard");
+      nextProps.history.push('/dashboard')
     }
     if (nextProps.errors) {
       return {
         errors: nextProps.errors,
-      };
+      }
     }
   }
 
   onSubmit(e) {
-    e.preventDefault();
-    this.setState({ loading: !this.state.loading });
+    e.preventDefault()
+    this.setState({ loading: !this.state.loading })
 
     const payload = {
       first_name: this.state.firstName,
@@ -59,20 +59,20 @@ class Signup extends Component {
       phone: this.state.phone,
       country: this.state.country,
       check: this.state.check,
-    };
+    }
 
     if (this.state.check) {
       this.props
         .registerUser(payload)
         .then((res) => {
           if ((res && res.payload.data.status_code === 201) || 204) {
-            toast.success("User registered successfully");
+            toast.success('User registered successfully')
           }
         })
-        .catch((err) => toast.error("Something went wrong"))
-        .finally(() => this.setState({ loading: false }));
+        .catch((err) => toast.error('Something went wrong'))
+        .finally(() => this.setState({ loading: false }))
     } else {
-      toast.error("You need to agree terms and conditions");
+      toast.error('You need to agree terms and conditions')
     }
   }
 
@@ -88,13 +88,13 @@ class Signup extends Component {
       check,
       errors,
       loading,
-    } = this.state;
+    } = this.state
 
     return (
       <div className="signup-wrapper">
-        <div className="container">
+        <div className="container-fluid">
           <Link to="/" className="logo">
-            Laybuy
+            Stockpiller
           </Link>
           <img
             src="https://res.cloudinary.com/djnhrvjyf/image/upload/v1594376370/woman-with-laptop_f7fyle.svg"
@@ -104,20 +104,20 @@ class Signup extends Component {
             <Tada>
               <div className="card-signup">
                 <p className="signup-header">Join Us</p>
-                <p style={{ color: "red" }}>
-                  {errors.errors ? errors.errors.first_name : ""}
+                <p style={{ color: 'red' }}>
+                  {errors.errors ? errors.errors.first_name : ''}
                 </p>
-                <p style={{ color: "red" }}>
-                  {errors.errors ? errors.errors.last_name : ""}
+                <p style={{ color: 'red' }}>
+                  {errors.errors ? errors.errors.last_name : ''}
                 </p>
-                <p style={{ color: "red" }}>
-                  {errors.errors ? errors.errors.email : ""}
+                <p style={{ color: 'red' }}>
+                  {errors.errors ? errors.errors.email : ''}
                 </p>
-                <p style={{ color: "red" }}>
-                  {errors.errors ? errors.errors.password : ""}
+                <p style={{ color: 'red' }}>
+                  {errors.errors ? errors.errors.password : ''}
                 </p>
-                <p style={{ color: "red" }}>
-                  {errors.errors ? errors.errors.phone : ""}
+                <p style={{ color: 'red' }}>
+                  {errors.errors ? errors.errors.phone : ''}
                 </p>
                 <br />
                 <form onSubmit={this.onSubmit}>
@@ -177,7 +177,7 @@ class Signup extends Component {
                   </div>
                   <div className="row">
                     <input
-                      type={visible ? "text" : "password"}
+                      type={visible ? 'text' : 'password'}
                       name="password"
                       value={password}
                       placeholder="Password"
@@ -258,17 +258,17 @@ class Signup extends Component {
           </div>
         </div>
       </div>
-    );
+    )
   }
 }
 
 const mapStateToProps = (state) => ({
   auth: state.auth,
   errors: state.errors,
-});
+})
 
 const mapDispatchToProps = {
   registerUser,
-};
+}
 
-export default connect(mapStateToProps, mapDispatchToProps)(Signup);
+export default connect(mapStateToProps, mapDispatchToProps)(Signup)

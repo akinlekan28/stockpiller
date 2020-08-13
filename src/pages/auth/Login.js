@@ -76,9 +76,9 @@ class Login extends Component {
     const { phone, password, visible, loading, errors } = this.state;
     return (
       <div className="login-wrapper">
-        <div className="container">
+        <div className="container-fluid">
           <Link to="/" className="logo">
-            Laybuy
+            Stockpiller
           </Link>
           <img
             src="https://res.cloudinary.com/djnhrvjyf/image/upload/v1594376370/woman-with-laptop_f7fyle.svg"

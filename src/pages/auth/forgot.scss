@@ -28,15 +28,18 @@
 
   .forgot-password {
     width: 40%;
-    padding: 0 50px;
+    // padding: 0 50px;
+    margin-top: 180px;
     box-sizing: border-box;
   }
 
   .reset {
     width: 40%;
+    float: right;
     box-sizing: border-box;
-    padding-top: 75px;
-    padding-left: 95px;
+    padding-top: 95px;
+    margin-right: 40px;
+    // padding-left: 95px;
   }
 
   .reset-header {
