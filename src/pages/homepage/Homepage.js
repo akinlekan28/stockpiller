@@ -72,7 +72,7 @@ class Homepage extends Component {
           ></div>
           <div className="sidebar" ref={this.sidebar}>
             <div className="sidebar-header">
-              <div className="sidebar-logo">Laybuy</div>
+              <div className="sidebar-logo">Stockpiller</div>
               <div
                 className="sidebar-close"
                 onClick={this.closeSideBar.bind(this)}
@@ -126,7 +126,7 @@ class Homepage extends Component {
             <div className="Header-content">
               <div className="heading-top">
                 <div className="logo fw-700 fs-18">
-                  <Link to="/">Laybuy</Link>
+                  <Link to="/">Stockpiller</Link>
                 </div>
                 <div
                   className="hamburger"

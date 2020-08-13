@@ -52,7 +52,7 @@ class App extends Component {
       <Provider store={store}>
         <>
           <ToastContainer autoClose={4000} />
-          <BrowserRouter basename={process.env.PUBLIC_URL}>
+          <BrowserRouter>
             <Switch>
               <Route exact path="/" component={Homepage} />
               <Route exact path="/login" component={Login} />

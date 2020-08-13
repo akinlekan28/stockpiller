@@ -1,670 +1,685 @@
-.transaction-wrapper{    
-    .hide-transaction{
-        display: none;
-    }
-    
-    .container-transaction{
-        width: 100%;
-        display: flex;
-        background-color: #F0F0F0;
-        min-height: 100vh;
-    }
-    
-    .sidebar-transaction{
-        width: 17%;
-        background-color: white;
-        box-shadow: 5px 0px 5px #F0F0F0;
-        display: flex;
-        flex-direction: column;
-        position: fixed;
-        min-height: 100%;
-    }
-    
-    .sidenav__container-transaction{
-        width: 100%;
-        height: 100%;
-        position: fixed;
-        z-index: 2;
-        background-color: rgba(0, 0, 0, 0.3);
-        display: none;
-    }
-    
-    .sidebar-transaction.sidenav-transaction{
-        width: 0%;
-        position: absolute;
-        transition: 400ms;
-        display: flex;
-        overflow: hidden;
-    }
-    
-    .sidenav-close-transaction{
-        position: absolute;
-        height: 32px;
-        width: 32px;
-        right: 10px;
-        top: 25px;
-        background: transparent;
-        border: none;
-        outline: none;
-    }
-    
-    .main-transaction{
-        width: 83%;
-        margin-left: 17%;
-        padding-bottom: 20px;
-        box-sizing: border-box
-    }
-    
-    .logo-transaction{
-        font-size: 20px;
-        color: #502274;
-        margin: 30px auto 20px;
-        display: block;
-        width: fit-content;
-        text-decoration: none;
-    }
-    
-    .links-transaction{
-        margin-bottom: auto;
-        margin-top: 30px;
-    }
-    
-    .links-transaction .link-transaction,.logout__link-transaction{
-        width: 100%;
-        color: #502274;
-        height: 60px;
-        font-size: 18px;
-        padding-left: 50px;
-        box-sizing: border-box;
-        display: flex;
-        align-items: center;
-        transition: 0.3s ease;
-    }
-    
-    .links-transaction .link-transaction a{
-        color: #502274;
-        text-decoration: none;
-        font-size: 18px;
-        font-weight: 400;
-    }
-    
-    .links-transaction .link-transaction.active-transaction{
-        // background-color: #502274;
-        // color: white;
-        background-color: #ededed;
-        border-left-width: 2px;
-        border-style: solid;
-        border-left-color: #502274;
-        border-right-color: #c4c4c4;
-        border-right-color: transparent;
-        border-bottom-color: transparent;
-        border-top-color: transparent;
-        color: #502274;
-    }
-    
-    .links-transaction .link-transaction.active-transaction a,.links-transaction .link-transaction:hover a{
-        color: #502274;
-    }
-    
-    .links-transaction .link-transaction svg,.logout__link-transaction img{
-        margin-right: 10px
-    }
-    
-    .links-transaction .link-transaction:hover{
-        // background-color: #502274;
-        // color: white;
-        background-color: #ededed;
-        border-left-width: 5px;
-        border-style: solid;
-        border-left-color: #502274;
-        border-right-color: #c4c4c4;
-        border-right-color: transparent;
-        border-bottom-color: transparent;
-        border-top-color: transparent;
-        color: #502274;
-    }
-    
-    .links-transaction .link-transaction svg{
-        fill: #502274;
-        transition: 0.3s ease;
-    }
-    
-    .links-transaction .link-transaction.active-transaction svg,.links-transaction .link-transaction:hover svg{
-        fill: #fff;
-    }
-    
-    .links-transaction .link-transaction.active-transaction{
-        // background-color: #502274;
-        // color: white;
-        background-color: #ededed;
-        border-left-width: 5px;
-        border-style: solid;
-        border-left-color: #502274;
-        border-right-color: #c4c4c4;
-        border-right-color: transparent;
-        border-bottom-color: transparent;
-        border-top-color: transparent;
-        color: #502274;
-    }
-    
-    .links-transaction .link-transaction img,.logout__link-transaction img{
-        margin-right: 10px
-    }
-    
-    .logout__link-transaction{
-        text-decoration: none;
-    }
+.transaction-wrapper {
+  .hide-transaction {
+    display: none;
+  }
 
-    .header-title {
-        margin-top: -16px;
-        display: flex;
-        justify-content: space-between;
-        position: relative;
-        background-color: #ffffff;
-        border-bottom-width: 1px;
-        border-left-width: 1px;
-        border-style: solid;
-        border-left-color: #c4c4c4;
-        border-top-color: transparent;
-        border-right-color: transparent;
-        border-bottom-color: #c4c4c4;
-        width: 100%;
-        box-sizing: border-box;
-      } 
-    
-    .top-transaction{
-        padding: 0 20px;
-        display: flex;
-        justify-content: space-between;
-        position: relative;
-        background-color: #ffffff;
-        border-bottom-width: 1px;
-        border-left-width: 1px;
-        border-style: solid;
-        border-left-color: #c4c4c4;
-        border-top-color: transparent;
-        border-right-color: transparent;
-        border-bottom-color: #c4c4c4;
-        width: 100%;
-        box-sizing: border-box;
+  .container-transaction {
+    width: 100%;
+    display: flex;
+    background-color: #f0f0f0;
+    min-height: 100vh;
+  }
+
+  .sidebar-transaction {
+    width: 17%;
+    background-color: white;
+    box-shadow: 5px 0px 5px #f0f0f0;
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    min-height: 100%;
+  }
+
+  .sidenav__container-transaction {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    z-index: 2;
+    background-color: rgba(0, 0, 0, 0.3);
+    display: none;
+  }
+
+  .sidebar-transaction.sidenav-transaction {
+    width: 0%;
+    position: absolute;
+    transition: 400ms;
+    display: flex;
+    overflow: hidden;
+  }
+
+  .sidenav-close-transaction {
+    position: absolute;
+    height: 32px;
+    width: 32px;
+    right: 10px;
+    top: 25px;
+    background: transparent;
+    border: none;
+    outline: none;
+  }
+
+  .main-transaction {
+    width: 83%;
+    margin-left: 17%;
+    padding-bottom: 20px;
+    box-sizing: border-box;
+  }
+
+  .logo-transaction {
+    color: #502274;
+    font-weight: 700;
+    font-size: 27px;
+    margin: 22px auto 20px;
+    display: block;
+    width: fit-content;
+    text-decoration: none;
+  }
+
+  .links-transaction {
+    margin-bottom: auto;
+    margin-top: 30px;
+  }
+
+  .links-transaction .link-transaction,
+  .logout__link-transaction {
+    width: 100%;
+    color: #502274;
+    height: 60px;
+    font-size: 18px;
+    padding-left: 50px;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    transition: 0.3s ease;
+  }
+
+  .links-transaction .link-transaction a {
+    color: #502274;
+    text-decoration: none;
+    font-size: 18px;
+    font-weight: 400;
+  }
+
+  .links-transaction .link-transaction.active-transaction {
+    // background-color: #502274;
+    // color: white;
+    background-color: #ededed;
+    border-left-width: 2px;
+    border-style: solid;
+    border-left-color: #502274;
+    border-right-color: #c4c4c4;
+    border-right-color: transparent;
+    border-bottom-color: transparent;
+    border-top-color: transparent;
+    color: #502274;
+  }
+
+  .links-transaction .link-transaction.active-transaction a,
+  .links-transaction .link-transaction:hover a {
+    color: #502274;
+  }
+
+  .links-transaction .link-transaction svg,
+  .logout__link-transaction img {
+    margin-right: 10px;
+  }
+
+  .links-transaction .link-transaction:hover {
+    // background-color: #502274;
+    // color: white;
+    background-color: #ededed;
+    border-left-width: 5px;
+    border-style: solid;
+    border-left-color: #502274;
+    border-right-color: #c4c4c4;
+    border-right-color: transparent;
+    border-bottom-color: transparent;
+    border-top-color: transparent;
+    color: #502274;
+  }
+
+  .links-transaction .link-transaction svg {
+    fill: #502274;
+    transition: 0.3s ease;
+  }
+
+  .links-transaction .link-transaction.active-transaction svg,
+  .links-transaction .link-transaction:hover svg {
+    fill: #fff;
+  }
+
+  .links-transaction .link-transaction.active-transaction {
+    // background-color: #502274;
+    // color: white;
+    background-color: #ededed;
+    border-left-width: 5px;
+    border-style: solid;
+    border-left-color: #502274;
+    border-right-color: #c4c4c4;
+    border-right-color: transparent;
+    border-bottom-color: transparent;
+    border-top-color: transparent;
+    color: #502274;
+  }
+
+  .links-transaction .link-transaction img,
+  .logout__link-transaction img {
+    margin-right: 10px;
+  }
+
+  .logout__link-transaction {
+    text-decoration: none;
+  }
+
+  .header-title {
+    margin-top: -16px;
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+    background-color: #ffffff;
+    border-bottom-width: 1px;
+    border-left-width: 1px;
+    border-style: solid;
+    border-left-color: #c4c4c4;
+    border-top-color: transparent;
+    border-right-color: transparent;
+    border-bottom-color: #c4c4c4;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .top-transaction {
+    padding: 0 20px;
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+    background-color: #ffffff;
+    border-bottom-width: 1px;
+    border-left-width: 1px;
+    border-style: solid;
+    border-left-color: #c4c4c4;
+    border-top-color: transparent;
+    border-right-color: transparent;
+    border-bottom-color: #c4c4c4;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .sidenav-btn-transaction {
+    height: 100%;
+    border: none;
+    background-color: transparent;
+    width: 38px;
+    outline: none;
+    display: none;
+    border-radius: 3px;
+    display: none;
+  }
+
+  .bar-transaction {
+    height: 3px;
+    border-radius: 1px;
+  }
+
+  .bar-left-transaction {
+    transform: rotate(45deg) translateY(0.2rem);
+  }
+
+  .bar-right-transaction {
+    transform: rotate(-45deg) translateY(-0.2rem);
+  }
+
+  .sidenav-btn-transaction .bar-transaction {
+    width: 100%;
+    background-color: #502274;
+  }
+
+  .sidenav-btn-transaction .bar-transaction:not(:last-child) {
+    margin-bottom: 5px;
+  }
+
+  .back-transaction {
+    display: flex;
+    height: 65px;
+    align-items: center;
+    font-size: 16px;
+    color: #4a4a4a;
+  }
+
+  .back-transaction a {
+    margin-left: 5px;
+    text-decoration: none;
+    color: #4a4a4a;
+  }
+
+  .rates-transaction {
+    width: 280px;
+    font-size: 12px;
+    border-collapse: separate;
+    border-spacing: 0 5px;
+  }
+
+  .rates-transaction.bottom-transaction {
+    display: none;
+  }
+
+  .rates-transaction td {
+    margin-bottom: 5px;
+    min-width: 100px;
+    font-size: 10px;
+  }
+
+  .rates-transaction td img {
+    vertical-align: middle;
+    margin-right: 2px;
+  }
+
+  .rates-transaction tr:nth-of-type(n + 2) td:nth-of-type(n + 2) {
+    font-weight: bold;
+    font-size: 10px;
+  }
+
+  .user-controls-transaction {
+    display: flex;
+    align-items: center;
+    margin-right: 50px;
+  }
+
+  .user-transaction {
+    margin: 0 30px;
+  }
+
+  .logout-transaction {
+    border: 1px solid #502274;
+    border-radius: 5px;
+    color: #502274;
+    height: 30px;
+    display: inline-flex;
+    align-items: center;
+    width: 85px;
+    justify-content: center;
+    background-color: transparent;
+  }
+
+  .content-transaction {
+    height: calc(100% - 70px);
+    padding: 30px 50px;
+    box-sizing: border-box;
+  }
+
+  .cards-transaction {
+    min-height: 148px;
+    width: 100%;
+    display: flex;
+  }
+
+  .cards-transaction .header-transaction {
+    font-size: 14px;
+    margin: 11px 20px;
+  }
+
+  .cards-transaction .bold-transaction {
+    font-size: 24px;
+    margin: 15px 20px;
+  }
+
+  .cards-transaction .light-transaction {
+    font-size: 10px;
+  }
+
+  .total-amount-transaction {
+    flex-basis: 22%;
+    border-radius: 3px;
+    background-color: white;
+    margin-right: 14px;
+    border: 1px solid #eaeaea;
+  }
+
+  .materials-withdrawn-transaction {
+    flex-basis: 30%;
+    border-radius: 3px;
+    background-color: white;
+    margin-right: 14px;
+    border: 1px solid #eaeaea;
+  }
+
+  .materials-left-transaction {
+    flex-basis: 30%;
+    border-radius: 3px;
+    background-color: white;
+    margin-right: 14px;
+    border: 1px solid #eaeaea;
+  }
+
+  .add-plan-transaction {
+    flex-basis: 18%;
+    border-radius: 3px;
+    background-color: #502274;
+    border: 1px solid #eaeaea;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    font-size: 12px;
+    color: white;
+    cursor: pointer;
+    text-decoration: none;
+  }
+
+  .add-plan-transaction p {
+    width: 90%;
+  }
+
+  .add-plan-transaction button {
+    background-color: transparent;
+    border: none;
+  }
+
+  .cards-transaction div span.line-h-transaction {
+    height: 1px;
+    background-color: #eaeaea;
+    display: block;
+    width: 100%;
+  }
+
+  .cards-transaction div.grid-transaction {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    padding: 17px 20px;
+    height: 80px;
+  }
+
+  .cards-transaction div.grid-transaction .light-transaction {
+    margin-bottom: 10px;
+    margin-top: 0;
+  }
+
+  .cards-transaction div.grid-transaction div:first-of-type {
+    border-right: 1px solid #eaeaea;
+  }
+
+  .cards-transaction div.grid-transaction .bold-transaction {
+    margin: 0;
+  }
+
+  .cards-transaction div.grid-transaction div:last-of-type {
+    text-align: right;
+  }
+
+  .materials-withdrawn-transaction .bold-transaction {
+    color: #b21f1e;
+  }
+
+  .materials-left-transaction .bold-transaction {
+    color: #008000;
+  }
+
+  .download-pdf-transaction {
+    padding: 0 20px;
+    box-sizing: border-box;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 50px;
+    margin-top: 14px;
+    background-color: white;
+    border-radius: 3px;
+    border: 1px solid #eaeaea;
+  }
+
+  .download-pdf-transaction span {
+    font-size: 12px;
+  }
+
+  .download-pdf-transaction span .line-transaction {
+    width: 30px;
+    height: 4px;
+    background-color: #502274;
+    display: inline-block;
+    position: absolute;
+    margin-top: 5px;
+  }
+
+  .download-pdf-transaction button {
+    border-radius: 3px;
+    background-color: transparent;
+    border: 1px solid #502274;
+    color: #502274;
+    width: 135px;
+    height: 25px;
+    font-size: 12px;
+  }
+
+  .transactions-transaction {
+    font-size: 12px;
+    width: 100%;
+    padding: 10px 20px;
+    background-color: white;
+    margin-top: 14px;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
+    border: 1px solid #eaeaea;
+    border-radius: 3px;
+    box-sizing: border-box;
+  }
+
+  .transactions__header-transaction {
+    color: black;
+  }
+
+  .transactions__header__small-transaction {
+    display: none;
+    text-align: center;
+  }
+
+  .transaction-transaction,
+  .transactions__header-transaction {
+    height: 44px;
+    display: grid;
+    grid-template-columns: 0.7fr repeat(4, 1fr);
+  }
+
+  .transaction-transaction p,
+  .transactions__header-transaction p {
+    padding-left: 20px;
+    // padding-top: 10px;
+    box-sizing: border-box;
+  }
+
+  .transaction-transaction p span.label-transaction {
+    display: none;
+    color: black;
+    margin-right: 20px;
+  }
+
+  .transaction-transaction p span.br-transaction {
+    display: block;
+  }
+
+  .transaction-transaction.deposit-transaction {
+    color: #008000;
+  }
+
+  .transactions__header-transaction p:not(:nth-of-type(1)) {
+    text-align: center;
+  }
+
+  .transaction-transaction p:not(:nth-of-type(1)) {
+    text-align: center;
+  }
+
+  .transaction-transaction.withdraw-transaction {
+    color: #b21f1e;
+  }
+
+  .transaction-transaction:nth-of-type(2n) {
+    background-color: rgba(216, 216, 216, 0.29);
+  }
+
+  @media (max-width: 1050px) {
+    .cards-transaction {
+      height: unset;
     }
-    
-    .sidenav-btn-transaction{
-        height: 100%;
-        border: none;
-        background-color: transparent;
-        width: 38px;
-        outline: none;
-        display: none;
-        border-radius: 3px;
-        display: none;
+    .cards-transaction div.grid-transaction {
+      grid-template-columns: 1fr;
+      height: unset;
     }
-    
-    .bar-transaction{
-        height: 3px;
-        border-radius: 1px;
+    .cards-transaction div.grid-transaction div:first-of-type {
+      border: none;
+      border-bottom: 1px solid #eaeaea;
+      text-align: center;
+      padding-bottom: 10px;
     }
-    
-    .bar-left-transaction{
-        transform: rotate(45deg) translateY(0.2rem);
+    .cards-transaction div.grid-transaction div:last-of-type {
+      text-align: center;
+      margin-top: 10px;
     }
-    
-    .bar-right-transaction{
-        transform: rotate(-45deg) translateY(-0.2rem);
+    .cards-transaction .header-transaction,
+    .cards-transaction .bold-transaction {
+      text-align: center;
     }
-    
-    .sidenav-btn-transaction .bar-transaction{
-        width: 100%;
-        background-color: #502274;
+    .logout-transaction {
+      display: none;
     }
-    
-    .sidenav-btn-transaction .bar-transaction:not(:last-child){
-        margin-bottom: 5px;
+    .user-controls-transaction {
+      margin-right: 0px;
     }
-    
-    .back-transaction{
-        display: flex;
-        height: 65px;
-        align-items: center;
-        font-size: 16px;
-        color: #4A4A4A;
+  }
+
+  @media (max-width: 1300px) {
+    .sidebar-transaction {
+      width: 24%;
     }
-    
-    .back-transaction a{
-        margin-left: 5px;
-        text-decoration: none;
-        color: #4A4A4A;
+    .main-transaction {
+      width: 76%;
+      margin-left: 24%;
     }
-    
-    .rates-transaction{
-        width: 280px;
-        font-size: 12px;
-        border-collapse: separate;
-        border-spacing: 0 5px;
+    .cards-transaction {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-row-gap: 10px;
     }
-    
-    .rates-transaction.bottom-transaction{
-        display: none;
+    .total-amount-transaction,
+    .materials-withdrawn-transaction,
+    .materials-left-transaction,
+    .add-plan-transaction {
+      margin: 0 auto;
+      width: 248px;
     }
-    
-    .rates-transaction td{
-        margin-bottom: 5px;
-        min-width: 100px;
-        font-size: 10px;
+    .content-transaction {
+      padding: 30px 20px;
+      padding-bottom: 0;
     }
-    
-    .rates-transaction td img{
-        vertical-align: middle;
-        margin-right: 2px;
+    .transactions-transaction {
+      display: grid;
+      grid-template-rows: 1fr;
     }
-    
-    .rates-transaction tr:nth-of-type(n + 2) td:nth-of-type(n + 2){
-        font-weight: bold;
-        font-size: 10px;
+    .transaction-transaction,
+    .transactions__header-transaction {
+      height: unset;
     }
-    
-    .user-controls-transaction{
-        display: flex;
-        align-items: center;
-        margin-right: 50px
+  }
+
+  @media (max-width: 1000px) {
+    .sidebar-transaction {
+      width: 30%;
     }
-    
-    .user-transaction{
-        margin: 0 30px;
+    .main-transaction {
+      width: 70%;
+      margin-left: 30%;
+      padding-bottom: 0;
     }
-    
-    .logout-transaction{
-        border: 1px solid #502274;
-        border-radius: 5px;
-        color: #502274;
-        height: 30px;
-        display: inline-flex;
-        align-items: center;
-        width: 85px;
-        justify-content: center;
-        background-color: transparent;
+    .links-transaction .link-transaction,
+    .logout__link-transaction {
+      padding-left: 20%;
     }
-    
-    .content-transaction{
-        height: calc(100% - 70px);
-        padding: 30px 50px;
-        box-sizing: border-box;
+    .rates-transaction.top-transaction {
+      display: none;
     }
-    
-    .cards-transaction{
-        min-height: 148px;
-        width: 100%;
-        display: flex;
+    .rates-transaction.bottom-transaction {
+      display: flex;
+      justify-content: center;
+      background-color: rgba(221, 219, 241, 0.8);
+      width: 100%;
+      padding: 10px 5px;
+      box-sizing: border-box;
     }
-    
-    .cards-transaction .header-transaction{
-        font-size: 14px;
-        margin: 11px 20px;
+    .sidebar-transaction {
+      box-shadow: none;
     }
-    
-    .cards-transaction .bold-transaction{
-        font-size: 24px;
-        margin: 15px 20px;
+    .transactions-transaction {
+      padding: 0;
+      padding-bottom: 10px;
     }
-    
-    .cards-transaction .light-transaction{
-        font-size: 10px;
+    .transactions__header-transaction {
+      display: none;
     }
-    
-    .total-amount-transaction{
-        flex-basis: 22%;
-        border-radius: 3px;
-        background-color: white;
-        margin-right: 14px;
-        border: 1px solid #EAEAEA;
+    .transaction-transaction {
+      display: block;
     }
-    
-    .materials-withdrawn-transaction{
-        flex-basis: 30%;
-        border-radius: 3px;
-        background-color: white;
-        margin-right: 14px;
-        border: 1px solid #EAEAEA;
+    .transaction-transaction p:not(:nth-of-type(1)) {
+      text-align: left;
     }
-    
-    .materials-left-transaction{
-        flex-basis: 30%;
-        border-radius: 3px;
-        background-color: white;
-        margin-right: 14px;
-        border: 1px solid #EAEAEA;
+    .transaction-transaction p span.label-transaction {
+      display: inline-block;
     }
-    
-    .add-plan-transaction{
-        flex-basis: 18%;
-        border-radius: 3px;
-        background-color: #502274;
-        border: 1px solid #EAEAEA;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        text-align: center;
-        font-size: 12px;
-        color: white;
-        cursor: pointer;
-        text-decoration: none;
+    .transaction-transaction p {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      padding-right: 5px;
     }
-    
-    .add-plan-transaction p{
-        width: 90%;
+    .transactions__header__small-transaction {
+      display: block;
     }
-    
-    .add-plan-transaction button{
-        background-color: transparent;
-        border: none;
+  }
+
+  @media (max-width: 775px) {
+    .cards-transaction {
+      grid-template-columns: 1fr;
     }
-    
-    .cards-transaction div span.line-h-transaction{
-        height: 1px;
-        background-color: #EAEAEA;
-        display: block;
-        width: 100%;
+    .add-plan-transaction {
+      min-height: 220px;
     }
-    
-    .cards-transaction div.grid-transaction{
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        padding: 17px 20px;
-        height: 80px;
+  }
+
+  @media (max-width: 768px) {
+    .sidebar-transaction.sidenav-transaction.active-transaction {
+      width: 50%;
+      box-shadow: 0 0 40px rgba(0, 0, 0, 0.5);
     }
-    
-    .cards-transaction div.grid-transaction .light-transaction{
-        margin-bottom: 10px;
-        margin-top: 0;
+    .sidenav__container-transaction.active-transaction {
+      display: block;
     }
-    
-    .cards-transaction div.grid-transaction div:first-of-type{
-        border-right: 1px solid #EAEAEA;
+    .top-transaction {
+      position: fixed;
+      z-index: 10;
+      padding: 20px;
     }
-    
-    .cards-transaction div.grid-transaction .bold-transaction{
-        margin: 0;
+    .sidebar-transaction {
+      display: none;
     }
-    
-    .cards-transaction div.grid-transaction div:last-of-type{
-        text-align: right;
+    .main-transaction {
+      width: 100%;
+      margin: 0;
     }
-    
-    .materials-withdrawn-transaction .bold-transaction{
-        color: #B21F1E;
+    .sidenav-btn-transaction {
+      display: inline-block;
     }
-    
-    .materials-left-transaction .bold-transaction{
-        color: #008000;
+    .top-transaction .back-transaction {
+      display: none;
     }
-    
-    .download-pdf-transaction{
-        padding: 0 20px;
-        box-sizing: border-box;
-        width: 100%;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        height: 50px;
-        margin-top: 14px;
-        background-color: white;
-        border-radius: 3px;
-        border: 1px solid #EAEAEA;
+    .user-controls-transaction {
+      margin-right: 0;
     }
-    
-    .download-pdf-transaction span{
-        font-size: 12px;
+    .logo-transaction {
+      margin-left: 15%;
     }
-    
-    .download-pdf-transaction span .line-transaction{
-        width: 30px;
-        height: 4px;
-        background-color: #502274;
-        display: inline-block;
-        position: absolute;
-        margin-top: 5px;
+    .links-transaction .link-transaction,
+    .logout__link-transaction {
+      padding-left: 15%;
     }
-    
-    .download-pdf-transaction button{
-        border-radius: 3px;
-        background-color: transparent;
-        border: 1px solid #502274;
-        color: #502274;
-        width: 135px;
-        height: 25px;
-        font-size: 12px;
+    .content-transaction {
+      margin-top: 70px;
     }
-    
-    .transactions-transaction{
-        font-size: 12px;
-        width: 100%;
-        padding: 10px 20px;
-        background-color: white;
-        margin-top: 14px;
-        box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
-        border: 1px solid #EAEAEA;
-        border-radius: 3px;
-        box-sizing: border-box;
+  }
+
+  @media (max-width: 575px) {
+    .sidebar-transaction.sidenav-transaction.active-transaction {
+      width: 70%;
     }
-    
-    .transactions__header-transaction{
-        color: black;
+    .content-transaction {
+      padding: 30px 0 0;
     }
-    
-    .transactions__header__small-transaction{
-        display: none;
-        text-align: center
-    }
-    
-    .transaction-transaction,.transactions__header-transaction{
-        height: 44px;
-        display: grid;
-        grid-template-columns: 0.7fr repeat(4,1fr)
-    }
-    
-    .transaction-transaction p,.transactions__header-transaction p{
-        padding-left: 20px;
-        // padding-top: 10px;
-        box-sizing: border-box
-    }
-    
-    .transaction-transaction p span.label-transaction{
-        display: none;
-        color: black;
-        margin-right: 20px;
-    }
-    
-    .transaction-transaction p span.br-transaction{
-        display: block;
-    }
-    
-    .transaction-transaction.deposit-transaction{
-        color: #008000;
-    }
-    
-    .transactions__header-transaction p:not(:nth-of-type(1)){
-        text-align: center;
-    }
-    
-    .transaction-transaction p:not(:nth-of-type(1)){
-        text-align: center
-    }
-    
-    .transaction-transaction.withdraw-transaction{
-        color: #B21F1E;
-    }
-    
-    .transaction-transaction:nth-of-type(2n){
-        background-color: rgba(216, 216, 216, 0.29)
-    }
-    
-    @media(max-width: 1050px){
-        .cards-transaction{
-            height: unset
-        }
-        .cards-transaction div.grid-transaction{
-            grid-template-columns: 1fr;
-            height: unset;
-        }
-        .cards-transaction div.grid-transaction div:first-of-type{
-            border: none;
-            border-bottom: 1px solid #EAEAEA;
-            text-align: center;
-            padding-bottom: 10px;
-        }
-        .cards-transaction div.grid-transaction div:last-of-type{
-            text-align: center;
-            margin-top: 10px
-        }
-        .cards-transaction .header-transaction,.cards-transaction .bold-transaction{
-            text-align: center;
-        }
-        .logout-transaction{
-            display: none;
-        }
-        .user-controls-transaction{
-            margin-right: 0px;
-        }
-    }
-    
-    @media(max-width: 1300px){
-        .sidebar-transaction{
-            width: 24%;
-        }
-        .main-transaction{
-            width: 76%;
-            margin-left: 24%;
-        }
-        .cards-transaction{
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            grid-row-gap: 10px;
-        }
-        .total-amount-transaction,.materials-withdrawn-transaction,.materials-left-transaction,.add-plan-transaction{
-            margin: 0 auto;
-            width: 248px;
-        }
-        .content-transaction{
-            padding: 30px 20px;
-            padding-bottom: 0;
-        }
-        .transactions-transaction{
-            display: grid;
-            grid-template-rows: 1fr;
-        }
-        .transaction-transaction, .transactions__header-transaction{
-            height: unset;
-        }
-    }
-    
-    @media(max-width: 1000px){
-        .sidebar-transaction{
-            width: 30%;
-        }
-        .main-transaction{
-            width: 70%;
-            margin-left: 30%;
-            padding-bottom: 0;
-        }
-        .links-transaction .link-transaction, .logout__link-transaction{
-            padding-left: 20%;
-        }
-        .rates-transaction.top-transaction{
-            display: none;
-        }
-        .rates-transaction.bottom-transaction{
-            display: flex;
-            justify-content: center;
-            background-color: rgba(221, 219, 241, 0.8);
-            width: 100%;
-            padding: 10px 5px;
-            box-sizing: border-box;
-        }   
-        .sidebar-transaction{
-            box-shadow: none;
-        }
-        .transactions-transaction{
-            padding: 0;
-            padding-bottom: 10px;
-        }
-        .transactions__header-transaction{
-            display: none;
-        }
-        .transaction-transaction{
-            display: block;
-        }
-        .transaction-transaction p:not(:nth-of-type(1)){
-            text-align: left
-        }
-        .transaction-transaction p span.label-transaction{
-            display: inline-block;
-        }
-        .transaction-transaction p{
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            padding-right: 5px;
-        }   
-        .transactions__header__small-transaction{
-            display: block;
-        }
-    }
-    
-    @media(max-width: 775px){
-        .cards-transaction{
-            grid-template-columns: 1fr;
-        }
-        .add-plan-transaction{
-            min-height: 220px;
-        }
-    }
-    
-    @media(max-width: 768px){
-        .sidebar-transaction.sidenav-transaction.active-transaction{
-            width: 50%;
-            box-shadow: 0 0 40px rgba(0,0,0,0.5);
-        }
-        .sidenav__container-transaction.active-transaction{
-            display: block;
-        }    
-        .top-transaction{
-            position: fixed;
-            z-index: 10;
-            padding: 20px;
-        }
-        .sidebar-transaction{
-            display: none;
-        }
-        .main-transaction{
-            width: 100%;
-            margin: 0;
-        }
-        .sidenav-btn-transaction{
-            display: inline-block;
-        }
-        .top-transaction .back-transaction{
-            display: none;
-        }
-        .user-controls-transaction{
-            margin-right: 0;
-        }
-        .logo-transaction{
-            margin-left: 15%;
-        }
-        .links-transaction .link-transaction, .logout__link-transaction{
-            padding-left: 15%
-        }
-        .content-transaction{
-            margin-top: 70px;
-        }
-    }
-    
-    @media(max-width: 575px){
-        .sidebar-transaction.sidenav-transaction.active-transaction{
-            width: 70%;
-        }
-        .content-transaction{
-            padding: 30px 0 0;
-        }
-    }
+  }
 }
