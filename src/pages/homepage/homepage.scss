@@ -18,7 +18,7 @@ html {
 }
 
 body {
-  background-color: #FFFFFF;
+  background-color: #ffffff;
 }
 
 .container {
@@ -135,7 +135,7 @@ nav.navbar {
 }
 
 .Header-Large-Heading {
-  font-size: 4.5rem;
+  font-size: 6rem;
 
   color: #ffffff;
   font-weight: 700;
@@ -147,7 +147,7 @@ nav.navbar {
 }
 
 .Header-lead-text {
-  font-size: 15px;
+  font-size: 22px;
   text-align: left;
   color: #fff;
   width: 100%;
@@ -160,13 +160,29 @@ nav.navbar {
   background-color: #fff;
   color: #502274;
   text-decoration: none;
-  font-size: 2rem;
+  font-size: 3rem;
+  padding: 15px 100px;
+  border-radius: 6px;
   transition: box-shadow 0.3s ease;
   box-shadow: 0 0.2rem 0.35rem rgba(0, 0, 0, 0.2);
+
+  background: linear-gradient(to right, #ffffff 50%, transparent 50%);
+  background-size: 200% 100%;
+  background-position: left bottom;
+  margin-left: 10px;
+  transition: all 1s ease;
 }
 
 .header-btn:hover {
-  box-shadow: none;
+  // box-shadow: none;
+  color: #ffffff;
+  background-position: right bottom;
+  border: 1px solid #ffffff;
+}
+
+.f-subs {
+  font-size: 22px;
+  font-weight: bold;
 }
 
 section.why-stockpiler {
@@ -182,8 +198,9 @@ section.why-stockpiler {
 }
 
 .why-stockpiler-heading-lead {
-  font-size: 2.5rem;
-  color: #23616d;
+  font-size: 4rem;
+  color: #502274;
+  font-weight: bold;
   margin-bottom: 1rem;
 }
 
@@ -201,29 +218,46 @@ section.why-stockpiler {
 .reason {
   margin-bottom: 3rem;
   width: fit-content;
-  background-color: #ededed;
-  border-radius: 18px;
-  padding: 18px;
+  background-color: #fbfbfb;
+  // border-radius: 18px;
+  padding: 10px;
+  border: 1px solid #d4d4d4;
 }
 
 .reason:nth-child(odd) {
-  margin-left: auto;
+  // margin-left: auto;
 }
 
 .reason-header {
-  font-size: 1.8rem;
-  margin-bottom: 0.3rem;
-  color: #000000;
+  // font-size: 22px;
+  // text-align: justify;
+  // margin-bottom: 1rem;
+  // color: #502274;
+  // font-weight: 600;
+  font-size: 28px;
+  text-align: center;
+  margin-bottom: 1rem;
+  color: #502274;
+  font-weight: 600;
+}
+
+.reason img {
+  height: 300px;
+  margin-bottom: 30px;
+  width: 100%;
 }
 
 .reason-text {
-  font-size: 14px;
-  color: #4a4a4a;
+  font-size: 18px;
+  // text-align: justify;
+  color: #444444;
+  line-height: 24px;
+  font-weight: 400;
 }
 
 .Features {
   padding: 10rem 10rem;
-  background-color: #EDEDED;
+  background-color: #fbfbfb;
   margin: 2rem auto;
 }
 
@@ -232,8 +266,9 @@ section.why-stockpiler {
 }
 
 .Features-heading-lead {
-  font-size: 2.5rem;
-  color: #23616d;
+  font-size: 4rem;
+  color: #502274;
+  font-weight: bold;
   margin-bottom: 1rem;
 }
 
@@ -261,17 +296,28 @@ section.why-stockpiler {
 }
 
 .feature-heading {
-  font-size: 18px;
-  text-align: center;
+  // font-size: 22px;
+  // text-align: justify;
+  // margin-bottom: 1rem;
+  // color: #502274;
+  // font-weight: 600;
+  font-size: 28px;
+  text-align: justify;
   margin-bottom: 1rem;
-  color: #000000;
+  color: #502274;
+  font-weight: 600;
 }
 
 .feature-text {
-  font-size: 15px;
-  text-align: center;
-  color: #4a4a4a;
+  // font-size: 18px;
+  // text-align: justify;
+  // color: #444444;
+  // line-height: 22px;
+  // font-weight: 300;
+  font-size: 18px;
+  color: #444444;
   line-height: 24px;
+  font-weight: 400;
 }
 
 .feature-image-container {
@@ -316,8 +362,12 @@ section.why-stockpiler {
 }
 
 .How-it-works-heading-lead {
-  font-size: 2.5rem;
-  color: #23616d;
+  // font-size: 2.5rem;
+  // color: #23616d;
+  // margin-bottom: 1rem;
+  font-size: 4rem;
+  color: #502274;
+  font-weight: bold;
   margin-bottom: 1rem;
 }
 
@@ -372,20 +422,24 @@ section.why-stockpiler {
 }
 
 .method-heading {
-  font-size: 2rem;
-  //margin-bottom: 0.8rem;
-  color: #000;
+  font-size: 28px;
+  text-align: justify;
+  margin-bottom: 1rem;
+  color: #502274;
+  font-weight: 600;
 }
 
 .method-text {
-  width: 80%;
-  font-size: 16px;
-  text-align: left;
-  color: #4a4a4a;
+  // width: 80%;
+  text-align: justify;
   line-height: 24px;
-  background-color: #ededed;
+  background-color: #fbfbfb;
   padding: 14px;
-  border-radius: 18px;
+  // border-radius: 18px;
+
+  font-size: 18px;
+  color: #444444;
+  font-weight: 400;
 }
 
 .method-last {
@@ -778,20 +832,20 @@ a.sidebar-link {
     display: none;
   }
 
-  .why-stockpiler-heading-lead {
-    font-size: 3rem;
-  }
+  // .why-stockpiler-heading-lead {
+  //   font-size: 3rem;
+  // }
   .reason-header {
     margin-bottom: 1rem;
   }
 
-  .How-it-works-heading-lead {
-    font-size: 3rem;
-  }
+  // .How-it-works-heading-lead {
+  //   font-size: 3rem;
+  // }
 
-  .FAQs-heading-lead {
-    font-size: 3rem;
-  }
+  // .FAQs-heading-lead {
+  //   font-size: 3rem;
+  // }
 }
 
 @media (max-width: 1200px) {
@@ -845,7 +899,7 @@ a.sidebar-link {
   .feature-text {
     width: 90%;
     padding: 14px;
-    border-radius: 18px
+    border-radius: 18px;
   }
   .faq-text {
     width: 90%;

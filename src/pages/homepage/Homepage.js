@@ -184,7 +184,7 @@ class Homepage extends Component {
                       equivalent amount of building materials which you can
                       witdraw and pick up tommorow or in several years time.
                     </p>
-                    <Link to="/signup" className="header-btn btn">
+                    <Link to="/signup" className="header-btn">
                       Sign Up
                     </Link>
                   </div>
@@ -205,12 +205,51 @@ class Homepage extends Component {
           <section className="why-stockpiler">
             <div className="why-stockpiler-heading">
               <h1 className="why-stockpiler-heading-lead">Why Laybuy?</h1>
-              <p className="fs-14">
+              <p className="f-subs">
                 We offer the best services for Stock piling
               </p>
             </div>
 
-            <div className="why-stockpiler-body">
+            <div className="row">
+              <div className="col-lg-4 col-md-4">
+                <Fade left delay={400}>
+                  <div className="reason">
+                    <img src="https://res.cloudinary.com/djnhrvjyf/image/upload/v1597395573/Screenshot_2020-08-14_at_9.56.00_AM_mtxt7c.png" alt="easy.png" />
+                    <h2 className="reason-header">Easy to use.</h2>
+                    <p className="reason-text">
+                      Deposit regular amounts of money on a recurring basis,
+                      automatically or manually.
+                    </p>
+                  </div>
+                </Fade>
+              </div>
+              <div className="col-lg-4 col-md-4">
+                <Fade up delay={400}>
+                  <div className="reason">
+                  <img src="https://res.cloudinary.com/djnhrvjyf/image/upload/v1597395542/Screenshot_2020-08-14_at_9.55.40_AM_ysbnib.png" alt="flexible.png" />
+                    <h2 className="reason-header">Flexible</h2>
+                    <p className="reason-text">
+                      You can withdraw and pickup materials anywhere in the
+                      Country.
+                    </p>
+                  </div>
+                </Fade>
+              </div>
+              <div className="col-lg-4 col-md-4">
+                <Fade right delay={400}>
+                  <div className="reason">
+                  <img src="https://res.cloudinary.com/djnhrvjyf/image/upload/v1597395542/Screenshot_2020-08-14_at_9.55.06_AM_h99q4l.png" alt="transparent.png" />
+                    <h2 className="reason-header">Transparent</h2>
+                    <p className="reason-text">
+                      Login to see accumulated materials in your virtual store,
+                      track transactions.
+                    </p>
+                  </div>
+                </Fade>
+              </div>
+            </div>
+
+            {/* <div className="why-stockpiler-body">
               <Fade left delay={400}>
                 <div className="reason">
                   <h2 className="reason-header">Easy to use.</h2>
@@ -247,14 +286,14 @@ class Homepage extends Component {
                     track transactions.
                   </p>
                 </div>
-              </Fade>
-            </div>
+              </Fade> */}
+            {/* </div> */}
           </section>
 
           <section className="Features" ref={aboutScroll}>
             <div className="Features-heading">
               <h1 className="Features-heading-lead">Our Features</h1>
-              <p className="fs-14">
+              <p className="f-subs">
                 We offer the best services for Stockpiling
               </p>
             </div>
@@ -329,7 +368,7 @@ class Homepage extends Component {
           <section className="How-it-works" ref={howScroll}>
             <div className="How-it-works-heading">
               <h1 className="How-it-works-heading-lead">How it works</h1>
-              <p className="How-it-works-heading-sub">
+              <p className="f-subs">
                 We will tell you how our process works.
               </p>
             </div>
@@ -337,8 +376,9 @@ class Homepage extends Component {
               <div className="method-group">
                 <Slide top delay={400}>
                   <div className="method">
-                    <p className="method-heading">Sign Up</p>
+                    {/* <p className="method-heading">Sign Up</p> */}
                     <p className="method-text">
+                    <p className="method-heading">Sign Up</p>
                       Sign up with us today, we require only your name, email
                       and phone number.
                     </p>
@@ -355,8 +395,9 @@ class Homepage extends Component {
               <div className="method-group reverse">
                 <Slide top delay={400}>
                   <div className="method">
-                    <p className="method-heading">Add your card</p>
+                    {/* <p className="method-heading">Add your card</p> */}
                     <p className="method-text">
+                    <p className="method-heading">Sign Up</p>
                       Sign up with us today, we require only your name, email
                       and phone number.
                     </p>
@@ -373,8 +414,9 @@ class Homepage extends Component {
               <div className="method-group">
                 <Slide top delay={400}>
                   <div className="method">
-                    <p className="method-heading">Specify the materials</p>
+                    {/* <p className="method-heading">Specify the materials</p> */}
                     <p className="method-text">
+                    <p className="method-heading">Specify the materials</p>
                       Sign up with us today, we require only your name, email
                       and phone number.
                     </p>
@@ -391,8 +433,9 @@ class Homepage extends Component {
               <div className="method-group reverse">
                 <Slide top delay={400}>
                   <div className="method">
-                    <p className="method-heading">Sit back and Relax</p>
+                    {/* <p className="method-heading">Sit back and Relax</p> */}
                     <p className="method-text method-last">
+                    <p className="method-heading">Sit back and Relax</p>
                       Sign up with us today, we require only your name, email
                       and phone number.
                     </p>
