@@ -458,7 +458,7 @@ class Homepage extends Component {
           <section className="FAQs">
             <div className="FAQs-heading">
               <h1 className="FAQs-heading-lead">Frequently asked questions</h1>
-              <p className="FAQs-heading-sub">
+              <p className="f-subs">
                 We provide answers to your questions
               </p>
             </div>
