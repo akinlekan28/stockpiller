@@ -28,6 +28,7 @@ import Privacy from './pages/terms/Privacy'
 import Plans from './pages/plans/Plans'
 
 import './App.css'
+import Contact from './pages/homepage/Contact'
 
 //check for token
 if (localStorage.jwtToken) {
@@ -60,6 +61,7 @@ class App extends Component {
               <Route exact path="/reset" component={Forgot} />
               <Route exact path="/terms" component={Terms} />
               <Route exact path="/privacy" component={Privacy} />
+              <Route exact path="/contact" component={Contact} />
               <PrivateRoute exact path="/dashboard" component={Dashboard} />
               <PrivateRoute exact path="/home" component={Home} />
               <PrivateRoute exact path="/plans" component={Plans} />

@@ -4,7 +4,7 @@ html {
   width: 100%;
   margin: 0;
   padding: 0;
-  font-size: 63%;
+  font-size: 60%;
   overflow-x: hidden;
 }
 
@@ -18,7 +18,9 @@ html {
 }
 
 body {
-  background-color: #ffffff;
+  background-color: #fcfcfc;
+  font-family: Lato;
+  font-weight: 300;
 }
 
 .container {
@@ -242,7 +244,7 @@ section.why-stockpiler {
 }
 
 .reason img {
-  height: 300px;
+  height: 270px;
   margin-bottom: 30px;
   width: 100%;
 }
@@ -309,15 +311,11 @@ section.why-stockpiler {
 }
 
 .feature-text {
-  // font-size: 18px;
-  // text-align: justify;
-  // color: #444444;
-  // line-height: 22px;
-  // font-weight: 300;
   font-size: 18px;
   color: #444444;
   line-height: 24px;
-  font-weight: 400;
+  font-family: Lato;
+  font-weight: 300;
 }
 
 .feature-image-container {

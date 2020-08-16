@@ -63,7 +63,7 @@ class Homepage extends Component {
     }
 
     return (
-      <div className="homepage-wrapper">
+      <div className="homepage-wrapper" >
         <div className="outside-overlay" ref={this.outsideOverlay}>
           <div
             className="clickable"
@@ -101,9 +101,9 @@ class Homepage extends Component {
                 <a className="sidebar-link" href="#" onClick={gotoHow}>
                   <li className="sidebar-option">How it works</li>
                 </a>
-                <a className="sidebar-link" href="#" onClick={gotoContact}>
+                <Link className="sidebar-link" to="/contact">
                   <li className="sidebar-option">Contact Us</li>
-                </a>
+                </Link>
               </ul>
               <div className="sidebar-buttons">
                 <Link className="sidebar-btn" to="/login">
@@ -155,7 +155,7 @@ class Homepage extends Component {
                       </Link>
                     </li>
                     <li className="nav-item">
-                      <Link to="/" className="navlink" onClick={gotoContact}>
+                      <Link to="/contact" className="navlink">
                         Contact Us
                       </Link>
                     </li>
@@ -213,7 +213,7 @@ class Homepage extends Component {
             <div className="row">
               <div className="col-lg-4 col-md-4">
                 <Fade left delay={400}>
-                  <div className="reason">
+                  <div className="reason card" style={{height: '100%'}}>
                     <img src="https://res.cloudinary.com/djnhrvjyf/image/upload/v1597395573/Screenshot_2020-08-14_at_9.56.00_AM_mtxt7c.png" alt="easy.png" />
                     <h2 className="reason-header">Easy to use.</h2>
                     <p className="reason-text">
@@ -225,11 +225,11 @@ class Homepage extends Component {
               </div>
               <div className="col-lg-4 col-md-4">
                 <Fade up delay={400}>
-                  <div className="reason">
+                  <div className="reason card" style={{height: '100%'}}>
                   <img src="https://res.cloudinary.com/djnhrvjyf/image/upload/v1597395542/Screenshot_2020-08-14_at_9.55.40_AM_ysbnib.png" alt="flexible.png" />
                     <h2 className="reason-header">Flexible</h2>
                     <p className="reason-text">
-                      You can withdraw and pickup materials anywhere in the
+                      You can withdraw and pickup your saved materials anywhere in the
                       Country.
                     </p>
                   </div>
@@ -237,7 +237,7 @@ class Homepage extends Component {
               </div>
               <div className="col-lg-4 col-md-4">
                 <Fade right delay={400}>
-                  <div className="reason">
+                  <div className="reason card" style={{height: '100%'}}>
                   <img src="https://res.cloudinary.com/djnhrvjyf/image/upload/v1597395542/Screenshot_2020-08-14_at_9.55.06_AM_h99q4l.png" alt="transparent.png" />
                     <h2 className="reason-header">Transparent</h2>
                     <p className="reason-text">
@@ -531,7 +531,7 @@ class Homepage extends Component {
           </section>
 
           <footer ref={contactScroll}>
-            <div className="footer-body">
+            {/* <div className="footer-body">
               <div className="talk">
                 <div className="talk-heading">
                   <h1 className="talk-heading-lead">Let's talk</h1>
@@ -589,12 +589,12 @@ class Homepage extends Component {
                   Send
                 </button>
               </form>
-            </div>
-            <hr className="footer-hr" />
+            </div> */}
+            {/* <hr className="footer-hr" /> */}
             <div className="bottom-contents">
-              <p className="copyright "> &copy; Laybuy 2020 </p>
+              <p className="copyright fs-18 fw-500"> &copy; Laybuy 2020 </p>
               <div className="social-media">
-                <h4 className="social-media-lead fs-14">
+                <h4 className="social-media-lead fs-18 fw-500">
                   Follow us on social media
                 </h4>
                 <div className="soc-icons">
@@ -637,10 +637,10 @@ class Homepage extends Component {
                 </div>
               </div>
               <div className="policies">
-                <Link to="/privacy" className="policy-links fs-14">
+                <Link to="/privacy" className="policy-links fs-18 fw-500">
                   Privacy,
                 </Link>
-                <Link to="/terms" className="policy-links fs-14">
+                <Link to="/terms" className="policy-links fs-18 fw-500">
                   Terms & Conditions
                 </Link>
               </div>
