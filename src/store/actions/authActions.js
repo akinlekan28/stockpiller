@@ -47,7 +47,7 @@ export const me = () => (dispatch) => {
     .get('/user')
     .then((res) => dispatch({ type: USER_DATA, payload: res.data.data }))
     .catch((err) => {
-      if (err.request && !err.response.data) {
+      if (err.request && !err.response) {
         dispatch(setErrors({ network: 'Check your network connection' }))
       } else {
         dispatch(setErrors(err.response.data))
@@ -100,7 +100,7 @@ export const updateUser = (userData) => (dispatch) => {
     .post('/user', userData)
     .then((res) => dispatch({ type: UPDATE_USER, payload: res.data }))
     .catch((err) => {
-      if (err.request && !err.response.data) {
+      if (err.request && !err.response) {
         dispatch(setErrors({ network: 'Check your network connection' }))
       } else {
         dispatch(setErrors(err.response.data))

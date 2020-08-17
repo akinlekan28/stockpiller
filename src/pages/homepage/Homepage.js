@@ -531,11 +531,11 @@ class Homepage extends Component {
           </section>
 
           <footer ref={contactScroll}>
-            {/* <div className="footer-body">
+            <div className="footer-body">
               <div className="talk">
                 <div className="talk-heading">
                   <h1 className="talk-heading-lead">Let's talk</h1>
-                  <p className="talk-heading-sub">
+                  <p className="talk-heading-sub fs-16">
                     Ask us anything or just say hi.
                   </p>
                 </div>
@@ -556,13 +556,13 @@ class Homepage extends Component {
                       data-inline="false"
                       style={{ color: '#ffffff', fontSize: '16px' }}
                     ></span>
-                    <h3>info@laybuy.app</h3>
+                    <h3 className="fs-16">info@laybuy.app</h3>
                   </div>
                 </div>
               </div>
               <form className="form">
                 <div className="fifty-percent">
-                  <h3 className="fifty-percent-header">NAME </h3>
+                  <h3 className="fifty-percent-header fs-16">NAME </h3>
                   <input
                     type="text"
                     className="fifty-percent-input"
@@ -570,7 +570,7 @@ class Homepage extends Component {
                   />
                 </div>
                 <div className="fifty-percent">
-                  <h3 className="fifty-percent-header">EMAIL</h3>
+                  <h3 className="fifty-percent-header fs-16">EMAIL</h3>
                   <input
                     type="text"
                     className="fifty-percent-input"
@@ -578,7 +578,7 @@ class Homepage extends Component {
                   />
                 </div>
                 <div className="hundred-percent">
-                  <h3 className="hundred-percent-header">MESSAGE</h3>
+                  <h3 className="hundred-percent-header fs-16">MESSAGE</h3>
                   <textarea
                     rows="5"
                     className="hundred-percent-input"
@@ -589,8 +589,8 @@ class Homepage extends Component {
                   Send
                 </button>
               </form>
-            </div> */}
-            {/* <hr className="footer-hr" /> */}
+            </div>
+            <hr className="footer-hr" />
             <div className="bottom-contents">
               <p className="copyright fs-18 fw-500"> &copy; Laybuy 2020 </p>
               <div className="social-media">

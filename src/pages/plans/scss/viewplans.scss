@@ -15,7 +15,7 @@
   body {
     background-color: #f0f0f0;
     box-sizing: border-box;
-    color: #4a4a4a;
+    color: #0f0f0f;
   }
 
   .container-viewplans {
@@ -70,7 +70,6 @@
     outline: none;
   }
 
- 
   .header-title {
     padding: 15px 20px;
     display: flex;
@@ -174,21 +173,23 @@
     border-top-color: transparent;
   }
 
-  .iconify{
+  .iconify {
     color: #502274;
   }
 
- .link-viewplans:hover{
-  background-color: #ffffff;
-  color: #502250 !important;
-    &{
-      a, span, .iconify {
+  .link-viewplans:hover {
+    background-color: #ffffff;
+    color: #502250 !important;
+    & {
+      a,
+      span,
+      .iconify {
         color: #502250;
       }
     }
   }
 
-  .links-viewplans .active-viewplans  {
+  .links-viewplans .active-viewplans {
     background-color: #ffffff;
     color: #502250;
     & {
@@ -321,7 +322,7 @@
   .main-body-viewplans {
     padding: 6rem 5rem;
     width: 100%;
-    background-color: #ededed
+    background-color: #ededed;
   }
 
   .header-bar-viewplans {

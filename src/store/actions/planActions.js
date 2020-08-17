@@ -38,7 +38,7 @@ export const addPlan = (planData) => (dispatch) => {
       //   }),
       // )
       .catch((err) => {
-        if (err.request && !err.response.data) {
+        if (err.request && !err.response) {
           dispatch(setErrors({ network: 'Check your network connection' }))
         } else {
           dispatch(setErrors(err.response.data))
@@ -63,7 +63,7 @@ export const getPlans = () => (dispatch) => {
       }),
     )
     .catch((err) => {
-      if (err.request && !err.response.data) {
+      if (err.request && !err.response) {
         dispatch(setErrors({ network: 'Check your network connection' }))
       } else {
         dispatch(setErrors(err.response.data))
@@ -81,7 +81,27 @@ export const getLastPlans = () => (dispatch) => {
     .get('/plan/latest')
     .then((res) => dispatch({ type: DASHBOARD_PLANS, payload: res.data.data }))
     .catch((err) => {
-      if (err.request && !err.response.data) {
+      if (err.request && !err.response) {
+        dispatch(setErrors({ network: 'Check your network connection' }))
+      } else {
+        dispatch(setErrors(err.response.data))
+      }
+      dispatch({ type: REMOVE_PLAN_LOADING })
+      setTimeout(() => {
+        dispatch(clearErrors())
+      }, 5000)
+    })
+}
+
+export const withdrawPlan = (fdata) => (dispatch) => {
+  dispatch(setLoading())
+  api
+    .post('/user/withdraw', fdata)
+    .then((res) => {
+      return res.data
+    })
+    .catch((err) => {
+      if (err.request && !err.response) {
         dispatch(setErrors({ network: 'Check your network connection' }))
       } else {
         dispatch(setErrors(err.response.data))
@@ -104,18 +124,17 @@ export const getPlan = (planId) => (dispatch) => {
         payload: res.data.data,
       }),
     )
-    .catch(
-      (err) =>
-        dispatch({
-          type: GET_ERRORS,
-          payload: err.response.data,
-        }),
-      dispatch(() => {
-        setTimeout(function () {
-          dispatch(clearErrors())
-        }, 5000)
-      }),
-    )
+    .catch((err) => {
+      if (err.request && !err.response) {
+        dispatch(setErrors({ network: 'Check your network connection' }))
+      } else {
+        dispatch(setErrors(err.response.data))
+      }
+      dispatch({ type: REMOVE_PLAN_LOADING })
+      setTimeout(() => {
+        dispatch(clearErrors())
+      }, 5000)
+    })
 }
 
 //Set loding state

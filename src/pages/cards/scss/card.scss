@@ -42,7 +42,7 @@
     border-bottom-color: #c4c4c4;
     width: 100%;
     box-sizing: border-box;
-  } 
+  }
 
   .cards-cards {
     display: grid;
@@ -309,6 +309,7 @@
     .top-cards {
       position: fixed;
       z-index: 10;
+      padding: 18px;
     }
     .sidebar-cards {
       display: none;

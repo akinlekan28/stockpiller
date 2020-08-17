@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { getPlans } from '../../store/actions/planActions'
 import { logoutUser } from '../../store/actions/authActions'
+import { withdrawPlan } from '../../store/actions/planActions'
 import { Link } from 'react-router-dom'
 import './scss/withdraw.scss'
 
@@ -11,6 +12,14 @@ class Withdraw extends Component {
 
     this.state = {
       plan_id: '',
+      password: '',
+      block_target: '',
+      cement_target: '',
+      address: '',
+      location_type: '',
+      isVarious: false,
+      isSingle: true,
+      errors: {},
     }
 
     this.onSubmit = this.onSubmit.bind(this)
@@ -34,6 +43,11 @@ class Withdraw extends Component {
 
   onSubmit = (e) => {
     e.preventDefault()
+
+    const formData = new FormData(e.target)
+    this.props.withdrawPlan(formData)
+    // .then((res) => console.log(res))
+    // .catch((err) => console.log(err))
   }
 
   render() {
@@ -46,7 +60,12 @@ class Withdraw extends Component {
     } else {
       if (Object.keys(plans).length > 0) {
         planSelector = (
-          <select className="select-css" value={plan_id} name="plan_id">
+          <select
+            className="select-css"
+            value={plan_id}
+            name="plan_id"
+            onChange={this.onChange}
+          >
             <option value="">Select plan</option>
             {plans.map((p) => (
               <option key={p.id.toString()} value={p.id}>
@@ -59,7 +78,7 @@ class Withdraw extends Component {
         planSelector = <h4>You have no active plans</h4>
       }
     }
-    console.log(plans)
+    const { isVarious, isSingle } = this.state
     return (
       <div className="withdraw-wrapper">
         <div class="container-withdraw">
@@ -237,7 +256,7 @@ class Withdraw extends Component {
               </div>
 
               <div class="main-body-withdraw">
-                <form action="" class="plans-withdraw">
+                <form action="" class="plans-withdraw" onSubmit={this.onSubmit}>
                   <div class="form-group-full-withdraw">
                     <div className="select select--inline form-group">
                       <div class="form-group-header-withdraw">
@@ -264,9 +283,14 @@ class Withdraw extends Component {
                       <div class="radio-group-withdraw">
                         <input
                           type="radio"
-                          name="connected"
+                          name="location_type"
                           id="one"
                           style={{ marginBottom: '3px' }}
+                          onChange={() =>
+                            this.setState({ isSingle: !isSingle })
+                          }
+                          checked={isSingle}
+                          value={isSingle ? isSingle : isVarious}
                         />
                         <label for="one">&nbsp;&nbsp;One Location</label>
                       </div>
@@ -274,9 +298,14 @@ class Withdraw extends Component {
                       <div class="radio-group-withdraw">
                         <input
                           type="radio"
-                          name="connected"
+                          name="location_type"
                           id="various"
                           style={{ marginBottom: '3px' }}
+                          onChange={() =>
+                            this.setState({ isVarious: !isVarious })
+                          }
+                          checked={isVarious}
+                          value={isVarious ? isVarious : isSingle}
                         />
                         <label for="various">
                           &nbsp;&nbsp;Various Locations
@@ -294,6 +323,9 @@ class Withdraw extends Component {
                         <input
                           type="number"
                           min="1"
+                          name="block_target"
+                          value={this.state.block_target}
+                          onChange={this.onChange}
                           id="blocks-unit"
                           class="half-input-withdraw"
                         />
@@ -305,6 +337,9 @@ class Withdraw extends Component {
                           type="number"
                           min="1"
                           id="cement-unit"
+                          name="cement_target"
+                          value={this.state.cement_target}
+                          onChange={this.onChange}
                           class="half-input-withdraw"
                         />
                       </div>
@@ -313,6 +348,9 @@ class Withdraw extends Component {
                       type="text"
                       class="form-input-full-withdraw"
                       placeholder="Type Your Address"
+                      name="address"
+                      onChange={this.onChange}
+                      value={this.state.address}
                     />
                     {/* <a href="/extra-location" class="add-location-withdraw">
                       Add Another Address
@@ -326,54 +364,22 @@ class Withdraw extends Component {
                       type="password"
                       placeholder="Enter Password"
                       class="form-input-full-withdraw"
+                      name="password"
+                      onChange={this.onChange}
+                      value={this.state.password}
                     />
                   </div>
-                  <button class="btn-withdraw plans-submit-withdraw">
+                  <button
+                    type="submit"
+                    class="btn-withdraw plans-submit-withdraw"
+                  >
                     Submit
                   </button>
                 </form>
               </div>
             </div>
             <div class="footer-withdraw">
-              <div class="footer-inner-withdraw">
-                <table class="stocks-withdraw">
-                  <tr>
-                    <td>Rates</td>
-                    <td>Blocks</td>
-                    <td>Cement</td>
-                  </tr>
-                  <tr>
-                    <td>Local</td>
-                    <td>
-                      <img src="../assets/images/Group 44.svg" alt="" />
-                      <h3>&#8358 200</h3>
-                    </td>
-                    <td>
-                      <img src="../assets/images/Group 38.svg" alt="" />
-                      <h3>&#8358 200</h3>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>Internatinal</td>
-                    <td>
-                      <img
-                        class="down-arrow-withdraw"
-                        src="../assets/images/Group 44.svg"
-                        alt=""
-                      />
-                      <h3>$2</h3>
-                    </td>
-                    <td>
-                      <img
-                        class="up-arrow-withdraw"
-                        src="../assets/images/Group 38.svg"
-                        alt=""
-                      />
-                      <h3>$2</h3>
-                    </td>
-                  </tr>
-                </table>
-              </div>
+              <div class="footer-inner-withdraw"></div>
             </div>
           </main>
         </div>
@@ -384,11 +390,13 @@ class Withdraw extends Component {
 
 const mapStateToProps = (state) => ({
   plans: state.plan,
+  errors: state.errors,
 })
 
 const mapDispatchToProps = {
   logoutUser,
   getPlans,
+  withdrawPlan,
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Withdraw)
