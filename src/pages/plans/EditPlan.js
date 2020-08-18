@@ -1,42 +1,48 @@
-import React, { useState, useEffect, useCallback } from "react";
-import { useParams, Link } from "react-router-dom";
-import "./scss/plans.scss";
-import { toast } from "react-toastify";
-import api from "../../api/api";
-import DatePicker from "react-datepicker";
-import "react-datepicker/dist/react-datepicker.css";
+import React, { useState, useEffect, useCallback, useRef } from 'react'
+import { useParams, Link } from 'react-router-dom'
+import './scss/plans.scss'
+import { toast } from 'react-toastify'
+import api from '../../api/api'
+import DatePicker from 'react-datepicker'
+import 'react-datepicker/dist/react-datepicker.css'
 
 export default function EditPlan() {
-  const { id } = useParams();
+  const { id } = useParams()
+
+  const hamburger = useRef()
+  const sliderClose = useRef()
+  const menuContainer = useRef()
+  const menu = useRef()
+  const overlay = useRef()
 
   const handleOnChange = useCallback((event) => {
-    const { name, value } = event.target;
-    setFormValues({ ...formValues, [name]: value });
-  });
+    const { name, value } = event.target
+    setFormValues({ ...formValues, [name]: value })
+  })
 
-  const [both, setBoth] = useState(false);
-  const [cement, setCement] = useState(false);
-  const [block, setBlock] = useState(false);
-  const [submitting, setSubmitting] = useState(false);
-  const [start_date, setStart_date] = useState(new Date());
+  const [both, setBoth] = useState(false)
+  const [cement, setCement] = useState(false)
+  const [block, setBlock] = useState(false)
+  const [submitting, setSubmitting] = useState(false)
+  const [start_date, setStart_date] = useState(new Date())
 
   const [formValues, setFormValues] = useState({
-    plan_name: "",
-    building_type: "",
-    material_estimation: "",
-    material_type: "",
-    cement_percentage: "",
-    block_percentage: "",
+    plan_name: '',
+    building_type: '',
+    material_estimation: '',
+    material_type: '',
+    cement_percentage: '',
+    block_percentage: '',
     start_date: new Date(),
-    block_target: "",
-    cement_target: "",
-    deposit: "",
-    plan_type: "",
-    country: "",
-    deposit_frequency: "",
-  });
-  const [plan, setPlan] = useState({});
-  const [loading, setLoading] = useState(false);
+    block_target: '',
+    cement_target: '',
+    deposit: '',
+    plan_type: '',
+    country: '',
+    deposit_frequency: '',
+  })
+  const [plan, setPlan] = useState({})
+  const [loading, setLoading] = useState(false)
 
   const getPlan = () => {
     api.get(`/plan/${id}`).then((res) => {
@@ -55,31 +61,31 @@ export default function EditPlan() {
         plan_type: res.data.data.plan_type,
         country: res.data.data.country,
         deposit_frequency: res.data.data.deposit_frequency,
-      });
-      setBlock(res.data.data.material_type === "block");
-      setCement(res.data.data.material_type === "cement");
-      setBoth(res.data.data.material_type === "both");
-      setLoading(false);
-    });
-  };
+      })
+      setBlock(res.data.data.material_type === 'block')
+      setCement(res.data.data.material_type === 'cement')
+      setBoth(res.data.data.material_type === 'both')
+      setLoading(false)
+    })
+  }
 
   const submitPlan = (e) => {
-    e.preventDefault();
-    setSubmitting(true);
+    e.preventDefault()
+    setSubmitting(true)
 
-    let material_type;
+    let material_type
     if (cement) {
-      material_type = "cement";
+      material_type = 'cement'
     } else if (block) {
-      material_type = "blocks";
+      material_type = 'blocks'
     } else {
-      material_type = "both";
+      material_type = 'both'
     }
-    let deposit_frequency;
+    let deposit_frequency
     if (typeof formValues.deposit_frequency !== String) {
-      deposit_frequency = "None";
+      deposit_frequency = 'None'
     } else {
-      deposit_frequency = formValues.deposit_frequency;
+      deposit_frequency = formValues.deposit_frequency
     }
 
     const payload = {
@@ -96,33 +102,52 @@ export default function EditPlan() {
       country: formValues.country,
       deposit: formValues.deposit,
       material_estimation: formValues.material_estimation,
-    };
+    }
 
     api
       .put(`/plan/${id}`, payload)
       .then((res) => console.log(res))
       .catch((err) => console.log(err))
-      .finally(() => setSubmitting(false));
-  };
+      .finally(() => setSubmitting(false))
+  }
 
   const handleChange = (date) => {
-    setStart_date(date);
-  };
+    setStart_date(date)
+  }
 
   useEffect(() => {
-    getPlan();
-  }, []);
+    getPlan()
+  }, [])
+
+  const openSlider = () => {
+    overlay.current.style.display = 'block'
+    menuContainer.current.classList.add('active-home')
+    menu.current.style.display = 'block'
+    setTimeout(() => {
+      menu.current.classList.add('active-home')
+    }, 100)
+  }
+
+  const closeSlider = () => {
+    menu.current.classList.remove('active-home')
+    menu.current.style.display = 'none'
+    setTimeout(() => {
+      menuContainer.current.classList.remove('active-home')
+      overlay.current.style.display = 'none'
+    }, 400)
+  }
+
   return (
     <div className="plans-wrapper">
-      <div className="sidenav__container-home">
-        <div className="sidebar-home sidenav-home">
+      <div className="sidenav__container-home" ref={menuContainer}>
+        <div className="sidebar-home sidenav-home" ref={menu}>
           <div className="header-title">
             <Link className="logo" to="/">
               Stockpiller
             </Link>
           </div>
-          <button className="sidenav-close-home">
-            <img src="../assets/images/close.svg" />
+          <button className="sidenav-close-home" onClick={closeSlider}>
+            <img src="https://res.cloudinary.com/djnhrvjyf/image/upload/v1597702029/close_junhc8.svg" />
           </button>
           <div className="links-home">
             <div className="link-home">
@@ -249,11 +274,15 @@ export default function EditPlan() {
           Logout
         </a>
       </div>
-      <div className="cover-overlay-home"></div>
+      <div
+        className="cover-overlay-home"
+        onClick={closeSlider}
+        ref={overlay}
+      ></div>
       <main>
         <div class="main-container-home">
           <div class="main-header-home">
-            <div class="open-home">
+            <div class="open-home" onClick={openSlider}>
               <div class="bar-home"></div>
               <div class="bar-home"></div>
               <div class="bar-home"></div>
@@ -323,13 +352,13 @@ export default function EditPlan() {
               <div class="form-group-full-home">
                 <div class="form-group-header-home">
                   <h2>
-                    Plan Name{" "}
+                    Plan Name{' '}
                     <span class="Important-home">
                       <img
                         src="../assets/images/Reason for saving.svg"
                         alt=""
                       />
-                    </span>{" "}
+                    </span>{' '}
                   </h2>
                   <span className="ast">*</span>
                 </div>
@@ -386,7 +415,7 @@ export default function EditPlan() {
                 )} */}
               </div>
 
-              {formValues.plan_type === "recurrent" && (
+              {formValues.plan_type === 'recurrent' && (
                 <div class="form-group-full-home">
                   <div className="select select--inline">
                     <div class="form-group-header-home">
@@ -561,7 +590,7 @@ export default function EditPlan() {
                   selected={new Date(formValues.start_date)}
                   onChange={handleChange}
                   className="form-input-full-home"
-                  style={{ height: "40px" }}
+                  style={{ height: '40px' }}
                 />
 
                 {/* {errors.errors && errors.errors.start_date && (
@@ -632,5 +661,5 @@ export default function EditPlan() {
         </div>
       </main>
     </div>
-  );
+  )
 }

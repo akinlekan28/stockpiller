@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component, createRef } from 'react'
 import { connect } from 'react-redux'
 import { getPlans } from '../../store/actions/planActions'
 import { logoutUser } from '../../store/actions/authActions'
@@ -22,6 +22,12 @@ class Withdraw extends Component {
       errors: {},
     }
 
+    this.hamburger = createRef()
+    this.sliderClose = createRef()
+    this.menuContainer = createRef()
+    this.menu = createRef()
+    this.overlay = createRef()
+
     this.onSubmit = this.onSubmit.bind(this)
     this.onChange = this.onChange.bind(this)
     this.logout = this.logout.bind(this)
@@ -35,6 +41,24 @@ class Withdraw extends Component {
     e.preventDefault()
 
     this.props.logoutUser()
+  }
+
+  openSlider = () => {
+    this.overlay.current.style.display = 'block'
+    this.menuContainer.current.classList.add('active-withdraw')
+    this.menu.current.style.display = 'block'
+    setTimeout(() => {
+      this.menu.current.classList.add('active-withdraw')
+    }, 100)
+  }
+
+  closeSlider = () => {
+    this.menu.current.classList.remove('active-withdraw')
+    this.menu.current.style.display = 'none'
+    setTimeout(() => {
+      this.menuContainer.current.classList.remove('active-withdraw')
+      this.overlay.current.style.display = 'none'
+    }, 400)
   }
 
   onChange(e) {
@@ -82,7 +106,7 @@ class Withdraw extends Component {
     return (
       <div className="withdraw-wrapper">
         <div class="container-withdraw">
-          <div class="sidenav__container-withdraw">
+          <div class="sidenav__container-withdraw" ref={this.menuContainer}>
             <div class="sidebar-withdraw sidenav-withdraw">
               <div className="header-title">
                 <Link class="logo" to="/">
@@ -157,12 +181,18 @@ class Withdraw extends Component {
               </a>
             </div>
           </div>
-          <div class="sidebar-withdraw">
+          <div class="sidebar-withdraw" ref={this.menu}>
             <div className="header-title">
               <Link class="logo-withdraw" to="/">
                 Stockpiller
               </Link>
             </div>
+            <button
+              className="sidenav-close-withdraw"
+              onClick={this.closeSlider}
+            >
+              <img src="https://res.cloudinary.com/djnhrvjyf/image/upload/v1597702029/close_junhc8.svg" />
+            </button>
             <div class="links-withdraw">
               <div class="link-withdraw">
                 <span
@@ -223,12 +253,16 @@ class Withdraw extends Component {
             </a>
           </div>
 
-          <div class="cover-overlay-withdraw"></div>
+          <div
+            class="cover-overlay-withdraw"
+            onClick={this.closeSlider}
+            ref={this.overlay}
+          ></div>
 
           <main>
             <div class="main-container-withdraw">
               <div class="main-header-withdraw">
-                <div class="open-withdraw">
+                <div class="open-withdraw" onClick={this.openSlider}>
                   <div class="bar-withdraw"></div>
                   <div class="bar-withdraw"></div>
                   <div class="bar-withdraw"></div>

@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component, createRef } from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import { logoutUser } from "../../store/actions/authActions";
@@ -11,6 +11,9 @@ class Cards extends Component {
   constructor() {
     super();
 
+    this.sidebarContainer = createRef()
+    this.sidenavDashboard = createRef()
+    this.sidenavClose = createRef()
     this.logout = this.logout.bind(this);
   }
 
@@ -22,6 +25,28 @@ class Cards extends Component {
     e.preventDefault();
 
     this.props.logoutUser();
+  }
+
+  sidenav = () => {
+    this.toggleClass(this.sidebarContainer.current, 'active-cards')
+    setTimeout(() => {
+      this.toggleClass(this.sidenavDashboard.current, 'active-cards')
+    }, 50)
+  }
+
+  toggleClass = (e, className) => {
+    if (e.classList.contains(className)) {
+      e.classList.remove(className)
+    } else {
+      e.classList.add(className)
+    }
+  }
+
+  closeNav = () => {
+    this.toggleClass(this.sidenavDashboard.current, 'active-cards')
+    setTimeout(() => {
+      this.toggleClass(this.sidebarContainer.current, 'active-cards')
+    }, 400)
   }
 
   render() {
@@ -92,13 +117,13 @@ class Cards extends Component {
     return (
       <div className="card-wrapper">
         <div className="container-cards">
-          <div className="sidenav__container-cards">
-            <div className="sidebar-cards sidenav-cards">
+          <div className="sidenav__container-cards" ref={this.sidebarContainer}>
+            <div className="sidebar-cards sidenav-cards" ref={this.sidenavDashboard}>
               <div className="header-title"><Link className="logo-cards" to="/">
                 Stockpiller
               </Link></div>
-              <button className="sidenav-close-cards">
-                <img src="../assets/images/close.svg" />
+              <button className="sidenav-close-cards" onClick={this.closeNav}>
+              <img src="https://res.cloudinary.com/djnhrvjyf/image/upload/v1597702029/close_junhc8.svg" />
               </button>
               <div className="links-cards">
                 <div className="link-cards">
@@ -232,7 +257,7 @@ class Cards extends Component {
 
           <div className="main-cards">
             <div className="top-cards">
-              <button className="sidenav-btn-cards">
+              <button className="sidenav-btn-cards" onClick={this.sidenav}>
                 <div className="bar-cards"></div>
                 <div className="bar-cards"></div>
                 <div className="bar-cards"></div>

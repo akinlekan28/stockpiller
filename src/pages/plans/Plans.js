@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component, createRef } from 'react'
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
 import { getPlans } from '../../store/actions/planActions'
@@ -10,6 +10,11 @@ class Plans extends Component {
   constructor() {
     super()
 
+    this.hamburger = createRef()
+    this.sliderClose = createRef()
+    this.menuContainer = createRef()
+    this.menu = createRef()
+    this.overlay = createRef()
     this.logout = this.logout.bind(this)
   }
 
@@ -21,6 +26,24 @@ class Plans extends Component {
     e.preventDefault()
 
     this.props.logoutUser()
+  }
+
+  openSlider = () => {
+    this.overlay.current.style.display = 'block'
+    this.menuContainer.current.classList.add('active-home')
+    this.menu.current.style.display = 'block'
+    setTimeout(() => {
+      this.menu.current.classList.add('active-home')
+    }, 100)
+  }
+
+  closeSlider = () => {
+    this.menu.current.classList.remove('active-home')
+    this.menu.current.style.display = 'none'
+    setTimeout(() => {
+      this.menuContainer.current.classList.remove('active-home')
+      this.overlay.current.style.display = 'none'
+    }, 400)
   }
 
   render() {
@@ -130,15 +153,15 @@ class Plans extends Component {
 
     return (
       <div className="plans-wrapper">
-        <div className="sidenav__container-home">
-          <div className="sidebar-home sidenav-home">
+        <div className="sidenav__container-home" ref={this.menuContainer}>
+          <div className="sidebar-home sidenav-home" ref={this.menu}>
             <div className="header-title">
               <Link className="logo" to="/">
                 Stockpiller
               </Link>
             </div>
-            <button className="sidenav-close-home">
-              <img src="../assets/images/close.svg" />
+            <button className="sidenav-close-home" onClick={this.closeSlider}>
+              <img src="https://res.cloudinary.com/djnhrvjyf/image/upload/v1597702029/close_junhc8.svg" />
             </button>
             <div className="links-home">
               <div className="link-home">
@@ -265,12 +288,16 @@ class Plans extends Component {
             Logout
           </a>
         </div>
-        <div className="cover-overlay-home"></div>
+        <div
+          className="cover-overlay-home"
+          onClick={this.closeSlider}
+          ref={this.overlay}
+        ></div>
 
         <main>
           <div className="main-container-home">
             <div className="main-header-home">
-              <div className="open-home">
+              <div className="open-home" onClick={this.openSlider}>
                 <div className="bar-home"></div>
                 <div className="bar-home"></div>
                 <div className="bar-home"></div>

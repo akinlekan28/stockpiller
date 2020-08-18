@@ -63,7 +63,7 @@ class Homepage extends Component {
     }
 
     return (
-      <div className="homepage-wrapper" >
+      <div className="homepage-wrapper">
         <div className="outside-overlay" ref={this.outsideOverlay}>
           <div
             className="clickable"
@@ -101,9 +101,6 @@ class Homepage extends Component {
                 <a className="sidebar-link" href="#" onClick={gotoHow}>
                   <li className="sidebar-option">How it works</li>
                 </a>
-                <Link className="sidebar-link" to="/contact">
-                  <li className="sidebar-option">Contact Us</li>
-                </Link>
               </ul>
               <div className="sidebar-buttons">
                 <Link className="sidebar-btn" to="/login">
@@ -152,11 +149,6 @@ class Homepage extends Component {
                     <li className="nav-item">
                       <Link to="/" className="navlink" onClick={gotoHow}>
                         How it works?
-                      </Link>
-                    </li>
-                    <li className="nav-item">
-                      <Link to="/contact" className="navlink">
-                        Contact Us
                       </Link>
                     </li>
                     <li className="nav-item">
@@ -213,8 +205,11 @@ class Homepage extends Component {
             <div className="row">
               <div className="col-lg-4 col-md-4">
                 <Fade left delay={400}>
-                  <div className="reason card" style={{height: '100%'}}>
-                    <img src="https://res.cloudinary.com/djnhrvjyf/image/upload/v1597395573/Screenshot_2020-08-14_at_9.56.00_AM_mtxt7c.png" alt="easy.png" />
+                  <div className="reason card" style={{ height: '100%' }}>
+                    <img
+                      src="https://res.cloudinary.com/djnhrvjyf/image/upload/v1597395573/Screenshot_2020-08-14_at_9.56.00_AM_mtxt7c.png"
+                      alt="easy.png"
+                    />
                     <h2 className="reason-header">Easy to use.</h2>
                     <p className="reason-text">
                       Deposit regular amounts of money on a recurring basis,
@@ -225,20 +220,26 @@ class Homepage extends Component {
               </div>
               <div className="col-lg-4 col-md-4">
                 <Fade up delay={400}>
-                  <div className="reason card" style={{height: '100%'}}>
-                  <img src="https://res.cloudinary.com/djnhrvjyf/image/upload/v1597395542/Screenshot_2020-08-14_at_9.55.40_AM_ysbnib.png" alt="flexible.png" />
+                  <div className="reason card" style={{ height: '100%' }}>
+                    <img
+                      src="https://res.cloudinary.com/djnhrvjyf/image/upload/v1597395542/Screenshot_2020-08-14_at_9.55.40_AM_ysbnib.png"
+                      alt="flexible.png"
+                    />
                     <h2 className="reason-header">Flexible</h2>
                     <p className="reason-text">
-                      You can withdraw and pickup your saved materials anywhere in the
-                      Country.
+                      You can withdraw and pickup your saved materials anywhere
+                      in the Country.
                     </p>
                   </div>
                 </Fade>
               </div>
               <div className="col-lg-4 col-md-4">
                 <Fade right delay={400}>
-                  <div className="reason card" style={{height: '100%'}}>
-                  <img src="https://res.cloudinary.com/djnhrvjyf/image/upload/v1597395542/Screenshot_2020-08-14_at_9.55.06_AM_h99q4l.png" alt="transparent.png" />
+                  <div className="reason card" style={{ height: '100%' }}>
+                    <img
+                      src="https://res.cloudinary.com/djnhrvjyf/image/upload/v1597395542/Screenshot_2020-08-14_at_9.55.06_AM_h99q4l.png"
+                      alt="transparent.png"
+                    />
                     <h2 className="reason-header">Transparent</h2>
                     <p className="reason-text">
                       Login to see accumulated materials in your virtual store,
@@ -368,9 +369,7 @@ class Homepage extends Component {
           <section className="How-it-works" ref={howScroll}>
             <div className="How-it-works-heading">
               <h1 className="How-it-works-heading-lead">How it works</h1>
-              <p className="f-subs">
-                We will tell you how our process works.
-              </p>
+              <p className="f-subs">We will tell you how our process works.</p>
             </div>
             <div className="How-it-works-body">
               <div className="method-group">
@@ -378,7 +377,7 @@ class Homepage extends Component {
                   <div className="method">
                     {/* <p className="method-heading">Sign Up</p> */}
                     <p className="method-text">
-                    <p className="method-heading">Sign Up</p>
+                      <p className="method-heading">Sign Up</p>
                       Sign up with us today, we require only your name, email
                       and phone number.
                     </p>
@@ -397,7 +396,7 @@ class Homepage extends Component {
                   <div className="method">
                     {/* <p className="method-heading">Add your card</p> */}
                     <p className="method-text">
-                    <p className="method-heading">Sign Up</p>
+                      <p className="method-heading">Sign Up</p>
                       Sign up with us today, we require only your name, email
                       and phone number.
                     </p>
@@ -416,7 +415,7 @@ class Homepage extends Component {
                   <div className="method">
                     {/* <p className="method-heading">Specify the materials</p> */}
                     <p className="method-text">
-                    <p className="method-heading">Specify the materials</p>
+                      <p className="method-heading">Specify the materials</p>
                       Sign up with us today, we require only your name, email
                       and phone number.
                     </p>
@@ -435,7 +434,7 @@ class Homepage extends Component {
                   <div className="method">
                     {/* <p className="method-heading">Sit back and Relax</p> */}
                     <p className="method-text method-last">
-                    <p className="method-heading">Sit back and Relax</p>
+                      <p className="method-heading">Sit back and Relax</p>
                       Sign up with us today, we require only your name, email
                       and phone number.
                     </p>
@@ -458,9 +457,7 @@ class Homepage extends Component {
           <section className="FAQs">
             <div className="FAQs-heading">
               <h1 className="FAQs-heading-lead">Frequently asked questions</h1>
-              <p className="f-subs">
-                We provide answers to your questions
-              </p>
+              <p className="f-subs">We provide answers to your questions</p>
             </div>
             <div className="FAQs-body">
               <div className="faq">

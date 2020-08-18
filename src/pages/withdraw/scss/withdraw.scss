@@ -18,6 +18,10 @@
     color: #4a4a4a;
   }
 
+  .sidenav-close-withdraw{
+    display: none;
+  }
+
   .header-title {
     margin-top: -16px;
     padding-bottom: 21px;
@@ -79,11 +83,17 @@
   }
 
   .sidenav-close-withdraw {
-    position: absolute;
-    height: 32px;
-    width: 32px;
-    right: 25px;
-    top: 25px;
+    // position: absolute;
+    // height: 32px;
+    // width: 32px;
+    // right: 25px;
+    // top: 25px;
+      position: absolute;
+      height: 20px;
+      width: 20px;
+      right: 25px;
+      top: 18px;
+      margin-left: 15px;
     background: transparent;
     border: none;
     outline: none;
@@ -879,6 +889,14 @@
       background-color: rgba(155, 155, 155, 0.57);
     }
 
+    .main-header-withdraw {
+      height: 65px;
+    }
+
+    .sidenav-close-withdraw{
+      display: block;
+    }
+
     .main-container-withdraw {
       min-height: 86vh;
     }
@@ -892,6 +910,8 @@
     }
     .sidebar-withdraw {
       display: none;
+      width: 60%;
+      z-index: 999;
     }
     .sidenav-btn-withdraw {
       display: inline-block;

@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component, createRef } from "react";
 import { connect } from "react-redux";
 import { logoutUser } from "../../store/actions/authActions";
 import { getTransactions } from "../../store/actions/transactionActions";
@@ -11,6 +11,9 @@ class Transactions extends Component {
     super();
 
     this.logout = this.logout.bind(this);
+    this.sidebarContainer = createRef()
+    this.sidenavDashboard = createRef()
+    this.sidenavClose = createRef()
   }
 
   componentDidMount() {
@@ -21,6 +24,28 @@ class Transactions extends Component {
     e.preventDefault();
 
     this.props.logoutUser();
+  }
+
+  sidenav = () => {
+    this.toggleClass(this.sidebarContainer.current, 'active-transaction')
+    setTimeout(() => {
+      this.toggleClass(this.sidenavDashboard.current, 'active-transaction')
+    }, 50)
+  }
+
+  toggleClass = (e, className) => {
+    if (e.classList.contains(className)) {
+      e.classList.remove(className)
+    } else {
+      e.classList.add(className)
+    }
+  }
+
+  closeNav = () => {
+    this.toggleClass(this.sidenavDashboard.current, 'active-transaction')
+    setTimeout(() => {
+      this.toggleClass(this.sidebarContainer.current, 'active-transaction')
+    }, 400)
   }
 
   render() {
@@ -197,15 +222,15 @@ class Transactions extends Component {
     return (
       <div className="transaction-wrapper">
         <div className="container-transaction">
-          <div className="sidenav__container-transaction">
-            <div className="sidebar-transaction sidenav-transaction">
+          <div className="sidenav__container-transaction" ref={this.sidebarContainer}>
+            <div className="sidebar-transaction sidenav-transaction" ref={this.sidenavDashboard}>
               <div className="header-title">
                 <Link className="logo-transaction" to="/">
                   Stockpiller
                 </Link>
               </div>
-              <button className="sidenav-close-transaction">
-                <img src="../assets/images/close.svg" />
+              <button className="sidenav-close-transaction" onClick={this.closeNav}>
+              <img src="https://res.cloudinary.com/djnhrvjyf/image/upload/v1597702029/close_junhc8.svg" />
               </button>
               <div className="links-transaction">
                 <div className="link-transaction">
@@ -216,7 +241,7 @@ class Transactions extends Component {
                   ></span>
                   <Link to="/dashboard">Dashboard</Link>
                 </div>
-                <div className="link-transaction active-transaction">
+                <div className="link-transaction">
                   <span
                     className="iconify"
                     data-icon="bx:bxs-bar-chart-alt-2"
@@ -224,7 +249,7 @@ class Transactions extends Component {
                   ></span>
                   <Link to="/plans">Plans</Link>
                 </div>
-                <div className="link-transaction">
+                <div className="link-transaction active-transaction">
                   <span
                     className="iconify"
                     data-icon="bi:calculator-fill"
@@ -342,7 +367,7 @@ class Transactions extends Component {
           </div>
           <div className="main-transaction">
             <div className="top-transaction">
-              <button className="sidenav-btn-transaction">
+              <button className="sidenav-btn-transaction" onClick={this.sidenav}>
                 <div className="bar-transaction"></div>
                 <div className="bar-transaction"></div>
                 <div className="bar-transaction"></div>

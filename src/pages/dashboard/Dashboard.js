@@ -1,23 +1,26 @@
-import React, { Component } from "react";
-import { connect } from "react-redux";
-import { Link } from "react-router-dom";
-import { logoutUser, me } from "../../store/actions/authActions";
-import { getLastPlans } from "../../store/actions/planActions";
-import Skeleton from "@yisheng90/react-loading";
-import "./scss/nav.scss";
-import "./scss/dashboard.scss";
-import { toast } from "react-toastify";
+import React, { Component, createRef } from 'react'
+import { connect } from 'react-redux'
+import { Link } from 'react-router-dom'
+import { logoutUser, me } from '../../store/actions/authActions'
+import { getLastPlans } from '../../store/actions/planActions'
+import Skeleton from '@yisheng90/react-loading'
+import './scss/nav.scss'
+import './scss/dashboard.scss'
+import { toast } from 'react-toastify'
 
 class Dashboard extends Component {
   constructor() {
-    super();
+    super()
 
-    this.logout = this.logout.bind(this);
+    this.logout = this.logout.bind(this)
+    this.sidebarContainer = createRef()
+    this.sidenavDashboard = createRef()
+    this.sidenavClose = createRef()
   }
 
   componentDidMount() {
-    this.props.getLastPlans();
-    this.props.me();
+    this.props.getLastPlans()
+    this.props.me()
     // const { auth } = this.props.auth;
   }
 
@@ -31,15 +34,46 @@ class Dashboard extends Component {
   }
 
   logout(e) {
-    e.preventDefault();
+    e.preventDefault()
 
-    this.props.logoutUser();
+    this.props.logoutUser()
+  }
+
+  sidenav = () => {
+    this.toggleClass(this.sidebarContainer.current, 'active-dashboard')
+    setTimeout(() => {
+      this.toggleClass(this.sidenavDashboard.current, 'active-dashboard')
+    }, 50)
+  }
+
+  toggleClass = (e, className) => {
+    if (e.classList.contains(className)) {
+      e.classList.remove(className)
+    } else {
+      e.classList.add(className)
+    }
+  }
+
+  closeNav = () => {
+    this.toggleClass(this.sidenavDashboard.current, 'active-dashboard')
+    setTimeout(() => {
+      this.toggleClass(this.sidebarContainer.current, 'active-dashboard')
+    }, 400)
+  }
+
+  sideCon = (e) => {
+    // if (e.path[0] === this.sidebarContainer.current) {
+    //   this.toggleClass(this.sidenavDashboard, 'active-dashboard')
+    //   setTimeout(() => {
+    //     this.toggleClass(this.sidebarContainer.current, 'active-dashboard')
+    //   }, 400)
+    // }
   }
 
   render() {
-    const { plans, loading } = this.props.plans;
+    const { plans, loading } = this.props.plans
 
-    let plansContainer;
+    let plansContainer
 
     if (loading) {
       plansContainer = (
@@ -77,7 +111,7 @@ class Dashboard extends Component {
             <Skeleton height={30} />
           </div>
         </>
-      );
+      )
     } else {
       if (plans !== null && Object.keys(plans).length > 0) {
         plansContainer = (
@@ -207,36 +241,46 @@ class Dashboard extends Component {
               </div>
             </div>
           </>
-        );
+        )
       } else {
-        plansContainer = <h2>Welcome, You have no active plan!</h2>;
+        plansContainer = <h2>Welcome, You have no active plan!</h2>
       }
     }
 
     return (
       <div className="dashboard-wrapper">
         <div className="container-dashboard">
-          <div class="sidenav__container-dashboard ">
-            <div class="sidebar-dashboard sidenav-dashboard">
+          <div
+            className="sidenav__container-dashboard"
+            ref={this.sidebarContainer}
+            onClick={this.sideCon}
+          >
+            <div
+              className="sidebar-dashboard sidenav-dashboard"
+              ref={this.sidenavDashboard}
+            >
               <div>
-                <Link class="logo-dashboard" to="/">
+                <Link className="logo-dashboard" to="/">
                   Stockpiller
                 </Link>
               </div>
 
-              <button class="sidenav-close-dashboard">
+              <button
+                className="sidenav-close-dashboard"
+                onClick={this.closeNav}
+              >
                 <img src="../assets/images/close.svg" />
               </button>
-              <div class="links-dashboard">
-                <div class="link-dashboard active-dashboard">
+              <div className="links-dashboard">
+                <div className="link-dashboard active-dashboard">
                   <span
-                    class="iconify"
+                    className="iconify"
                     data-icon="ic:baseline-dashboard"
                     data-inline="false"
                   ></span>
                   <Link to="/dashboard">Dashboard</Link>
                 </div>
-                <div class="link-dashboard">
+                <div className="link-dashboard">
                   <span
                     className="iconify"
                     data-icon="bx:bxs-bar-chart-alt-2"
@@ -282,28 +326,27 @@ class Dashboard extends Component {
                   className="iconify"
                   data-icon="ri:logout-box-line"
                   data-inline="false"
-
                 ></span>
                 Logout
               </a>
             </div>
           </div>
-          <div class="sidebar-dashboard">
+          <div className="sidebar-dashboard">
             <div className="header-title">
-              <Link class="logo-dashboard" to="/">
+              <Link className="logo-dashboard" to="/">
                 Stockpiller
               </Link>
             </div>
-            <div class="links-dashboard">
-              <div class="link-dashboard active-dashboard">
+            <div className="links-dashboard">
+              <div className="link-dashboard active-dashboard">
                 <span
-                  class="iconify"
+                  className="iconify"
                   data-icon="ic:baseline-dashboard"
                   data-inline="false"
                 ></span>
                 <Link to="/dashboard">Dashboard</Link>
               </div>
-              <div class="link-dashboard">
+              <div className="link-dashboard">
                 <span
                   className="iconify"
                   data-icon="bx:bxs-bar-chart-alt-2"
@@ -311,7 +354,7 @@ class Dashboard extends Component {
                 ></span>
                 <Link to="/plans">Plans</Link>
               </div>
-              <div class="link-dashboard">
+              <div className="link-dashboard">
                 <span
                   className="iconify"
                   data-icon="bi:calculator-fill"
@@ -319,7 +362,7 @@ class Dashboard extends Component {
                 ></span>
                 <Link to="/transactions">Transactions</Link>
               </div>
-              <div class="link-dashboard">
+              <div className="link-dashboard">
                 <span
                   className="iconify"
                   data-icon="ri:send-plane-fill"
@@ -327,7 +370,7 @@ class Dashboard extends Component {
                 ></span>
                 <Link to="/withdraw">Withdraw</Link>
               </div>
-              <div class="link-dashboard">
+              <div className="link-dashboard">
                 <span
                   className="iconify"
                   data-icon="vaadin:wallet"
@@ -335,7 +378,7 @@ class Dashboard extends Component {
                 ></span>
                 <Link to="/cards">Cards</Link>
               </div>
-              <div class="link-dashboard">
+              <div className="link-dashboard">
                 <span
                   className="iconify"
                   data-icon="clarity:cog-line"
@@ -344,7 +387,11 @@ class Dashboard extends Component {
                 <Link to="/settings">Settings</Link>
               </div>
             </div>
-            <a class="logout__link-dashboard" href="#" onClick={this.logout}>
+            <a
+              className="logout__link-dashboard"
+              href="#"
+              onClick={this.logout}
+            >
               <span
                 className="iconify"
                 data-icon="ri:logout-box-line"
@@ -354,18 +401,18 @@ class Dashboard extends Component {
             </a>
           </div>
 
-          <div class="main-dashboard">
-            <div class="top-dashboard">
-              <button class="sidenav-btn-dashboard">
-                <div class="bar-dashboard"></div>
-                <div class="bar-dashboard"></div>
-                <div class="bar-dashboard"></div>
+          <div className="main-dashboard">
+            <div className="top-dashboard">
+              <button className="sidenav-btn-dashboard" onClick={this.sidenav}>
+                <div className="bar-dashboard"></div>
+                <div className="bar-dashboard"></div>
+                <div className="bar-dashboard"></div>
               </button>
-              <div class="back-dashboard">
+              <div className="back-dashboard">
                 <img src="../assets/images/back.svg" alt="" />
                 {/* <a href="">Back</a> */}
               </div>
-              {/* <table class="rates-dashboard top">
+              {/* <table className="rates-dashboard top">
                 <tr>
                   <td>Rates</td>
                   <td>Block</td>
@@ -394,22 +441,22 @@ class Dashboard extends Component {
                   </td>
                 </tr>
               </table> */}
-              <div class="user-controls-dashboard">
-                <div class="notifications-dashboard">
+              <div className="user-controls-dashboard">
+                <div className="notifications-dashboard">
                   <img src="../assets/images/notifications.svg" alt="" />
                 </div>
-                <div class="user-dashboard">
+                <div className="user-dashboard">
                   <img src="../assets/images/user.svg" alt="" />
                 </div>
-                <button class="logout-dashboard" onClick={this.logout}>
+                <button className="logout-dashboard" onClick={this.logout}>
                   Logout
                 </button>
               </div>
             </div>
-            <Link class="new-plan-dashboard" to="/plan/new">
+            <Link className="new-plan-dashboard" to="/plan/new">
               New Plans
             </Link>
-            <div class="cards-dashboard">{plansContainer}</div>
+            <div className="cards-dashboard">{plansContainer}</div>
             {/* <table class="rates-dashboard bottom-dashboard">
               <tr>
                 <td>Rates</td>
@@ -442,19 +489,19 @@ class Dashboard extends Component {
           </div>
         </div>
       </div>
-    );
+    )
   }
 }
 
 const mapStateToProps = (state) => ({
   plans: state.plan,
   auth: state.auth,
-});
+})
 
 const mapDispatchToProps = {
   logoutUser,
   getLastPlans,
   me,
-};
+}
 
-export default connect(mapStateToProps, mapDispatchToProps)(Dashboard);
+export default connect(mapStateToProps, mapDispatchToProps)(Dashboard)

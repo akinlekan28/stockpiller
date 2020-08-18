@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component, createRef } from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import { logoutUser, updatePassword } from "../../store/actions/authActions";
@@ -18,10 +18,47 @@ class ChangePassword extends Component {
       errors: {},
     };
 
+    this.hamburger = createRef()
+    this.sliderClose = createRef()
+    this.menuContainer = createRef()
+    this.menu = createRef()
+    this.overlay = createRef()
+    this.toggle = createRef()
+
     this.togglePassword = this.togglePassword.bind(this);
     this.logout = this.logout.bind(this);
     this.onChange = this.onChange.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
+  }
+
+  openSlider = () => {
+    this.overlay.current.style.display = 'block'
+    this.menuContainer.current.classList.add('active-passwords')
+    this.menu.current.style.display = 'block'
+    setTimeout(() => {
+      this.menu.current.classList.add('active-passwords')
+    }, 100)
+  }
+
+  closeSlider = () => {
+    this.menu.current.classList.remove('active-passwords')
+    this.menu.current.style.display = 'none'
+    setTimeout(() => {
+      this.menuContainer.current.classList.remove('active-passwords')
+      this.overlay.current.style.display = 'none'
+    }, 400)
+  }
+
+  toggleClass = (elem, className) => {
+    if (elem.classList.contains(className)) {
+      elem.classList.remove(className)
+    } else {
+      elem.classList.add(className)
+    }
+  }
+
+  showNext = () => {
+    this.toggleClass(this.toggle.current, 'active-passwords')
   }
 
   static getDerivedStateFromProps(nextProps, prevState) {
@@ -84,7 +121,7 @@ class ChangePassword extends Component {
     return (
       <div className="password-wrapper">
         <div class="container-passwords">
-          <div class="sidenav__container-passwords">
+          <div class="sidenav__container-passwords" ref={this.menuContainer}>
             <div class="sidebar-passwords sidenav-passwords">
               <div className="header-title">
                 <Link class="logo-passwords" to="/">
@@ -165,12 +202,18 @@ class ChangePassword extends Component {
               </a>
             </div>
           </div>
-          <div class="sidebar-passwords">
+          <div class="sidebar-passwords" ref={this.menu}>
             <div className="header-title">
               <Link class="logo-passwords" to="/">
                 Stockpiller
               </Link>
             </div>
+            <button
+              className="sidenav-close-passwords"
+              onClick={this.closeSlider}
+            >
+              <img src="https://res.cloudinary.com/djnhrvjyf/image/upload/v1597702029/close_junhc8.svg" />
+            </button>
             <div class="links-passwords">
               <div class="link-passwords">
                 <span
@@ -230,9 +273,14 @@ class ChangePassword extends Component {
               Logout
             </a>
           </div>
+          <div
+            class="cover-overlay-settings"
+            onClick={this.closeSlider}
+            ref={this.overlay}
+          ></div>
           <div class="main-passwords">
             <div class="top-passwords">
-              <button class="sidenav-btn-passwords">
+              <button class="sidenav-btn-passwords" onClick={this.openSlider}>
                 <div class="bar-passwords"></div>
                 <div class="bar-passwords"></div>
                 <div class="bar-passwords"></div>
@@ -363,14 +411,15 @@ class ChangePassword extends Component {
                   )}
                   {!loading && <button type="submit">Update</button>}
                 </form>
-                <div class="page-links-passwords">
-                  <button class="link-toggle-passwords">
+                <div class="page-links-passwords" >
+                  <button class="link-toggle-passwords" onClick={this.showNext}
+                    ref={this.toggle}>
                     <img
-                      src="https://res.cloudinary.com/djnhrvjyf/image/upload/v1594376838/eye_s3luq1.svg"
+                      src="https://res.cloudinary.com/djnhrvjyf/image/upload/v1597723557/add-straight_kpddhz.svg"
                       alt=""
                     />
                   </button>
-                  <a href="./settings.html">
+                  <Link to="/settings">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       width="20"
@@ -383,8 +432,8 @@ class ChangePassword extends Component {
                         fill="#fff"
                       />
                     </svg>
-                  </a>
-                  <a href="./change-password.html">
+                  </Link>
+                  <Link to="/change-password">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       width="19.954"
@@ -397,7 +446,7 @@ class ChangePassword extends Component {
                         d="M14.246,20a5.85,5.85,0,0,1-5.717-5.962,5.456,5.456,0,0,1,.451-2.293c-.048-.077-.106-.157-.167-.242a1.829,1.829,0,0,1-.332-.594,2.517,2.517,0,0,1,.142-.712,2.512,2.512,0,0,0,.142-.711.991.991,0,0,0-.527-.548.445.445,0,0,0-.1-.01,1.846,1.846,0,0,0-.71.24L7.366,9.2a1.635,1.635,0,0,1-.557.209.215.215,0,0,1-.044,0A1.822,1.822,0,0,1,5.729,8.245,1.324,1.324,0,0,1,5.915,7.6c.161-.347.328-.706.053-.987a.528.528,0,0,0-.393-.173,1.423,1.423,0,0,0-.546.162l-.02.009a1.316,1.316,0,0,1-.492.152H4.51a1.01,1.01,0,0,1-.748-.419,1.21,1.21,0,0,1-.442-.913A2.964,2.964,0,0,1,3.4,4.884a1.659,1.659,0,0,0,.062-.6.708.708,0,0,0-.5-.6.489.489,0,0,0-.193-.032,2.7,2.7,0,0,0-.432.054l-.03.005a3.065,3.065,0,0,1-.516.059.733.733,0,0,1-.555-.2c-.11-.112-.206-.2-.318-.309C.727,3.082.485,2.852.031,2.385A.125.125,0,0,1,0,2.292C.009,1.9,1.085.738,1.373.462A1.591,1.591,0,0,1,2.395,0a.968.968,0,0,1,.719.322C3.575.8,9.249,5.648,11.975,7.976l.467.4a5.382,5.382,0,0,1,1.794-.2,5.625,5.625,0,0,1,4.042,1.7,5.9,5.9,0,0,1,1.675,4.165A5.845,5.845,0,0,1,14.246,20Zm1.1-6.153a1.538,1.538,0,1,0,1.535,1.538A1.538,1.538,0,0,0,15.35,13.846Z"
                       />
                     </svg>
-                  </a>
+                  </Link>
                 </div>
               </div>
             </div>

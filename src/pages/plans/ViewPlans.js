@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component, createRef } from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import { logoutUser } from "../../store/actions/authActions";
@@ -10,6 +10,11 @@ class ViewPlans extends Component {
     super();
 
     this.logout = this.logout.bind(this);
+    this.hamburger = createRef()
+    this.sliderClose = createRef()
+    this.menuContainer = createRef()
+    this.menu = createRef()
+    this.overlay = createRef()
   }
 
   componentDidMount() {
@@ -20,6 +25,24 @@ class ViewPlans extends Component {
     e.preventDefault();
 
     this.props.logoutUser();
+  }
+
+  openSlider = () => {
+    this.overlay.current.style.display = 'block'
+    this.menuContainer.current.classList.add('active-viewplans')
+    this.menu.current.style.display = 'block'
+    setTimeout(() => {
+      this.menu.current.classList.add('active-viewplans')
+    }, 100)
+  }
+
+  closeSlider = () => {
+    this.menu.current.classList.remove('active-viewplans')
+    this.menu.current.style.display = 'none'
+    setTimeout(() => {
+      this.menuContainer.current.classList.remove('active-viewplans')
+      this.overlay.current.style.display = 'none'
+    }, 400)
   }
 
   render() {
@@ -269,15 +292,15 @@ class ViewPlans extends Component {
 
     return (
       <div className="view-plans-wrapper">
-        <div className="sidenav__container-viewplans">
-          <div className="sidebar-viewplans sidenav-viewplans">
+        <div className="sidenav__container-viewplans" ref={this.menuContainer}>
+          <div className="sidebar-viewplans sidenav-viewplans" ref={this.menu}>
             <div className="header-title">
               <Link className="logo" to="/">
                 Stokkpiler
               </Link>
             </div>
-            <button className="sidenav-close-viewplans">
-              <img src="../assets/images/close.svg" />
+            <button className="sidenav-close-viewplans" onClick={this.closeSlider}>
+              <img src="https://res.cloudinary.com/djnhrvjyf/image/upload/v1597702029/close_junhc8.svg" />
             </button>
             <div className="links-viewplans">
               <div className="link-viewplans">
@@ -408,12 +431,13 @@ class ViewPlans extends Component {
             Logout
           </a>
         </div>
-        <div className="cover-overlay-viewplans"></div>
+        <div className="cover-overlay-viewplans" onClick={this.closeSlider}
+          ref={this.overlay}></div>
 
         <main>
           <div class="main-container-viewplans">
             <div class="main-header-viewplans">
-              <div class="open-viewplans">
+              <div class="open-viewplans" onClick={this.openSlider}>
                 <div class="bar-viewplans"></div>
                 <div class="bar-viewplans"></div>
                 <div class="bar-viewplans"></div>

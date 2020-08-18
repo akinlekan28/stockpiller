@@ -1,52 +1,90 @@
-import React, { Component } from "react";
-import { connect } from "react-redux";
-import { Link } from "react-router-dom";
-import { logoutUser, me, updateUser } from "../../store/actions/authActions";
-import "./scss/nav.scss";
-import "./scss/settings.scss";
-import { toast } from "react-toastify";
+import React, { Component, createRef } from 'react'
+import { connect } from 'react-redux'
+import { Link } from 'react-router-dom'
+import { logoutUser, me, updateUser } from '../../store/actions/authActions'
+import './scss/nav.scss'
+import './scss/settings.scss'
+import { toast } from 'react-toastify'
 
 class Settings extends Component {
   constructor() {
-    super();
+    super()
 
     this.state = {
-      first_name: "",
-      last_name: "",
-      email: "",
-      phone: "",
-      country: "",
+      first_name: '',
+      last_name: '',
+      email: '',
+      phone: '',
+      country: '',
       submitting: false,
-    };
+    }
 
-    this.onChange = this.onChange.bind(this);
-    this.onSubmit = this.onSubmit.bind(this);
+    this.hamburger = createRef()
+    this.sliderClose = createRef()
+    this.menuContainer = createRef()
+    this.menu = createRef()
+    this.overlay = createRef()
+    this.toggle = createRef()
+
+    this.onChange = this.onChange.bind(this)
+    this.onSubmit = this.onSubmit.bind(this)
   }
+
+  openSlider = () => {
+    this.overlay.current.style.display = 'block'
+    this.menuContainer.current.classList.add('active-settings')
+    this.menu.current.style.display = 'block'
+    setTimeout(() => {
+      this.menu.current.classList.add('active-settings')
+    }, 100)
+  }
+
+  closeSlider = () => {
+    this.menu.current.classList.remove('active-settings')
+    this.menu.current.style.display = 'none'
+    setTimeout(() => {
+      this.menuContainer.current.classList.remove('active-settings')
+      this.overlay.current.style.display = 'none'
+    }, 400)
+  }
+
+  toggleClass = (elem, className) => {
+    if (elem.classList.contains(className)) {
+      elem.classList.remove(className)
+    } else {
+      elem.classList.add(className)
+    }
+  }
+
+  showNext = () => {
+    this.toggleClass(this.toggle.current, 'active-settings')
+  }
+
   componentDidMount() {
-    this.props.me();
+    this.props.me()
   }
 
   componentDidUpdate(prevProps) {
     if (prevProps.auth.userData !== this.props.auth.userData) {
-      const { userData } = this.props.auth;
+      const { userData } = this.props.auth
       this.setState({
         first_name: userData.first_name,
         last_name: userData.last_name,
         email: userData.email,
         phone: userData.phone,
         country: userData.country && userData.country,
-      });
+      })
     }
   }
 
   onChange(e) {
-    this.setState({ [e.target.name]: e.target.value });
+    this.setState({ [e.target.name]: e.target.value })
   }
 
   onSubmit(e) {
-    e.preventDefault();
+    e.preventDefault()
 
-    this.setState({ submitting: true });
+    this.setState({ submitting: true })
 
     const payload = {
       first_name: this.state.first_name,
@@ -54,21 +92,21 @@ class Settings extends Component {
       email: this.state.email,
       phone: this.state.phone,
       country: this.state.country,
-    };
+    }
 
     this.props
       .updateUser(payload)
       .then((res) => {
         if (res && res.payload.status_code === 201) {
-          toast.success("Profile Successfully updated");
+          toast.success('Profile Successfully updated')
         }
       })
-      .catch((err) => toast.error("Something went wrong"))
-      .finally(() => this.setState({ submitting: false }));
+      .catch((err) => toast.error('Something went wrong'))
+      .finally(() => this.setState({ submitting: false }))
   }
 
   render() {
-    const { loading, userData } = this.props.auth;
+    const { loading, userData } = this.props.auth
     const {
       first_name,
       last_name,
@@ -76,12 +114,12 @@ class Settings extends Component {
       phone,
       country,
       submitting,
-    } = this.state;
+    } = this.state
 
-    let formContainer;
+    let formContainer
 
     if (loading) {
-      formContainer = <h4>Loading profile...</h4>;
+      formContainer = <h4>Loading profile...</h4>
     } else {
       formContainer = (
         <>
@@ -111,7 +149,7 @@ class Settings extends Component {
           <form onSubmit={this.onSubmit}>
             <input
               type="file"
-              style={{ display: "none" }}
+              style={{ display: 'none' }}
               name="profile-picture"
               class="add-profile-picture-settings"
             />
@@ -175,13 +213,13 @@ class Settings extends Component {
             {submitting && <button type="submit">Updating...</button>}
           </form>
         </>
-      );
+      )
     }
 
     return (
       <div className="settings-wrapper">
         <div className="container-settings">
-          <div class="sidenav__container-settings">
+          <div class="sidenav__container-settings" ref={this.menuContainer}>
             <div class="sidebar-settings sidenav-settings">
               <div className="header-title">
                 <Link class="logo-settings" to="/">
@@ -246,18 +284,24 @@ class Settings extends Component {
                   className="iconify"
                   data-icon="ri:logout-box-line"
                   data-inline="false"
-                ></span>{" "}
+                ></span>{' '}
                 Logout
               </a>
             </div>
           </div>
 
-          <div class="sidebar-settings">
+          <div class="sidebar-settings" ref={this.menu}>
             <div className="header-title">
               <Link class="logo-settings" to="/">
                 Stockpiller
               </Link>
             </div>
+            <button
+              className="sidenav-close-settings"
+              onClick={this.closeSlider}
+            >
+              <img src="https://res.cloudinary.com/djnhrvjyf/image/upload/v1597702029/close_junhc8.svg" />
+            </button>
             <div class="links-settings">
               <div class="link-settings">
                 <span
@@ -313,14 +357,20 @@ class Settings extends Component {
                 className="iconify"
                 data-icon="ri:logout-box-line"
                 data-inline="false"
-              ></span>{" "}
+              ></span>{' '}
               Logout
             </a>
           </div>
 
+          <div
+            class="cover-overlay-settings"
+            onClick={this.closeSlider}
+            ref={this.overlay}
+          ></div>
+
           <div class="main-settings">
             <div class="top-settings">
-              <button class="sidenav-btn-settings">
+              <button class="sidenav-btn-settings" onClick={this.openSlider}>
                 <div class="bar-settings"></div>
                 <div class="bar-settings"></div>
                 <div class="bar-settings"></div>
@@ -387,8 +437,15 @@ class Settings extends Component {
                 </p>
                 {formContainer}
                 <div class="page-links-settings">
-                  <button class="link-toggle">
-                    <img src="../assets/images/add-straight.svg" alt="" />
+                  <button
+                    class="link-toggle-settings"
+                    onClick={this.showNext}
+                    ref={this.toggle}
+                  >
+                    <img
+                      src="https://res.cloudinary.com/djnhrvjyf/image/upload/v1597723557/add-straight_kpddhz.svg"
+                      alt=""
+                    />
                   </button>
                   <Link to="/settings">
                     <svg
@@ -424,18 +481,18 @@ class Settings extends Component {
           </div>
         </div>
       </div>
-    );
+    )
   }
 }
 
 const mapStateToProps = (state) => ({
   auth: state.auth,
-});
+})
 
 const mapDispatchToProps = {
   logoutUser,
   me,
   updateUser,
-};
+}
 
-export default connect(mapStateToProps, mapDispatchToProps)(Settings);
+export default connect(mapStateToProps, mapDispatchToProps)(Settings)

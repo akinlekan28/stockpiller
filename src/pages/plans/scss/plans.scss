@@ -1285,6 +1285,10 @@
       background-color: rgba(155, 155, 155, 0.57);
     }
 
+    .main-header-home {
+      height: 65px;
+    }
+
     .sidebar-home.sidenav-home.active-home {
       width: 50%;
       box-shadow: 0 0 40px rgba(0, 0, 0, 0.5);
@@ -1344,11 +1348,11 @@
     .main-header-home {
       position: fixed;
       top: 0;
-      background-color: #dddbf1;
+      // background-color: #dddbf1;
       z-index: 800;
     }
     .main-body-home {
-      margin-top: 8rem;
+      // margin-top: 8rem;
     }
 
     .visible-home {
@@ -1391,7 +1395,7 @@
     }
 
     .main-body-home {
-      padding: 8rem 3rem;
+      // padding: 8rem 3rem;
     }
 
     .stocks-home {

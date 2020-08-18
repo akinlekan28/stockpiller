@@ -48,7 +48,7 @@
     color: #502274;
     height: 60px;
     font-size: 18px;
-    font-family: "Montserrat-Medium", sans-serif;
+    font-family: 'Montserrat-Medium', sans-serif;
     padding-left: 50px;
     box-sizing: border-box;
     display: flex;
@@ -175,7 +175,7 @@
   }
 
   .back-settings {
-    font-family: "Montserrat-Medium", sans-serif;
+    font-family: 'Montserrat-Medium', sans-serif;
     display: flex;
     height: 65px;
     align-items: center;
@@ -191,7 +191,7 @@
 
   .rates-settings {
     width: 280px;
-    font-family: "Montserrat-Regular", sans-serif;
+    font-family: 'Montserrat-Regular', sans-serif;
     font-size: 12px;
     border-collapse: separate;
     border-spacing: 0 5px;
@@ -215,7 +215,7 @@
   .rates-settings tr:nth-of-type(n + 2) td:nth-of-type(n + 2) {
     font-weight: bolder;
     font-size: 10px;
-    font-family: "Montserrat-Semibold";
+    font-family: 'Montserrat-Semibold';
   }
 
   .user-controls-settings {
@@ -232,7 +232,7 @@
     border: 1px solid #502274;
     border-radius: 5px;
     color: #502274;
-    font-family: "Montserrat-SemiBold", sans-serif;
+    font-family: 'Montserrat-SemiBold', sans-serif;
     height: 30px;
     display: inline-flex;
     align-items: center;
@@ -262,7 +262,7 @@
   .category-settings {
     height: 70px;
     display: flex;
-    font-family: "Montserrat-Medium", sans-serif;
+    font-family: 'Montserrat-Medium', sans-serif;
     border-bottom: 1px solid rgba(216, 216, 216, 0.38);
     text-decoration: none;
   }
@@ -303,7 +303,7 @@
   }
 
   .content__form__header-settings {
-    font-family: "Montserrat-Medium", sans-serif;
+    font-family: 'Montserrat-Medium', sans-serif;
     font-size: 16px;
     color: #4a4a4a;
     margin: 0;
@@ -325,10 +325,10 @@
     border-bottom-color: #c4c4c4;
     width: 100%;
     box-sizing: border-box;
-  } 
+  }
 
   .content__form__subtext-settings {
-    font-family: "Montserrat-Regular", sans-serif;
+    font-family: 'Montserrat-Regular', sans-serif;
     font-size: 12px;
     color: #4a4a4a;
     margin: 0;
@@ -339,7 +339,7 @@
   .image-box-settings {
     display: flex;
     align-items: center;
-    font-family: "Montserrat-Medium", sans-serif;
+    font-family: 'Montserrat-Medium', sans-serif;
     font-size: 14px;
   }
 
@@ -376,7 +376,7 @@
   }
 
   form {
-    font-family: "Montserrat-Medium", sans-serif;
+    font-family: 'Montserrat-Medium', sans-serif;
     margin-top: 20px;
   }
 
@@ -402,7 +402,7 @@
     box-sizing: border-box;
     outline: none;
     padding-left: 10px;
-    font-family: "Montserrat-Regular", sans-serif;
+    font-family: 'Montserrat-Regular', sans-serif;
   }
 
   form button {
@@ -414,7 +414,7 @@
     border: none;
     border-radius: 3px;
     font-size: 12px;
-    font-family: "Rubik", sans-serif;
+    font-family: 'Rubik', sans-serif;
     color: white;
     outline: none;
   }
@@ -600,6 +600,13 @@
     }
     .rates-settings.bottom-settings {
       margin-top: 20px;
+    }
+    .sidebar-settings {
+      width: 60%;
+      z-index: 999;
+    }
+    .logo-settings {
+      margin-left: 0px;
     }
   }
 
