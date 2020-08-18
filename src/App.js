@@ -8,7 +8,7 @@ import setAuthToken from './utils/setAuthToken'
 import jwt_decode from 'jwt-decode'
 import { logoutUser, setCurrentUser } from './store/actions/authActions'
 import PrivateRoute from './components/common/PrivateRoute'
-import Homepage from './pages/homepage/Homepage'
+import Homepage from './pages/homepage/'
 import Login from './pages/auth/Login'
 import Signup from './pages/auth/Signup'
 import Forgot from './pages/auth/Forgot'
@@ -23,12 +23,10 @@ import Cards from './pages/cards/Cards'
 import EditPlan from './pages/plans/EditPlan'
 import Settings from './pages/settings/Settings'
 import ChangePassword from './pages/settings/ChangePassword'
-import Terms from './pages/terms/Terms'
-import Privacy from './pages/terms/Privacy'
+// import Terms from './pages/terms/Terms'
+// import Privacy from './pages/terms/Privacy'
 import Plans from './pages/plans/Plans'
-
-import './App.css'
-import Contact from './pages/homepage/Contact'
+ import './App.css'
 
 //check for token
 if (localStorage.jwtToken) {
@@ -59,9 +57,9 @@ class App extends Component {
               <Route exact path="/login" component={Login} />
               <Route exact path="/signup" component={Signup} />
               <Route exact path="/reset" component={Forgot} />
-              <Route exact path="/terms" component={Terms} />
-              <Route exact path="/privacy" component={Privacy} />
-              <Route exact path="/contact" component={Contact} />
+              {/*<Route exact path="/terms" component={Terms} />*/}
+              {/*<Route exact path="/privacy" component={Privacy} />*/}
+              {/*<Route exact path="/contact" component={Contact} />*/}
               <PrivateRoute exact path="/dashboard" component={Dashboard} />
               <PrivateRoute exact path="/home" component={Home} />
               <PrivateRoute exact path="/plans" component={Plans} />
