@@ -1,4 +1,5 @@
 import React, {Component, createRef} from 'react'
+import { Link } from 'react-router-dom'
 // import './homepage.scss'
 import {connect} from "react-redux";
 
@@ -74,12 +75,14 @@ class Homepage extends Component {
                     </div>
                     <div className="_right _padding-50 signin">
                         <div className="_center">
-                            <a href="https://www.piggyvest.com"><img
+                            <Link to="/login">
+                                {/* <img
                                 src="https://storage.googleapis.com/piggybankservice.appspot.com/statics/piggy-png_1_.png"
-                                className="logo" alt="PiggyVest Logo"/></a>
+                                className="logo" alt="PiggyVest Logo"/> */}
+                                </Link>
                             <h2>Login to your Account</h2>
                         </div>
-                        <form action="https://www.piggyvest.com/login" method="post"
+                        {/* <form action="https://www.piggyvest.com/login" method="post"
                               className="_margin-100 signin-form">
                             <label for="email" className="_left">Email or Phone Number</label>
                             <input type="text" name="email" value="" className="_left _margin-10"/>
@@ -99,7 +102,7 @@ class Homepage extends Component {
                                        className="_margin-20">Forgot Password?</a>
                                 </div>
                             </div>
-                        </form>
+                        </form> */}
                     </div>
                 </div>
                 {/** mobile menu icon **/}
@@ -122,13 +125,11 @@ class Homepage extends Component {
                              </ul>
                              </l1>
                              **/}
-                            <l1><a href="https://www.piggyvest.com/about">About</a></l1>
-                            <l1><a href="https://www.piggyvest.com/stories">Stories</a></l1>
-                            <l1><a href="https://www.piggyvest.com/faq">FAQ</a></l1>
-                            <l1><a href="https://medium.com/@Piggyvest" target="_blank">Blog</a></l1>
-                            <l1><a href="https://dashboard.piggyvest.com/login">Log In</a></l1>
-                            <l1><a href="https://dashboard.piggyvest.com/register" className="signup-btn">Create a Free
-                                Account</a></l1>
+                            <l1><Link to="/about">About</Link></l1>
+                            <l1><Link to="/faq">FAQ</Link></l1>
+                            <l1><Link to="/login">Log In</Link></l1>
+                            <l1><Link to="/register" className="signup-btn">Create a Free
+                                Account</Link></l1>
                         </ul>
                     </div>
                 </nav>
@@ -137,14 +138,14 @@ class Homepage extends Component {
                 <nav className="top-nav  alt-nav navwhite">
                     <div className="container">
                         <a href="/">
-                            <img
+                            {/* <img
                                 src="https://storage.googleapis.com/piggybankservice.appspot.com/statics/piggy-svg-white.svg"
-                                className="logo" alt=""/>
+                                className="logo" alt=""/> */}
                         </a>
                         <a href="/">
-                            <img
+                            {/* <img
                                 src="https://storage.googleapis.com/piggybankservice.appspot.com/statics/piggy-png_1_.png"
-                                className="logo-alt" alt=""/>
+                                className="logo-alt" alt=""/> */}
                         </a>
 
                         <ul className="menu _no-show">
@@ -169,19 +170,19 @@ class Homepage extends Component {
                              </li>
                              **/}
 
-                            <li className="menu-list"><a href="https://www.piggyvest.com/about"
-                                                         className="menu-link visible">About</a></li>
-                            <li className="menu-list"><a href="https://www.piggyvest.com/stories"
-                                                         className="menu-link">Stories</a></li>
-                            <li className="menu-list"><a href="https://www.piggyvest.com/faq"
-                                                         className="menu-link">FAQ</a></li>
-                            <li className="menu-list"><a href="https://medium.com/@Piggyvest" target="_blank"
+                            <li className="menu-list"><Link to="/about"
+                                                         className="menu-link visible">About</Link></li>
+                            {/* <li className="menu-list"><a href="https://www.piggyvest.com/stories"
+                                                         className="menu-link">Stories</a></li> */}
+                            <li className="menu-list"><Link to="/faq"
+                                                         className="menu-link">FAQ</Link></li>
+                            {/* <li className="menu-list"><a href="https://medium.com/@Piggyvest" target="_blank"
                                                          className="menu-link">Blog</a>
-                            </li>
-                            <li className="menu-list"><a href="https://dashboard.piggyvest.com/login"
-                                                         className="menu-link">Log In</a></li>
-                            <li className="menu-list"><a href="https://dashboard.piggyvest.com/register"
-                                                         className="menu-link signup-btn">Create a Free Account</a></li>
+                            </li> */}
+                            <li className="menu-list"><Link to="/login"
+                                                         className="menu-link">Log In</Link></li>
+                            <li className="menu-list"><Link to="/signup"
+                                                         className="menu-link signup-btn">Create a Free Account</Link></li>
                         </ul>
                     </div>
                 </nav>
@@ -191,23 +192,21 @@ class Homepage extends Component {
                     <section className="intro-text _margin-100">
                         <div className="container mainheroholder">
                             <div className="_mobilecenter">
-                                <h1 className="_half-width _margin-50 bluecolor bold">The Better Way<br/>To
-                                    Save &amp; Invest</h1>
-                                <p className="_half-width _margin-20 ashcolor">PiggyVest helps you achieve financial
-                                    freedom by enabling
-                                    you save responsibly and invest on the go.<br/><br/>Earn 10% - 15.5% interests on
+                                <h1 className="_half-width _margin-50 bluecolor bold">Stock Pile<br/>Building Materials</h1>
+                                <p className="_half-width _margin-20 ashcolor">Accumulate building materials by automatically depositing small amounts of money,which is instantly converted to equivalent amount of building materials which you can witdraw and pick up tommorow or in several years time.</p>
+                                {/* .<br/><br/>Earn 10% - 15.5% interests on
                                     savings.<br/>Earn
-                                    over 25% return on investments.</p>
+                                    over 25% return on investments.</p> */}
                                 <a href="/register" className="btn _margin-20">Create a Free Account</a>
                                 <div>
-                                    <a href="https://www.piggyvest.com/appstorelink/ios" target="_blank">
+                                    {/* <a href="https://www.piggyvest.com/appstorelink/ios" target="_blank">
                                         <img src="https://www.piggyvest.com//images/iosbadge-101-image.png"
                                              className="download app_store_badges"/>
                                     </a>
                                     <a href="https://www.piggyvest.com/appstorelink/android" target="_blank">
                                         <img src="https://www.piggyvest.com//images/google-play-badge.png"
                                              className="download app_store_badges"/>
-                                    </a>
+                                    </a> */}
                                 </div>
                                 {/**
                                  <span><img src="https://www.piggyvest.com/sitestatics/img/bankcards.png" className="cards-icon" alt=""></span>
@@ -228,7 +227,7 @@ class Homepage extends Component {
                         </div>
                         <div className="textpart">
                             <div className="textheader bluecolor bold">Your Security is our Priority</div>
-                            <div className="textinfo ashcolor">PiggyVest uses the highest levels of Internet Security,
+                            <div className="textinfo ashcolor">Laybuy uses the highest levels of Internet Security,
                                 and it is secured
                                 by 256 bits SSL security encryption to ensure that your information is completely
                                 protected from
@@ -273,37 +272,29 @@ class Homepage extends Component {
                 <section className="content">
                     <div className="container _center">
                         <h1 className="_margin-100 bold">Save smartly &amp; responsibly!</h1>
-                        <div className="_subtitle">PiggyVest helps you reach your savings target much faster with
-                            various savings
-                            types.<br/>Plus you can even team up with others to reach joint goals.
+                        <div className="_subtitle">Laybuy helps you reach your savings target much faster by.<br/>accumulating building materials automatically depositing small or huge amounts of money
                         </div>
                         <div className="how-works howtostart _margin-50">
                             <div className="_width-33 _padding-20 _flex _outfeature_box savingsfeature">
                                 <img
                                     src="https://storage.googleapis.com/piggybankservice.appspot.com/statics/New-homepage-1.png"
                                     alt=""/>
-                                <h3 className="bluecolor bold">Enjoy<br/>quarterly savings</h3>
-                                <p>Join over 100,000 users that use our quarterly savings feature called "PiggyBank"
-                                    to reach their
-                                    general/personal savings goals more quickly.</p>
+                                <h3 className="bluecolor bold">Easy to use</h3>
+                                <p>Deposit regular amounts of money on a recurring basis, automatically or manually.</p>
                             </div>
                             <div className="_width-33 _padding-20 _flex _outfeature_box savingsfeature">
                                 <img
                                     src="https://storage.googleapis.com/piggybankservice.appspot.com/statics/New-homepage-3.png"
                                     alt=""/>
-                                <h3 className="bluecolor bold">Reach<br/>multiple targets</h3>
-                                <p>Set and reach multiple saving goals you set using our "Target Savings" feature,
-                                    you can save for
-                                    holidays, fees or even special events.</p>
+                                <h3 className="bluecolor bold">Flexible</h3>
+                                <p>You can withdraw and pickup your saved materials anywhere in the Country.</p>
                             </div>
                             <div className="_width-33 _padding-20 _flex _outfeature_box savingsfeature">
                                 <img
                                     src="https://storage.googleapis.com/piggybankservice.appspot.com/statics/New-homepage-2.png"
                                     alt=""/>
-                                <h3 className="bluecolor bold">Lock<br/>funds away</h3>
-                                <p>Use our "SafeLock" feature to lock funds away so you don't have access until your
-                                    set date. You
-                                    also earn over 13% p.a.</p>
+                                <h3 className="bluecolor bold">Transparent</h3>
+                                <p>Login to see accumulated materials in your virtual store, track transactions.</p>
                             </div>
                         </div>
                         {/**<a href="javascript:;" onclick="scrollToElement('#usp');" className="btn blue _margin-50">Learn More</a>**/}
@@ -314,20 +305,18 @@ class Homepage extends Component {
                 {/** Invest BOX **/}
                 <section className="content investcontent">
                     <div className="container _center">
-                        <h1 className="_margin-100 bold">Invest in bits &amp; on the go!</h1>
+                        <h1 className="_margin-100 bold">How it works</h1>
                         <div className="_subtitle">Many investments are expensive, which makes it hard to get
-                            started.<br/>At PiggyVest,
-                            you too can invest in tiny &amp; affordable chunks and still enjoy the same return rates
-                            in amazing
-                            opportunities.
+                            started.<br/>At Laybuy,
+                            you too can invest in tiny &amp; affordable chunks by signing up to our platform
                         </div>
                         <div className="how-works howtostart _margin-50">
                             <div className="_width-33 _padding-20 _flex _outfeature_box investfeature">
                                 <img
                                     src="https://storage.googleapis.com/piggybankservice.appspot.com/statics/New-homepage-4.png"
                                     alt=""/>
-                                <h3 className="bluecolor bold">Co-invest<br/>in opportunities</h3>
-                                <p>Join other PiggyVest users to co-invest in guaranteed fixed income
+                                <h3 className="bluecolor bold">Sign Up</h3>
+                                <p>Join other laybuy users to co-invest in guaranteed savings,
                                     investments &amp; other
                                     amazing projects.</p>
                             </div>
@@ -335,17 +324,15 @@ class Homepage extends Component {
                                 <img
                                     src="https://storage.googleapis.com/piggybankservice.appspot.com/statics/New-homepage-5.png"
                                     alt=""/>
-                                <h3 className="bluecolor bold">Decide<br/>on what to invest</h3>
-                                <p>You have complete control on the type of investments you want to engage. All
-                                    opportunities are
-                                    pre-vetted by PiggyVest.</p>
+                                <h3 className="bluecolor bold">Specify the materials</h3>
+                                <p>Choose a material you wish to make deposit on and you're one step away from achieving your savings goal.</p>
                             </div>
                             <div className="_width-33 _padding-20 _flex _outfeature_box investfeature">
                                 <img
                                     src="https://storage.googleapis.com/piggybankservice.appspot.com/statics/New-homepage-6.png"
                                     alt=""/>
-                                <h3 className="bluecolor bold">Watch<br/>your portfolio grow</h3>
-                                <p>Easily monitor the progress of your investments from your PiggyVest
+                                <h3 className="bluecolor bold">Sit back and Relax</h3>
+                                <p>Easily monitor the progress of your investments and savings from your laybuy
                                     dashboard.</p>
                             </div>
                         </div>
@@ -483,7 +470,7 @@ class Homepage extends Component {
                  </section>
                  **/}
 
-                <section className="content saverofmonth-section">
+                {/* <section className="content saverofmonth-section">
                     <div className="container minicontainer">
                         <h1 className="_center _margin-20 bold">The saver of the month!</h1>
                         <div className="feature _margin-20">
@@ -505,10 +492,10 @@ class Homepage extends Component {
                             </div>
                         </div>
                     </div>
-                </section>
+                </section> */}
 
                 {/** Stories **/}
-                <section className="content stories shadesection" style={{backgroundColor: '#083E9E'}}>
+                {/* <section className="content stories shadesection" style={{backgroundColor: '#083E9E'}}>
                     <div className="container minicontainer" style={{padding: '100px 0px'}}>
                         <h1 className="_center bold" style={{color: '#fff !important'}}>Recently verified customer
                             stories/feedback</h1>
@@ -556,7 +543,7 @@ class Homepage extends Component {
                         </div>
 
                     </div>
-                </section>
+                </section> */}
                 {/** Stories End **/}
 
 
@@ -580,24 +567,24 @@ class Homepage extends Component {
 
                 <section className="content cta">
                     <div className="container _center">
-                        <h1 className="bold">Over ₦1,000,000,000 securely saved every month.</h1>
+                        {/* <h1 className="bold">Over ₦1,000,000,000 securely saved every month.</h1> */}
                         <p>
-                            PiggyVest uses bank-level security measures to keep your data safe.<br/>PiggyVest users
+                            Laybuy uses bank-level security measures to keep your data safe.<br/>Laybuy users
                             save &amp; invest
-                            well over a billion every single month, and they are just getting started.
+                            well over huge amount every single month, and they are just getting started.
                         </p>
-                        <a href="https://www.piggyvest.com/register" className="btn blue _margin-20">Create Account for
-                            Free</a>
+                        <Link to="/register" className="btn blue _margin-20">Create Account for
+                            Free</Link>
 
                         <div className="_clear"></div>
-                        <a href="https://www.piggyvest.com/appstorelink/ios" target="_blank">
+                        {/* <a href="https://www.piggyvest.com/appstorelink/ios" target="_blank">
                             <img src="https://www.piggyvest.com//images/iosbadge-101-image.png"
                                  className="download app_store_badges"/>
                         </a>
                         <a href="https://www.piggyvest.com/appstorelink/android" target="_blank">
                             <img src="https://www.piggyvest.com//images/google-play-badge.png"
                                  className="download app_store_badges"/>
-                        </a>
+                        </a> */}
 
                     </div>
                 </section>
@@ -613,38 +600,38 @@ class Homepage extends Component {
                     <div className="container">
                         <ul className="_right foot-links">
                             <h3>COMPANY</h3>
-                            <li>
+                            {/* <li>
                                 <a href="https://www.piggyvest.com/about">About</a>
-                            </li>
+                            </li> */}
                             {/**
                              <li>
                              <a href="https://www.piggyvest.com/careers">Careers</a>
                              </li>
                              **/}
                             <li>
-                                <a href="https://www.piggyvest.com/faq">FAQs</a>
+                                <Link to="/faq">FAQs</Link>
                             </li>
                             <li>
-                                <a href="https://www.piggyvest.com/terms">Terms of Use</a>
+                                <Link to="/terms">Terms of Use</Link>
                             </li>
                             <li>
-                                <a href="https://www.piggyvest.com/privacy">Privacy Policy</a>
+                                <Link to="/privacy">Privacy Policy</Link>
                             </li>
                             <li>
 
                     <span className="icon">
-                        <a href="https://www.facebook.com/PiggybankNG" target="_blank"><img alt="Facebook"
+                        <a href="https://www.facebook.com/" target="_blank"><img alt="Facebook"
                                                                                             src="https://www.piggyvest.com//images/social-media-icon-FB-80-min.png"/></a>
                     </span>
 
                                 <span className="icon">
-                        <a href="https://twitter.com/PiggybankNG" target="_blank">
+                        <a href="https://twitter.com/" target="_blank">
                             <img alt="Twitter"
                                  src="https://www.piggyvest.com//images/social-media-icon-TWT-80-min.png"/></a>
                     </span>
 
                                 <span className="icon">
-                        <a href="https://instagram.com/PiggybankNG" target="_blank"><img alt="Instagram"
+                        <a href="https://instagram.com/" target="_blank"><img alt="Instagram"
                                                                                          src="https://www.piggyvest.com//images/social-media-icon-instagram-80-min.png"/></a>
                     </span>
                             </li>
@@ -652,7 +639,7 @@ class Homepage extends Component {
 
                         <ul className="_right foot-links">
                             <h3>Quick Links</h3>
-                            <li>
+                            {/* <li>
                                 <a href="https://www.piggyvest.com/autosave">AutoSave™</a>
                             </li>
                             <li>
@@ -669,28 +656,27 @@ class Homepage extends Component {
                             </li>
                             <li>
                                 <a href="https://www.piggyvest.com/salarysavingsteps">Salary Management</a>
-                            </li>
+                            </li> */}
                         </ul>
 
                         <div className="info">
-                            <a href="#"><img
+                            {/* <a href="#"><img
                                 src="https://storage.googleapis.com/piggybankservice.appspot.com/statics/piggy-png_1_.png"
-                                className="logo" alt=""/></a>
+                                className="logo" alt=""/></a> */}
                             <p className="_margin-10">
-                                PiggyVest <a
-                                href="https://medium.com/@PiggybankNG/introducing-piggyvest-the-future-of-savings-and-investments-e82482d3a595"
-                                target="_blank">(formerly piggybank.ng)</a> is the largest online
+                                Laybuy is the largest online
                                 savings &amp; investing
-                                platform in Nigeria.<br/>For over 4 years, our customers have saved and invested
+                                platform for building materials in Nigeria. 
+                                {/* <br/>For over 4 years, our customers have saved and invested
                                 billions
                                 of Naira
                                 that they would normally be tempted to spend.<br/> <br/>
                                 Office: Tesmot House, 3 Abdulrahman Okene Close, off Ligali Ayorinde Street,
-                                Victoria Island, Lagos.
+                                Victoria Island, Lagos. */}
                             </p>
                             <p><a href="tel:0700 933 933 933">0700 933 933 933 <b>(Mon-Fri from 9am-5pm)</b></a> - <a
-                                href="mailto:contact@piggyvest.com">contact@piggyvest.com</a></p>
-                            <p className="copy">© 2016 - 2020 PiggyTech Global Limited - RC 1405222</p>
+                                href="mailto:contact@laybuy.app">contact@laybuy.app</a></p>
+                            <p className="copy">© 2020 Laybuy</p>
                         </div>
 
                     </div>
