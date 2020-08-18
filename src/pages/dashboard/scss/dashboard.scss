@@ -20,8 +20,9 @@
   }
 
   .main-dashboard {
-    width: 83%;
-    margin-left: 17%;
+    //width: 83%;
+    flex: 1;
+    margin-left: 218px;
     padding-bottom: 20px;
     box-sizing: border-box;
   }
@@ -37,7 +38,6 @@
     align-items: center;
     justify-content: center;
     border: none;
-    margin: 70px 50px 20px;
     text-decoration: none;
   }
 
@@ -169,14 +169,12 @@
       padding: 20px 20px 0;
     }
     .sidebar-dashboard {
-      width: 24%;
+      //width: 24%;
     }
     .main-dashboard {
-      width: 76%;
-      margin-left: 24%;
-    }
-    .logout-dashboard {
-      display: none;
+      //width: cal(100% - 218px);
+      margin-left: 218px;
+
     }
     .user-controls-dashboard {
       margin-right: 0px;
@@ -192,22 +190,19 @@
     }
     .links-dashboard .link-dashboard,
     .logout__link-dashboard {
-      padding-left: 20%;
+      padding-left: 20px;
     }
   }
 
   @media (max-width: 800px) {
     .main-dashboard {
-      width: 70%;
-      margin-left: 30%;
+      //width: 70%;
+      margin-left: 218px;
     }
   }
 
   @media (max-width: 768px) {
-    .new-plan-dashboard {
-      margin-top: 100px;
-      margin-left: 20px;
-    }
+
     .top-dashboard {
       position: fixed;
       z-index: 10;
@@ -215,6 +210,7 @@
     }
     .main-dashboard {
       width: 100%;
+      flex: 1;
       margin: 0;
     }
     .top-dashboard .back-dashboard {
@@ -228,7 +224,7 @@
     }
     .links-dashboard .link-dashboard,
     .logout__link-dashboard {
-      padding-left: 15%;
+      padding-left: 20px;
     }
   }
 

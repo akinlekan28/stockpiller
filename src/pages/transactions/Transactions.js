@@ -5,6 +5,7 @@ import { getTransactions } from "../../store/actions/transactionActions";
 import { Link } from "react-router-dom";
 import Skeleton from "@yisheng90/react-loading";
 import "./scss/transaction.scss";
+import DashboardLayout from "../dashboard/Layout";
 
 class Transactions extends Component {
   constructor() {
@@ -220,207 +221,9 @@ class Transactions extends Component {
     }
 
     return (
-      <div className="transaction-wrapper">
-        <div className="container-transaction">
-          <div className="sidenav__container-transaction" ref={this.sidebarContainer}>
-            <div className="sidebar-transaction sidenav-transaction" ref={this.sidenavDashboard}>
-              <div className="header-title">
-                <Link className="logo-transaction" to="/">
-                  Stockpiller
-                </Link>
-              </div>
-              <button className="sidenav-close-transaction" onClick={this.closeNav}>
-              <img src="https://res.cloudinary.com/djnhrvjyf/image/upload/v1597702029/close_junhc8.svg" />
-              </button>
-              <div className="links-transaction">
-                <div className="link-transaction">
-                  <span
-                    className="iconify"
-                    data-icon="ic:baseline-dashboard"
-                    data-inline="false"
-                  ></span>
-                  <Link to="/dashboard">Dashboard</Link>
-                </div>
-                <div className="link-transaction">
-                  <span
-                    className="iconify"
-                    data-icon="bx:bxs-bar-chart-alt-2"
-                    data-inline="false"
-                  ></span>
-                  <Link to="/plans">Plans</Link>
-                </div>
-                <div className="link-transaction active-transaction">
-                  <span
-                    className="iconify"
-                    data-icon="bi:calculator-fill"
-                    data-inline="false"
-                  ></span>
-                  <Link to="/transactions">Transactions</Link>
-                </div>
-                <div className="link-transaction">
-                  <span
-                    className="iconify"
-                    data-icon="ri:send-plane-fill"
-                    data-inline="false"
-                  ></span>
-                  <Link to="/withdraw">Withdraw</Link>
-                </div>
-                <div class="link-transaction">
-                  <span
-                    className="iconify"
-                    data-icon="vaadin:wallet"
-                    data-inline="false"
-                  ></span>
-                  <Link to="/cards">Cards</Link>
-                </div>
-                <div className="link-transaction">
-                  <span
-                    className="iconify"
-                    data-icon="clarity:cog-line"
-                    data-inline="false"
-                  ></span>
-                  <Link to="/settings">Settings</Link>
-                </div>
-              </div>
-              <a
-                className="logout__link-transaction"
-                href="#"
-                onClick={this.logout}
-              >
-                <span
-                  className="iconify"
-                  data-icon="ri:logout-box-line"
-                  data-inline="false"
-                ></span>
-                Logout
-              </a>
-            </div>
-          </div>
-          <div className="sidebar-transaction">
-            <div className="header-title">
-              <Link className="logo-transaction" to="/">
-                Stockpiller
-              </Link>
-            </div>
-            <div className="links-transaction">
-              <div className="link-transaction">
-                <span
-                  className="iconify"
-                  data-icon="ic:baseline-dashboard"
-                  data-inline="false"
-                ></span>
-                <Link to="/dashboard">Dashboard</Link>
-              </div>
-              <div className="link-transaction">
-                <span
-                  className="iconify"
-                  data-icon="bx:bxs-bar-chart-alt-2"
-                  data-inline="false"
-                ></span>
-                <Link to="/plans">Plans</Link>
-              </div>
-              <div className="link-transaction active-transaction">
-                <span
-                  className="iconify"
-                  data-icon="bi:calculator-fill"
-                  data-inline="false"
-                ></span>
-                <Link to="/transactions">Transactions</Link>
-              </div>
-              <div className="link-transaction">
-                <span
-                  className="iconify"
-                  data-icon="ri:send-plane-fill"
-                  data-inline="false"
-                ></span>
-                <Link to="/withdraw">Withdraw</Link>
-              </div>
-              <div className="link-transaction">
-                <span
-                  className="iconify"
-                  data-icon="vaadin:wallet"
-                  data-inline="false"
-                ></span>
-                <Link to="/cards">Cards</Link>
-              </div>
-              <div className="link-transaction">
-                <span
-                  className="iconify"
-                  data-icon="clarity:cog-line"
-                  data-inline="false"
-                ></span>
-                <Link to="/settings">Settings</Link>
-              </div>
-            </div>
-            <a
-              className="logout__link-transaction"
-              href="#"
-              onClick={this.logout}
-            >
-              <span
-                className="iconify"
-                data-icon="ri:logout-box-line"
-                data-inline="false"
-              ></span>
-              Logout
-            </a>
-          </div>
-          <div className="main-transaction">
-            <div className="top-transaction">
-              <button className="sidenav-btn-transaction" onClick={this.sidenav}>
-                <div className="bar-transaction"></div>
-                <div className="bar-transaction"></div>
-                <div className="bar-transaction"></div>
-              </button>
-
-              <div className="back-transaction">
-                <img src="../assets/images/back.svg" alt="" />
-                {/* <a href="">Back</a> */}
-              </div>
-              {/* <table class="rates-transaction top">
-                <tr>
-                  <td>Rates</td>
-                  <td>Block</td>
-                  <td>Cement</td>
-                </tr>
-                <tr>
-                  <td>Local</td>
-                  <td>
-                    <img src="../assets/images/rate-down.svg" alt="" />
-                    &#8358 200
-                  </td>
-                  <td>
-                    <img src="../assets/images/rate-up.svg" alt="" />
-                    &#8358 2000
-                  </td>
-                </tr>
-                <tr>
-                  <td>International</td>
-                  <td>
-                    <img src="../assets/images/rate-down.svg" alt="" />
-                    $2
-                  </td>
-                  <td>
-                    <img src="../assets/images/rate-up.svg" alt="" />
-                    $2
-                  </td>
-                </tr>
-              </table> */}
-              <div className="user-controls-transaction">
-                <div className="notifications-transaction">
-                  <img src="../assets/images/notifications.svg" alt="" />
-                </div>
-                <div className="user-transaction">
-                  <img src="../assets/images/user.svg" alt="" />
-                </div>
-                <button className="logout-transaction" onClick={this.logout}>
-                  Logout
-                </button>
-              </div>
-            </div>
-
-            <div className="content-transaction">
-              <div className="cards-transaction">
+        <DashboardLayout name={'transactions'}>
+            <div className="transaction-wrapper pt-lg-4 pt-5 px-4">
+              <div className="cards-transaction mt-lg-0 mt-5">
                 {transactionContainer}
                 <Link to="/plan/new" className="add-plan-transaction">
                   <button>
@@ -450,9 +253,7 @@ class Transactions extends Component {
                 {transactionTable}
               </div>
             </div>
-          </div>
-        </div>
-      </div>
+        </DashboardLayout>
     );
   }
 }

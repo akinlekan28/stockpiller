@@ -1,279 +1,116 @@
-import React, { Component, createRef } from 'react'
-import { connect } from 'react-redux'
-import { Link } from 'react-router-dom'
-import { logoutUser } from '../../store/actions/authActions'
+import React, {Component, createRef} from 'react'
+import {connect} from 'react-redux'
+import {Link} from 'react-router-dom'
+import {logoutUser} from '../../store/actions/authActions'
 import './scss/plans.scss'
+import DashboardLayout from "../dashboard/Layout";
 
 class NewPlan extends Component {
-  constructor() {
-    super()
+    constructor() {
+        super()
 
-    this.state = {
-      showDepositType: false,
+        this.state = {
+            showDepositType: false,
+        }
+
+        this.hamburger = createRef()
+        this.sliderClose = createRef()
+        this.menuContainer = createRef()
+        this.menu = createRef()
+        this.overlay = createRef()
+        this.toggleDeposit = this.toggleDeposit.bind(this)
+        this.logout = this.logout.bind(this)
     }
 
-    this.hamburger = createRef()
-    this.sliderClose = createRef()
-    this.menuContainer = createRef()
-    this.menu = createRef()
-    this.overlay = createRef()
-    this.toggleDeposit = this.toggleDeposit.bind(this)
-    this.logout = this.logout.bind(this)
-  }
+    toggleDeposit(e) {
+        this.setState({showDepositType: true})
+    }
 
-  toggleDeposit(e) {
-    this.setState({ showDepositType: true })
-  }
+    logout(e) {
+        e.preventDefault()
 
-  logout(e) {
-    e.preventDefault()
+        this.props.logoutUser()
+    }
 
-    this.props.logoutUser()
-  }
+    openSlider = () => {
+        this.overlay.current.style.display = 'block'
+        this.menuContainer.current.classList.add('active-home')
+        this.menu.current.style.display = 'block'
+        setTimeout(() => {
+            this.menu.current.classList.add('active-home')
+        }, 100)
+    }
 
-  openSlider = () => {
-    this.overlay.current.style.display = 'block'
-    this.menuContainer.current.classList.add('active-home')
-    this.menu.current.style.display = 'block'
-    setTimeout(() => {
-      this.menu.current.classList.add('active-home')
-    }, 100)
-  }
+    closeSlider = () => {
+        this.menu.current.classList.remove('active-home')
+        this.menu.current.style.display = 'none'
+        setTimeout(() => {
+            this.menuContainer.current.classList.remove('active-home')
+            this.overlay.current.style.display = 'none'
+        }, 400)
+    }
 
-  closeSlider = () => {
-    this.menu.current.classList.remove('active-home')
-    this.menu.current.style.display = 'none'
-    setTimeout(() => {
-      this.menuContainer.current.classList.remove('active-home')
-      this.overlay.current.style.display = 'none'
-    }, 400)
-  }
-
-  render() {
-    let type
-    const { showDepositType } = this.state
-    return (
-      <div className="plans-wrapper">
-        <div className="sidenav__container-home" ref={this.menuContainer}>
-          <div className="sidebar-home sidenav-home" ref={this.menu}>
-            <div className="header-title">
-              <Link className="logo" to="/">
-                Stockpiller
-              </Link>
-            </div>
-            <button className="sidenav-close-home" onClick={this.closeSlider}>
-              <img src="https://res.cloudinary.com/djnhrvjyf/image/upload/v1597702029/close_junhc8.svg" />
-            </button>
-            <div className="links-home">
-              <div className="link-home">
-                <span
-                  class="iconify"
-                  data-icon="ic:baseline-dashboard"
-                  data-inline="false"
-                ></span>
-                <Link to="/dashboard">Dashboard</Link>
-              </div>
-              <div className="link-home active-home">
-                <span
-                  class="iconify"
-                  data-icon="bx:bxs-bar-chart-alt-2"
-                  data-inline="false"
-                ></span>
-                <Link to="/plans">Plans</Link>
-              </div>
-              <div className="link-home">
-                <span
-                  class="iconify"
-                  data-icon="bi:calculator-fill"
-                  data-inline="false"
-                ></span>
-                <Link to="/transactions">Transactions</Link>
-              </div>
-              <div className="link-home">
-                <span
-                  class="iconify"
-                  data-icon="ri:send-plane-fill"
-                  data-inline="false"
-                ></span>
-                <Link to="/withdraw">Withdraw</Link>
-              </div>
-              <div className="link-home">
-                <span
-                  class="iconify"
-                  data-icon="vaadin:wallet"
-                  data-inline="false"
-                ></span>
-                <Link to="/cards">Cards</Link>
-              </div>
-              <div className="link-home">
-                <span
-                  class="iconify"
-                  data-icon="clarity:cog-line"
-                  data-inline="false"
-                ></span>
-                <Link to="/settings">Settings</Link>
-              </div>
-            </div>
-            <a className="logout__link-home" href="#" onClick={this.logout}>
-              <span
-                className="iconify"
-                data-icon="ri:logout-box-line"
-                data-inline="false"
-              ></span>
-              Logout
-            </a>
-          </div>
-        </div>
-        <div className="sidebar-home">
-          <div className="header-title">
-            <Link className="logo-home" to="/">
-              Stockpiller
-            </Link>
-          </div>
-          <div className="links-home">
-            <div className="link-home">
-              <span
-                class="iconify"
-                data-icon="ic:baseline-dashboard"
-                data-inline="false"
-              ></span>
-              <Link to="/dashboard">Dashboard</Link>
-            </div>
-            <div className="link-home active-home">
-              <span
-                class="iconify"
-                data-icon="bx:bxs-bar-chart-alt-2"
-                data-inline="false"
-              ></span>
-              <Link to="/plans">Plans</Link>
-            </div>
-            <div className="link-home">
-              <span
-                class="iconify"
-                data-icon="bi:calculator-fill"
-                data-inline="false"
-              ></span>
-              <Link to="/transactions">Transactions</Link>
-            </div>
-            <div className="link-home">
-              <span
-                class="iconify"
-                data-icon="ri:send-plane-fill"
-                data-inline="false"
-              ></span>
-              <Link to="/withdraw">Withdraw</Link>
-            </div>
-            <div className="link-home">
-              <span
-                class="iconify"
-                data-icon="vaadin:wallet"
-                data-inline="false"
-              ></span>
-              <Link to="/cards">Cards</Link>
-            </div>
-            <div className="link-home">
-              <span
-                class="iconify"
-                data-icon="clarity:cog-line"
-                data-inline="false"
-              ></span>
-              <Link to="/settings">Settings</Link>
-            </div>
-          </div>
-          <a className="logout__link-home" href="#" onClick={this.logout}>
-            <span
-              class="iconify"
-              data-icon="ri:logout-box-line"
-              data-inline="false"
-            ></span>
-            Logout
-          </a>
-        </div>
-        <div className="cover-overlay-home" ref={this.overlay}></div>
-
-        <main>
-          <div class="main-container-home">
-            <div class="main-header-home">
-              <div class="open-home" onClick={this.openSlider}>
-                <div class="bar-home"></div>
-                <div class="bar-home"></div>
-                <div class="bar-home"></div>
-              </div>
-              <a href="#" class="backlink-home">
-                <div class="back-home">
-                  <img src="../assets/images/Path 3 Copy.svg" alt="" />
-                  {/* <h2>Back</h2> */}
+    render() {
+        let type
+        const {showDepositType} = this.state
+        return (
+            <DashboardLayout name={'plans'}>
+                <div className="plans-wrapper px-4 pt-5 pt-lg-4">
+                    <div class="main-body-home  mt-lg-0 mt-5">
+                        <div class="empty-div-home">
+                            {!showDepositType && (
+                                <div
+                                    class="add-plan-image-home"
+                                    onClick={this.toggleDeposit}
+                                    style={{height: '70vh'}}
+                                >
+                                    <img
+                                        src="https://res.cloudinary.com/djnhrvjyf/image/upload/v1594885590/Group_5_upslqf.svg"
+                                        alt=""
+                                        class="Add-plan-home"
+                                    />
+                                </div>
+                            )}
+                            {showDepositType && (
+                                <div
+                                    class="choose-deposit-option-home"
+                                    style={{display: 'flex', height: '70vh'}}
+                                >
+                                    <Link
+                                        to={`/plan/create/${(type = 1)}`}
+                                        class="plan-type-home plan-type-normal-home"
+                                    >
+                                        <img
+                                            src="https://res.cloudinary.com/djnhrvjyf/image/upload/v1594885923/Group_89_fbogzq.svg"
+                                            alt=""
+                                        />
+                                        <p>Recurrent deposit</p>
+                                    </Link>
+                                    <Link
+                                        to={`/plan/create/${(type = 2)}`}
+                                        class="plan-type-home plan-type-once-home"
+                                    >
+                                        <img
+                                            src="https://res.cloudinary.com/djnhrvjyf/image/upload/v1594885923/Group_89_fbogzq.svg"
+                                            alt=""
+                                        />
+                                        <p>One-time deposit</p>
+                                    </Link>
+                                </div>
+                            )}
+                        </div>
+                    </div>
                 </div>
-              </a>
-              <div class="personalize-home">
-                <img
-                  class="notification-bell-home"
-                  src="../assets/images/Group 3.svg"
-                  alt=""
-                />
-                <div class="avatar-home">
-                  <img src="../assets/images/Oval.svg" alt="" />
-                </div>
-                <a href="#" class="logoutNav-home" onClick={this.logout}>
-                  Logout
-                </a>
-              </div>
-            </div>
-            <div class="main-body-home">
-              <div class="empty-div-home">
-                {!showDepositType && (
-                  <div
-                    class="add-plan-image-home"
-                    onClick={this.toggleDeposit}
-                    style={{ height: '70vh' }}
-                  >
-                    <img
-                      src="https://res.cloudinary.com/djnhrvjyf/image/upload/v1594885590/Group_5_upslqf.svg"
-                      alt=""
-                      class="Add-plan-home"
-                    />
-                  </div>
-                )}
-                {showDepositType && (
-                  <div
-                    class="choose-deposit-option-home"
-                    style={{ display: 'flex', height: '70vh' }}
-                  >
-                    <Link
-                      to={`/plan/create/${(type = 1)}`}
-                      class="plan-type-home plan-type-normal-home"
-                    >
-                      <img
-                        src="https://res.cloudinary.com/djnhrvjyf/image/upload/v1594885923/Group_89_fbogzq.svg"
-                        alt=""
-                      />
-                      <p>Recurrent deposit</p>
-                    </Link>
-                    <Link
-                      to={`/plan/create/${(type = 2)}`}
-                      class="plan-type-home plan-type-once-home"
-                    >
-                      <img
-                        src="https://res.cloudinary.com/djnhrvjyf/image/upload/v1594885923/Group_89_fbogzq.svg"
-                        alt=""
-                      />
-                      <p>One-time deposit</p>
-                    </Link>
-                  </div>
-                )}
-              </div>
-            </div>
-          </div>
-        </main>
-      </div>
-    )
-  }
+            </DashboardLayout>
+
+        )
+    }
 }
 
 const mapStateToProps = (state) => ({})
 
 const mapDispatchToProps = {
-  logoutUser,
+    logoutUser,
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(NewPlan)
