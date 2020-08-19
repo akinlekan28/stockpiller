@@ -536,6 +536,23 @@ a.card-footer:hover {
     color: #fff !important;
 }
 
+.privacy-card{
+    padding: 40px;
+    box-sizing: 40px;
+    background: #fff;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0,0,0,.2);
+}
+.privacy-card h2 {
+    font-size: 24px;
+    color: #144499;
+    font-weight: 700;
+    line-height: 32px;
+    margin-bottom: 10px;
+    margin-top: 30px;
+    text-align: left;
+}
+
 /* Card Things */
 @media (max-width: 800px) {
     .list_general ul.buttons {

@@ -23,8 +23,8 @@ import Cards from './pages/cards/Cards'
 import EditPlan from './pages/plans/EditPlan'
 import Settings from './pages/settings/Settings'
 import ChangePassword from './pages/settings/ChangePassword'
-// import Terms from './pages/terms/Terms'
-// import Privacy from './pages/terms/Privacy'
+import Terms from './pages/terms'
+import Privacy from './pages/privacy'
 import Plans from './pages/plans/Plans'
  import './App.css'
 
@@ -57,8 +57,8 @@ class App extends Component {
               <Route exact path="/login" component={Login} />
               <Route exact path="/signup" component={Signup} />
               <Route exact path="/reset" component={Forgot} />
-              {/*<Route exact path="/terms" component={Terms} />*/}
-              {/*<Route exact path="/privacy" component={Privacy} />*/}
+              <Route exact path="/terms" component={Terms} />
+              <Route exact path="/privacy" component={Privacy} />
               {/*<Route exact path="/contact" component={Contact} />*/}
               <PrivateRoute exact path="/dashboard" component={Dashboard} />
               <PrivateRoute exact path="/home" component={Home} />
