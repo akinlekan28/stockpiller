@@ -92,15 +92,21 @@ class Signup extends Component {
 
     return (
       <div className="signup-wrapper">
-        <div className="container-fluid">
-          <Link to="/" className="logo">
-            Stockpiller
+        <div className="border-line">
+          <Link to="/login" className="logo">
+            <span className="text-logo">Lay</span>
+            <span className="text-danger">buy</span>
           </Link>
+        </div>
+        <div className="container-fluid d-flex aligned justified">
+          {/* <Link to="/" className="logo">
+            Stockpiller
+          </Link> */}
           <img
             src="https://res.cloudinary.com/djnhrvjyf/image/upload/v1594376370/woman-with-laptop_f7fyle.svg"
             className="woman"
           />
-          <div className="signup">
+          <div className="signup mx-auto">
             <Tada>
               <div className="card-signup">
                 <p className="signup-header">Join Us</p>
@@ -246,12 +252,21 @@ class Signup extends Component {
                   </div>
                 </form>
                 <p className="login">
-                  Already have an account?<Link to="/login">Log In</Link>
+                  Already have an account?
+                  <Link to="/login" className="fw-700">
+                    Log In
+                  </Link>
                 </p>
                 <hr />
                 <p className="terms-and-conditions">
-                  <Link to="/terms">Terms & Conditions</Link> and
-                  <Link to="/privacy"> Privacy Policy</Link>
+                  <Link to="/terms" className="fw-700">
+                    Terms & Conditions
+                  </Link>{' '}
+                  and
+                  <Link to="/privacy" className="fw-700">
+                    {' '}
+                    Privacy Policy
+                  </Link>
                 </p>
               </div>
             </Tada>

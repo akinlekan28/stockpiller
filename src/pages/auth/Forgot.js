@@ -51,15 +51,21 @@ class Forgot extends Component {
 
     return (
       <div className="forgot-wrapper">
-        <div className="container-fluid">
-          <Link to="/" className="logo">
-            Stockpiller
+        <div className="border-line">
+          <Link to="/login" className="logo">
+            <span className="text-logo">Lay</span>
+            <span className="text-danger">buy</span>
           </Link>
+        </div>
+        <div className="container-fluid d-flex justified aligned">
+          {/* <Link to="/" className="logo">
+            Stockpiller
+          </Link> */}
           <img
             src="https://res.cloudinary.com/djnhrvjyf/image/upload/v1594397518/forgotlarge_dfetd5.svg"
             className="forgot-password"
           />
-          <div className="reset">
+          <div className="reset mx-auto">
             <Tada>
               <div className="reset-card">
                 <p className="reset-header">Reset Password</p>
