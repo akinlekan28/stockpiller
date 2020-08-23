@@ -333,7 +333,7 @@ table {
 }
 
 .green {
-    color: #30c57b
+    color: #502274c7
 }
 
 @media(max-width:768px) {
@@ -410,7 +410,7 @@ table {
 .top-nav .menu-list:hover .menu-link,
 .scrolled .menu-list:hover .menu-link,
 .alt-nav .menu-list:hover .menu-link {
-    color: #30c57b
+    color: #502274c7
 }
 
 .top-nav .menu-link,
@@ -440,7 +440,7 @@ table {
 .top-nav .menu-link:hover,
 .scrolled .menu-link:hover,
 .alt-nav .menu-link:hover {
-    color: #30c57b
+    color: #502274c7
 }
 
 .top-nav .submenu,
@@ -501,7 +501,7 @@ table {
     box-sizing: border-box;
     width: 100%;
     float: left;
-    color: #144499;
+    color: #502274;
     font-weight: 700
 }
 
@@ -621,23 +621,23 @@ table {
 
 .scrolled .menu-link,
 .alt-nav .menu-link {
-    color: #144499
+    color: #502274
 }
 
 .scrolled .menu-link.signup-btn,
 .alt-nav .menu-link.signup-btn {
-    border: 1px solid #144499
+    border: 1px solid #502274
 }
 
 .scrolled .menu-link.signup-btn:hover,
 .alt-nav .menu-link.signup-btn:hover {
-    background: #144499;
+    background: #502274;
     color: #fff !important
 }
 
 .scrolled .menu-link:hover,
 .alt-nav .menu-link:hover {
-    color: #30c57b !important
+    color: #502274c7 !important
 }
 
 .nav-icon,
@@ -702,7 +702,7 @@ table {
 .nav-icon .scrolled.line3,
 .white-nav-icon .scrolled.line3,
 .blue-nav-icon .scrolled.line3 {
-    background: #144499 !important
+    background: #502274 !important
 }
 
 .nav-icon .line1._alt,
@@ -714,7 +714,7 @@ table {
 .nav-icon ._alt.line3,
 .white-nav-icon ._alt.line3,
 .blue-nav-icon ._alt.line3 {
-    background: #144499 !important
+    background: #502274 !important
 }
 
 .nav-icon .line2,
@@ -792,19 +792,19 @@ table {
 .signin-modal .closeslide .blue-nav-icon .line2,
 .blue-nav-icon .register .closeslide .line2,
 .register .closeslide .blue-nav-icon .line2 {
-    background: #144499 !important
+    background: #502274 !important
 }
 
 .blue-nav-icon .line1.scrolled,
 .blue-nav-icon .scrolled.line2,
 .blue-nav-icon .scrolled.line3 {
-    background: #144499
+    background: #502274
 }
 
 .blue-nav-icon .line1._alt,
 .blue-nav-icon ._alt.line2,
 .blue-nav-icon ._alt.line3 {
-    background: #144499
+    background: #502274
 }
 
 .blue-nav-icon.tapped .line1,
@@ -928,7 +928,7 @@ h2,
 h3,
 .pagelongnote h3 {
     font-size: 24px;
-    color: #144499;
+    color: #502274;
     font-weight: 700;
     line-height: 32px;
     margin-bottom: 10px
@@ -977,7 +977,7 @@ h3,
     box-sizing: border-box;
     outline: none;
     border-radius: 5px;
-    border: 1px solid #144499
+    border: 1px solid #502274
 }
 
 .clearboth {
@@ -999,7 +999,7 @@ h3,
     width: 100%;
     padding-bottom: 150px;
     background: url(../img/bg-img.jpg) no-repeat center top;
-    background-color: #144499;
+    background-color: #502274;
     background-blend-mode: multiply;
     -webkit-clip-path: polygon(0 0, 100% 0%, 100% 71%, 0 96%);
     clip-path: polygon(0 0, 100% 0%, 100% 71%, 0 96%);
@@ -1037,13 +1037,13 @@ h3,
 }
 
 .header h1 {
-    color: #144499
+    color: #502274
 }
 
 .header.alt-header {
     background: url(../img/bg-img.jpg) no-repeat center top;
     background-size: cover;
-    background-color: #144499;
+    background-color: #502274;
     background-blend-mode: multiply;
     color: #fff
 }
@@ -1058,7 +1058,7 @@ h3,
 }
 
 .quote-big {
-    color: #30c57b;
+    color: #502274c7;
     font-family: Arial, sans-serif;
     font-weight: 400;
     position: relative;
@@ -1093,7 +1093,7 @@ h3,
 }
 
 .content h1 {
-    color: #144499
+    color: #502274
 }
 
 .container {
@@ -1150,7 +1150,7 @@ h3,
 }
 
 .firstcapspanh3 h3 span {
-    color: #144499;
+    color: #502274;
     font-weight: 700;
     font-size: 200%;
     padding-right: 2px
@@ -1197,8 +1197,8 @@ h3,
 .btn {
     padding: 15px 40px !important;
     display: inline-block;
-    background: #30c57b;
-    border: 1px solid #30c57b;
+    background: #502274c7;
+    border: 1px solid #502274c7;
     color: #fff;
     border-radius: 5px;
     transition: all 200ms ease-in-out;
@@ -1209,13 +1209,13 @@ h3,
 
 .btn:hover {
     background: #fff;
-    color: #144499;
-    border: 1px solid #144499
+    color: #502274;
+    border: 1px solid #502274
 }
 
 .btn.blue {
-    background: #144499;
-    border: 1px solid #144499
+    background: #502274;
+    border: 1px solid #502274
 }
 
 .btn.blue:hover {
@@ -1273,7 +1273,7 @@ h3,
 
 .page-content-colored {
     width: 100%;
-    background-image: -webkit-linear-gradient(94deg, #144499 70%, #ffffff 15%)
+    background-image: -webkit-linear-gradient(94deg, #502274 70%, #ffffff 15%)
 }
 
 .page-content .card {
@@ -1488,7 +1488,7 @@ button.close {
 }
 
 .story .name {
-    color: #144499;
+    color: #502274;
     text-transform: uppercase;
     font-weight: 700
 }
@@ -1536,7 +1536,7 @@ button.close {
     background-position: center;
     margin-top: 5px;
     background-repeat: no-repeat;
-    border: 3px solid #144499
+    border: 3px solid #502274
 }
 
 @media(max-width:768px) {
@@ -1548,7 +1548,7 @@ button.close {
 }
 
 .profileuser .name {
-    color: #144499;
+    color: #502274;
     text-transform: uppercase;
     font-weight: 700
 }
@@ -1584,7 +1584,7 @@ button.close {
 }
 
 .story-header {
-    background: #144499
+    background: #502274
 }
 
 .story-header h1 {
@@ -1631,7 +1631,7 @@ button.close {
 
 .about .about-card .name {
     font-weight: 700;
-    color: #144499;
+    color: #502274;
     font-size: 1.2em
 }
 
@@ -1651,7 +1651,7 @@ footer a {
 }
 
 footer a:hover {
-    color: #144499
+    color: #502274
 }
 
 footer .logo,
@@ -1726,7 +1726,7 @@ footer .icon img {
 .register {
     background: url(../img/bg-img.jpg) no-repeat center top;
     background-size: cover;
-    background-color: #144499;
+    background-color: #502274;
     background-blend-mode: multiply;
     position: fixed;
     display: none;
@@ -1837,12 +1837,12 @@ footer .icon img {
 
 .signin-modal .signin a,
 .register .signin a {
-    color: #144499
+    color: #502274
 }
 
 .signin-modal .signin a:hover,
 .register .signin a:hover {
-    color: #30c57b;
+    color: #502274;
     text-decoration: underline
 }
 
@@ -1872,7 +1872,7 @@ footer .icon img {
 
 .signin-modal .signin .btn:hover,
 .register .signin .btn:hover {
-    background: #144499;
+    background: #502274;
     color: #fff
 }
 
@@ -1887,7 +1887,7 @@ footer .icon img {
 .signin-modal .signin label,
 .register .signin label {
     font-size: 1em;
-    color: #144499
+    color: #502274cf
 }
 
 .signin-modal .signin input[type=text],
@@ -1906,7 +1906,7 @@ footer .icon img {
     box-sizing: border-box;
     outline: none;
     border-radius: 5px;
-    border: 1px solid #144499
+    border: 1px solid #502274
 }
 
 .signin-modal .signin input[type=text]:focus,
@@ -1919,7 +1919,7 @@ footer .icon img {
 .register .signin input[type=tel]:focus,
 .signin-modal .signin input[type=number]:focus,
 .register .signin input[type=number]:focus {
-    border: 1px solid #144499
+    border: 1px solid #502274
 }
 
 .signin-modal span,
